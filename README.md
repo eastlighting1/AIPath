@@ -4,8 +4,7 @@ AI certification practice platform, with Korean and English question banks.
 
 - Website: https://eastlighting1.github.io/AIPath/
 - About: https://eastlighting1.github.io/AIPath/about/
-- Review, search, analysis and responsive preview: https://eastlighting1.github.io/AIPath/djemdls/
-
+- 
 ## GitHub Pages
 
 Push to main to build and deploy automatically with GitHub Actions. Pages publishing source is GitHub Actions.
