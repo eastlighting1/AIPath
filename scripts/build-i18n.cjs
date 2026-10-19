@@ -1,5 +1,5 @@
 const fs=require('fs'),path=require('path');const root=path.resolve(__dirname,'..'),dist=path.join(root,'public');let source=fs.readFileSync(path.join(dist,'app.js'),'utf8');
-const types=['단일 선택','복수 선택','매칭','순서 배열','진술 판정'];
+const types=['코드 빈칸','단일 선택','복수 선택','매칭','순서 배열','진술 판정'];
 let en=source.replace(String.raw`e.purpose.replace(/^이 시험에서는 응시자가 /,'').replace(/ 확인합니다\.$/,' 확인합니다.')`,'e.purpose');types.forEach((t,i)=>{en=en.replaceAll("'"+t+"'","'__TYPE_"+i+"__'");});
 const translations=JSON.parse(fs.readFileSync(path.join(__dirname,'ui-translations.json'),'utf8'));
 for(const [ko,text] of Object.entries(translations).sort((a,b)=>b[0].length-a[0].length))en=en.split(ko).join(text);

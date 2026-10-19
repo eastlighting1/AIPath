@@ -6,6 +6,9 @@ window.makePreviewMock=(type,length,lang)=>{
  const extra=t(' 이때 작업의 목적, 자료의 접근 범위, 검토 담당자와 공유 시점을 함께 확인하고 변경 이력을 남깁니다.',' Also verify the purpose, access scope, reviewer, and sharing schedule, and retain a change history.');
  q.prompt=(long?context+'\n\n':'')+t('다음 업무에서 적절한 처리 방법을 선택하세요.','Select the appropriate approach for this task.');
  q.options=choices.map((text,i)=>({id:String.fromCharCode(65+i),text:text+(long?extra:'')}));
+ if(type==='코드 빈칸'){
+ q.format='code-fill';q.prompt=t('코드의 빈칸에 알맞은 값을 선택하세요.','Choose the correct value for the blank in the code.')+'\n\n'+ '```python\n'+(long?'def prepare_report(records):\n    verified = [row for row in records if row["verified"]]\n    totals = [row["amount"] for row in verified]\n    return [A](totals)\n':'total = [A]([1, 2, 3])\n')+'```';q.options=['sum','len','min','max','sorted'].map((text,i)=>({id:String.fromCharCode(65+i),text:'[A] = '+text}));q.keys=['A'];
+ }
  if(type==='복수 선택'){q.keys=['A','C'];q.prompt+=t(' 정답은 2개입니다.',' Select TWO answers.');}
  if(type==='매칭'){
  q.prompt=(long?context+'\n\n':'')+t('각 상황에 가장 알맞은 작업을 연결하세요. 보기 하나는 사용하지 않습니다.','Match each situation to the most suitable task. One option is unused.');
