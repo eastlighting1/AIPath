@@ -5759,6 +5759,791 @@
         "version": 1,
         "method": "rule-based-draft"
       }
+    },
+    {
+      "id": 113,
+      "title": "Role instructions for customer support",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 1,
+      "difficulty": "L1",
+      "prompt": "Build a shopping support chatbot using the Anthropic Python SDK and Claude Messages API. Pass its role and tone as persistent instructions separately from the user question.\n\n```python\nimport anthropic\n\nclient = anthropic.Anthropic()\nresp = client.messages.create(\n    model=\"claude-sonnet-5-5\",\n    max_tokens=512,\n    [A]=\"You are an Acme shopping support agent. Always respond politely.\",\n    messages=[{\"role\": [B], \"content\": \"How do I request a refund?\"}],\n)\nprint(resp.content[0].text)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `instructions`, [B] = `\"user\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `system_instruction`, [B] = `\"user\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `system`, [B] = `\"user\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `system`, [B] = `\"developer\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `instructions`, [B] = `\"developer\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Claude accepts top-level system instructions. Its messages array uses user and assistant roles.\n\n{{option:A}} (Incorrect): instructions belongs to OpenAI Responses, not Anthropic messages.create.\n\n{{option:B}} (Incorrect): system_instruction belongs to Google GenerateContentConfig and is invalid in this signature.\n\n{{option:C}} (Correct): Use system and user.\n\n{{option:D}} (Incorrect): The first blank is correct, but developer is not an Anthropic messages role.\n\n{{option:E}} (Incorrect): Both values follow OpenAI conventions rather than this API.",
+      "sourceId": "CODE-20261020-Q01",
+      "sourceReference": "Claude API Docs › Messages API › system 파라미터 · Claude API Docs › Prompt engineering › Giving Claude a role with a system prompt (SDK 버전: anthropic 1.15.0)",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "Code completion",
+        "Single choice",
+        "L1",
+        "Prompt and context design",
+        "Token management",
+        "API usage",
+        "Claude",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 114,
+      "title": "Continuing from a previous response",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 1,
+      "difficulty": "L1",
+      "prompt": "Make two OpenAI Responses API calls. The user gives their name in the first call. Continue its stored context in the second call without resending history.\n\n```python\nfrom openai import OpenAI\n\nclient = OpenAI()\nfirst = client.responses.create(\n    model=\"gpt-6-astra\",\n    input=\"My name is Minsu. Please remember it.\",\n)\nsecond = client.responses.create(\n    model=\"gpt-6-astra\",\n    input=\"What is my name?\",\n    [A]=first.[B],\n)\nprint(second.output_text)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `previous_response_id`, [B] = `id`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `conversation`, [B] = `id`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `thread_id`, [B] = `id`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `previous_response_id`, [B] = `output_text`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `parent_response_id`, [B] = `id`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Pass the previous response id (resp_...) through previous_response_id. Responses are stored by default.\n\n{{option:A}} (Correct): Use previous_response_id and id.\n\n{{option:B}} (Incorrect): conversation expects a separately created Conversation ID (conv_...), not a response ID.\n\n{{option:C}} (Incorrect): thread_id belongs to the retired Assistants API, not Responses.\n\n{{option:D}} (Incorrect): output_text contains generated text rather than an identifier.\n\n{{option:E}} (Incorrect): parent_response_id is not an SDK parameter.",
+      "sourceId": "CODE-20261020-Q02",
+      "sourceReference": "OpenAI API Docs › Conversation state › Chaining responses with previous_response_id · OpenAI API Reference › Responses › Create (SDK 버전: openai 3.35.1)",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "Code completion",
+        "Single choice",
+        "L1",
+        "Prompt and context design",
+        "Context management",
+        "API usage",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 115,
+      "title": "Receiving ticket classification as an object",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L2",
+      "prompt": "Classify a ticket with the OpenAI Python SDK. Receive structured output matching the Pydantic Ticket model, then read its attributes without manually parsing JSON.\n\n```python\nfrom openai import OpenAI\nfrom pydantic import BaseModel\n\nclass Ticket(BaseModel):\n    category: str\n    urgent: bool\n\nclient = OpenAI()\nresp = client.responses.[A](\n    model=\"gpt-6-astra\",\n    input=[\n        {\"role\": \"system\", \"content\": \"Classify the support ticket.\"},\n        {\"role\": \"user\", \"content\": \"I was charged twice. Please check urgently.\"},\n    ],\n    text_format=Ticket,\n)\nticket = resp.[B]\nprint(ticket.urgent)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `create`, [B] = `output_parsed`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `parse`, [B] = `parsed`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `create`, [B] = `parsed`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `parse`, [B] = `output_text`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `parse`, [B] = `output_parsed`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "responses.parse() converts the Pydantic text_format schema and returns the parsed object through output_parsed. create() instead uses an explicit schema in text and does not accept text_format.\n\n{{option:A}} (Incorrect): create does not accept text_format; output_parsed belongs to parse.\n\n{{option:B}} (Incorrect): parsed is the Google GenAI field, not this OpenAI field.\n\n{{option:C}} (Incorrect): Both create and parsed are incorrect.\n\n{{option:D}} (Incorrect): output_text is a JSON string and has no urgent attribute.\n\n{{option:E}} (Correct): Use parse and output_parsed.",
+      "sourceId": "CODE-20261020-Q03",
+      "sourceReference": "OpenAI API Docs › Structured Outputs › Examples (Responses API, `text_format`) · OpenAI Python SDK README › Structured Outputs Parsing Helpers (SDK 버전: openai 3.35.1)",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "API integration and response control",
+        "Coding assistance",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 116,
+      "title": "Streaming a report and checking the stop reason",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L2",
+      "prompt": "Generate a long report with Anthropic Python SDK. Display arriving text, then inspect stop_reason on the complete Message to detect max_tokens truncation.\n\n```python\nimport anthropic\n\nclient = anthropic.Anthropic()\nwith client.messages.[A](\n    model=\"claude-sonnet-5-5\",\n    max_tokens=64000,\n    messages=[{\"role\": \"user\", \"content\": \"Write a quarterly performance report.\"}],\n) as stream:\n    for text in stream.text_stream:\n        print(text, end=\"\", flush=True)\n    final = stream.[B]()\n\nif final.stop_reason == \"max_tokens\":\n    print(\"\\n[Truncated] A continuation request is needed\")\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `create`, [B] = `get_final_message`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `stream`, [B] = `get_final_message`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `stream`, [B] = `get_final_text`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `stream`, [B] = `get_final_response`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `create`, [B] = `final_message`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "messages.stream() is a context-manager helper. text_stream yields fragments and get_final_message() returns the complete Message with stop_reason.\n\n{{option:A}} (Incorrect): create is not the with-style streaming helper; the ordinary Message has no text_stream.\n\n{{option:B}} (Correct): Use stream and get_final_message.\n\n{{option:C}} (Incorrect): get_final_text returns a string without stop_reason.\n\n{{option:D}} (Incorrect): get_final_response is an OpenAI Responses helper, not an Anthropic method.\n\n{{option:E}} (Incorrect): final_message is not the required method, and create is also wrong.",
+      "sourceId": "CODE-20261020-Q04",
+      "sourceReference": "Claude API Docs › Streaming Messages › Streaming with SDKs (`text_stream`, `get_final_message`) · Claude API Docs › Handling stop reasons (SDK 버전: anthropic 1.15.0)",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "API integration and response control",
+        "Token management",
+        "Claude",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 117,
+      "title": "Receiving a Gemini recipe object",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L2",
+      "prompt": "Use google-genai to request a structured recipe from Gemini. Specify a Pydantic schema and read minutes directly from the parsed object.\n\n```python\nfrom google import genai\nfrom google.genai import types\nfrom pydantic import BaseModel\n\nclass Recipe(BaseModel):\n    name: str\n    minutes: int\n\nclient = genai.Client()\nresp = client.models.generate_content(\n    model=\"gemini-3.8-flash\",\n    contents=\"Give me a kimchi fried rice recipe.\",\n    config=types.GenerateContentConfig(\n        response_mime_type=[A],\n        response_schema=Recipe,\n    ),\n)\nprint(resp.[B].minutes)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"text/plain\"`, [B] = `parsed`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"application/json\"`, [B] = `output_parsed`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"application/json\"`, [B] = `text`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"application/json\"`, [B] = `parsed`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"json\"`, [B] = `parsed`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "Set response_mime_type to application/json and supply response_schema. The Python SDK exposes the parsed model instance through response.parsed.\n\n{{option:A}} (Incorrect): text/plain does not enforce the requested JSON schema.\n\n{{option:B}} (Incorrect): output_parsed belongs to OpenAI responses.parse.\n\n{{option:C}} (Incorrect): text contains a JSON string rather than an object with minutes.\n\n{{option:D}} (Correct): Use application/json and parsed.\n\n{{option:E}} (Incorrect): json alone is not the valid MIME type.",
+      "sourceId": "CODE-20261020-Q05",
+      "sourceReference": "Gemini API Docs › Structured output · Google Gen AI Python SDK Docs › JSON Response Schema (SDK 버전: google-genai 2.31.0)",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "API integration and response control",
+        "Gemini",
+        "API usage",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 118,
+      "title": "Returning parallel tool results",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L2",
+      "prompt": "Build an Anthropic tool loop. One response may contain several independent tool_use blocks. Return every result so the model can continue.\n\n```python\nresp = client.messages.create(\n    model=\"claude-sonnet-5-5\", max_tokens=1024, tools=tools, messages=messages\n)\nif resp.stop_reason == \"tool_use\":\n    messages.append({\"role\": \"assistant\", \"content\": resp.content})\n    results = [\n        {\n            \"type\": \"tool_result\",\n            \"tool_use_id\": [A],\n            \"content\": run_tool(b.name, b.input),\n        }\n        for b in resp.content if b.type == \"tool_use\"\n    ]\n    messages.append({\"role\": [B], \"content\": results})\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `b.id`, [B] = `\"user\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `b.name`, [B] = `\"user\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `b.id`, [B] = `\"assistant\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `resp.id`, [B] = `\"user\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `b.id`, [B] = `\"tool\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Match each tool_result to the tool_use block id via tool_use_id. Return all parallel results as blocks in one user message.\n\n{{option:A}} (Correct): Use each block id and a single user message.\n\n{{option:B}} (Incorrect): name identifies the tool, so repeated calls cannot be distinguished.\n\n{{option:C}} (Incorrect): Tool results belong in a user message, not assistant.\n\n{{option:D}} (Incorrect): resp.id identifies the whole message (msg_...), not the tool block.\n\n{{option:E}} (Incorrect): tool is an OpenAI Chat Completions role, not an Anthropic role.",
+      "sourceId": "CODE-20261020-Q06",
+      "sourceReference": "Claude API Docs › Tool use › Handle tool calls (parallel tool use, `tool_result`) · Claude API Docs › Messages API › content block types (SDK 버전: anthropic 1.15.0)",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "Tool calling and external integration",
+        "Tool calling",
+        "Token management",
+        "Agents",
+        "Claude",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 119,
+      "title": "Returning a function-call output",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L1",
+      "prompt": "Handle OpenAI Responses function calls. After the app executes a function_call, include its result in the next request linked to that invocation.\n\n```python\nimport json\n\ninput_list += response.output\nfor item in response.output:\n    if item.type == \"function_call\":\n        result = get_weather(**json.loads(item.arguments))\n        input_list.append({\n            \"type\": [A],\n            \"call_id\": item.[B],\n            \"output\": json.dumps(result),\n        })\nfollowup = client.responses.create(model=\"gpt-6-astra\", tools=tools, input=input_list)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"tool_result\"`, [B] = `id`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"function_call_output\"`, [B] = `id`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"tool\"`, [B] = `call_id`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"function_call_output\"`, [B] = `call_id`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"function_result\"`, [B] = `call_id`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "Use a function_call_output item with call_id and output. The call_id differs from the item id (fc_...).\n\n{{option:A}} (Incorrect): tool_result is Anthropic-specific; id is also the wrong matching key.\n\n{{option:B}} (Incorrect): The type is correct but id identifies the item itself.\n\n{{option:C}} (Incorrect): tool is a Chat Completions role, not this item type.\n\n{{option:D}} (Correct): Use function_call_output and call_id.\n\n{{option:E}} (Incorrect): function_result is not a Responses input type.",
+      "sourceId": "CODE-20261020-Q07",
+      "sourceReference": "OpenAI API Docs › Function calling › Handling function calls (Responses API) · OpenAI API Reference › Responses › input item `function_call_output` (SDK 버전: openai 3.35.1)",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "Code completion",
+        "Single choice",
+        "L1",
+        "Tool calling and external integration",
+        "Tool calling",
+        "API usage",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 120,
+      "title": "Executing Gemini functions in the application",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L3",
+      "prompt": "Pass get_weather as a Python tool to google-genai. For permission checks and audit logging, the app must execute the function itself. This request must return a function call rather than text.\n\n```python\nconfig = types.GenerateContentConfig(\n    tools=[get_weather],\n    automatic_function_calling=types.AutomaticFunctionCallingConfig([A]=True),\n    tool_config=types.ToolConfig(\n        function_calling_config=types.FunctionCallingConfig(mode=\"[B]\")\n    ),\n)\nresp = client.models.generate_content(\n    model=\"gemini-3.8-flash\", contents=\"What is the weather in Seoul?\", config=config\n)\ncall = resp.function_calls[0]\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `disable`, [B] = `AUTO`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `disable`, [B] = `ANY`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `ignore_call_history`, [B] = `ANY`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `disable`, [B] = `NONE`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `ignore_call_history`, [B] = `AUTO`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Python functions in tools are executed automatically by default. Set AutomaticFunctionCallingConfig(disable=True), read response.function_calls, and use ANY to require a function call.\n\n{{option:A}} (Incorrect): AUTO permits text instead of a function call.\n\n{{option:B}} (Correct): disable=True and ANY satisfy both requirements.\n\n{{option:C}} (Incorrect): ignore_call_history does not disable automatic execution.\n\n{{option:D}} (Incorrect): NONE forbids calls, so accessing function_calls[0] fails.\n\n{{option:E}} (Incorrect): Neither field choice satisfies the requirements.",
+      "sourceId": "CODE-20261020-Q08",
+      "sourceReference": "Google Gen AI Python SDK Docs › Function calling (automatic function calling, disable) · Gemini API Docs › Function calling › Function calling modes (SDK 버전: google-genai 2.31.0)",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "Code completion",
+        "Single choice",
+        "L3",
+        "Tool calling and external integration",
+        "Tool calling",
+        "Gemini",
+        "Access control",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 121,
+      "title": "Approving remote MCP calls",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L3",
+      "prompt": "Connect a remote MCP server with OpenAI Responses. Every call requires user approval. When the first response requests approval, approve it and continue the same conversation.\n\n```python\ntools = [{\n    \"type\": \"mcp\", \"server_label\": \"docs\", \"server_url\": \"https://example.com/mcp\",\n    \"require_approval\": \"[A]\",\n}]\nr1 = client.responses.create(model=\"gpt-6-astra\", tools=tools, input=\"Find the refund policy\")\nreq = next(i for i in r1.output if i.type == \"mcp_approval_request\")\nr2 = client.responses.create(\n    model=\"gpt-6-astra\", tools=tools, previous_response_id=r1.id,\n    input=[{\"type\": \"mcp_approval_response\", \"approve\": True,\n            \"approval_request_id\": req.[B]}],\n)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `never`, [B] = `id`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `always`, [B] = `call_id`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `always`, [B] = `id`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `ask`, [B] = `id`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `always`, [B] = `server_label`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "always produces an mcp_approval_request. Send mcp_approval_response with approval_request_id equal to the request id, set approve, and continue with previous_response_id.\n\n{{option:A}} (Incorrect): never skips approval; next(...) cannot find an approval request.\n\n{{option:B}} (Incorrect): The request uses id, not call_id.\n\n{{option:C}} (Correct): Use always and the approval request id.\n\n{{option:D}} (Incorrect): ask is invalid; use always, never or a tool-filter object.\n\n{{option:E}} (Incorrect): server_label names the server, not a particular approval request.",
+      "sourceId": "CODE-20261020-Q09",
+      "sourceReference": "OpenAI API Docs › MCP and Connectors › Approvals · OpenAI API Reference › Responses › `mcp_approval_request`, `mcp_approval_response` (SDK 버전: openai 3.35.1)",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "Code completion",
+        "Single choice",
+        "L3",
+        "Tool calling and external integration",
+        "MCP integration",
+        "Tool calling",
+        "Human approval",
+        "API usage",
+        "Security controls",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 122,
+      "title": "Embedding queries and documents for retrieval",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 4,
+      "difficulty": "L1",
+      "prompt": "Use google-genai for internal document question answering. Embed the question and document chunks with their respective retrieval task types.\n\n```python\ncfg = lambda t: types.EmbedContentConfig(task_type=t, output_dimensionality=768)\n\nq_emb = client.models.embed_content(\n    model=\"gemini-embedding-001\", contents=question, config=cfg(\"[A]\")\n)\nd_emb = client.models.embed_content(\n    model=\"gemini-embedding-001\", contents=chunks, config=cfg(\"[B]\")\n)\nquery_vec = q_emb.embeddings[0].values\ndoc_vecs = [e.values for e in d_emb.embeddings]\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `RETRIEVAL_DOCUMENT`, [B] = `RETRIEVAL_QUERY`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `RETRIEVAL_QUERY`, [B] = `RETRIEVAL_QUERY`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `CLASSIFICATION`, [B] = `CLUSTERING`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `RETRIEVAL_DOCUMENT`, [B] = `RETRIEVAL_DOCUMENT`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `RETRIEVAL_QUERY`, [B] = `RETRIEVAL_DOCUMENT`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "gemini-embedding-001 uses task_type to optimize vectors. Query and document roles require RETRIEVAL_QUERY and RETRIEVAL_DOCUMENT respectively.\n\n{{option:A}} (Incorrect): The roles are reversed, hurting retrieval suitability.\n\n{{option:B}} (Incorrect): The document needs RETRIEVAL_DOCUMENT.\n\n{{option:C}} (Incorrect): Classification and clustering are not query/document retrieval tasks.\n\n{{option:D}} (Incorrect): The question needs RETRIEVAL_QUERY.\n\n{{option:E}} (Correct): Use RETRIEVAL_QUERY for questions and RETRIEVAL_DOCUMENT for chunks.",
+      "sourceId": "CODE-20261020-Q10",
+      "sourceReference": "Gemini API Docs › Embeddings › Task types · Gemini API Docs › Embeddings › Controlling embedding size (SDK 버전: google-genai 2.31.0)",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "Code completion",
+        "Single choice",
+        "L1",
+        "Retrieval augmentation and multimodal input",
+        "Retrieval quality",
+        "Vector search",
+        "Chunking",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 123,
+      "title": "Citing contract PDF pages",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 4,
+      "difficulty": "L3",
+      "prompt": "Send a base64 contract PDF with Anthropic Python SDK. Display the starting PDF page number for evidence cited in the answer.\n\n```python\nresp = client.messages.create(\n    model=\"claude-sonnet-5-5\", max_tokens=1024,\n    messages=[{\"role\": \"user\", \"content\": [\n        {\"type\": \"document\",\n         \"source\": {\"type\": \"base64\", \"media_type\": \"application/pdf\", \"data\": pdf_b64},\n         \"[A]\": {\"enabled\": True}},\n        {\"type\": \"text\", \"text\": \"What is the cancellation notice deadline?\"},\n    ]}],\n)\nfor block in resp.content:\n    if block.type == \"text\":\n        for c in block.citations or []:\n            if c.type == \"[B]\":\n                print(c.start_page_number)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `citations`, [B] = `char_location`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `citations`, [B] = `page_location`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `references`, [B] = `page_location`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `citations`, [B] = `file_citation`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `citations`, [B] = `content_block_location`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Enable citations on the document with citations: {enabled: true}. PDF citations use page_location, start_page_number and end_page_number, with one-based numbers and an exclusive end.\n\n{{option:A}} (Incorrect): char_location describes plain-text character positions.\n\n{{option:B}} (Correct): Use citations and page_location.\n\n{{option:C}} (Incorrect): references is not the enabling field.\n\n{{option:D}} (Incorrect): file_citation is an OpenAI file-search annotation.\n\n{{option:E}} (Incorrect): content_block_location describes custom-content blocks and lacks page numbers.",
+      "sourceId": "CODE-20261020-Q11",
+      "sourceReference": "Claude API Docs › Citations › Types of citations · Claude API Docs › PDF support (SDK 버전: anthropic 1.15.0)",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "Code completion",
+        "Single choice",
+        "L3",
+        "Retrieval augmentation and multimodal input",
+        "Source verification",
+        "Token management",
+        "Claude",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 124,
+      "title": "Inspecting file-search results",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 4,
+      "difficulty": "L2",
+      "prompt": "Answer policy questions using OpenAI Responses and an existing vector store vs. Include retrieved chunk contents in the search-call item for debugging.\n\n```python\nresp = client.responses.create(\n    model=\"gpt-6-astra\",\n    input=\"What is the annual leave carryover policy?\",\n    tools=[{\"type\": \"[A]\", \"vector_store_ids\": [vs.id], \"max_num_results\": 3}],\n    include=[\"[B]\"],\n)\nfor item in resp.output:\n    if item.type == \"file_search_call\":\n        print(item.results)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `file_search`, [B] = `file_search_call.results`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `retrieval`, [B] = `file_search_call.results`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `file_search`, [B] = `file_citation`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `file_search`, [B] = `message.input_image.image_url`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `vector_search`, [B] = `file_search_call.results`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Configure file_search with vector_store_ids and max_num_results. Include file_search_call.results to receive result bodies, which are omitted by default.\n\n{{option:A}} (Correct): Use file_search and file_search_call.results.\n\n{{option:B}} (Incorrect): retrieval was an Assistants tool name.\n\n{{option:C}} (Incorrect): file_citation is an annotation type, not an include value.\n\n{{option:D}} (Incorrect): This option includes image URLs, not search results.\n\n{{option:E}} (Incorrect): vector_search is not the tool type.",
+      "sourceId": "CODE-20261020-Q12",
+      "sourceReference": "OpenAI API Docs › File search › Retrieval customization (`max_num_results`) · OpenAI API Docs › File search › Include search results (SDK 버전: openai 3.35.1)",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "Retrieval augmentation and multimodal input",
+        "Retrieval quality",
+        "Regulation and compliance",
+        "API usage",
+        "Vector search",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 125,
+      "title": "Policy cache lifetime and hit ratio",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 5,
+      "difficulty": "L3",
+      "prompt": "Use a roughly 12k-token policy as the Anthropic system prompt. Requests arrive 20–30 minutes apart, so the default cache often expires. Calculate cache-read tokens as a fraction of all input tokens.\n\n```python\nresp = client.messages.create(\n    model=\"claude-sonnet-5-5\", max_tokens=512,\n    system=[{\"type\": \"text\", \"text\": POLICY_DOC,\n             \"cache_control\": {\"type\": \"ephemeral\", \"ttl\": \"[A]\"}}],\n    messages=[{\"role\": \"user\", \"content\": question}],\n)\nu = resp.usage\ntotal_input = [B]\nprint(u.cache_read_input_tokens / total_input)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `1h`, [B] = `u.input_tokens`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `3600s`, [B] = `u.input_tokens + u.cache_read_input_tokens + u.cache_creation_input_tokens`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `1h`, [B] = `u.input_tokens + u.cache_read_input_tokens + u.cache_creation_input_tokens`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `1h`, [B] = `u.input_tokens + u.cache_read_input_tokens`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `60m`, [B] = `u.input_tokens + u.cache_creation_input_tokens`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Caching defaults to five minutes. Supported TTL values are 5m and 1h. Total input is input_tokens + cache_read_input_tokens + cache_creation_input_tokens; input_tokens alone counts uncached tokens after the last cache point.\n\n{{option:A}} (Incorrect): This denominator excludes cached input and can produce a ratio above one.\n\n{{option:B}} (Incorrect): 3600s is Google notation, not an accepted Anthropic TTL.\n\n{{option:C}} (Correct): Use 1h and all three token fields.\n\n{{option:D}} (Incorrect): Cache-creation tokens are missing, undercounting cache-writing requests.\n\n{{option:E}} (Incorrect): 60m is invalid and cache-read tokens are missing.",
+      "sourceId": "CODE-20261020-Q13",
+      "sourceReference": "Claude API Docs › Prompt caching › 1-hour cache duration · Claude API Docs › Prompt caching › Tracking cache performance (SDK 버전: anthropic 1.15.0)",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "Code completion",
+        "Single choice",
+        "L3",
+        "Evaluation, cost, and latency optimization",
+        "Caching",
+        "Prompt writing",
+        "Token management",
+        "Claude",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 126,
+      "title": "Reusing a Gemini context cache",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 5,
+      "difficulty": "L2",
+      "prompt": "Create a one-hour cache for a long product manual with google-genai. Reference it in later requests rather than resending the manual.\n\n```python\ncache = client.caches.create(\n    model=\"gemini-3.8-flash\",\n    config=types.CreateCachedContentConfig(\n        system_instruction=\"Answer only from the manual.\",\n        contents=[manual_text],\n        ttl=[A],\n    ),\n)\nresp = client.models.generate_content(\n    model=\"gemini-3.8-flash\",\n    contents=\"What if the power will not turn on?\",\n    config=types.GenerateContentConfig([B]=cache.name),\n)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"1h\"`, [B] = `cached_content`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"3600s\"`, [B] = `cache_control`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"ephemeral\"`, [B] = `cached_content`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"3600s\"`, [B] = `cached_content`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"3600s\"`, [B] = `cache_id`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "Create it using caches.create and CreateCachedContentConfig. TTL is a seconds-based string such as 3600s; reference cache.name using GenerateContentConfig.cached_content.\n\n{{option:A}} (Incorrect): 1h is Anthropic-style notation rather than seconds.\n\n{{option:B}} (Incorrect): cache_control is an Anthropic block field.\n\n{{option:C}} (Incorrect): ephemeral is a cache type, not a duration.\n\n{{option:D}} (Correct): Use 3600s and cached_content.\n\n{{option:E}} (Incorrect): cache_id is not the configuration field.",
+      "sourceId": "CODE-20261020-Q14",
+      "sourceReference": "Gemini API Docs › Context caching › Explicit caching · Google Gen AI Python SDK Docs › Caches (SDK 버전: google-genai 2.31.0)",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "Evaluation, cost, and latency optimization",
+        "Context management",
+        "Gemini",
+        "Cost management",
+        "Caching",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
     }
   ],
   "nameKo": "애플리케이션 개발"

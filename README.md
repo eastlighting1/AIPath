@@ -17,7 +17,7 @@ Serve the output beneath that path when testing locally.
 
 ## Included
 
-10 certification paths, 969 question pairs in Korean and English, randomized demo/full tests, weighted scoring, explanations, pause, result images and sharing, and the question-bank admin tools.
+10 certification paths, 1005 question pairs in Korean and English, randomized demo/full tests, weighted scoring, explanations, pause, result images and sharing, and the question-bank admin tools.
 
 ## Static hosting differences
 

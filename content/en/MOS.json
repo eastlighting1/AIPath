@@ -4423,6 +4423,294 @@
         "version": 1,
         "method": "rule-based-draft"
       }
+    },
+    {
+      "id": 86,
+      "title": "Matching an embedding to index dimensions",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L1",
+      "prompt": "An internal vector index has 256 dimensions. Use OpenAI Python SDK to request a shorter output vector directly instead of truncating 3072 or 1536 dimensions. Choose a model trained to preserve semantic representation when shortened.\n\n```python\nfrom openai import OpenAI\n\nclient = OpenAI()\nresp = client.embeddings.create(\n    model=[A],\n    input=chunks,\n    [B]=256,\n)\nvectors = [d.embedding for d in resp.data]\nprint(len(vectors[0]))\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `text-embedding-ada-002`, [B] = `dimensions`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `text-embedding-3-small`, [B] = `dimensions`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `text-embedding-3-small`, [B] = `output_dimensionality`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `text-embedding-3-large`, [B] = `encoding_format`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `text-embedding-ada-002`, [B] = `output_dimensionality`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "dimensions is supported for text-embedding-3 and later models. The cited guide recommends specifying it at creation for text-embedding-3-small or text-embedding-3-large.\n\n{{option:A}} (Incorrect): ada-002 does not support dimensions.\n\n{{option:B}} (Correct): Use text-embedding-3-small with dimensions.\n\n{{option:C}} (Incorrect): output_dimensionality belongs to Google EmbedContentConfig.\n\n{{option:D}} (Incorrect): encoding_format selects float or base64, not dimensions, and does not accept 256.\n\n{{option:E}} (Incorrect): Both the older model and parameter are wrong.",
+      "sourceId": "CODE-20261020-Q32",
+      "sourceReference": "OpenAI API Docs › Vector embeddings › Reducing embedding dimensions · OpenAI API Reference › Embeddings › Create embeddings (`dimensions`) (SDK 버전: openai 2.54.0)",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Code completion",
+        "Single choice",
+        "L1",
+        "Embeddings and retrieval models",
+        "Vector search",
+        "OpenAI",
+        "API usage",
+        "Retrieval quality",
+        "Chunking"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 87,
+      "title": "Selecting Gemini embedding task types",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L2",
+      "prompt": "Index ordinary FAQ guidance with google-genai and gemini-embedding-001. Embed natural-language questions using the same model to retrieve nearby documents. Assign separate document and query task types; this is not code retrieval.\n\n```python\nfrom google import genai\nfrom google.genai import types\n\nclient = genai.Client()\ndoc_emb = client.models.embed_content(\n    model=\"gemini-embedding-001\",\n    contents=faq_articles,\n    config=types.EmbedContentConfig(task_type=[A]),\n)\nquery_emb = client.models.embed_content(\n    model=\"gemini-embedding-001\",\n    contents=user_question,\n    config=types.EmbedContentConfig(task_type=[B]),\n)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"SEMANTIC_SIMILARITY\"`, [B] = `\"SEMANTIC_SIMILARITY\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"RETRIEVAL_QUERY\"`, [B] = `\"RETRIEVAL_DOCUMENT\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"CLASSIFICATION\"`, [B] = `\"CLUSTERING\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"RETRIEVAL_DOCUMENT\"`, [B] = `\"RETRIEVAL_QUERY\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"RETRIEVAL_DOCUMENT\"`, [B] = `\"CODE_RETRIEVAL_QUERY\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "Use RETRIEVAL_DOCUMENT and RETRIEVAL_QUERY for asymmetric retrieval. The supplied reference notes task_type is unavailable for gemini-embedding-2, so this example targets gemini-embedding-001.\n\n{{option:A}} (Incorrect): SEMANTIC_SIMILARITY serves recommendation or duplicate detection, not separate retrieval roles.\n\n{{option:B}} (Incorrect): The document and query roles are reversed.\n\n{{option:C}} (Incorrect): Classification and clustering serve labeling and grouping.\n\n{{option:D}} (Correct): Use the document type first and query type second.\n\n{{option:E}} (Incorrect): CODE_RETRIEVAL_QUERY retrieves code blocks, not general guidance.",
+      "sourceId": "CODE-20261020-Q33",
+      "sourceReference": "Gemini API Docs › Embeddings › Supported task types · Gemini API Docs › Embeddings › Embedding models (SDK 버전: google-genai 2.31.0)",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "Embeddings and retrieval models",
+        "Vector search",
+        "Gemini",
+        "Retrieval quality",
+        "Coding assistance",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 88,
+      "title": "Configuring tuning and validation data",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L2",
+      "prompt": "Create supervised Gemini tuning on Gemini Enterprise Agent Platform (formerly Vertex AI) with google-genai and vertexai=True. Training and validation JSONL files are in Cloud Storage. Pass training_dataset to tune and configure validation data and full training passes in CreateTuningJobConfig.\n\n```python\nfrom google import genai\nfrom google.genai import types\n\nclient = genai.Client(vertexai=True, project=PROJECT_ID, location=\"us-central1\")\njob = client.tunings.tune(\n    base_model=BASE_MODEL,\n    training_dataset=types.TuningDataset(gcs_uri=\"gs://my-bucket/train.jsonl\"),\n    config=types.CreateTuningJobConfig(\n        [A]=types.TuningValidationDataset(gcs_uri=\"gs://my-bucket/val.jsonl\"),\n        [B]=3,\n        tuned_model_display_name=\"faq-sft\",\n    ),\n)\nprint(job.name)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `validation_dataset`, [B] = `epoch_count`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `validation_dataset`, [B] = `n_epochs`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `eval_dataset`, [B] = `epoch_count`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `validation_dataset`, [B] = `epochs`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `test_dataset`, [B] = `num_train_epochs`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "tunings.tune accepts base_model, training_dataset and config. Supply TuningValidationDataset through validation_dataset and use epoch_count for passes. Validation data enables training-time validation metrics.\n\n{{option:A}} (Correct): Both fields belong to CreateTuningJobConfig.\n\n{{option:B}} (Incorrect): n_epochs is an OpenAI field. The source also notes OpenAI tuning is unavailable to new users.\n\n{{option:C}} (Incorrect): eval_dataset is not a configuration field.\n\n{{option:D}} (Incorrect): epochs belongs to Vertex AI SDK sft.train; this config uses epoch_count.\n\n{{option:E}} (Incorrect): Neither field belongs here; num_train_epochs resembles open-source trainer conventions.",
+      "sourceId": "CODE-20261020-Q34",
+      "sourceReference": "Gemini Enterprise Agent Platform Docs › Tune Gemini models by using supervised fine-tuning · googleapis/python-genai README › Tunings (SDK 버전: google-genai 2.31.0)",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "Tuning methods and datasets",
+        "Model tuning",
+        "Gemini",
+        "Agents",
+        "Training data",
+        "Project organization",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 89,
+      "title": "Waiting for tuning and invoking its endpoint",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L3",
+      "prompt": "After creating a google-genai tuning job with vertexai=True, wait for completion and invoke the tuned model. Refresh the job snapshot every iteration, then pass the deployed inference target as model.\n\n```python\nimport time\n\ndone = {\"JOB_STATE_SUCCEEDED\", \"JOB_STATE_FAILED\", \"JOB_STATE_CANCELLED\"}\njob = client.tunings.tune(base_model=BASE_MODEL, training_dataset=train_ds)\nwhile job.state not in done:\n    time.sleep(30)\n    job = [A]\nif job.state == \"JOB_STATE_SUCCEEDED\":\n    resp = client.models.generate_content(model=[B], contents=\"Please explain the refund policy.\")\n    print(resp.text)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `client.tunings.get(name=job.tuned_model_display_name)`, [B] = `job.tuned_model.endpoint`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `client.tunings.get(name=job.name)`, [B] = `job.name`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `client.tunings.get(name=job.base_model)`, [B] = `job.base_model`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `client.operations.get(job)`, [B] = `job.tuned_model.endpoint`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `client.tunings.get(name=job.name)`, [B] = `job.tuned_model.endpoint`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "Poll tunings.get(name=job.name) until success, failure or cancellation. On success, generate using job.tuned_model.endpoint. The job resource name differs from the inference endpoint.\n\n{{option:A}} (Incorrect): The display name is not a job resource identifier; the second blank is correct.\n\n{{option:B}} (Incorrect): The lookup is correct but job.name is not an inference target.\n\n{{option:C}} (Incorrect): base_model is the starting model, not the tuning job or tuned target.\n\n{{option:D}} (Incorrect): operations.get handles a different long-running-operation type and argument shape; the second blank is correct.\n\n{{option:E}} (Correct): Refresh using job.name and infer through tuned_model.endpoint.",
+      "sourceId": "CODE-20261020-Q35",
+      "sourceReference": "googleapis/python-genai README › Tunings · Gemini Enterprise Agent Platform Docs › Tune Gemini models by using supervised fine-tuning (SDK 버전: google-genai 2.31.0)",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Code completion",
+        "Single choice",
+        "L3",
+        "Tuning methods and datasets",
+        "Model tuning",
+        "Current information",
+        "Deployment",
+        "Regulation and compliance",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 90,
+      "title": "Pairwise comparison of tuned and base models",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 4,
+      "difficulty": "L3",
+      "prompt": "Compare a tuned Gemini model against its base model using win rates on identical prompts. Use vertexai.evaluation with only a prompt dataframe column and run both models during evaluation. tuned_fn calls the tuned endpoint through google-genai.\n\n```python\nfrom vertexai.evaluation import EvalTask, PairwiseMetric, MetricPromptTemplateExamples\n\ndef tuned_fn(prompt: str) -> str:\n    return client.models.generate_content(model=TUNED_ENDPOINT, contents=prompt).text\n\nmetric = PairwiseMetric(\n    metric=\"pairwise_qa_quality\",\n    metric_prompt_template=MetricPromptTemplateExamples.get_prompt_template(\n        \"pairwise_question_answering_quality\"),\n    [A]=BASE_MODEL_ID,\n)\ntask = EvalTask(dataset=eval_df, metrics=[metric])\nresult = task.evaluate([B]=tuned_fn)\nprint(result.summary_metrics)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `candidate_model`, [B] = `baseline_model`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `baseline_model_response_column_name`, [B] = `model`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `baseline_model`, [B] = `model`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `reference`, [B] = `prompt_template`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `baseline_model`, [B] = `response_column_name`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Pass the base model as PairwiseMetric.baseline_model and candidate as EvalTask.evaluate(model=...). The latter accepts a name, GenerativeModel or prompt-to-response function. summary_metrics contains win rates.\n\n{{option:A}} (Incorrect): candidate_model is an example variable name, not a PairwiseMetric parameter.\n\n{{option:B}} (Incorrect): baseline_model_response_column_name belongs to evaluate for precomputed responses, not PairwiseMetric.\n\n{{option:C}} (Correct): Use baseline_model and model.\n\n{{option:D}} (Incorrect): reference identifies reference answers, not this metric parameter; prompt_template does not accept the function.\n\n{{option:E}} (Incorrect): response_column_name expects a dataframe column name, not an inference callable.",
+      "sourceId": "CODE-20261020-Q36",
+      "sourceReference": "Vertex AI Python SDK Reference › vertexai.evaluation › EvalTask (Usage Examples 5, 쌍대 평가) · vertexai.evaluation › PairwiseMetric (SDK 버전: google-cloud-aiplatform 2.5.0)",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Code completion",
+        "Single choice",
+        "L3",
+        "Evaluation and comparison",
+        "Evaluation design",
+        "Model tuning",
+        "Prompt writing",
+        "Reasoning models",
+        "Measuring outcomes",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
     }
   ],
   "nameKo": "모델 최적화"

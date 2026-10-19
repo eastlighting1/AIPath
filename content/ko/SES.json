@@ -5146,6 +5146,288 @@
         "version": 1,
         "method": "rule-based-draft"
       }
+    },
+    {
+      "id": 99,
+      "title": "검색 문서를 에이전트에 넘기기 전 모더레이션 검사",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L1",
+      "prompt": "OpenAI Python SDK를 쓰는 리서치 에이전트가 웹에서 가져온 본문을 모델에 넘기기 전에 Moderation API로 검사합니다. 아래 함수는 본문이 통과하면 `True`를, 유해 가능성이 있다고 판정되면 `False`를 돌려주어야 합니다.\n\n```python\nfrom openai import OpenAI\n\nclient = OpenAI()\n\ndef passes_screen(text: str) -> bool:\n    resp = client.moderations.create(\n        model=\"omni-moderation-latest\",\n        input=text,\n    )\n    result = resp.[A]\n    return not result.[B]\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `results`, [B] = `flagged`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `data[0]`, [B] = `flagged`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `results[0]`, [B] = `flagged`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `results[0]`, [B] = `categories`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `results[0]`, [B] = `blocked`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "OpenAI Moderation 가이드에 따르면 응답은 `id`, `model`, `results` 목록으로 구성되고, 입력 하나에 대한 판정은 `results`의 항목에 담깁니다. 각 항목에는 전체 판정인 `flagged`(유해 가능성이 있으면 true), 범주별 true/false인 `categories`, 범주별 점수인 `category_scores`가 있습니다. 따라서 입력이 하나이면 `results[0]`을 꺼내 `flagged`로 분기하는 것이 맞습니다.\n\n{{option:A}} (오답, 형 불일치): `results`는 목록이므로 `.flagged` 속성이 없어 AttributeError가 납니다.\n\n{{option:B}} (오답, 다른 API의 응답 모양): `data[0]`은 임베딩 응답에서 쓰는 형태입니다. 모더레이션 응답에는 `data` 필드가 없습니다.\n\n{{option:C}} (정답): `results[0].flagged`가 입력 전체에 대한 불리언 판정입니다.\n\n{{option:D}} (오답, 항상 참): `categories`는 범주별 불리언을 담은 객체라 `not` 결과가 늘 `False`가 되어 모든 본문을 막습니다. 전체 판정 필드가 아닙니다.\n\n{{option:E}} (오답, 없는 필드): `blocked`라는 필드는 응답에 없습니다.\n\n**근거 문서**: OpenAI API Docs › Moderation › Quickstart · OpenAI API Docs › Moderation › The moderation endpoint (SDK 버전: openai 3.35.1)",
+      "sourceId": "CODE-20261020-Q27",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L1",
+        "프롬프트 인젝션과 탈옥 방어",
+        "에이전트",
+        "검색 품질",
+        "최신 정보 확인",
+        "API 활용",
+        "리서치",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 100,
+      "title": "웹 페이지 본문을 도구 결과로 돌려줄 때의 블록 구성",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L3",
+      "prompt": "Anthropic Python SDK로 만든 요약 에이전트가 `fetch_page` 도구를 호출했고, 개발자가 가져온 외부 페이지 본문을 다음 요청에 담아 보냅니다. 페이지에는 공격자가 심어 둔 지시문이 있을 수 있습니다. 요구 사항은 다음과 같습니다.\n\n- 외부 본문은 시스템 프롬프트나 일반 텍스트에 섞지 않고, 출처와 본문 경계가 분명한 구조로 전달한다.\n- 개발자의 요약 요청은 외부 본문과 같은 블록에 넣지 않는다.\n\n```python\ntu = next(b for b in resp.content if b.type == \"tool_use\")\nurl = tu.input[\"url\"]\npage = fetch_page(url)\nfollowup = client.messages.create(\n    model=MODEL, max_tokens=1024, system=POLICY, tools=TOOLS,\n    messages=[\n        {\"role\": \"user\", \"content\": question},\n        {\"role\": \"assistant\", \"content\": resp.content},\n        {\"role\": \"user\", \"content\": [\n            {\"type\": [A], \"tool_use_id\": tu.id, \"content\": [B]},\n            {\"type\": \"text\", \"text\": \"위 페이지를 세 줄로 요약해 줘.\"},\n        ]},\n    ],\n)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"tool_result\"`, [B] = `json.dumps({\"source\": url, \"text\": page})`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"text\"`, [B] = `f\"<page>{page}</page>\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"tool_result\"`, [B] = `page + \"\\n\\n세 줄로 요약하라.\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"tool_use\"`, [B] = `json.dumps({\"source\": url, \"text\": page})`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"input_text\"`, [B] = `page`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Anthropic의 인젝션 완화 문서는 제3자 콘텐츠를 `tool_result` 블록에만 넣고 시스템 프롬프트나 일반 사용자 텍스트 블록에는 넣지 말라고 합니다. 또 신뢰할 수 없는 문자열은 가능하면 JSON 객체로 감싸 JSON 이스케이프가 경계 역할을 하게 하고 출처를 밝히며, 개발자의 지시는 도구 결과 안이 아니라 `tool_result` 뒤의 사용자 턴에 두라고 합니다. 코드는 `tool_result`를 `tool_use_id`로 호출과 묶고, 요약 요청을 같은 턴의 별도 `text` 블록에 둡니다.\n\n{{option:A}} (정답): `tool_result` 블록에 출처와 본문을 JSON으로 감싸 넣었고, 지시는 별도 텍스트 블록에 있습니다.\n\n{{option:B}} (오답, 블록 종류): 외부 본문을 일반 텍스트 블록에 넣는 방식은 문서가 피하라고 한 구조입니다. 태그 구분은 공격자가 닫는 태그를 흉내 낼 수 있어 JSON 이스케이프만큼 경계가 단단하지 않고, `tool_use_id`가 있는 자리에 `text`는 쓸 수 없습니다.\n\n{{option:C}} (오답, 지시 혼입): 도구 결과 안에 개발자의 지시를 섞으면 어디까지가 본문인지 모호해지고, 같은 모양의 문장을 공격자도 본문에 심을 수 있습니다. 문서는 자기 지시를 도구 결과에 넣지 말라고 합니다.\n\n{{option:D}} (오답, 방향이 반대): `tool_use`는 모델이 도구를 호출할 때 어시스턴트가 내는 블록이며, 도구 실행 결과를 돌려주는 블록이 아닙니다.\n\n{{option:E}} (오답, 다른 회사 형식): `input_text`는 OpenAI Responses API의 입력 콘텐츠 형식이며 Anthropic Messages API의 블록 종류가 아닙니다.\n\n**근거 문서**: Anthropic Docs › Mitigate jailbreaks and prompt injections › Prompt injection(Put untrusted content only in tool results, JSON-encode untrusted content, Don't put your own instructions in tool results) · Anthropic Docs › Tool use › Handle tool calls (SDK 버전: anthropic 1.15.0)",
+      "sourceId": "CODE-20261020-Q28",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L3",
+        "프롬프트 인젝션과 탈옥 방어",
+        "출처 검증",
+        "프롬프트 작성",
+        "토큰 관리",
+        "문서 요약",
+        "에이전트",
+        "코딩 지원"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 101,
+      "title": "쓰기 도구를 실행 전에 거부하는 훅",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L2",
+      "prompt": "Claude Agent SDK(Python)로 읽기 전용 점검 세션을 만듭니다. 모델이 `Write`나 `Edit` 도구를 부르면 실제 파일이 바뀌기 전에, 사용자 확인 창 없이 항상 거부되어야 합니다.\n\n```python\nfrom claude_agent_sdk import ClaudeAgentOptions, HookMatcher\n\nasync def deny_writes(input_data, tool_use_id, context):\n    return {\n        \"hookSpecificOutput\": {\n            \"hookEventName\": input_data[\"hook_event_name\"],\n            \"permissionDecision\": [B],\n            \"permissionDecisionReason\": \"읽기 전용 세션입니다\",\n        }\n    }\n\noptions = ClaudeAgentOptions(\n    hooks={[A]: [HookMatcher(matcher=\"Write|Edit\", hooks=[deny_writes])]}\n)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"PostToolUse\"`, [B] = `\"deny\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"PreToolUse\"`, [B] = `\"block\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"UserPromptSubmit\"`, [B] = `\"deny\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"PreToolUse\"`, [B] = `\"ask\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"PreToolUse\"`, [B] = `\"deny\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "Agent SDK 훅 문서에 따르면 `PreToolUse`는 도구 호출 요청 시점에 실행되어 호출을 막거나 바꿀 수 있고, 콜백은 `hookSpecificOutput`에 `permissionDecision`(`allow`, `deny`, `ask`, `defer`)과 사유를 담아 돌려줍니다. `matcher`는 도구 이름에 적용되므로 `\"Write|Edit\"`는 두 도구에만 훅을 겁니다. 실행 전에 확인 없이 거부하려면 `PreToolUse`와 `deny` 조합이어야 합니다.\n\n{{option:A}} (오답, 시점): `PostToolUse`는 도구가 실행된 뒤의 결과를 받는 이벤트라 이미 파일이 바뀐 다음입니다.\n\n{{option:B}} (오답, 없는 값): `permissionDecision`에는 `block`이라는 값이 없고 `allow`, `deny`, `ask`, `defer` 중에서 고릅니다.\n\n{{option:C}} (오답, 이벤트): `UserPromptSubmit`은 사용자 프롬프트 제출 시점의 이벤트라 도구 호출 단위로 걸리지 않습니다.\n\n{{option:D}} (오답, 요구 불충족): `ask`는 사용자에게 승인을 묻는 결정이라 \"확인 창 없이 항상 거부\" 조건에 어긋납니다.\n\n{{option:E}} (정답): 실행 전 이벤트에서 `deny`를 반환해 호출을 막습니다.\n\n**근거 문서**: Claude Agent SDK Docs › Hooks › Configure hooks, Outputs, Add context and block a tool (SDK 버전: claude-agent-sdk 0.2.168)",
+      "sourceId": "CODE-20261020-Q29",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "에이전트와 도구 보안",
+        "맥락 관리",
+        "에이전트",
+        "권한 관리",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 102,
+      "title": "ADK 에이전트에서 쓰기 도구 호출 차단",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L2",
+      "prompt": "Google ADK(Python)로 주문 조회 에이전트를 만듭니다. 읽기 전용 모드에서는 `update_order`와 `cancel_order` 함수가 실제로 실행되면 안 되고, 그 외 도구는 정상 실행되어야 합니다. 아래 콜백은 에이전트가 도구를 실행하기 직전에 호출됩니다.\n\n```python\nfrom google.adk.agents import LlmAgent\n\nWRITE_TOOLS = {\"update_order\", \"cancel_order\"}\n\ndef guard(tool, args, tool_context):\n    if tool.name in WRITE_TOOLS:\n        return {\"error\": \"읽기 전용 모드에서는 쓸 수 없습니다.\"}\n    return [B]\n\nagent = LlmAgent(\n    name=\"orders\", model=\"gemini-flash-latest\",\n    tools=[get_order, update_order, cancel_order],\n    [A]=guard,\n)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `before_model_callback`, [B] = `None`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `before_tool_callback`, [B] = `None`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `before_tool_callback`, [B] = `{}`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `pre_tool_use`, [B] = `None`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `after_tool_callback`, [B] = `None`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "ADK 콜백 문서에 따르면 `before_tool_callback`은 `tool`, `args`, `tool_context`를 받아 도구 실행 직전에 호출되며, 딕셔너리를 반환하면 도구의 `run_async`가 건너뛰어지고 그 딕셔너리가 도구 결과가 됩니다. `None`을 반환하면 도구가 (수정된 `args`로) 실행됩니다. 문서는 `{}` 같은 빈 딕셔너리도 `None`이 아니므로 재정의로 취급된다고 하여, 실행을 허용하려면 `None`을 반환하라고 합니다.\n\n{{option:A}} (오답, 콜백 종류): `before_model_callback`은 LLM 요청 직전에 호출되며 `tool`, `args`를 받지 않습니다.\n\n{{option:B}} (정답): 도구 실행 직전 콜백이고, 허용 경로는 `None`으로 돌려 도구가 실행되게 합니다.\n\n{{option:C}} (오답, 빈 딕셔너리): `{}`도 재정의로 취급되어 읽기 도구까지 실행되지 않고 빈 결과만 돌아갑니다.\n\n{{option:D}} (오답, 다른 제품의 이름): `pre_tool_use`는 ADK의 `LlmAgent` 매개변수가 아닙니다. Claude 계열 훅 이름을 흉내 낸 것입니다.\n\n{{option:E}} (오답, 시점): `after_tool_callback`은 도구가 이미 실행된 뒤에 호출되므로 쓰기가 막히지 않습니다.\n\n**근거 문서**: Agent Development Kit Docs › Callbacks: Observe, Customize, and Control Agent Behavior › Before Tool Callback · Agent Development Kit Docs › Callbacks › Design Patterns and Best Practices(Guardrails) (SDK 버전: google-adk 2.12.0)",
+      "sourceId": "CODE-20261020-Q30",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "에이전트와 도구 보안",
+        "에이전트",
+        "도구 호출",
+        "최신 정보 확인",
+        "맥락 관리",
+        "오류 대응",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 103,
+      "title": "응답을 서버에 저장하지 않고 대화 잇기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 4,
+      "difficulty": "L3",
+      "prompt": "OpenAI Python SDK의 Responses API를 쓰는 상담 서비스가 추론 모델로 두 턴 대화를 합니다. 개인정보 방침상 응답이 OpenAI 쪽에 저장되어서는 안 되며, 둘째 호출에서도 첫 호출의 추론 항목을 포함한 이력이 모델에 전달되어야 합니다.\n\n```python\nopts = {\"model\": MODEL, \"reasoning\": {\"effort\": \"low\"}, \"store\": [A]}\nhistory = [{\"role\": \"user\", \"content\": \"환불 규정을 알려 줘.\"}]\n\nfirst = client.responses.create(input=history, **opts)\nhistory += [B]\nhistory.append({\"role\": \"user\", \"content\": \"그럼 부분 환불은?\"})\n\nsecond = client.responses.create(input=history, **opts)\nprint(second.output_text)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `True`, [B] = `first.output`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `False`, [B] = `first.output_text`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `False`, [B] = `[first.id]`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `False`, [B] = `first.output`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `True`, [B] = `first.output_text`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "OpenAI 문서에 따르면 Responses API는 응답을 기본으로 30일 저장하며 `store`를 `false`로 보내면 저장하지 않습니다. 저장하지 않는 상태(stateless)에서는 애플리케이션이 이력을 직접 들고 있어야 하므로, 응답의 `output` 배열 항목을 모두 보존해 다음 요청의 `input`에 이어 붙입니다. 추론 모델은 이 `output`에 추론 항목(암호화된 추론 내용 포함)이 들어 있어 그대로 되돌려 보내야 합니다. `previous_response_id`로 잇는 방식은 서버에 저장된 응답을 전제로 합니다.\n\n{{option:A}} (오답, 요구 위반): `store`가 `True`이면 응답이 저장되어 개인정보 방침을 어깁니다.\n\n{{option:B}} (오답, 이력 손실): `output_text`는 문자열이라 목록에 `+=` 하면 글자 단위로 쪼개져 들어가고, 추론 항목도 전달되지 않습니다.\n\n{{option:C}} (오답, 저장 전제): 응답 ID는 저장된 응답을 가리키는 값이라, 저장하지 않은 응답은 ID로 이어 갈 수 없고 입력 항목도 아닙니다.\n\n{{option:D}} (정답): 저장을 끄고 `output` 항목 전체를 이력에 더해 둘째 호출에 전달합니다.\n\n{{option:E}} (오답, 두 가지 모두): 저장이 켜져 있고 추론 항목도 빠집니다.\n\n**근거 문서**: OpenAI API Docs › Reasoning models › Preserve reasoning without stored responses · OpenAI API Docs › Conversation state › Manually manage conversation state (SDK 버전: openai 3.35.1)",
+      "sourceId": "CODE-20261020-Q31",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L3",
+        "데이터 보호",
+        "추론 모델",
+        "API 활용",
+        "개인정보 보호",
+        "규제와 준수",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
     }
   ],
   "nameKo": "보안 엔지니어링"

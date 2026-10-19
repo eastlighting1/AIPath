@@ -5930,6 +5930,689 @@
         "version": 1,
         "method": "rule-based-draft"
       }
+    },
+    {
+      "id": 115,
+      "title": "Passing a structured handoff reason",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 1,
+      "difficulty": "L2",
+      "prompt": "In OpenAI Agents SDK, hand off general support to a human-support agent. The model must fill reason as a handoff argument, and a callback must log the parsed value when invoked.\n\n```python\nfrom pydantic import BaseModel\nfrom agents import Agent, RunContextWrapper, handoff\n\nclass EscalationData(BaseModel):\n    reason: str\n\nasync def log_escalation(ctx: RunContextWrapper[None], data: EscalationData):\n    print(f\"escalated: {data.reason}\")\n\nhuman = Agent(name=\"Human Support\", instructions=\"Handle escalated cases.\")\ntriage = Agent(\n    name=\"Triage\",\n    instructions=\"Answer simple questions. Escalate upset customers.\",\n    handoffs=[handoff(agent=human, [A]=log_escalation, [B]=EscalationData)],\n)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `input_filter`, [B] = `input_type`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `on_handoff`, [B] = `input_filter`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `on_handoff`, [B] = `input_type`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `before_tool_callback`, [B] = `input_type`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `on_handoff`, [B] = `output_type`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Handoffs appear as transfer tools. input_type exposes the Pydantic argument schema; on_handoff receives the parsed input as its second argument when invoked.\n\n{{option:A}} (Incorrect): input_filter transforms HandoffInputData history, not invocation logging.\n\n{{option:B}} (Incorrect): input_filter does not define the model-filled reason schema.\n\n{{option:C}} (Correct): Use on_handoff and input_type.\n\n{{option:D}} (Incorrect): before_tool_callback belongs to Google ADK.\n\n{{option:E}} (Incorrect): output_type defines final Agent output, not handoff arguments.",
+      "sourceId": "CODE-20261020-Q15",
+      "sourceReference": "OpenAI Agents SDK Handoffs › Customizing handoffs, Handoff inputs · OpenAI Agents SDK Handoffs › Handoffs are represented as tools (SDK 버전: openai-agents 0.24.0)",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "Agent Architecture Design",
+        "Context management",
+        "Agents",
+        "Logging and tracing",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 116,
+      "title": "Routing a graph workflow",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 1,
+      "difficulty": "L1",
+      "prompt": "Use Google ADK Python 2.x Workflow. After a classifier emits a ticket-type string, a function node must route to either a refund agent or a general-support agent.\n\n```python\nfrom google.adk import Agent, Event, Workflow\n\ndef router(node_input: str):\n    if \"refund\" in node_input.lower():\n        return Event([A]=\"REFUND\")\n    return Event([A]=\"GENERAL\")\n\nroot_agent = Workflow(\n    name=\"support_flow\",\n    [B]=[\n        (\"START\", classifier_agent, router),\n        (router, {\"REFUND\": refund_agent, \"GENERAL\": general_agent}),\n    ],\n)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `transfer_to_agent`, [B] = `sub_agents`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `output`, [B] = `nodes`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `route`, [B] = `sub_agents`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `next_node`, [B] = `edges`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `route`, [B] = `edges`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "Define graph connections with edges. Event(route=...) selects the matching node in the following route-to-node edge dictionary.\n\n{{option:A}} (Incorrect): transfer_to_agent is an LLM transfer action; sub_agents defines a hierarchy rather than this graph.\n\n{{option:B}} (Incorrect): nodes is not the parameter and output does not select the route.\n\n{{option:C}} (Incorrect): route is correct but the graph uses edges.\n\n{{option:D}} (Incorrect): next_node is not the route field.\n\n{{option:E}} (Correct): Use route and edges.",
+      "sourceId": "CODE-20261020-Q16",
+      "sourceReference": "ADK Graph workflows (adk.dev/graphs) › Edges · ADK Graph workflows › Routes (SDK 버전: google-adk 2.12.0)",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Code completion",
+        "Single choice",
+        "L1",
+        "Agent Architecture Design",
+        "Agents",
+        "Workflow automation",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 117,
+      "title": "Delegating to a read-only subagent",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 1,
+      "difficulty": "L1",
+      "prompt": "Use Claude Agent SDK for code review. Delegate security review to security-reviewer without an approval prompt. The subagent must not edit files or execute commands.\n\n```python\nfrom claude_agent_sdk import query, ClaudeAgentOptions, AgentDefinition\n\noptions = ClaudeAgentOptions(\n    allowed_tools=[\"Read\", \"Grep\", [A]],\n    agents={\n        \"security-reviewer\": AgentDefinition(\n            description=\"Reviews code for security vulnerabilities.\",\n            prompt=\"You are a security reviewer. Report findings only.\",\n            tools=[B],\n        )\n    },\n)\nasync for message in query(prompt=\"Review the auth module\", options=options):\n    ...\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"Agent\"`, [B] = `[\"Read\", \"Grep\", \"Glob\"]`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"Skill\"`, [B] = `[\"Read\", \"Grep\", \"Glob\"]`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"Agent\"`, [B] = `[\"Read\", \"Grep\", \"Edit\"]`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"Agent\"`, [B] = `[\"Read\", \"Grep\", \"Bash\"]`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"transfer_to_agent\"`, [B] = `[\"Read\", \"Grep\", \"Glob\"]`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Allow Agent to invoke subagents automatically. Restrict the subagent tools to Read, Grep and Glob so editing and command tools are unavailable.\n\n{{option:A}} (Correct): Agent and read/search-only tools satisfy the requirements.\n\n{{option:B}} (Incorrect): Skill invokes a skill, not a subagent.\n\n{{option:C}} (Incorrect): Edit permits modifications.\n\n{{option:D}} (Incorrect): Bash permits command execution.\n\n{{option:E}} (Incorrect): transfer_to_agent is a Google ADK name, not this tool.",
+      "sourceId": "CODE-20261020-Q17",
+      "sourceReference": "Claude Agent SDK › Subagents in the SDK › Programmatic definition, AgentDefinition configuration, Tool restrictions (SDK 버전: claude-agent-sdk 0.2.168)",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Code completion",
+        "Single choice",
+        "L1",
+        "Agent Architecture Design",
+        "Agents",
+        "Multi-agent systems",
+        "Prompt writing",
+        "Human approval",
+        "Security controls",
+        "Coding assistance"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 118,
+      "title": "Replacing history through on-demand compaction",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L3",
+      "prompt": "Use Claude on-demand compaction with beta header compact-2026-09-04, only when an application token counter exceeds its budget. Return a summary block without an answer, and replace history only after success.\n\n```python\nif conversation_tokens > BUDGET:\n    summary = client.beta.messages.create(\n        model=MODEL,\n        max_tokens=4096,\n        system=SYSTEM,\n        betas=[\"compact-2026-09-04\"],\n        messages=history,\n        [A]={\"type\": \"summarize\"},\n    )\n    if summary.stop_reason == [B]:\n        history = [{\"role\": \"assistant\", \"content\": summary.content}]\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `context_management`, [B] = `\"compaction\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `compaction`, [B] = `\"compaction\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `compaction`, [B] = `\"end_turn\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `summarize`, [B] = `\"pause_turn\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `truncation`, [B] = `\"max_tokens\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Send top-level compaction with type summarize. Successful on-demand summarization returns a compaction block and stop_reason compaction. Replace history only then; otherwise retain it.\n\n{{option:A}} (Incorrect): context_management configures threshold compaction such as compact_20260112 and cannot be combined with this on-demand mode. summarize is not that edit-strategy format.\n\n{{option:B}} (Correct): Use compaction and check the compaction stop reason.\n\n{{option:C}} (Incorrect): end_turn indicates a normal answer, not compaction success.\n\n{{option:D}} (Incorrect): summarize is not a top-level field; pause_turn indicates a server-tool pause.\n\n{{option:E}} (Incorrect): truncation is an OpenAI option; max_tokens indicates the output limit.",
+      "sourceId": "CODE-20261020-Q18",
+      "sourceReference": "Claude API Compaction on demand › Request, Placing the block in the next request, Compaction loop · Claude API Compaction at a token threshold › Basic usage (SDK 버전: anthropic 1.15.0)",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Code completion",
+        "Single choice",
+        "L3",
+        "Context and Memory Management",
+        "Document summarization",
+        "Token management",
+        "API usage",
+        "Agents",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 119,
+      "title": "Passing summary state without earlier tickets",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L2",
+      "prompt": "In Google ADK, ticket_text contains the current ticket. Run summarizer, then responder. Summarizer must not receive earlier ticket history; save its two-sentence summary separately and inject it into responder instructions.\n\n```python\nsummarizer = LlmAgent(\n    name=\"summarizer\",\n    model=\"gemini-flash-latest\",\n    instruction=\"Summarize this ticket in two sentences: {ticket_text}\",\n    include_contents=[A],\n    output_key=[B],\n)\nresponder = LlmAgent(\n    name=\"responder\",\n    model=\"gemini-flash-latest\",\n    instruction=\"Draft a reply based on this summary: {ticket_summary}\",\n)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"default\"`, [B] = `\"ticket_summary\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"none\"`, [B] = `\"summarizer\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"none\"`, [B] = `\"ticket_text\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"none\"`, [B] = `\"ticket_summary\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `False`, [B] = `\"ticket_summary\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "include_contents=none excludes history while instruction templates still read ticket_text from state. output_key saves the final response to ticket_summary, matching the next agent template without overwriting input.\n\n{{option:A}} (Incorrect): default includes relevant previous history.\n\n{{option:B}} (Incorrect): The output_key, not the agent name, chooses state storage; ticket_summary would be missing.\n\n{{option:C}} (Incorrect): This overwrites ticket_text and still leaves ticket_summary absent.\n\n{{option:D}} (Correct): none and ticket_summary satisfy both constraints.\n\n{{option:E}} (Incorrect): Valid include_contents values are default and none, not False.",
+      "sourceId": "CODE-20261020-Q19",
+      "sourceReference": "ADK LLM agents › include_contents, Instruction templating · ADK State › output_key, Accessing state in instructions (SDK 버전: google-adk 2.12.0)",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "Context and Memory Management",
+        "Document summarization",
+        "Agents",
+        "Current information",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 120,
+      "title": "Approving only MCP write tools",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L3",
+      "prompt": "Use OpenAI Agents SDK hosted MCP for a CRM server. get_account and list_orders need no approval, but update_record requires the app approval callback configured on this tool.\n\n```python\nfrom agents import HostedMCPTool, MCPToolApprovalFunctionResult, MCPToolApprovalRequest\n\ndef approve(req: MCPToolApprovalRequest) -> MCPToolApprovalFunctionResult:\n    ok = req.data.name == \"update_record\" and change_ticket_is_open()\n    return {\"approve\": ok}\n\ncrm = HostedMCPTool(\n    tool_config={\n        \"type\": \"mcp\",\n        \"server_label\": \"crm\",\n        \"server_url\": CRM_URL,\n        \"require_approval\": {[A]: {\"tool_names\": [\"get_account\", \"list_orders\"]}},\n    },\n    [B]=approve,\n)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"always\"`, [B] = `on_approval_request`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"never\"`, [B] = `needs_approval`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"never\"`, [B] = `on_approval_request`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"never\"`, [B] = `tool_filter`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"auto\"`, [B] = `on_approval_request`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Hosted MCP executes on OpenAI infrastructure and defaults to approval. Tools listed under never skip it, leaving the write tool subject to on_approval_request.\n\n{{option:A}} (Incorrect): always would require approval for the read tools.\n\n{{option:B}} (Incorrect): needs_approval belongs to function_tool or Agent.as_tool, not HostedMCPTool.\n\n{{option:C}} (Correct): Use never for the read tools and on_approval_request for decisions.\n\n{{option:D}} (Incorrect): tool_filter filters locally connected MCP tools, not approval requests.\n\n{{option:E}} (Incorrect): auto is invalid; use always, never or their tool_names filter objects.",
+      "sourceId": "CODE-20261020-Q20",
+      "sourceReference": "OpenAI Agents SDK MCP › Hosted MCP server tools, Optional approval flows · OpenAI API Remote MCP and Connectors › Approvals (SDK 버전: openai-agents 0.24.0)",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Code completion",
+        "Single choice",
+        "L3",
+        "Tool Design and Interoperability Protocols",
+        "MCP integration",
+        "Human approval",
+        "Agents",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 121,
+      "title": "Naming and parallelizing an in-process MCP tool",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L2",
+      "prompt": "Expose a read-only latency tool through an in-process MCP server in Claude Agent SDK. Allow prompt-free execution and concurrent queries for multiple services.\n\n```python\n@tool(\n    \"get_p95\",\n    \"Get p95 latency for a service\",\n    {\"service\": str},\n    annotations=ToolAnnotations([B]=True),\n)\nasync def get_p95(args):\n    return {\"content\": [{\"type\": \"text\", \"text\": lookup(args[\"service\"])}]}\n\nmetrics = create_sdk_mcp_server(name=\"metrics\", tools=[get_p95])\noptions = ClaudeAgentOptions(\n    mcp_servers={\"obs\": metrics},\n    allowed_tools=[[A]],\n)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"mcp__metrics__get_p95\"`, [B] = `readOnlyHint`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"mcp__obs__get_p95\"`, [B] = `idempotentHint`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"mcp__obs__get_p95\"`, [B] = `parallel_tool_calls`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"obs.get_p95\"`, [B] = `readOnlyHint`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"mcp__obs__get_p95\"`, [B] = `readOnlyHint`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "The name is mcp__{server key}__{tool name}. Use obs from mcp_servers, not the internal server name metrics. readOnlyHint=True identifies tools eligible for read-only parallel scheduling.\n\n{{option:A}} (Incorrect): metrics is the internal name rather than the mcp_servers key.\n\n{{option:B}} (Incorrect): idempotentHint describes repeat effects, not parallel scheduling.\n\n{{option:C}} (Incorrect): parallel_tool_calls is an OpenAI setting, not this ToolAnnotations field.\n\n{{option:D}} (Incorrect): Dotted notation does not match mcp__server__tool.\n\n{{option:E}} (Correct): Use mcp__obs__get_p95 and readOnlyHint.",
+      "sourceId": "CODE-20261020-Q21",
+      "sourceReference": "Claude Agent SDK › Give Claude custom tools › Call a custom tool, Add tool annotations · Claude Agent SDK › Connect MCP servers › Tool naming convention (SDK 버전: claude-agent-sdk 0.2.168)",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "Tool Design and Interoperability Protocols",
+        "MCP integration",
+        "Prompt writing",
+        "Agents",
+        "Human approval",
+        "Latency",
+        "Measuring outcomes"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 122,
+      "title": "Blocking auto-approved writes before execution",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 4,
+      "difficulty": "L2",
+      "prompt": "An unattended Claude Agent SDK agent auto-approves Write and Edit through allowed_tools. It must still deny .env writes before execution and pass the denial reason to Claude.\n\n```python\nasync def block_env_write(input_data, tool_use_id, context):\n    path = input_data[\"tool_input\"].get(\"file_path\", \"\")\n    if path.endswith(\".env\"):\n        return {\"hookSpecificOutput\": {\n            \"hookEventName\": input_data[\"hook_event_name\"],\n            [B]: \"deny\",\n            \"permissionDecisionReason\": \"Cannot modify .env files\",\n        }}\n    return {}\n\noptions = ClaudeAgentOptions(\n    allowed_tools=[\"Read\", \"Write\", \"Edit\"],\n    hooks={[A]: [HookMatcher(matcher=\"Write|Edit\", hooks=[block_env_write])]},\n)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"PostToolUse\"`, [B] = `permissionDecision`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"PreToolUse\"`, [B] = `permissionDecision`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"PreToolUse\"`, [B] = `decision`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"PermissionRequest\"`, [B] = `permissionDecision`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"before_tool_callback\"`, [B] = `permissionDecision`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "PreToolUse runs first. Return permissionDecision deny and permissionDecisionReason inside hookSpecificOutput. The matcher filters tool names; inspect the path in the callback.\n\n{{option:A}} (Incorrect): PostToolUse is too late: the write has occurred.\n\n{{option:B}} (Correct): Use PreToolUse and permissionDecision.\n\n{{option:C}} (Incorrect): decision is not the recognized field in this output.\n\n{{option:D}} (Incorrect): PermissionRequest does not run for these already auto-approved calls.\n\n{{option:E}} (Incorrect): before_tool_callback belongs to Google ADK.",
+      "sourceId": "CODE-20261020-Q22",
+      "sourceReference": "Claude Agent SDK › Intercept and control agent behavior with hooks › How hooks work, Matchers, Outputs · Claude Agent SDK › How the agent loop works › Hooks (SDK 버전: claude-agent-sdk 0.2.168)",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "Safe Execution and Human Intervention",
+        "Human approval",
+        "Prompt writing",
+        "Context management",
+        "Agents",
+        "Access control",
+        "Coding assistance"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 123,
+      "title": "Confirming only high-value refunds",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 4,
+      "difficulty": "L2",
+      "prompt": "In Google ADK, issue_refund requires human confirmation only when amount exceeds 1,000. A predicate inspects inputs and returns true when confirmation is needed.\n\n```python\nfrom google.adk.agents import LlmAgent\nfrom google.adk.tools import FunctionTool, ToolContext\n\nasync def needs_confirmation(amount: int, tool_context: ToolContext) -> bool:\n    return [A]\n\ndef issue_refund(amount: int, order_id: str) -> dict:\n    \"\"\"Refund an order.\"\"\"\n    return {\"status\": \"refunded\", \"amount\": amount}\n\nrefund_agent = LlmAgent(\n    name=\"refund_agent\",\n    model=\"gemini-flash-latest\",\n    tools=[FunctionTool(issue_refund, [B]=needs_confirmation)],\n)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `amount > 1000`, [B] = `require_confirmation`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `amount <= 1000`, [B] = `require_confirmation`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `amount > 1000`, [B] = `needs_approval`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `amount > 1000`, [B] = `before_tool_callback`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `amount <= 1000`, [B] = `needs_approval`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "FunctionTool.require_confirmation accepts a boolean or callable. Return amount > 1000 so only high-value refunds prompt for confirmation.\n\n{{option:A}} (Correct): Both the condition and parameter are correct.\n\n{{option:B}} (Incorrect): The condition reverses the required behavior.\n\n{{option:C}} (Incorrect): needs_approval belongs to OpenAI Agents SDK, not ADK FunctionTool.\n\n{{option:D}} (Incorrect): before_tool_callback attaches to LlmAgent and takes tool, args and tool_context.\n\n{{option:E}} (Incorrect): Both the condition and parameter are wrong.",
+      "sourceId": "CODE-20261020-Q23",
+      "sourceReference": "ADK Tool confirmation › Boolean confirmation, Advanced confirmation with a callable (SDK 버전: google-adk 2.12.0)",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "Safe Execution and Human Intervention",
+        "Current information",
+        "Context management",
+        "Agents",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 124,
+      "title": "Instrumenting calls across handoffs",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 5,
+      "difficulty": "L2",
+      "prompt": "An OpenAI Agents SDK triage agent hands off to specialists. Log the agent, tool and cumulative tokens after any tool finishes. Pass one hook instance at run invocation.\n\n```python\nclass Metrics([A]):\n    async def on_tool_end(self, context, agent, tool, result):\n        log.info(\"%s %s %d\", agent.name, tool.name, context.usage.total_tokens)\n\nresult = await Runner.run(triage_agent, user_text, [B]=Metrics())\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `AgentHooks`, [B] = `hooks`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `RunHooks`, [B] = `run_hooks`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `TracingProcessor`, [B] = `hooks`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `RunHooks`, [B] = `hooks`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `RunHooks`, [B] = `run_config`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "RunHooks receives lifecycle events across agents and handoffs via Runner.run(hooks=...). context.usage contains accumulated usage. AgentHooks instead attaches to one Agent.\n\n{{option:A}} (Incorrect): AgentHooks does not satisfy the run-scoped hook contract.\n\n{{option:B}} (Incorrect): The parameter is hooks, not run_hooks.\n\n{{option:C}} (Incorrect): TracingProcessor exports traces/spans rather than implementing on_tool_end.\n\n{{option:D}} (Correct): Use RunHooks and hooks.\n\n{{option:E}} (Incorrect): run_config expects RunConfig, not this Metrics hook.",
+      "sourceId": "CODE-20261020-Q24",
+      "sourceReference": "OpenAI Agents SDK Lifecycle › RunHooks, AgentHooks · OpenAI Agents SDK Running agents › Runner.run options (SDK 버전: openai-agents 0.24.0)",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "Evaluation and Observability",
+        "Tool calling",
+        "Context management",
+        "Token management",
+        "Agents",
+        "Logging and tracing",
+        "Measuring outcomes"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 125,
+      "title": "Evaluating tool order and semantic equivalence",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 5,
+      "difficulty": "L3",
+      "prompt": "Evaluate a Google ADK refund agent. verify_identity must precede issue_refund; extra calls such as lookup_order are allowed. Paraphrases should pass when meaning matches the reference. The evaluation folder includes test_config.json.\n\n```python\nimport json, pathlib\nfrom google.adk.evaluation.agent_evaluator import AgentEvaluator\n\nconfig = {\"criteria\": {\n    \"tool_trajectory_avg_score\": {\"threshold\": 1.0, \"match_type\": [A]},\n    [B]: 0.8,\n}}\npathlib.Path(\"refund_agent/evals/test_config.json\").write_text(json.dumps(config))\n\nasync def main():\n    await AgentEvaluator.evaluate(\n        agent_module=\"refund_agent\",\n        eval_dataset_file_path_or_dir=\"refund_agent/evals/\",\n    )\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"EXACT\"`, [B] = `\"final_response_match_v2\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"IN_ORDER\"`, [B] = `\"final_response_match_v2\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"ANY_ORDER\"`, [B] = `\"final_response_match_v2\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"IN_ORDER\"`, [B] = `\"response_match_score\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"IN_ORDER\"`, [B] = `\"hallucinations_v1\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "IN_ORDER checks ordered required calls while allowing extras. EXACT forbids extras and ANY_ORDER ignores sequence. final_response_match_v2 uses semantic LLM judging; response_match_score uses ROUGE-1 word overlap.\n\n{{option:A}} (Incorrect): EXACT rejects permitted extra calls.\n\n{{option:B}} (Correct): Use IN_ORDER and final_response_match_v2.\n\n{{option:C}} (Incorrect): ANY_ORDER allows refund before identity verification.\n\n{{option:D}} (Incorrect): ROUGE-1 can penalize meaning-preserving paraphrases.\n\n{{option:E}} (Incorrect): hallucinations_v1 measures grounding in context rather than reference equivalence.",
+      "sourceId": "CODE-20261020-Q25",
+      "sourceReference": "ADK Evaluation criteria › tool_trajectory_avg_score, response_match_score, final_response_match_v2, hallucinations_v1 · ADK Evaluate agents › test_config.json (SDK 버전: google-adk 2.12.0)",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Code completion",
+        "Single choice",
+        "L3",
+        "Evaluation and Observability",
+        "Evaluation design",
+        "Tool calling",
+        "Agents",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 126,
+      "title": "Returning a fallback at the turn limit",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 6,
+      "difficulty": "L3",
+      "prompt": "An OpenAI Agents SDK research agent allows three sequential tool rounds, including parallel calls in each round, plus a final-answer call. If a fourth tool round is needed, return a fixed fallback rather than raising an exception.\n\n```python\nfrom agents import Agent, Runner, RunErrorHandlerInput, RunErrorHandlerResult\n\ndef on_limit(data: RunErrorHandlerInput[None]) -> RunErrorHandlerResult:\n    return RunErrorHandlerResult(final_output=\"Request too broad. Please narrow it.\")\n\nresult = await Runner.run(\n    research_agent,\n    user_request,\n    max_turns=[A],\n    error_handlers={[B]: on_limit},\n)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `4`, [B] = `\"max_turns\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `3`, [B] = `\"max_turns\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `4`, [B] = `\"MaxTurnsExceeded\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `5`, [B] = `\"max_turns\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `3`, [B] = `\"MaxTurnsExceeded\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "max_turns counts LLM calls. Three rounds plus a final answer need four calls. A fourth round leads to a fifth call exceeding the limit. Register its handler under max_turns in error_handlers.\n\n{{option:A}} (Correct): Use four calls and the max_turns handler key.\n\n{{option:B}} (Incorrect): Three calls leave no final-answer turn after the third tool round.\n\n{{option:C}} (Incorrect): The key is max_turns, not the MaxTurnsExceeded class name; other keys include model_refusal and invalid_final_output.\n\n{{option:D}} (Incorrect): Five permits an extra round and final call.\n\n{{option:E}} (Incorrect): Both the limit and handler key are incorrect.",
+      "sourceId": "CODE-20261020-Q26",
+      "sourceReference": "OpenAI Agents SDK Running agents › Max turns, Error handlers · OpenAI Agents SDK Exceptions › MaxTurnsExceeded (SDK 버전: openai-agents 0.24.0)",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Code completion",
+        "Single choice",
+        "L3",
+        "Deployment and Operations",
+        "Agents",
+        "Retrieval quality",
+        "Error handling",
+        "Research",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
     }
   ],
   "nameKo": "에이전트 엔지니어링"

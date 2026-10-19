@@ -5759,6 +5759,777 @@
         "version": 1,
         "method": "rule-based-draft"
       }
+    },
+    {
+      "id": 113,
+      "title": "고객 응대 챗봇의 역할 지시 위치",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 1,
+      "difficulty": "L1",
+      "prompt": "Anthropic Python SDK로 Claude Messages API를 호출해 쇼핑몰 고객 응대 챗봇을 만든다. 챗봇의 역할과 말투 지시는 사용자 질문과 분리해 모델에 항상 적용되는 지시로 전달해야 한다.\n\n```python\nimport anthropic\n\nclient = anthropic.Anthropic()\nresp = client.messages.create(\n    model=\"claude-sonnet-5-5\",\n    max_tokens=512,\n    [A]=\"당신은 Acme 쇼핑몰의 상담원입니다. 항상 존댓말로 답하세요.\",\n    messages=[{\"role\": [B], \"content\": \"환불은 어떻게 하나요?\"}],\n)\nprint(resp.content[0].text)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `instructions`, [B] = `\"user\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `system_instruction`, [B] = `\"user\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `system`, [B] = `\"user\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `system`, [B] = `\"developer\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `instructions`, [B] = `\"developer\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Claude Messages API는 시스템 지시를 최상위 `system` 파라미터로 받고, `messages` 배열에는 `user`와 `assistant` 역할만 번갈아 넣습니다. 그래서 역할·말투 지시는 `system`에, 사용자 질문은 `role: \"user\"` 메시지에 둡니다.\n\n{{option:A}} (오답, `instructions`는 OpenAI Responses API의 파라미터 이름입니다): Anthropic SDK의 `messages.create`에는 없는 파라미터입니다.\n\n{{option:B}} (오답, `system_instruction`은 Google GenAI SDK의 `GenerateContentConfig` 필드입니다): Anthropic 서명에 없는 이름이라 TypeError가 납니다.\n\n{{option:C}} (정답): 시스템 지시는 `system`, 사용자 질문은 `\"user\"` 역할입니다.\n\n{{option:D}} (오답, `developer` 역할은 OpenAI 모델용 메시지 역할입니다): `[A]`는 맞지만 Anthropic `messages`는 `user`/`assistant`만 허용합니다.\n\n{{option:E}} (오답, 두 값 모두 OpenAI 방식입니다): 둘 다 Anthropic API에서는 쓰지 않습니다.\n\n**근거 문서**: Claude API Docs › Messages API › system 파라미터 · Claude API Docs › Prompt engineering › Giving Claude a role with a system prompt (SDK 버전: anthropic 1.15.0)",
+      "sourceId": "CODE-20261020-Q01",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "코드 빈칸",
+        "단일 선택",
+        "L1",
+        "프롬프트와 컨텍스트 설계",
+        "토큰 관리",
+        "API 활용",
+        "Claude",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 114,
+      "title": "이전 응답을 이어 받는 다중 턴 호출",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 1,
+      "difficulty": "L1",
+      "prompt": "OpenAI Python SDK의 Responses API로 두 번 호출한다. 첫 호출에서 사용자가 이름을 알려 주고, 두 번째 호출은 대화 기록을 직접 다시 보내지 않고 서버에 저장된 이전 응답의 맥락을 이어서 답해야 한다.\n\n```python\nfrom openai import OpenAI\n\nclient = OpenAI()\nfirst = client.responses.create(\n    model=\"gpt-6-astra\",\n    input=\"내 이름은 민수야. 기억해 줘.\",\n)\nsecond = client.responses.create(\n    model=\"gpt-6-astra\",\n    input=\"내 이름이 뭐지?\",\n    [A]=first.[B],\n)\nprint(second.output_text)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `previous_response_id`, [B] = `id`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `conversation`, [B] = `id`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `thread_id`, [B] = `id`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `previous_response_id`, [B] = `output_text`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `parent_response_id`, [B] = `id`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Responses API는 응답을 기본적으로 저장하고, 다음 요청에 `previous_response_id`로 이전 응답의 `id`를 넘기면 그 응답의 입력과 출력을 맥락으로 이어 받습니다. 값은 응답 객체의 `id` 필드(`resp_...`)입니다.\n\n{{option:A}} (정답): 이전 응답의 `id`를 `previous_response_id`로 전달하는 방식입니다.\n\n{{option:B}} (오답, `conversation`은 별도로 만든 Conversation 객체의 ID(`conv_...`)를 받는 파라미터입니다): 응답 `id`를 넘기는 용도가 아닙니다.\n\n{{option:C}} (오답, `thread_id`는 지원이 종료된 Assistants API의 개념입니다): Responses API에는 없는 파라미터입니다.\n\n{{option:D}} (오답, `output_text`는 모델이 생성한 문장 문자열입니다): 응답 식별자가 아니라 본문이라 ID 자리에 쓸 수 없습니다.\n\n{{option:E}} (오답, 존재하지 않는 파라미터 이름입니다): 그럴듯하지만 SDK 서명에 없습니다.\n\n**근거 문서**: OpenAI API Docs › Conversation state › Chaining responses with previous_response_id · OpenAI API Reference › Responses › Create (SDK 버전: openai 3.35.1)",
+      "sourceId": "CODE-20261020-Q02",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "코드 빈칸",
+        "단일 선택",
+        "L1",
+        "프롬프트와 컨텍스트 설계",
+        "맥락 관리",
+        "API 활용",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 115,
+      "title": "티켓 분류 결과를 객체로 받기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L2",
+      "prompt": "OpenAI Python SDK로 문의 티켓을 분류한다. 결과는 Pydantic 모델 `Ticket`에 맞는 구조화된 출력으로 받아, 후처리 코드에서 JSON 문자열을 직접 파싱하지 않고 속성으로 바로 읽어야 한다.\n\n```python\nfrom openai import OpenAI\nfrom pydantic import BaseModel\n\nclass Ticket(BaseModel):\n    category: str\n    urgent: bool\n\nclient = OpenAI()\nresp = client.responses.[A](\n    model=\"gpt-6-astra\",\n    input=[\n        {\"role\": \"system\", \"content\": \"문의 티켓을 분류하세요.\"},\n        {\"role\": \"user\", \"content\": \"결제가 두 번 됐어요. 빨리 확인해 주세요.\"},\n    ],\n    text_format=Ticket,\n)\nticket = resp.[B]\nprint(ticket.urgent)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `create`, [B] = `output_parsed`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `parse`, [B] = `parsed`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `create`, [B] = `parsed`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `parse`, [B] = `output_text`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `parse`, [B] = `output_parsed`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "OpenAI SDK는 `client.responses.parse()`에 `text_format`으로 Pydantic 모델을 넘기면 스키마 변환과 응답 파싱을 해 주고, 파싱된 객체는 응답의 `output_parsed`로 읽습니다. `create()`에는 `text_format` 인자가 없습니다(대신 `text` 파라미터에 JSON 스키마를 직접 씁니다).\n\n{{option:A}} (오답, `create`는 `text_format`을 받지 않습니다): `output_parsed`는 `parse()` 응답에서 쓰는 필드이므로 짝이 맞지 않습니다.\n\n{{option:B}} (오답, `parsed`는 Google GenAI SDK의 `response.parsed` 이름입니다): OpenAI Responses 객체에는 없는 필드입니다.\n\n{{option:C}} (오답, `create`와 `parsed` 모두 맞지 않습니다): 두 빈칸이 모두 틀렸습니다.\n\n{{option:D}} (오답, `output_text`는 JSON 문자열입니다): `ticket.urgent`처럼 속성으로 읽을 수 없습니다.\n\n{{option:E}} (정답): `parse()`로 호출하고 `output_parsed`로 읽습니다.\n\n**근거 문서**: OpenAI API Docs › Structured Outputs › Examples (Responses API, `text_format`) · OpenAI Python SDK README › Structured Outputs Parsing Helpers (SDK 버전: openai 3.35.1)",
+      "sourceId": "CODE-20261020-Q03",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "API 통합과 응답 제어",
+        "코딩 지원",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 116,
+      "title": "긴 보고서 생성 응답의 스트리밍과 종료 사유 확인",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L2",
+      "prompt": "Anthropic Python SDK로 긴 보고서를 생성한다. 사용자 화면에는 글자가 생성되는 대로 출력하고, 스트림이 끝난 뒤에는 전체 Message 객체에서 `stop_reason`을 확인해 `max_tokens`로 잘렸는지 판단해야 한다.\n\n```python\nimport anthropic\n\nclient = anthropic.Anthropic()\nwith client.messages.[A](\n    model=\"claude-sonnet-5-5\",\n    max_tokens=64000,\n    messages=[{\"role\": \"user\", \"content\": \"분기 실적 보고서를 작성해 줘.\"}],\n) as stream:\n    for text in stream.text_stream:\n        print(text, end=\"\", flush=True)\n    final = stream.[B]()\n\nif final.stop_reason == \"max_tokens\":\n    print(\"\\n[잘림] 이어서 요청 필요\")\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `create`, [B] = `get_final_message`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `stream`, [B] = `get_final_message`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `stream`, [B] = `get_final_text`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `stream`, [B] = `get_final_response`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `create`, [B] = `final_message`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Anthropic SDK의 `client.messages.stream()`은 컨텍스트 매니저로 쓰는 스트리밍 헬퍼이며, `text_stream`으로 텍스트 조각을 받고 `get_final_message()`로 `create()`와 같은 형태의 완성된 Message를 얻습니다. `stop_reason`은 Message 객체에 들어 있습니다.\n\n{{option:A}} (오답, `create`는 `with`로 쓰는 스트림 헬퍼가 아닙니다): `create()`는 Message를 바로 반환하므로 `text_stream`이 없습니다.\n\n{{option:B}} (정답): `stream()` 헬퍼와 `get_final_message()`의 조합입니다.\n\n{{option:C}} (오답, `get_final_text()`는 문자열만 돌려줍니다): `stop_reason`을 읽을 수 없습니다.\n\n{{option:D}} (오답, `get_final_response()`는 OpenAI Responses 스트림 헬퍼의 이름입니다): Anthropic 스트림에는 없는 메서드입니다.\n\n{{option:E}} (오답, `final_message`라는 메서드는 없습니다): `[A]`도 틀립니다.\n\n**근거 문서**: Claude API Docs › Streaming Messages › Streaming with SDKs (`text_stream`, `get_final_message`) · Claude API Docs › Handling stop reasons (SDK 버전: anthropic 1.15.0)",
+      "sourceId": "CODE-20261020-Q04",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "API 통합과 응답 제어",
+        "토큰 관리",
+        "Claude",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 117,
+      "title": "Gemini 응답을 레시피 객체로 받기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L2",
+      "prompt": "Google Gen AI Python SDK(`google-genai`)로 Gemini API를 호출해 레시피 정보를 구조화된 출력으로 받는다. 스키마는 Pydantic 모델로 지정하고, 응답에서는 파싱된 객체를 바로 꺼내 `minutes`를 읽어야 한다.\n\n```python\nfrom google import genai\nfrom google.genai import types\nfrom pydantic import BaseModel\n\nclass Recipe(BaseModel):\n    name: str\n    minutes: int\n\nclient = genai.Client()\nresp = client.models.generate_content(\n    model=\"gemini-3.8-flash\",\n    contents=\"김치볶음밥 레시피를 알려 줘.\",\n    config=types.GenerateContentConfig(\n        response_mime_type=[A],\n        response_schema=Recipe,\n    ),\n)\nprint(resp.[B].minutes)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"text/plain\"`, [B] = `parsed`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"application/json\"`, [B] = `output_parsed`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"application/json\"`, [B] = `text`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"application/json\"`, [B] = `parsed`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"json\"`, [B] = `parsed`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "Gemini API에서 구조화된 출력을 쓰려면 `response_mime_type`을 `\"application/json\"`으로 두고 `response_schema`에 Pydantic 모델(또는 JSON 스키마)을 줍니다. Python SDK는 응답을 모델 인스턴스로 변환해 `response.parsed`에 담아 줍니다.\n\n{{option:A}} (오답, `text/plain`이면 JSON 출력이 강제되지 않습니다): 스키마 제약이 적용되지 않습니다.\n\n{{option:B}} (오답, `output_parsed`는 OpenAI `responses.parse` 응답의 필드입니다): Gemini 응답에는 없습니다.\n\n{{option:C}} (오답, `resp.text`는 JSON 문자열입니다): `.minutes` 같은 속성 접근이 되지 않습니다.\n\n{{option:D}} (정답): MIME 타입은 `\"application/json\"`, 파싱된 객체는 `parsed`입니다.\n\n{{option:E}} (오답, `\"json\"`은 유효한 MIME 타입이 아닙니다): 요청이 거부됩니다.\n\n**근거 문서**: Gemini API Docs › Structured output · Google Gen AI Python SDK Docs › JSON Response Schema (SDK 버전: google-genai 2.31.0)",
+      "sourceId": "CODE-20261020-Q05",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "API 통합과 응답 제어",
+        "Gemini",
+        "API 활용",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 118,
+      "title": "병렬 도구 호출 결과 돌려주기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L2",
+      "prompt": "Anthropic Python SDK로 도구를 쓰는 에이전트 루프를 만든다. 한 번의 응답에 서로 독립적인 `tool_use` 블록이 여러 개 들어올 수 있고, 그 결과를 모두 모델에 돌려줘야 다음 응답을 받을 수 있다.\n\n```python\nresp = client.messages.create(\n    model=\"claude-sonnet-5-5\", max_tokens=1024, tools=tools, messages=messages\n)\nif resp.stop_reason == \"tool_use\":\n    messages.append({\"role\": \"assistant\", \"content\": resp.content})\n    results = [\n        {\n            \"type\": \"tool_result\",\n            \"tool_use_id\": [A],\n            \"content\": run_tool(b.name, b.input),\n        }\n        for b in resp.content if b.type == \"tool_use\"\n    ]\n    messages.append({\"role\": [B], \"content\": results})\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `b.id`, [B] = `\"user\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `b.name`, [B] = `\"user\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `b.id`, [B] = `\"assistant\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `resp.id`, [B] = `\"user\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `b.id`, [B] = `\"tool\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "`tool_result`는 어느 `tool_use` 블록에 대한 결과인지 그 블록의 `id`를 `tool_use_id`로 가리켜야 합니다. 병렬 호출의 결과는 하나의 `user` 메시지 안에 `tool_result` 블록들로 함께 담아 보냅니다.\n\n{{option:A}} (정답): 각 블록의 `id`로 짝을 짓고, 결과 전체를 `user` 메시지 하나로 보냅니다.\n\n{{option:B}} (오답, `name`은 도구 이름이라 같은 도구를 두 번 부르면 구분되지 않습니다): 짝을 짓는 키가 아닙니다.\n\n{{option:C}} (오답, 도구 결과는 `assistant`가 아니라 `user` 쪽 메시지입니다): 역할이 잘못되었습니다.\n\n{{option:D}} (오답, `resp.id`는 메시지 전체의 ID(`msg_...`)입니다): 개별 `tool_use` 블록과 짝지어지지 않습니다.\n\n{{option:E}} (오답, `\"tool\"` 역할은 OpenAI Chat Completions의 도구 결과 메시지 역할입니다): Anthropic `messages`에서는 허용되지 않습니다.\n\n**근거 문서**: Claude API Docs › Tool use › Handle tool calls (parallel tool use, `tool_result`) · Claude API Docs › Messages API › content block types (SDK 버전: anthropic 1.15.0)",
+      "sourceId": "CODE-20261020-Q06",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "도구 호출과 외부 연동",
+        "도구 호출",
+        "토큰 관리",
+        "에이전트",
+        "Claude",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 119,
+      "title": "함수 호출 결과를 모델에 돌려주기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L1",
+      "prompt": "OpenAI Python SDK의 Responses API로 함수 호출을 처리한다. 모델이 `function_call` 항목을 내면 앱이 함수를 실행하고, 그 결과를 다음 요청의 입력에 넣어 어느 호출에 대한 결과인지 모델이 알 수 있게 해야 한다.\n\n```python\nimport json\n\ninput_list += response.output\nfor item in response.output:\n    if item.type == \"function_call\":\n        result = get_weather(**json.loads(item.arguments))\n        input_list.append({\n            \"type\": [A],\n            \"call_id\": item.[B],\n            \"output\": json.dumps(result),\n        })\nfollowup = client.responses.create(model=\"gpt-6-astra\", tools=tools, input=input_list)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"tool_result\"`, [B] = `id`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"function_call_output\"`, [B] = `id`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"tool\"`, [B] = `call_id`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"function_call_output\"`, [B] = `call_id`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"function_result\"`, [B] = `call_id`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "Responses API에서 함수 결과는 입력 항목 `{\"type\": \"function_call_output\", \"call_id\": ..., \"output\": ...}`로 돌려줍니다. 짝짓는 키는 `function_call` 항목의 `call_id`이고, 항목 자체의 `id`(`fc_...`)와는 다른 값입니다.\n\n{{option:A}} (오답, `tool_result`는 Anthropic의 블록 타입입니다): Responses API 입력 항목 타입이 아니고 `id`도 짝짓는 키가 아닙니다.\n\n{{option:B}} (오답, 타입은 맞지만 `item.id`는 항목 자체의 식별자입니다): 호출과 결과를 잇는 값은 `call_id`입니다.\n\n{{option:C}} (오답, `\"tool\"`은 Chat Completions의 메시지 역할 값입니다): Responses의 `type` 값으로 쓰이지 않습니다.\n\n{{option:D}} (정답): `function_call_output` 항목에 `item.call_id`를 넣습니다.\n\n{{option:E}} (오답, `function_result`는 다른 API의 단계 이름입니다): OpenAI Responses 입력 타입에 없습니다.\n\n**근거 문서**: OpenAI API Docs › Function calling › Handling function calls (Responses API) · OpenAI API Reference › Responses › input item `function_call_output` (SDK 버전: openai 3.35.1)",
+      "sourceId": "CODE-20261020-Q07",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "코드 빈칸",
+        "단일 선택",
+        "L1",
+        "도구 호출과 외부 연동",
+        "도구 호출",
+        "API 활용",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 120,
+      "title": "함수 호출을 직접 실행하는 Gemini 앱",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L3",
+      "prompt": "Google Gen AI Python SDK에서 Python 함수 `get_weather`를 도구로 넘긴다. 감사 로깅과 사용자 권한 확인을 위해 함수 실행은 SDK가 아니라 앱이 직접 해야 하고, 이 요청에서는 모델이 텍스트로 답하지 않고 반드시 함수 호출을 반환해야 한다.\n\n```python\nconfig = types.GenerateContentConfig(\n    tools=[get_weather],\n    automatic_function_calling=types.AutomaticFunctionCallingConfig([A]=True),\n    tool_config=types.ToolConfig(\n        function_calling_config=types.FunctionCallingConfig(mode=\"[B]\")\n    ),\n)\nresp = client.models.generate_content(\n    model=\"gemini-3.8-flash\", contents=\"서울 날씨 알려 줘\", config=config\n)\ncall = resp.function_calls[0]\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `disable`, [B] = `AUTO`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `disable`, [B] = `ANY`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `ignore_call_history`, [B] = `ANY`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `disable`, [B] = `NONE`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `ignore_call_history`, [B] = `AUTO`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Python 함수를 `tools`에 직접 넘기면 SDK가 기본으로 함수를 자동 실행하므로, 앱이 직접 실행하려면 `AutomaticFunctionCallingConfig(disable=True)`로 끕니다. 그러면 호출 요청이 `response.function_calls`에 담깁니다. 함수 호출 모드 `ANY`는 모델이 항상 함수 호출을 예측하게 강제합니다.\n\n{{option:A}} (오답, `AUTO`는 모델이 텍스트로 답할 수도 있습니다): \"반드시 함수 호출\"이라는 제약을 만족하지 못합니다.\n\n{{option:B}} (정답): 자동 실행은 `disable=True`로 끄고, 호출 강제는 모드 `ANY`로 합니다.\n\n{{option:C}} (오답, `ignore_call_history`는 호출 기록 처리에 관한 옵션입니다): 자동 실행을 끄는 필드가 아닙니다.\n\n{{option:D}} (오답, 모드 `NONE`은 함수 호출을 금지합니다): `function_calls`가 비어 `[0]` 접근에서 실패합니다.\n\n{{option:E}} (오답, 두 값 모두 요구를 만족하지 못합니다): 자동 실행도 꺼지지 않고 호출도 강제되지 않습니다.\n\n**근거 문서**: Google Gen AI Python SDK Docs › Function calling (automatic function calling, disable) · Gemini API Docs › Function calling › Function calling modes (SDK 버전: google-genai 2.31.0)",
+      "sourceId": "CODE-20261020-Q08",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "코드 빈칸",
+        "단일 선택",
+        "L3",
+        "도구 호출과 외부 연동",
+        "도구 호출",
+        "Gemini",
+        "권한 관리",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 121,
+      "title": "원격 MCP 도구 호출 전 사람 승인",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L3",
+      "prompt": "OpenAI Python SDK의 Responses API에 원격 MCP 서버를 도구로 연결한다. 보안 정책상 서버의 모든 도구 호출은 실행 전에 사용자의 승인을 받아야 한다. 첫 응답에서 승인 요청 항목이 나오면, 승인 응답을 보내 같은 대화를 이어 가야 한다.\n\n```python\ntools = [{\n    \"type\": \"mcp\", \"server_label\": \"docs\", \"server_url\": \"https://example.com/mcp\",\n    \"require_approval\": \"[A]\",\n}]\nr1 = client.responses.create(model=\"gpt-6-astra\", tools=tools, input=\"환불 정책 찾아 줘\")\nreq = next(i for i in r1.output if i.type == \"mcp_approval_request\")\nr2 = client.responses.create(\n    model=\"gpt-6-astra\", tools=tools, previous_response_id=r1.id,\n    input=[{\"type\": \"mcp_approval_response\", \"approve\": True,\n            \"approval_request_id\": req.[B]}],\n)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `never`, [B] = `id`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `always`, [B] = `call_id`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `always`, [B] = `id`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `ask`, [B] = `id`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `always`, [B] = `server_label`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "원격 MCP 도구의 `require_approval`을 `\"always\"`로 두면 도구를 호출하기 전에 `mcp_approval_request` 항목이 응답에 나옵니다. 승인은 `mcp_approval_response` 입력 항목에서 `approval_request_id`에 그 요청 항목의 `id`를 넣고 `approve`를 지정해 보내며, 이전 응답을 `previous_response_id`로 이어 줍니다.\n\n{{option:A}} (오답, `never`는 승인 없이 바로 실행합니다): 승인 요청 항목이 생기지 않아 `next(...)`가 실패합니다.\n\n{{option:B}} (오답, `mcp_approval_request` 항목에는 `call_id` 필드가 없습니다): 요청을 식별하는 값은 `id`입니다.\n\n{{option:C}} (정답): 항상 승인을 요구하고, 요청 항목의 `id`로 승인 응답을 짝짓습니다.\n\n{{option:D}} (오답, `ask`는 허용되는 값이 아닙니다): 값은 `always`, `never` 또는 도구별 필터 객체입니다.\n\n{{option:E}} (오답, `server_label`은 MCP 서버의 이름표입니다): 개별 승인 요청을 가리키지 못합니다.\n\n**근거 문서**: OpenAI API Docs › MCP and Connectors › Approvals · OpenAI API Reference › Responses › `mcp_approval_request`, `mcp_approval_response` (SDK 버전: openai 3.35.1)",
+      "sourceId": "CODE-20261020-Q09",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "코드 빈칸",
+        "단일 선택",
+        "L3",
+        "도구 호출과 외부 연동",
+        "MCP 연동",
+        "도구 호출",
+        "사람의 승인",
+        "API 활용",
+        "보안 통제",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 122,
+      "title": "질문과 문서를 다르게 임베딩하는 검색",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 4,
+      "difficulty": "L1",
+      "prompt": "Google Gen AI Python SDK로 사내 문서 질의응답용 검색을 만든다. 사용자의 질문으로 문서 조각을 찾는 구조이므로 질문 벡터와 문서 벡터를 각각 목적에 맞는 작업 유형으로 생성해야 한다.\n\n```python\ncfg = lambda t: types.EmbedContentConfig(task_type=t, output_dimensionality=768)\n\nq_emb = client.models.embed_content(\n    model=\"gemini-embedding-001\", contents=question, config=cfg(\"[A]\")\n)\nd_emb = client.models.embed_content(\n    model=\"gemini-embedding-001\", contents=chunks, config=cfg(\"[B]\")\n)\nquery_vec = q_emb.embeddings[0].values\ndoc_vecs = [e.values for e in d_emb.embeddings]\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `RETRIEVAL_DOCUMENT`, [B] = `RETRIEVAL_QUERY`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `RETRIEVAL_QUERY`, [B] = `RETRIEVAL_QUERY`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `CLASSIFICATION`, [B] = `CLUSTERING`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `RETRIEVAL_DOCUMENT`, [B] = `RETRIEVAL_DOCUMENT`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `RETRIEVAL_QUERY`, [B] = `RETRIEVAL_DOCUMENT`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "`gemini-embedding-001`은 `task_type`으로 용도에 맞게 최적화된 임베딩을 만듭니다. 검색 질의는 `RETRIEVAL_QUERY`, 검색 대상 문서는 `RETRIEVAL_DOCUMENT`로 만들어야 질문과 문서 사이의 유사도가 검색에 맞게 계산됩니다.\n\n{{option:A}} (오답, 두 유형이 서로 바뀌었습니다): 질문을 문서용으로, 문서를 질문용으로 만들면 검색 품질이 떨어집니다.\n\n{{option:B}} (오답, 문서 쪽도 질의용으로 만들었습니다): 문서에는 `RETRIEVAL_DOCUMENT`를 써야 합니다.\n\n{{option:C}} (오답, 분류·군집화용 유형입니다): 질의-문서 검색에 맞춘 임베딩이 아닙니다.\n\n{{option:D}} (오답, 질문 쪽도 문서용으로 만들었습니다): 질문에는 `RETRIEVAL_QUERY`를 써야 합니다.\n\n{{option:E}} (정답): 질문은 `RETRIEVAL_QUERY`, 문서 조각은 `RETRIEVAL_DOCUMENT`입니다.\n\n**근거 문서**: Gemini API Docs › Embeddings › Task types · Gemini API Docs › Embeddings › Controlling embedding size (SDK 버전: google-genai 2.31.0)",
+      "sourceId": "CODE-20261020-Q10",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "코드 빈칸",
+        "단일 선택",
+        "L1",
+        "검색 증강과 멀티모달",
+        "검색 품질",
+        "벡터 검색",
+        "청킹",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 123,
+      "title": "계약서 PDF에 근거를 달아 답하기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 4,
+      "difficulty": "L3",
+      "prompt": "Anthropic Python SDK로 계약서 PDF를 base64로 보내 질문에 답하게 한다. 답변의 각 문장이 PDF의 어느 쪽에서 나왔는지 시작 쪽 번호를 화면에 표시해야 한다.\n\n```python\nresp = client.messages.create(\n    model=\"claude-sonnet-5-5\", max_tokens=1024,\n    messages=[{\"role\": \"user\", \"content\": [\n        {\"type\": \"document\",\n         \"source\": {\"type\": \"base64\", \"media_type\": \"application/pdf\", \"data\": pdf_b64},\n         \"[A]\": {\"enabled\": True}},\n        {\"type\": \"text\", \"text\": \"해지 통보 기한은?\"},\n    ]}],\n)\nfor block in resp.content:\n    if block.type == \"text\":\n        for c in block.citations or []:\n            if c.type == \"[B]\":\n                print(c.start_page_number)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `citations`, [B] = `char_location`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `citations`, [B] = `page_location`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `references`, [B] = `page_location`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `citations`, [B] = `file_citation`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `citations`, [B] = `content_block_location`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Claude의 인용 기능은 `document` 블록에 `citations: {\"enabled\": true}`를 지정하면 켜집니다. 응답의 텍스트 블록에 `citations` 목록이 붙고, 출처가 PDF이면 인용 타입은 `page_location`이며 `start_page_number`와 `end_page_number`(1부터 시작, 끝 번호는 미포함)를 가집니다.\n\n{{option:A}} (오답, `char_location`은 일반 텍스트 문서의 문자 위치 인용입니다): PDF 인용에는 쪽 번호 필드가 있는 `page_location`이 쓰입니다.\n\n{{option:B}} (정답): 인용을 켜는 키는 `citations`, PDF 인용 타입은 `page_location`입니다.\n\n{{option:C}} (오답, `references`라는 키는 없습니다): 인용이 켜지지 않습니다.\n\n{{option:D}} (오답, `file_citation`은 OpenAI 파일 검색 응답의 주석 타입입니다): Claude 인용 타입이 아닙니다.\n\n{{option:E}} (오답, `content_block_location`은 사용자 지정 콘텐츠 문서의 블록 위치 인용입니다): 쪽 번호 필드가 없습니다.\n\n**근거 문서**: Claude API Docs › Citations › Types of citations · Claude API Docs › PDF support (SDK 버전: anthropic 1.15.0)",
+      "sourceId": "CODE-20261020-Q11",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "코드 빈칸",
+        "단일 선택",
+        "L3",
+        "검색 증강과 멀티모달",
+        "출처 검증",
+        "토큰 관리",
+        "Claude",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 124,
+      "title": "사내 규정 파일 검색 결과까지 확인하기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 4,
+      "difficulty": "L2",
+      "prompt": "OpenAI Python SDK의 Responses API로 이미 만들어 둔 벡터 스토어 `vs`를 검색해 사내 규정 질문에 답한다. 모델이 어떤 조각을 가져왔는지 디버깅하려면 검색 호출 항목에 결과 내용이 함께 오도록 요청해야 한다.\n\n```python\nresp = client.responses.create(\n    model=\"gpt-6-astra\",\n    input=\"연차 이월 규정이 뭐야?\",\n    tools=[{\"type\": \"[A]\", \"vector_store_ids\": [vs.id], \"max_num_results\": 3}],\n    include=[\"[B]\"],\n)\nfor item in resp.output:\n    if item.type == \"file_search_call\":\n        print(item.results)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `file_search`, [B] = `file_search_call.results`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `retrieval`, [B] = `file_search_call.results`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `file_search`, [B] = `file_citation`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `file_search`, [B] = `message.input_image.image_url`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `vector_search`, [B] = `file_search_call.results`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Responses API의 파일 검색 도구는 `{\"type\": \"file_search\", \"vector_store_ids\": [...]}`로 지정하고 `max_num_results`로 가져오는 조각 수를 제한합니다. 기본 응답의 `file_search_call` 항목에는 검색 결과 본문이 없으므로, `include=[\"file_search_call.results\"]`를 줘야 `results`가 채워집니다.\n\n{{option:A}} (정답): 도구 타입은 `file_search`, 포함 옵션은 `file_search_call.results`입니다.\n\n{{option:B}} (오답, `retrieval`은 Assistants API 시절의 도구 이름입니다): Responses API에서는 `file_search`를 씁니다.\n\n{{option:C}} (오답, `file_citation`은 답변 텍스트에 붙는 주석 타입입니다): `include`에 넣을 수 있는 값이 아닙니다.\n\n{{option:D}} (오답, 이미지 URL을 포함하는 옵션입니다): 파일 검색 결과와 무관합니다.\n\n{{option:E}} (오답, `vector_search`라는 도구 타입은 없습니다): 지어낸 이름입니다.\n\n**근거 문서**: OpenAI API Docs › File search › Retrieval customization (`max_num_results`) · OpenAI API Docs › File search › Include search results (SDK 버전: openai 3.35.1)",
+      "sourceId": "CODE-20261020-Q12",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "검색 증강과 멀티모달",
+        "검색 품질",
+        "규제와 준수",
+        "API 활용",
+        "벡터 검색",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 125,
+      "title": "긴 정책 문서 캐시 유지와 적중률 계산",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 5,
+      "difficulty": "L3",
+      "prompt": "Anthropic Python SDK로 약 12k 토큰의 정책 문서를 시스템 프롬프트로 쓰는 상담 서비스를 만든다. 같은 문서를 쓰는 요청이 대략 20\\~30분 간격으로 들어오므로 기본 유지 시간으로는 캐시가 자주 만료된다. 요청 후에는 전체 입력 토큰 대비 캐시에서 읽은 비율을 계산한다.\n\n```python\nresp = client.messages.create(\n    model=\"claude-sonnet-5-5\", max_tokens=512,\n    system=[{\"type\": \"text\", \"text\": POLICY_DOC,\n             \"cache_control\": {\"type\": \"ephemeral\", \"ttl\": \"[A]\"}}],\n    messages=[{\"role\": \"user\", \"content\": question}],\n)\nu = resp.usage\ntotal_input = [B]\nprint(u.cache_read_input_tokens / total_input)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `1h`, [B] = `u.input_tokens`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `3600s`, [B] = `u.input_tokens + u.cache_read_input_tokens + u.cache_creation_input_tokens`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `1h`, [B] = `u.input_tokens + u.cache_read_input_tokens + u.cache_creation_input_tokens`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `1h`, [B] = `u.input_tokens + u.cache_read_input_tokens`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `60m`, [B] = `u.input_tokens + u.cache_creation_input_tokens`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Claude 프롬프트 캐싱은 기본 5분이고, `cache_control`의 `ttl`을 `\"1h\"`로 지정하면 1시간 캐시를 쓸 수 있습니다(허용 값은 `5m`과 `1h`). 사용량에서 `input_tokens`는 마지막 캐시 지점 뒤의 캐시 외 토큰만 뜻하므로, 전체 입력은 `cache_read_input_tokens`, `cache_creation_input_tokens`, `input_tokens`의 합입니다.\n\n{{option:A}} (오답, `input_tokens`는 마지막 캐시 지점 뒤의 토큰뿐입니다): 캐시를 쓰면 전체 입력보다 훨씬 작아 비율이 1을 넘을 수 있습니다.\n\n{{option:B}} (오답, `3600s`는 Google의 TTL 표기입니다): Anthropic은 `5m`/`1h`만 허용하므로 요청이 거부됩니다.\n\n{{option:C}} (정답): TTL은 `1h`, 전체 입력은 세 필드의 합입니다.\n\n{{option:D}} (오답, 새로 쓴 캐시 토큰이 빠졌습니다): 캐시 쓰기가 일어난 요청에서는 전체 입력이 과소 계산됩니다.\n\n{{option:E}} (오답, `60m`은 허용 값이 아니고 읽은 토큰도 빠졌습니다): 두 빈칸이 모두 틀렸습니다.\n\n**근거 문서**: Claude API Docs › Prompt caching › 1-hour cache duration · Claude API Docs › Prompt caching › Tracking cache performance (SDK 버전: anthropic 1.15.0)",
+      "sourceId": "CODE-20261020-Q13",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "코드 빈칸",
+        "단일 선택",
+        "L3",
+        "평가, 비용, 지연 시간 최적화",
+        "캐싱",
+        "프롬프트 작성",
+        "토큰 관리",
+        "Claude",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 126,
+      "title": "Gemini 컨텍스트 캐싱으로 반복 비용 줄이기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 5,
+      "difficulty": "L2",
+      "prompt": "Google Gen AI Python SDK로 긴 제품 매뉴얼을 질문마다 다시 보내지 않도록 컨텍스트 캐시를 만든다. 캐시는 1시간 동안 유지하고, 이후 질문 요청에서는 만든 캐시를 참조해야 한다.\n\n```python\ncache = client.caches.create(\n    model=\"gemini-3.8-flash\",\n    config=types.CreateCachedContentConfig(\n        system_instruction=\"매뉴얼 기반으로만 답하세요.\",\n        contents=[manual_text],\n        ttl=[A],\n    ),\n)\nresp = client.models.generate_content(\n    model=\"gemini-3.8-flash\",\n    contents=\"전원이 안 켜질 때는?\",\n    config=types.GenerateContentConfig([B]=cache.name),\n)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"1h\"`, [B] = `cached_content`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"3600s\"`, [B] = `cache_control`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"ephemeral\"`, [B] = `cached_content`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"3600s\"`, [B] = `cached_content`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"3600s\"`, [B] = `cache_id`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "Gemini 명시적 캐싱은 `client.caches.create()`에 `CreateCachedContentConfig`로 내용과 TTL을 지정해 만듭니다. TTL은 초 단위 문자열(예: `\"3600s\"`)이고, 이후 요청에서는 `GenerateContentConfig`의 `cached_content`에 캐시의 `name`을 넘겨 참조합니다.\n\n{{option:A}} (오답, `\"1h\"`는 Anthropic식 표기이고 Gemini의 기간 값은 초 단위 문자열입니다): TTL 형식이 맞지 않습니다.\n\n{{option:B}} (오답, `cache_control`은 Anthropic의 블록 필드입니다): `GenerateContentConfig`에는 없는 필드입니다.\n\n{{option:C}} (오답, `\"ephemeral\"`은 Anthropic의 캐시 타입 값입니다): TTL 값이 될 수 없습니다.\n\n{{option:D}} (정답): TTL은 `\"3600s\"`, 참조는 `cached_content=cache.name`입니다.\n\n{{option:E}} (오답, `cache_id`라는 필드는 없습니다): 그럴듯하지만 SDK 서명에 없습니다.\n\n**근거 문서**: Gemini API Docs › Context caching › Explicit caching · Google Gen AI Python SDK Docs › Caches (SDK 버전: google-genai 2.31.0)",
+      "sourceId": "CODE-20261020-Q14",
+      "tags": [
+        "ADA",
+        "Application Development",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "평가, 비용, 지연 시간 최적화",
+        "맥락 관리",
+        "Gemini",
+        "비용 관리",
+        "캐싱",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
     }
   ],
   "nameKo": "애플리케이션 개발"

@@ -5930,6 +5930,677 @@
         "version": 1,
         "method": "rule-based-draft"
       }
+    },
+    {
+      "id": 115,
+      "title": "에스컬레이션 핸드오프에 사유를 구조화해 넘기기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 1,
+      "difficulty": "L2",
+      "prompt": "OpenAI Agents SDK(Python)로 일반 상담 에이전트가 사람 상담 에이전트에게 핸드오프하도록 구성합니다. 모델이 핸드오프를 호출할 때 에스컬레이션 사유(`reason`)를 호출 인자로 직접 채워야 하고, 핸드오프가 실제로 호출되는 시점에 그 값을 로그로 남겨야 합니다.\n\n```python\nfrom pydantic import BaseModel\nfrom agents import Agent, RunContextWrapper, handoff\n\nclass EscalationData(BaseModel):\n    reason: str\n\nasync def log_escalation(ctx: RunContextWrapper[None], data: EscalationData):\n    print(f\"escalated: {data.reason}\")\n\nhuman = Agent(name=\"Human Support\", instructions=\"Handle escalated cases.\")\ntriage = Agent(\n    name=\"Triage\",\n    instructions=\"Answer simple questions. Escalate upset customers.\",\n    handoffs=[handoff(agent=human, [A]=log_escalation, [B]=EscalationData)],\n)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `input_filter`, [B] = `input_type`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `on_handoff`, [B] = `input_filter`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `on_handoff`, [B] = `input_type`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `before_tool_callback`, [B] = `input_type`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `on_handoff`, [B] = `output_type`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "OpenAI Agents SDK에서 핸드오프는 모델에게 `transfer_to_<agent_name>` 같은 도구로 보입니다. `handoff()`의 `input_type`에 Pydantic 모델을 주면 그 스키마가 핸드오프 도구의 인자 스키마로 노출되어 모델이 `reason`을 채우고, 핸드오프가 호출될 때 `on_handoff` 콜백이 실행되면서 파싱된 값을 두 번째 인자로 받습니다. 따라서 값을 만드는 쪽이 `input_type`, 호출 시점에 값을 쓰는 쪽이 `on_handoff`입니다.\n\n{{option:A}} (오답, 역할 혼동): `input_filter`는 다음 에이전트가 받을 대화 이력(`HandoffInputData`)을 가공하는 함수를 받으며 호출 시점 로그용 콜백이 아닙니다.\n\n{{option:B}} (오답, 스키마 없음): `input_filter`는 이력을 걸러낼 뿐 모델이 채울 인자 스키마를 정의하지 못하므로 `reason`이 생성되지 않고 `on_handoff`도 `data`를 받지 못합니다.\n\n{{option:C}} (정답): `on_handoff`가 호출 시점의 콜백이고 `input_type`이 모델이 채울 인자 스키마입니다.\n\n{{option:D}} (오답, 다른 회사 SDK): `before_tool_callback`은 Google ADK 에이전트의 콜백 이름으로, OpenAI `handoff()`에는 없는 파라미터입니다.\n\n{{option:E}} (오답, 다른 대상): `output_type`은 에이전트의 최종 출력 스키마(`Agent`의 설정)이며 핸드오프 도구의 인자 스키마가 아닙니다.\n\n**근거 문서**: OpenAI Agents SDK Handoffs › Customizing handoffs, Handoff inputs · OpenAI Agents SDK Handoffs › Handoffs are represented as tools (SDK 버전: openai-agents 0.24.0)",
+      "sourceId": "CODE-20261020-Q15",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "에이전트 구조 설계",
+        "맥락 관리",
+        "에이전트",
+        "로그와 추적",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 116,
+      "title": "그래프 워크플로의 조건 분기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 1,
+      "difficulty": "L1",
+      "prompt": "Google ADK(Python) 2.x의 그래프 기반 `Workflow`로 상담 흐름을 만듭니다. 분류 에이전트가 티켓 유형 문자열을 내보내면, 함수 노드가 그 값을 보고 환불 에이전트 또는 일반 상담 에이전트 중 하나만 실행되게 해야 합니다.\n\n```python\nfrom google.adk import Agent, Event, Workflow\n\ndef router(node_input: str):\n    if \"refund\" in node_input.lower():\n        return Event([A]=\"REFUND\")\n    return Event([A]=\"GENERAL\")\n\nroot_agent = Workflow(\n    name=\"support_flow\",\n    [B]=[\n        (\"START\", classifier_agent, router),\n        (router, {\"REFUND\": refund_agent, \"GENERAL\": general_agent}),\n    ],\n)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `transfer_to_agent`, [B] = `sub_agents`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `output`, [B] = `nodes`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `route`, [B] = `sub_agents`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `next_node`, [B] = `edges`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `route`, [B] = `edges`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "ADK 2.0의 그래프 워크플로는 노드를 잇는 `edges` 목록으로 구성합니다. 분기는 노드가 `Event(route=...)`로 경로 값을 내보내고, 다음 간선 행이 \"경로 값: 실행할 노드\" 딕셔너리로 각 값에 맞는 노드를 연결하는 방식입니다. 그래서 `router`가 반환한 `route` 값이 딕셔너리의 키와 일치하는 노드만 실행됩니다.\n\n{{option:A}} (오답, 이전 방식): `transfer_to_agent`는 LLM이 하위 에이전트로 제어를 넘기는 이벤트 액션 필드이고, `sub_agents`는 `Workflow`가 아니라 `LlmAgent`·템플릿 에이전트의 계층 구성에 쓰입니다.\n\n{{option:B}} (오답, 없는 항목): 노드를 `nodes`로 나열하는 파라미터는 없고, 반환 값을 `output`으로 지정해도 간선 딕셔너리와 매칭되지 않습니다.\n\n{{option:C}} (오답, 절반만 맞음): `route`는 맞지만 `Workflow`는 하위 에이전트 목록이 아니라 `edges`로 그래프를 정의합니다.\n\n{{option:D}} (오답, 없는 이름): 경로 값을 담는 필드는 `route`이며 `next_node`라는 필드는 없습니다.\n\n{{option:E}} (정답): 경로 값은 `Event(route=...)`로, 그래프 연결은 `edges`로 지정합니다.\n\n**근거 문서**: ADK Graph workflows (adk.dev/graphs) › Edges · ADK Graph workflows › Routes (SDK 버전: google-adk 2.12.0)",
+      "sourceId": "CODE-20261020-Q16",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L1",
+        "에이전트 구조 설계",
+        "에이전트",
+        "업무 자동화",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 117,
+      "title": "읽기 전용 서브에이전트에 검토 위임하기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 1,
+      "difficulty": "L1",
+      "prompt": "Claude Agent SDK(Python)로 코드 리뷰 에이전트를 만듭니다. 메인 에이전트는 보안 검토를 `security-reviewer` 서브에이전트에게 위임하며, 위임 호출은 승인 프롬프트 없이 실행되어야 합니다. 서브에이전트는 파일을 수정하거나 명령을 실행할 수 없어야 합니다.\n\n```python\nfrom claude_agent_sdk import query, ClaudeAgentOptions, AgentDefinition\n\noptions = ClaudeAgentOptions(\n    allowed_tools=[\"Read\", \"Grep\", [A]],\n    agents={\n        \"security-reviewer\": AgentDefinition(\n            description=\"Reviews code for security vulnerabilities.\",\n            prompt=\"You are a security reviewer. Report findings only.\",\n            tools=[B],\n        )\n    },\n)\nasync for message in query(prompt=\"Review the auth module\", options=options):\n    ...\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"Agent\"`, [B] = `[\"Read\", \"Grep\", \"Glob\"]`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"Skill\"`, [B] = `[\"Read\", \"Grep\", \"Glob\"]`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"Agent\"`, [B] = `[\"Read\", \"Grep\", \"Edit\"]`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"Agent\"`, [B] = `[\"Read\", \"Grep\", \"Bash\"]`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"transfer_to_agent\"`, [B] = `[\"Read\", \"Grep\", \"Glob\"]`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Claude Agent SDK에서 메인 에이전트는 `Agent` 도구로 서브에이전트를 호출하므로, 이 도구를 `allowed_tools`에 넣어야 위임이 프롬프트 없이 자동 승인됩니다. 서브에이전트의 `tools`에 나열한 도구만 그 서브에이전트의 세션에 존재하므로, 읽기 전용으로 만들려면 `Read`, `Grep`, `Glob`만 나열합니다.\n\n{{option:A}} (정답): `Agent`가 서브에이전트 호출 도구이고, 읽기·검색 도구만으로 수정과 명령 실행이 구조적으로 불가능합니다.\n\n{{option:B}} (오답, 다른 도구): `Skill`은 스킬을 호출하는 도구이며 서브에이전트를 띄우지 않습니다.\n\n{{option:C}} (오답, 제약 위반): `Edit`을 넣으면 서브에이전트가 파일을 수정할 수 있습니다.\n\n{{option:D}} (오답, 제약 위반): `Bash`를 넣으면 서브에이전트가 임의 명령을 실행할 수 있습니다.\n\n{{option:E}} (오답, 다른 회사 SDK): `transfer_to_agent`는 Google ADK의 제어 이전 동작에 쓰이는 이름이며 Claude Agent SDK의 도구 이름이 아닙니다.\n\n**근거 문서**: Claude Agent SDK › Subagents in the SDK › Programmatic definition, AgentDefinition configuration, Tool restrictions (SDK 버전: claude-agent-sdk 0.2.168)",
+      "sourceId": "CODE-20261020-Q17",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L1",
+        "에이전트 구조 설계",
+        "에이전트",
+        "멀티 에이전트",
+        "프롬프트 작성",
+        "사람의 승인",
+        "보안 통제",
+        "코딩 지원"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 118,
+      "title": "직접 정한 시점에 대화를 요약해 교체하기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L3",
+      "prompt": "Claude API(Python SDK)로 에이전트 루프를 운영하는 팀이 서버가 자동으로 압축하는 방식 대신, 자체 토큰 카운터가 예산을 넘을 때만 요약을 요청하는 온디맨드 compaction(베타 헤더 `compact-2026-09-04`)을 씁니다. 요약 호출은 답변을 생성하지 않고 요약 블록만 돌려줘야 하며, 요약이 성공하면 기존 이력은 그 블록으로 교체해야 합니다.\n\n```python\nif conversation_tokens > BUDGET:\n    summary = client.beta.messages.create(\n        model=MODEL,\n        max_tokens=4096,\n        system=SYSTEM,\n        betas=[\"compact-2026-09-04\"],\n        messages=history,\n        [A]={\"type\": \"summarize\"},\n    )\n    if summary.stop_reason == [B]:\n        history = [{\"role\": \"assistant\", \"content\": summary.content}]\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `context_management`, [B] = `\"compaction\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `compaction`, [B] = `\"compaction\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `compaction`, [B] = `\"end_turn\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `summarize`, [B] = `\"pause_turn\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `truncation`, [B] = `\"max_tokens\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "온디맨드 compaction은 요약을 요청하는 요청에 최상위 `compaction` 파라미터로 `{\"type\": \"summarize\"}`를 보냅니다. 이때 API는 모든 메시지를 한 번 요약하고 답변 없이 `compaction` 블록만 돌려주며 `stop_reason`이 `\"compaction\"`입니다. 그래서 이 값을 확인한 뒤에만 이력을 블록 하나로 교체하고, 요약이 오지 않으면 이력을 유지합니다.\n\n{{option:A}} (오답, 다른 기능): `context_management`는 `compact_20260112` 같은 편집 전략을 쓰는 임계값 compaction의 파라미터이고, 온디맨드 `compaction`과는 한 요청에 함께 쓸 수 없습니다. `{\"type\": \"summarize\"}`는 편집 전략 형식이 아닙니다.\n\n{{option:B}} (정답): 최상위 `compaction` 파라미터와 `stop_reason == \"compaction\"` 확인이 맞습니다.\n\n{{option:C}} (오답, 잘못된 분기): `end_turn`은 모델이 정상적으로 답변을 마쳤을 때의 값이라 요약 블록이 왔다는 신호가 아닙니다.\n\n{{option:D}} (오답, 없는 파라미터): `summarize`라는 최상위 파라미터는 없고, `pause_turn`은 서버 도구 사용 중 턴이 멈췄을 때의 값입니다.\n\n{{option:E}} (오답, 다른 회사 SDK): `truncation`은 OpenAI Responses API의 입력 자르기 옵션 이름이며, `max_tokens`는 출력 토큰 한도에 닿았다는 뜻입니다.\n\n**근거 문서**: Claude API Compaction on demand › Request, Placing the block in the next request, Compaction loop · Claude API Compaction at a token threshold › Basic usage (SDK 버전: anthropic 1.15.0)",
+      "sourceId": "CODE-20261020-Q18",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L3",
+        "컨텍스트와 메모리 관리",
+        "문서 요약",
+        "토큰 관리",
+        "API 활용",
+        "에이전트",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 119,
+      "title": "이전 턴을 보지 않는 요약 에이전트와 상태 전달",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L2",
+      "prompt": "Google ADK(Python)에서 한 세션에 여러 티켓이 쌓이는 상담 서비스를 운영합니다. 앱이 세션 상태 `ticket_text`에 현재 티켓을 넣어 두고, `summarizer`가 이를 두 문장으로 요약하면 이어서 `responder`가 그 요약으로 답변 초안을 씁니다(두 에이전트는 이 순서로 실행됩니다). `summarizer`는 앞선 티켓의 대화 이력을 모델에 보내지 않아야 하고, 요약 결과는 입력 상태를 덮어쓰지 않으면서 `responder`의 지침에 주입되어야 합니다.\n\n```python\nsummarizer = LlmAgent(\n    name=\"summarizer\",\n    model=\"gemini-flash-latest\",\n    instruction=\"Summarize this ticket in two sentences: {ticket_text}\",\n    include_contents=[A],\n    output_key=[B],\n)\nresponder = LlmAgent(\n    name=\"responder\",\n    model=\"gemini-flash-latest\",\n    instruction=\"Draft a reply based on this summary: {ticket_summary}\",\n)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"default\"`, [B] = `\"ticket_summary\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"none\"`, [B] = `\"summarizer\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"none\"`, [B] = `\"ticket_text\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"none\"`, [B] = `\"ticket_summary\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `False`, [B] = `\"ticket_summary\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "`include_contents=\"none\"`이면 에이전트는 이전 대화 이력 없이 현재 지침과 현재 턴의 입력만으로 동작하므로, 이전 티켓 내용이 모델에 전달되지 않습니다. 지침의 `{ticket_text}`는 세션 상태 값이 주입되는 템플릿이라 이력 없이도 현재 티켓을 볼 수 있습니다. `output_key`는 에이전트의 최종 응답을 그 이름의 상태 키에 저장하므로, `responder`의 `{ticket_summary}`가 해석되려면 같은 이름이어야 하고 입력 키와 달라야 합니다.\n\n{{option:A}} (오답, 이력 전달): `\"default\"`는 관련 대화 이력을 모델에 보내므로 앞선 티켓이 섞입니다.\n\n{{option:B}} (오답, 키 불일치): 상태 키는 에이전트 이름이 아니라 `output_key`로 정합니다. `\"summarizer\"`에 저장되면 `{ticket_summary}`가 상태에 없어 `responder`가 오류를 냅니다.\n\n{{option:C}} (오답, 입력 덮어쓰기): `\"ticket_text\"`에 저장하면 입력 티켓 원문이 요약으로 바뀌고, `{ticket_summary}`는 여전히 없습니다.\n\n{{option:D}} (정답): 이력 제외와 새 상태 키 저장이 모두 충족됩니다.\n\n{{option:E}} (오답, 허용되지 않는 값): `include_contents`는 `'default'` 또는 `'none'`만 받으므로 `False`는 유효하지 않습니다.\n\n**근거 문서**: ADK LLM agents › include_contents, Instruction templating · ADK State › output_key, Accessing state in instructions (SDK 버전: google-adk 2.12.0)",
+      "sourceId": "CODE-20261020-Q19",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "컨텍스트와 메모리 관리",
+        "문서 요약",
+        "에이전트",
+        "최신 정보 확인",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 120,
+      "title": "원격 MCP 서버에서 쓰기 도구만 승인받기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L3",
+      "prompt": "OpenAI Agents SDK(Python)에서 호스티드 MCP 도구로 CRM 원격 MCP 서버를 연결합니다. 이 서버에는 읽기 전용 도구 `get_account`, `list_orders`와 쓰기 도구 `update_record`가 있습니다. 읽기 도구는 승인 없이 실행되고, `update_record`는 앱의 승인 함수가 허용한 경우에만 실행되어야 합니다. 승인 함수는 이 도구 설정에서 지정합니다.\n\n```python\nfrom agents import HostedMCPTool, MCPToolApprovalFunctionResult, MCPToolApprovalRequest\n\ndef approve(req: MCPToolApprovalRequest) -> MCPToolApprovalFunctionResult:\n    ok = req.data.name == \"update_record\" and change_ticket_is_open()\n    return {\"approve\": ok}\n\ncrm = HostedMCPTool(\n    tool_config={\n        \"type\": \"mcp\",\n        \"server_label\": \"crm\",\n        \"server_url\": CRM_URL,\n        \"require_approval\": {[A]: {\"tool_names\": [\"get_account\", \"list_orders\"]}},\n    },\n    [B]=approve,\n)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"always\"`, [B] = `on_approval_request`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"never\"`, [B] = `needs_approval`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"never\"`, [B] = `on_approval_request`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"never\"`, [B] = `tool_filter`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"auto\"`, [B] = `on_approval_request`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "호스티드 MCP는 도구 호출이 OpenAI 인프라에서 일어나며, 기본값은 서버로 데이터를 보내기 전에 승인을 요청하는 것입니다. `require_approval`을 객체 형태로 주면 `\"never\"` 아래에 나열한 도구만 승인을 건너뛰므로, 읽기 전용 도구를 `\"never\"`에 넣으면 나머지인 `update_record`만 승인 요청이 발생합니다. 이 승인 요청을 앱 코드로 판단하게 하는 것이 `HostedMCPTool`의 `on_approval_request` 콜백입니다.\n\n{{option:A}} (오답, 요구 위반): `\"always\"` 아래에 읽기 도구를 넣으면 읽기 도구까지 승인을 요구하게 되어 \"읽기 도구는 승인 없이\" 조건을 어깁니다.\n\n{{option:B}} (오답, 없는 파라미터): `needs_approval`은 `function_tool`·`Agent.as_tool`의 파라미터이며 `HostedMCPTool`에는 없습니다.\n\n{{option:C}} (정답): `\"never\"`로 읽기 도구만 승인에서 제외하고 `on_approval_request`로 쓰기 도구 승인을 판단합니다.\n\n{{option:D}} (오답, 다른 대상): `tool_filter`는 로컬에서 도는 MCP 서버 클래스(`MCPServerStreamableHttp` 등)의 도구 필터이고 승인 함수를 받지 않습니다.\n\n{{option:E}} (오답, 허용되지 않는 값): `require_approval`은 `\"always\"`, `\"never\"` 또는 `\"never\"`/`\"always\"` 아래에 `tool_names`를 두는 객체를 받고 `\"auto\"`는 없습니다.\n\n**근거 문서**: OpenAI Agents SDK MCP › Hosted MCP server tools, Optional approval flows · OpenAI API Remote MCP and Connectors › Approvals (SDK 버전: openai-agents 0.24.0)",
+      "sourceId": "CODE-20261020-Q20",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L3",
+        "도구 설계와 상호운용 프로토콜",
+        "MCP 연동",
+        "사람의 승인",
+        "에이전트",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 121,
+      "title": "SDK 내장 MCP 서버의 도구 이름과 병렬 실행",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L2",
+      "prompt": "Claude Agent SDK(Python)에서 지연 시간을 조회하는 사용자 정의 도구를 프로세스 안 MCP 서버로 제공합니다. 이 도구는 상태를 바꾸지 않으므로 승인 프롬프트 없이 실행되고, Claude가 서비스 여러 개를 동시에 조회할 수 있어야 합니다.\n\n```python\n@tool(\n    \"get_p95\",\n    \"Get p95 latency for a service\",\n    {\"service\": str},\n    annotations=ToolAnnotations([B]=True),\n)\nasync def get_p95(args):\n    return {\"content\": [{\"type\": \"text\", \"text\": lookup(args[\"service\"])}]}\n\nmetrics = create_sdk_mcp_server(name=\"metrics\", tools=[get_p95])\noptions = ClaudeAgentOptions(\n    mcp_servers={\"obs\": metrics},\n    allowed_tools=[[A]],\n)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"mcp__metrics__get_p95\"`, [B] = `readOnlyHint`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"mcp__obs__get_p95\"`, [B] = `idempotentHint`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"mcp__obs__get_p95\"`, [B] = `parallel_tool_calls`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"obs.get_p95\"`, [B] = `readOnlyHint`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"mcp__obs__get_p95\"`, [B] = `readOnlyHint`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "MCP 도구의 정규화된 이름은 `mcp__{서버 이름}__{도구 이름}`이며, 여기서 서버 이름은 `create_sdk_mcp_server(name=...)`가 아니라 `mcp_servers` 딕셔너리에 준 키(`obs`)입니다. 병렬 실행은 도구 어노테이션의 `readOnlyHint=True`로 상태를 바꾸지 않음을 알릴 때 읽기 전용 도구끼리 가능해집니다.\n\n{{option:A}} (오답, 서버 이름 혼동): `metrics`는 `create_sdk_mcp_server`에 준 이름이고, 도구 이름에 쓰이는 것은 `mcp_servers`의 키 `obs`입니다.\n\n{{option:B}} (오답, 효과 없음): `idempotentHint`는 반복 호출이 추가 효과가 없다는 정보용 힌트이며 병렬 실행을 제어하지 않습니다.\n\n{{option:C}} (오답, 다른 회사 SDK): `parallel_tool_calls`는 OpenAI 쪽 모델 설정 이름으로, `ToolAnnotations`의 정의된 필드가 아니며 병렬 실행에 영향을 주지 못합니다.\n\n{{option:D}} (오답, 형식 오류): MCP 도구 이름은 점 표기가 아니라 `mcp__서버__도구` 형식이어서 `allowed_tools`와 일치하지 않습니다.\n\n{{option:E}} (정답): 키 `obs` 기반 이름과 `readOnlyHint`가 맞습니다.\n\n**근거 문서**: Claude Agent SDK › Give Claude custom tools › Call a custom tool, Add tool annotations · Claude Agent SDK › Connect MCP servers › Tool naming convention (SDK 버전: claude-agent-sdk 0.2.168)",
+      "sourceId": "CODE-20261020-Q21",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "도구 설계와 상호운용 프로토콜",
+        "MCP 연동",
+        "프롬프트 작성",
+        "에이전트",
+        "사람의 승인",
+        "지연 시간",
+        "성과 측정"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 122,
+      "title": "승인 없이 실행되는 파일 쓰기를 실행 전에 차단하기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 4,
+      "difficulty": "L2",
+      "prompt": "Claude Agent SDK(Python)로 무인 실행되는 코드 수정 에이전트를 운영합니다. `Write`와 `Edit`은 `allowed_tools`에 있어 승인 프롬프트 없이 실행됩니다. 이 설정에서도 `.env` 파일에 대한 쓰기는 도구가 실행되기 전에 거부되어야 하고, 거부 사유는 Claude에게 전달되어야 합니다.\n\n```python\nasync def block_env_write(input_data, tool_use_id, context):\n    path = input_data[\"tool_input\"].get(\"file_path\", \"\")\n    if path.endswith(\".env\"):\n        return {\"hookSpecificOutput\": {\n            \"hookEventName\": input_data[\"hook_event_name\"],\n            [B]: \"deny\",\n            \"permissionDecisionReason\": \"Cannot modify .env files\",\n        }}\n    return {}\n\noptions = ClaudeAgentOptions(\n    allowed_tools=[\"Read\", \"Write\", \"Edit\"],\n    hooks={[A]: [HookMatcher(matcher=\"Write|Edit\", hooks=[block_env_write])]},\n)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"PostToolUse\"`, [B] = `permissionDecision`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"PreToolUse\"`, [B] = `permissionDecision`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"PreToolUse\"`, [B] = `decision`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"PermissionRequest\"`, [B] = `permissionDecision`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"before_tool_callback\"`, [B] = `permissionDecision`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "`PreToolUse` 훅은 도구 호출 요청 직후 도구가 실행되기 전에 불리며, `hookSpecificOutput` 안의 `permissionDecision`을 `\"deny\"`로 반환하면 호출이 막히고 `permissionDecisionReason`이 Claude에게 거부 메시지로 전달됩니다. 이 차단은 `allowed_tools` 자동 승인과 무관하게 먼저 적용되므로 무인 실행에서도 유효합니다. `matcher`는 도구 이름만 거르므로 파일 경로 검사는 콜백 안에서 합니다.\n\n{{option:A}} (오답, 너무 늦음): `PostToolUse`는 도구가 이미 실행된 뒤의 훅이라 파일이 이미 써집니다.\n\n{{option:B}} (정답): 실행 전 훅과 `permissionDecision` 필드가 맞습니다.\n\n{{option:C}} (오답, 인식되지 않는 필드): `PreToolUse`의 `hookSpecificOutput`이 읽는 결정 필드는 `permissionDecision`이며, 그 안의 `decision`은 인식되지 않아 훅이 아무 효과를 내지 못합니다.\n\n{{option:D}} (오답, 발동 안 함): `PermissionRequest`는 권한 판단이 필요한 호출에서만 불리는데, 이 도구들은 이미 자동 승인되어 훅이 호출되지 않습니다.\n\n{{option:E}} (오답, 다른 회사 SDK): `before_tool_callback`은 Google ADK의 콜백 이름이고 Claude Agent SDK의 `hooks` 키가 아닙니다.\n\n**근거 문서**: Claude Agent SDK › Intercept and control agent behavior with hooks › How hooks work, Matchers, Outputs · Claude Agent SDK › How the agent loop works › Hooks (SDK 버전: claude-agent-sdk 0.2.168)",
+      "sourceId": "CODE-20261020-Q22",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "안전한 실행과 사람 개입",
+        "사람의 승인",
+        "프롬프트 작성",
+        "맥락 관리",
+        "에이전트",
+        "권한 관리",
+        "코딩 지원"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 123,
+      "title": "금액이 큰 환불만 사람 확인을 받기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 4,
+      "difficulty": "L2",
+      "prompt": "Google ADK(Python)의 환불 에이전트가 `issue_refund` 도구를 호출합니다. 금액이 1,000을 넘는 호출은 실행 전에 사람의 확인을 받아야 하고, 그 이하는 확인 없이 바로 실행되어야 합니다. 확인 필요 여부는 도구 입력값으로 판단하는 함수가 정하며, 함수가 참을 반환하면 확인을 요청합니다.\n\n```python\nfrom google.adk.agents import LlmAgent\nfrom google.adk.tools import FunctionTool, ToolContext\n\nasync def needs_confirmation(amount: int, tool_context: ToolContext) -> bool:\n    return [A]\n\ndef issue_refund(amount: int, order_id: str) -> dict:\n    \"\"\"Refund an order.\"\"\"\n    return {\"status\": \"refunded\", \"amount\": amount}\n\nrefund_agent = LlmAgent(\n    name=\"refund_agent\",\n    model=\"gemini-flash-latest\",\n    tools=[FunctionTool(issue_refund, [B]=needs_confirmation)],\n)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `amount > 1000`, [B] = `require_confirmation`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `amount <= 1000`, [B] = `require_confirmation`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `amount > 1000`, [B] = `needs_approval`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `amount > 1000`, [B] = `before_tool_callback`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `amount <= 1000`, [B] = `needs_approval`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "ADK의 `FunctionTool`은 `require_confirmation`에 불리언 또는 함수를 받습니다. 함수를 주면 도구 입력값(예: `amount`)으로 호출되고, 참을 반환할 때만 실행 전에 확인 요청이 발생합니다. 따라서 1,000 초과일 때 참을 반환하는 `amount > 1000`을 `require_confirmation`에 연결합니다.\n\n{{option:A}} (정답): 참일 때 확인을 요구하므로 초과 조건이 맞고, 파라미터 이름도 `require_confirmation`입니다.\n\n{{option:B}} (오답, 극성 반대): `amount <= 1000`이면 소액만 확인을 요구하고 고액은 바로 실행됩니다.\n\n{{option:C}} (오답, 다른 회사 SDK): `needs_approval`은 OpenAI Agents SDK `function_tool`의 파라미터이며 ADK `FunctionTool`에는 없어 `TypeError`가 납니다.\n\n{{option:D}} (오답, 다른 위치): `before_tool_callback`은 `FunctionTool`이 아니라 `LlmAgent`에 다는 콜백이며 시그니처도 `(tool, args, tool_context)`로 다릅니다.\n\n{{option:E}} (오답, 두 가지 모두 틀림): 조건이 반대이고 파라미터도 ADK에 없는 이름입니다.\n\n**근거 문서**: ADK Tool confirmation › Boolean confirmation, Advanced confirmation with a callable (SDK 버전: google-adk 2.12.0)",
+      "sourceId": "CODE-20261020-Q23",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "안전한 실행과 사람 개입",
+        "최신 정보 확인",
+        "맥락 관리",
+        "에이전트",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 124,
+      "title": "핸드오프를 넘나드는 도구 호출 계측",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 5,
+      "difficulty": "L2",
+      "prompt": "OpenAI Agents SDK(Python)에서 트리아지 에이전트가 전문 에이전트로 핸드오프하는 서비스입니다. 어느 에이전트에서 도구가 끝나든 에이전트 이름, 도구 이름, 그 시점까지 누적된 총 토큰을 한 곳에서 로그로 남기려 합니다. 훅 객체는 실행 호출에서 한 번만 전달합니다.\n\n```python\nclass Metrics([A]):\n    async def on_tool_end(self, context, agent, tool, result):\n        log.info(\"%s %s %d\", agent.name, tool.name, context.usage.total_tokens)\n\nresult = await Runner.run(triage_agent, user_text, [B]=Metrics())\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `AgentHooks`, [B] = `hooks`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `RunHooks`, [B] = `run_hooks`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `TracingProcessor`, [B] = `hooks`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `RunHooks`, [B] = `hooks`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `RunHooks`, [B] = `run_config`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "`RunHooks`는 실행 전체의 수명주기 이벤트(에이전트 시작·종료, LLM 호출, 도구 시작·종료, 핸드오프)를 한 객체에서 받으며 `Runner.run(..., hooks=...)`로 전달합니다. 핸드오프로 에이전트가 바뀌어도 같은 훅 객체가 호출되고, `context.usage`에 실행 중 누적 사용량이 담깁니다. 반면 `AgentHooks`는 개별 에이전트의 `hooks`에 붙입니다.\n\n{{option:A}} (오답, 범위 불일치): `AgentHooks`는 `Agent(..., hooks=...)`에 붙이는 에이전트 단위 훅이어서 실행 호출에 넘기면 `RunHooks` 인스턴스가 아니라는 `TypeError`가 납니다.\n\n{{option:B}} (오답, 없는 파라미터): `Runner.run`의 파라미터 이름은 `run_hooks`가 아니라 `hooks`입니다.\n\n{{option:C}} (오답, 다른 종류): `TracingProcessor`는 트레이스·스팬을 내보내는 처리기이며 `on_tool_end` 훅 메서드를 정의하지 않습니다.\n\n{{option:D}} (정답): 실행 단위 훅 클래스 `RunHooks`를 `hooks`로 전달합니다.\n\n{{option:E}} (오답, 잘못된 위치): `RunConfig`에는 훅 객체를 받는 설정이 없고 `run_config`에 `Metrics`를 넘기면 맞지 않습니다.\n\n**근거 문서**: OpenAI Agents SDK Lifecycle › RunHooks, AgentHooks · OpenAI Agents SDK Running agents › Runner.run options (SDK 버전: openai-agents 0.24.0)",
+      "sourceId": "CODE-20261020-Q24",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "평가와 관측",
+        "도구 호출",
+        "맥락 관리",
+        "토큰 관리",
+        "에이전트",
+        "로그와 추적",
+        "성과 측정"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 125,
+      "title": "도구 호출 순서와 의미 일치를 함께 평가하기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 5,
+      "difficulty": "L3",
+      "prompt": "Google ADK(Python)로 환불 에이전트를 평가합니다. 에이전트는 반드시 `verify_identity`를 `issue_refund`보다 먼저 호출해야 하며, 그 사이나 앞뒤에 `lookup_order` 같은 다른 도구를 호출하는 것은 허용합니다. 최종 답변은 표현이 달라도 기준 응답과 의미가 같으면 통과해야 합니다. 평가 세트 폴더에는 `test_config.json`이 있습니다.\n\n```python\nimport json, pathlib\nfrom google.adk.evaluation.agent_evaluator import AgentEvaluator\n\nconfig = {\"criteria\": {\n    \"tool_trajectory_avg_score\": {\"threshold\": 1.0, \"match_type\": [A]},\n    [B]: 0.8,\n}}\npathlib.Path(\"refund_agent/evals/test_config.json\").write_text(json.dumps(config))\n\nasync def main():\n    await AgentEvaluator.evaluate(\n        agent_module=\"refund_agent\",\n        eval_dataset_file_path_or_dir=\"refund_agent/evals/\",\n    )\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"EXACT\"`, [B] = `\"final_response_match_v2\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"IN_ORDER\"`, [B] = `\"final_response_match_v2\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"ANY_ORDER\"`, [B] = `\"final_response_match_v2\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"IN_ORDER\"`, [B] = `\"response_match_score\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"IN_ORDER\"`, [B] = `\"hallucinations_v1\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "`tool_trajectory_avg_score`의 `match_type`은 `EXACT`(추가·누락 호출 없이 완전 일치), `IN_ORDER`(기대 호출이 순서대로 나타나면 되고 사이의 다른 호출은 허용), `ANY_ORDER`(순서 무관)가 있습니다. 필수 호출의 순서는 지키되 다른 호출은 허용하는 요구는 `IN_ORDER`입니다. 의미 일치는 LLM 심사로 기준 응답과 의미가 같은지 보는 `final_response_match_v2`가 맞고, `response_match_score`는 ROUGE-1 단어 겹침이라 표현이 바뀌면 점수가 떨어집니다.\n\n{{option:A}} (오답, 너무 엄격): `EXACT`는 `lookup_order` 같은 추가 호출이 있으면 실패합니다.\n\n{{option:B}} (정답): 순서가 있는 부분 일치와 의미 일치 기준이 맞습니다.\n\n{{option:C}} (오답, 순서 미검증): `ANY_ORDER`는 `issue_refund`가 먼저 호출되어도 통과해 \"신원 확인이 먼저\" 조건을 검증하지 못합니다.\n\n{{option:D}} (오답, 표현에 민감): `response_match_score`는 ROUGE-1 기반이라 같은 의미의 다른 표현을 거짓 실패로 판정합니다.\n\n{{option:E}} (오답, 다른 목적): `hallucinations_v1`은 답변이 도구 출력 같은 컨텍스트에 근거했는지 보는 기준이며 기준 응답과의 의미 일치를 판정하지 않습니다.\n\n**근거 문서**: ADK Evaluation criteria › tool_trajectory_avg_score, response_match_score, final_response_match_v2, hallucinations_v1 · ADK Evaluate agents › test_config.json (SDK 버전: google-adk 2.12.0)",
+      "sourceId": "CODE-20261020-Q25",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L3",
+        "평가와 관측",
+        "평가 설계",
+        "도구 호출",
+        "에이전트",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 126,
+      "title": "최대 턴을 넘기면 예외 대신 대체 응답 반환하기",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 6,
+      "difficulty": "L3",
+      "prompt": "OpenAI Agents SDK(Python)의 리서치 에이전트는 매 라운드마다 모델이 도구를 호출하고(병렬 호출 포함) 결과를 받는 순차 도구 라운드를 최대 3번까지 허용합니다. 3번의 도구 라운드 뒤에는 최종 답변을 내는 호출이 한 번 더 필요합니다. 네 번째 도구 라운드가 필요해지면 예외를 던지지 말고 고정 안내문을 최종 출력으로 돌려줘야 합니다.\n\n```python\nfrom agents import Agent, Runner, RunErrorHandlerInput, RunErrorHandlerResult\n\ndef on_limit(data: RunErrorHandlerInput[None]) -> RunErrorHandlerResult:\n    return RunErrorHandlerResult(final_output=\"Request too broad. Please narrow it.\")\n\nresult = await Runner.run(\n    research_agent,\n    user_request,\n    max_turns=[A],\n    error_handlers={[B]: on_limit},\n)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `4`, [B] = `\"max_turns\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `3`, [B] = `\"max_turns\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `4`, [B] = `\"MaxTurnsExceeded\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `5`, [B] = `\"max_turns\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `3`, [B] = `\"MaxTurnsExceeded\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Agents SDK의 `max_turns`는 에이전트 루프의 LLM 호출 횟수를 셉니다. 도구 라운드 3번이면 LLM 호출이 3번, 최종 답변 호출이 1번이라 4번이 필요하므로 `max_turns=4`이며, 모델이 네 번째 도구 라운드를 요청하면 다섯 번째 호출이 한도를 넘어 처리기가 실행됩니다. 처리기는 `error_handlers` 딕셔너리에서 오류 종류 키 `\"max_turns\"`로 등록합니다.\n\n{{option:A}} (정답): 도구 라운드 3번과 최종 답변 1번을 허용하고 네 번째 도구 라운드는 처리기로 보냅니다.\n\n{{option:B}} (오답, 한도 부족): `3`이면 세 번째 도구 라운드 뒤의 최종 답변 호출이 네 번째 턴이어서 정상 실행이 대체 응답으로 바뀝니다.\n\n{{option:C}} (오답, 잘못된 키): `error_handlers`의 키는 `\"max_turns\"`, `\"model_refusal\"`, `\"invalid_final_output\"`이며 예외 클래스 이름은 키가 아니라서 처리기가 등록되지 않고 `MaxTurnsExceeded`가 그대로 발생합니다.\n\n{{option:D}} (오답, 한도 과다): `5`이면 네 번째 도구 라운드와 그 뒤 최종 호출까지 허용되어 \"3번까지\" 조건을 어깁니다.\n\n{{option:E}} (오답, 두 가지 모두 틀림): 한도가 부족하고 키도 잘못되어 있습니다.\n\n**근거 문서**: OpenAI Agents SDK Running agents › Max turns, Error handlers · OpenAI Agents SDK Exceptions › MaxTurnsExceeded (SDK 버전: openai-agents 0.24.0)",
+      "sourceId": "CODE-20261020-Q26",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "코드 빈칸",
+        "단일 선택",
+        "L3",
+        "배포와 운영",
+        "에이전트",
+        "검색 품질",
+        "오류 대응",
+        "리서치",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
     }
   ],
   "nameKo": "에이전트 엔지니어링"

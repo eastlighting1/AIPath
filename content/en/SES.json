@@ -5146,6 +5146,293 @@
         "version": 1,
         "method": "rule-based-draft"
       }
+    },
+    {
+      "id": 99,
+      "title": "Moderating retrieved text",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L1",
+      "prompt": "Screen web text with OpenAI Moderation before passing it to a research agent. Return True when it passes and False for potentially harmful content.\n\n```python\nfrom openai import OpenAI\n\nclient = OpenAI()\n\ndef passes_screen(text: str) -> bool:\n    resp = client.moderations.create(\n        model=\"omni-moderation-latest\",\n        input=text,\n    )\n    result = resp.[A]\n    return not result.[B]\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `results`, [B] = `flagged`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `data[0]`, [B] = `flagged`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `results[0]`, [B] = `flagged`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `results[0]`, [B] = `categories`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `results[0]`, [B] = `blocked`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "The response has id, model and results. Each results item contains flagged, categories and category_scores. For one input, inspect results[0].flagged.\n\n{{option:A}} (Incorrect): results is a list with no flagged attribute.\n\n{{option:B}} (Incorrect): data is an embeddings-style field absent from moderation.\n\n{{option:C}} (Correct): results[0].flagged is the overall boolean decision.\n\n{{option:D}} (Incorrect): categories is an object, so negating it rejects all inputs rather than checking the overall flag.\n\n{{option:E}} (Incorrect): blocked is not a response field.",
+      "sourceId": "CODE-20261020-Q27",
+      "sourceReference": "OpenAI API Docs › Moderation › Quickstart · OpenAI API Docs › Moderation › The moderation endpoint (SDK 버전: openai 3.35.1)",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Code completion",
+        "Single choice",
+        "L1",
+        "Prompt injection and jailbreak defense",
+        "Agents",
+        "Retrieval quality",
+        "Current information",
+        "API usage",
+        "Research",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 100,
+      "title": "Separating external page content in tool results",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L3",
+      "prompt": "An Anthropic agent called fetch_page. Return potentially attacker-controlled page text with clear source and content boundaries, outside the system prompt and ordinary text. Keep developer summarization instructions in a separate block.\n\n```python\ntu = next(b for b in resp.content if b.type == \"tool_use\")\nurl = tu.input[\"url\"]\npage = fetch_page(url)\nfollowup = client.messages.create(\n    model=MODEL, max_tokens=1024, system=POLICY, tools=TOOLS,\n    messages=[\n        {\"role\": \"user\", \"content\": question},\n        {\"role\": \"assistant\", \"content\": resp.content},\n        {\"role\": \"user\", \"content\": [\n            {\"type\": [A], \"tool_use_id\": tu.id, \"content\": [B]},\n            {\"type\": \"text\", \"text\": \"Summarize the page above in three lines.\"},\n        ]},\n    ],\n)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"tool_result\"`, [B] = `json.dumps({\"source\": url, \"text\": page})`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"text\"`, [B] = `f\"<page>{page}</page>\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"tool_result\"`, [B] = `page + \"\\n\\nSummarize in three lines.\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"tool_use\"`, [B] = `json.dumps({\"source\": url, \"text\": page})`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"input_text\"`, [B] = `page`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Place third-party text in tool_result, JSON-encoded with source metadata. Match it through tool_use_id and put developer instructions in a separate text block after the result.\n\n{{option:A}} (Correct): The result contains source/text JSON and the instructions are separate.\n\n{{option:B}} (Incorrect): text is the wrong block and cannot accept tool_use_id. Attackers can imitate closing tags; JSON escaping provides clearer boundaries.\n\n{{option:C}} (Incorrect): Appending instructions to untrusted content makes their boundary ambiguous.\n\n{{option:D}} (Incorrect): tool_use is the assistant call request, not its result.\n\n{{option:E}} (Incorrect): input_text is an OpenAI Responses format.",
+      "sourceId": "CODE-20261020-Q28",
+      "sourceReference": "Anthropic Docs › Mitigate jailbreaks and prompt injections › Prompt injection(Put untrusted content only in tool results, JSON-encode untrusted content, Don't put your own instructions in tool results) · Anthropic Docs › Tool use › Handle tool calls (SDK 버전: anthropic 1.15.0)",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Code completion",
+        "Single choice",
+        "L3",
+        "Prompt injection and jailbreak defense",
+        "Source verification",
+        "Prompt writing",
+        "Token management",
+        "Document summarization",
+        "Agents",
+        "Coding assistance"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 101,
+      "title": "Denying write tools with a hook",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L2",
+      "prompt": "Create a read-only Claude Agent SDK inspection session. Deny Write and Edit before any modification, without prompting the user.\n\n```python\nfrom claude_agent_sdk import ClaudeAgentOptions, HookMatcher\n\nasync def deny_writes(input_data, tool_use_id, context):\n    return {\n        \"hookSpecificOutput\": {\n            \"hookEventName\": input_data[\"hook_event_name\"],\n            \"permissionDecision\": [B],\n            \"permissionDecisionReason\": \"This is a read-only session\",\n        }\n    }\n\noptions = ClaudeAgentOptions(\n    hooks={[A]: [HookMatcher(matcher=\"Write|Edit\", hooks=[deny_writes])]}\n)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"PostToolUse\"`, [B] = `\"deny\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"PreToolUse\"`, [B] = `\"block\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"UserPromptSubmit\"`, [B] = `\"deny\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"PreToolUse\"`, [B] = `\"ask\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"PreToolUse\"`, [B] = `\"deny\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "PreToolUse intercepts calls. Return permissionDecision and a reason inside hookSpecificOutput. The Write|Edit matcher filters tool names; deny blocks execution.\n\n{{option:A}} (Incorrect): PostToolUse runs after the write.\n\n{{option:B}} (Incorrect): block is not valid; the supplied reference lists allow, deny, ask and defer.\n\n{{option:C}} (Incorrect): UserPromptSubmit is not a per-tool event.\n\n{{option:D}} (Incorrect): ask prompts for approval instead of always denying.\n\n{{option:E}} (Correct): Use PreToolUse with deny.",
+      "sourceId": "CODE-20261020-Q29",
+      "sourceReference": "Claude Agent SDK Docs › Hooks › Configure hooks, Outputs, Add context and block a tool (SDK 버전: claude-agent-sdk 0.2.168)",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "Agent and tool security",
+        "Context management",
+        "Agents",
+        "Access control",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 102,
+      "title": "Blocking ADK write tools",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L2",
+      "prompt": "Create a Google ADK order-query agent. In read-only mode, block update_order and cancel_order but permit all other tools. The callback runs immediately before execution.\n\n```python\nfrom google.adk.agents import LlmAgent\n\nWRITE_TOOLS = {\"update_order\", \"cancel_order\"}\n\ndef guard(tool, args, tool_context):\n    if tool.name in WRITE_TOOLS:\n        return {\"error\": \"Writes are not allowed in read-only mode.\"}\n    return [B]\n\nagent = LlmAgent(\n    name=\"orders\", model=\"gemini-flash-latest\",\n    tools=[get_order, update_order, cancel_order],\n    [A]=guard,\n)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `before_model_callback`, [B] = `None`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `before_tool_callback`, [B] = `None`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `before_tool_callback`, [B] = `{}`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `pre_tool_use`, [B] = `None`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `after_tool_callback`, [B] = `None`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "before_tool_callback takes tool, args and tool_context. Returning a dictionary skips run_async and substitutes the result; returning None allows execution. Even an empty dictionary overrides execution.\n\n{{option:A}} (Incorrect): before_model_callback runs before the model and has a different signature.\n\n{{option:B}} (Correct): Use before_tool_callback and None on the allowed path.\n\n{{option:C}} (Incorrect): An empty dictionary prevents even read tools from executing.\n\n{{option:D}} (Incorrect): pre_tool_use is not an ADK LlmAgent parameter.\n\n{{option:E}} (Incorrect): after_tool_callback is too late to block a write.",
+      "sourceId": "CODE-20261020-Q30",
+      "sourceReference": "Agent Development Kit Docs › Callbacks: Observe, Customize, and Control Agent Behavior › Before Tool Callback · Agent Development Kit Docs › Callbacks › Design Patterns and Best Practices(Guardrails) (SDK 버전: google-adk 2.12.0)",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Code completion",
+        "Single choice",
+        "L2",
+        "Agent and tool security",
+        "Agents",
+        "Tool calling",
+        "Current information",
+        "Context management",
+        "Error handling",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 103,
+      "title": "Continuing without stored responses",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 4,
+      "difficulty": "L3",
+      "prompt": "Make a two-turn OpenAI Responses conversation with a reasoning model. Disable response storage for privacy and pass the first output history, including reasoning items, into the second request.\n\n```python\nopts = {\"model\": MODEL, \"reasoning\": {\"effort\": \"low\"}, \"store\": [A]}\nhistory = [{\"role\": \"user\", \"content\": \"Explain the refund policy.\"}]\n\nfirst = client.responses.create(input=history, **opts)\nhistory += [B]\nhistory.append({\"role\": \"user\", \"content\": \"What about partial refunds?\"})\n\nsecond = client.responses.create(input=history, **opts)\nprint(second.output_text)\n```\n\nWhich values correctly fill [A] and [B]?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `True`, [B] = `first.output`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `False`, [B] = `first.output_text`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `False`, [B] = `[first.id]`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `False`, [B] = `first.output`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `True`, [B] = `first.output_text`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "The supplied source states responses are stored for 30 days by default. store=false disables response storage. For stateless operation, resend the complete output array including reasoning items. previous_response_id relies on stored responses.\n\n{{option:A}} (Incorrect): True enables storage, violating the requirement.\n\n{{option:B}} (Incorrect): output_text is a string: list extension splits it into characters and omits reasoning items.\n\n{{option:C}} (Incorrect): A response ID is not the required input history and depends on storage.\n\n{{option:D}} (Correct): Use False and all first.output items.\n\n{{option:E}} (Incorrect): Storage is enabled and reasoning items are omitted.",
+      "sourceId": "CODE-20261020-Q31",
+      "sourceReference": "OpenAI API Docs › Reasoning models › Preserve reasoning without stored responses · OpenAI API Docs › Conversation state › Manually manage conversation state (SDK 버전: openai 3.35.1)",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Code completion",
+        "Single choice",
+        "L3",
+        "Data protection",
+        "Reasoning models",
+        "API usage",
+        "Privacy",
+        "Regulation and compliance",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
     }
   ],
   "nameKo": "보안 엔지니어링"

@@ -4423,6 +4423,289 @@
         "version": 1,
         "method": "rule-based-draft"
       }
+    },
+    {
+      "id": 86,
+      "title": "벡터 인덱스 차원에 맞춘 OpenAI 임베딩 생성",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L1",
+      "prompt": "사내 문서 검색 서비스의 벡터 DB 인덱스가 256차원으로 고정되어 있습니다. 팀은 OpenAI Python SDK로 임베딩을 만들 때, 3072나 1536차원 벡터를 받아 직접 잘라 쓰지 않고 API 요청 단계에서 출력 차원을 줄이려 합니다.\n\n- 사용 모델은 출력 벡터를 짧게 줄여도 의미 표현이 유지되도록 학습된 임베딩 모델이어야 합니다.\n\n```python\nfrom openai import OpenAI\n\nclient = OpenAI()\nresp = client.embeddings.create(\n    model=[A],\n    input=chunks,\n    [B]=256,\n)\nvectors = [d.embedding for d in resp.data]\nprint(len(vectors[0]))\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `text-embedding-ada-002`, [B] = `dimensions`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `text-embedding-3-small`, [B] = `dimensions`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `text-embedding-3-small`, [B] = `output_dimensionality`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `text-embedding-3-large`, [B] = `encoding_format`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `text-embedding-ada-002`, [B] = `output_dimensionality`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "OpenAI `embeddings.create`의 `dimensions` 파라미터는 출력 임베딩의 차원 수를 지정하며, `text-embedding-3` 이후 모델에서만 지원됩니다. 임베딩 가이드에 따르면 text-embedding-3-small과 text-embedding-3-large는 차원을 줄여도 개념 표현 특성을 잃지 않도록 학습되었고, 생성 시 `dimensions`를 쓰는 방식이 권장됩니다.\n\n{{option:A}} (오답, 모델 오류): text-embedding-ada-002는 `dimensions`를 지원하지 않는 이전 세대 모델입니다. 파라미터 이름은 맞지만 모델이 맞지 않습니다.\n\n{{option:B}} (정답): 차원 축소를 지원하는 text-embedding-3 계열 모델과 OpenAI의 파라미터 이름 `dimensions`가 모두 맞습니다.\n\n{{option:C}} (오답, 다른 회사 파라미터): `output_dimensionality`는 Google Gemini 임베딩(google-genai `EmbedContentConfig`)의 이름이며 OpenAI SDK의 `embeddings.create`에는 없는 인자입니다.\n\n{{option:D}} (오답, 다른 용도 파라미터): `encoding_format`은 `float` 또는 `base64` 같은 반환 형식을 정하는 인자이며 차원과 무관합니다. 256이라는 정수도 허용되지 않습니다.\n\n{{option:E}} (오답, 모델과 파라미터 모두 오류): ada-002는 차원 축소를 지원하지 않고, `output_dimensionality`도 OpenAI SDK의 인자가 아닙니다.\n\n**근거 문서**: OpenAI API Docs › Vector embeddings › Reducing embedding dimensions · OpenAI API Reference › Embeddings › Create embeddings (`dimensions`) (SDK 버전: openai 2.54.0)",
+      "sourceId": "CODE-20261020-Q32",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "코드 빈칸",
+        "단일 선택",
+        "L1",
+        "임베딩과 검색 모델",
+        "벡터 검색",
+        "OpenAI",
+        "API 활용",
+        "검색 품질",
+        "청킹"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 87,
+      "title": "Gemini 임베딩의 작업 유형(task type) 지정",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 2,
+      "difficulty": "L2",
+      "prompt": "고객 지원 센터는 Google Gen AI Python SDK(google-genai)의 `gemini-embedding-001` 모델로 FAQ 문서를 미리 임베딩해 벡터 DB에 색인합니다. 사용자가 자연어로 질문을 입력하면 같은 모델로 질문을 임베딩해 가장 가까운 문서를 찾습니다. 문서 쪽과 질문 쪽은 검색 용도에 맞게 서로 다른 작업 유형을 지정해야 합니다. 대상 문서는 코드가 아니라 일반 안내문입니다.\n\n```python\nfrom google import genai\nfrom google.genai import types\n\nclient = genai.Client()\ndoc_emb = client.models.embed_content(\n    model=\"gemini-embedding-001\",\n    contents=faq_articles,\n    config=types.EmbedContentConfig(task_type=[A]),\n)\nquery_emb = client.models.embed_content(\n    model=\"gemini-embedding-001\",\n    contents=user_question,\n    config=types.EmbedContentConfig(task_type=[B]),\n)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `\"SEMANTIC_SIMILARITY\"`, [B] = `\"SEMANTIC_SIMILARITY\"`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `\"RETRIEVAL_QUERY\"`, [B] = `\"RETRIEVAL_DOCUMENT\"`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `\"CLASSIFICATION\"`, [B] = `\"CLUSTERING\"`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `\"RETRIEVAL_DOCUMENT\"`, [B] = `\"RETRIEVAL_QUERY\"`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `\"RETRIEVAL_DOCUMENT\"`, [B] = `\"CODE_RETRIEVAL_QUERY\"`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "Gemini API 임베딩 가이드는 `gemini-embedding-001`에서 `task_type`으로 용도를 지정해 임베딩을 최적화할 수 있다고 설명합니다. 색인 대상 문서는 `RETRIEVAL_DOCUMENT`, 일반 검색 질의는 `RETRIEVAL_QUERY`를 씁니다. 문서와 질의를 서로 다른 유형으로 임베딩하는 비대칭 검색 구성입니다. 참고로 `gemini-embedding-2`는 `task_type` 필드를 쓸 수 없으므로 이 코드는 `gemini-embedding-001` 기준입니다.\n\n{{option:A}} (오답, 검색 용도 미지정): `SEMANTIC_SIMILARITY`는 추천이나 중복 탐지처럼 텍스트 간 유사도를 보는 용도입니다. 문서와 질의를 구분하는 검색 최적화가 아닙니다.\n\n{{option:B}} (오답, 순서 뒤바뀜): 문서를 질의 유형으로, 질의를 문서 유형으로 임베딩해 역할이 반대로 지정되었습니다.\n\n{{option:C}} (오답, 다른 용도): `CLASSIFICATION`은 감성이나 스팸 같은 사전 라벨 분류용, `CLUSTERING`은 유사 텍스트 묶기용입니다. 검색 질의/문서 쌍으로 쓰지 않습니다.\n\n{{option:D}} (정답): 문서는 `RETRIEVAL_DOCUMENT`, 질문은 `RETRIEVAL_QUERY`로 지정합니다.\n\n{{option:E}} (오답, 코드 검색용 질의): `CODE_RETRIEVAL_QUERY`는 자연어 질의로 코드 블록을 찾을 때 쓰는 유형이며, 일반 안내문 검색에는 맞지 않습니다.\n\n**근거 문서**: Gemini API Docs › Embeddings › Supported task types · Gemini API Docs › Embeddings › Embedding models (SDK 버전: google-genai 2.31.0)",
+      "sourceId": "CODE-20261020-Q33",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "임베딩과 검색 모델",
+        "벡터 검색",
+        "Gemini",
+        "검색 품질",
+        "코딩 지원",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 88,
+      "title": "Gemini 지도 파인튜닝 작업 생성 (학습·검증 데이터)",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L2",
+      "prompt": "팀은 Google Gen AI Python SDK(google-genai)로 Gemini Enterprise Agent Platform(구 Vertex AI)에서 지도 파인튜닝 작업을 만듭니다. 클라이언트는 `vertexai=True`로 초기화되어 있고 학습 파일과 별도 검증 파일은 Cloud Storage에 JSONL로 올려 두었습니다. 학습 데이터는 `tune()`의 `training_dataset`으로 넘기고, 검증 데이터와 학습 데이터 전체를 몇 번 반복할지는 `CreateTuningJobConfig` 안에서 지정하려 합니다.\n\n```python\nfrom google import genai\nfrom google.genai import types\n\nclient = genai.Client(vertexai=True, project=PROJECT_ID, location=\"us-central1\")\njob = client.tunings.tune(\n    base_model=BASE_MODEL,\n    training_dataset=types.TuningDataset(gcs_uri=\"gs://my-bucket/train.jsonl\"),\n    config=types.CreateTuningJobConfig(\n        [A]=types.TuningValidationDataset(gcs_uri=\"gs://my-bucket/val.jsonl\"),\n        [B]=3,\n        tuned_model_display_name=\"faq-sft\",\n    ),\n)\nprint(job.name)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `validation_dataset`, [B] = `epoch_count`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `validation_dataset`, [B] = `n_epochs`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `eval_dataset`, [B] = `epoch_count`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `validation_dataset`, [B] = `epochs`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `test_dataset`, [B] = `num_train_epochs`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "google-genai의 `client.tunings.tune()`은 `base_model`, `training_dataset`, `config`를 받습니다. 검증 데이터는 `CreateTuningJobConfig.validation_dataset`에 `TuningValidationDataset`(GCS URI의 JSONL)으로 넘기며, 학습 데이터 전체를 반복하는 횟수는 `epoch_count`입니다. 검증 데이터를 지정하면 학습 중 검증 지표를 볼 수 있습니다.\n\n{{option:A}} (정답): `validation_dataset`과 `epoch_count`는 `CreateTuningJobConfig`의 실제 필드입니다.\n\n{{option:B}} (오답, 다른 회사 이름): `n_epochs`는 OpenAI 파인튜닝의 하이퍼파라미터 이름입니다. OpenAI 파인튜닝은 신규 사용자에게 제공되지 않으므로 이 방식을 쓸 수도 없습니다.\n\n{{option:C}} (오답, 존재하지 않는 필드): `eval_dataset`이라는 필드는 `CreateTuningJobConfig`에 없습니다.\n\n{{option:D}} (오답, 다른 SDK의 인자): `epochs`는 Vertex AI SDK의 `sft.train()` 인자 이름이며, google-genai의 `CreateTuningJobConfig`에서는 `epoch_count`를 씁니다.\n\n{{option:E}} (오답, 존재하지 않는 이름): `test_dataset`과 `num_train_epochs`는 이 설정 객체에 없는 이름이고, 후자는 오픈소스 학습 라이브러리 관례에서 온 이름입니다.\n\n**근거 문서**: Gemini Enterprise Agent Platform Docs › Tune Gemini models by using supervised fine-tuning · googleapis/python-genai README › Tunings (SDK 버전: google-genai 2.31.0)",
+      "sourceId": "CODE-20261020-Q34",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "코드 빈칸",
+        "단일 선택",
+        "L2",
+        "튜닝 방식과 데이터셋",
+        "모델 튜닝",
+        "Gemini",
+        "에이전트",
+        "학습 데이터",
+        "프로젝트 관리",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 89,
+      "title": "튜닝 작업 완료 대기와 튜닝된 모델 호출",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 3,
+      "difficulty": "L3",
+      "prompt": "google-genai 클라이언트(`vertexai=True`)로 Gemini 지도 파인튜닝 작업을 시작한 뒤 완료될 때까지 기다렸다가 튜닝된 모델로 응답을 생성하려 합니다. `job`은 작업을 만든 시점의 스냅샷이므로 반복할 때마다 서버에서 최신 상태를 다시 받아와야 하고, 생성 호출의 `model`에는 튜닝 결과로 배포된 호출 대상을 넘겨야 합니다.\n\n```python\nimport time\n\ndone = {\"JOB_STATE_SUCCEEDED\", \"JOB_STATE_FAILED\", \"JOB_STATE_CANCELLED\"}\njob = client.tunings.tune(base_model=BASE_MODEL, training_dataset=train_ds)\nwhile job.state not in done:\n    time.sleep(30)\n    job = [A]\nif job.state == \"JOB_STATE_SUCCEEDED\":\n    resp = client.models.generate_content(model=[B], contents=\"환불 규정을 알려 주세요.\")\n    print(resp.text)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `client.tunings.get(name=job.tuned_model_display_name)`, [B] = `job.tuned_model.endpoint`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `client.tunings.get(name=job.name)`, [B] = `job.name`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `client.tunings.get(name=job.base_model)`, [B] = `job.base_model`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `client.operations.get(job)`, [B] = `job.tuned_model.endpoint`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `client.tunings.get(name=job.name)`, [B] = `job.tuned_model.endpoint`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "python-genai README의 Tunings 예제는 `client.tunings.get(name=tuning_job.name)`을 반복 호출해 `state`가 `JOB_STATE_SUCCEEDED`, `JOB_STATE_FAILED`, `JOB_STATE_CANCELLED` 중 하나가 될 때까지 기다린 뒤, `generate_content`의 `model`에 `tuning_job.tuned_model.endpoint`를 넘깁니다. 작업은 작업 리소스 이름(`job.name`)으로 조회하고, 추론은 튜닝 결과의 엔드포인트로 호출한다는 구분이 핵심입니다.\n\n{{option:A}} (오답, 조회 키 오류): `tuned_model_display_name`은 사람이 읽는 표시 이름이지 작업 리소스 이름이 아니므로 `get(name=...)`에 쓸 수 없습니다. [B]는 맞습니다.\n\n{{option:B}} (오답, 추론 대상 오류): 조회는 맞지만, `job.name`은 튜닝 작업의 리소스 이름이라 추론 대상 모델이 아닙니다.\n\n{{option:C}} (오답, 기본 모델 지정): `job.base_model`은 튜닝의 출발점이 된 기본 모델이며, 이 값으로 작업을 조회하거나 호출하면 튜닝 결과가 반영되지 않습니다.\n\n{{option:D}} (오답, 다른 종류의 조회): `client.operations.get`은 장기 실행 작업(operation) 조회용으로, 튜닝 작업 조회는 `client.tunings.get`입니다. 인자 형태도 맞지 않습니다. [B]는 맞습니다.\n\n{{option:E}} (정답): `client.tunings.get(name=job.name)`으로 최신 상태를 받고, 호출 대상으로 `job.tuned_model.endpoint`를 씁니다.\n\n**근거 문서**: googleapis/python-genai README › Tunings · Gemini Enterprise Agent Platform Docs › Tune Gemini models by using supervised fine-tuning (SDK 버전: google-genai 2.31.0)",
+      "sourceId": "CODE-20261020-Q35",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "코드 빈칸",
+        "단일 선택",
+        "L3",
+        "튜닝 방식과 데이터셋",
+        "모델 튜닝",
+        "최신 정보 확인",
+        "배포 관리",
+        "규제와 준수",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 90,
+      "title": "기본 모델 대비 튜닝 모델 쌍대 비교 평가",
+      "type": "단일 선택",
+      "format": "code-fill",
+      "domain": 4,
+      "difficulty": "L3",
+      "prompt": "Gemini 모델을 파인튜닝한 뒤, 같은 테스트 질문에 대해 기본 모델의 답변보다 튜닝 모델의 답변이 더 나은지 승률로 확인하려 합니다. Gen AI evaluation 서비스의 Vertex AI SDK(`vertexai.evaluation`)를 쓰며, 데이터프레임에는 `prompt` 열만 있고 두 모델의 추론은 평가 도중 수행합니다. 튜닝 모델은 google-genai 클라이언트로 엔드포인트를 호출하는 함수 `tuned_fn`으로 감쌌습니다.\n\n```python\nfrom vertexai.evaluation import EvalTask, PairwiseMetric, MetricPromptTemplateExamples\n\ndef tuned_fn(prompt: str) -> str:\n    return client.models.generate_content(model=TUNED_ENDPOINT, contents=prompt).text\n\nmetric = PairwiseMetric(\n    metric=\"pairwise_qa_quality\",\n    metric_prompt_template=MetricPromptTemplateExamples.get_prompt_template(\n        \"pairwise_question_answering_quality\"),\n    [A]=BASE_MODEL_ID,\n)\ntask = EvalTask(dataset=eval_df, metrics=[metric])\nresult = task.evaluate([B]=tuned_fn)\nprint(result.summary_metrics)\n```\n\n[A]와 [B]에 들어갈 값으로 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "[A] = `candidate_model`, [B] = `baseline_model`"
+        },
+        {
+          "id": "B",
+          "text": "[A] = `baseline_model_response_column_name`, [B] = `model`"
+        },
+        {
+          "id": "C",
+          "text": "[A] = `baseline_model`, [B] = `model`"
+        },
+        {
+          "id": "D",
+          "text": "[A] = `reference`, [B] = `prompt_template`"
+        },
+        {
+          "id": "E",
+          "text": "[A] = `baseline_model`, [B] = `response_column_name`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "`EvalTask` 문서의 쌍대(pairwise) 평가 예제는 모델 추론 단계를 포함할 때 기준이 되는 모델을 `PairwiseMetric`의 `baseline_model`로, 비교 대상(후보) 모델을 `EvalTask.evaluate()`의 `model`로 넘기도록 안내합니다. `model`에는 모델 이름 문자열, `GenerativeModel`, 또는 `prompt` 문자열을 받아 응답 문자열을 돌려주는 함수를 줄 수 있습니다. 따라서 기본 모델이 baseline, 튜닝 모델 함수가 후보가 되며, `summary_metrics`에 양쪽 승률이 계산됩니다.\n\n{{option:A}} (오답, 존재하지 않는 인자 / 위치 뒤바뀜): `PairwiseMetric`에 `candidate_model` 인자는 없습니다. `candidate_model`은 문서 예제에서 변수 이름일 뿐이고 `evaluate()`의 `model`로 전달됩니다.\n\n{{option:B}} (오답, 열 이름 인자): `baseline_model_response_column_name`은 `evaluate()`의 인자로, 이미 있는 응답 열의 이름을 지정하는 용도(자체 응답 제공 방식)입니다. `PairwiseMetric`의 인자가 아닙니다.\n\n{{option:C}} (정답): 기본 모델을 `baseline_model`로, 튜닝 모델 함수를 `evaluate(model=...)`로 넘깁니다.\n\n{{option:D}} (오답, 용도 불일치): `reference`는 정답 참조 열 이름이고 `PairwiseMetric`의 인자가 아니며, `prompt_template`에 함수를 넘길 수도 없습니다.\n\n{{option:E}} (오답, 후보 지정 방식 오류): `response_column_name`은 데이터프레임 안 응답 열의 이름을 문자열로 지정하는 인자라, 추론 함수를 받지 않습니다.\n\n**근거 문서**: Vertex AI Python SDK Reference › vertexai.evaluation › EvalTask (Usage Examples 5, 쌍대 평가) · vertexai.evaluation › PairwiseMetric (SDK 버전: google-cloud-aiplatform 2.5.0)",
+      "sourceId": "CODE-20261020-Q36",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "코드 빈칸",
+        "단일 선택",
+        "L3",
+        "평가와 비교",
+        "평가 설계",
+        "모델 튜닝",
+        "프롬프트 작성",
+        "추론 모델",
+        "성과 측정",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
     }
   ],
   "nameKo": "모델 최적화"
