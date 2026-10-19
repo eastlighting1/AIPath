@@ -1,0 +1,110 @@
+[
+  {
+    "lang": "ko",
+    "code": "AGS",
+    "sourceId": "AGS-N1",
+    "note": " 채택 전 EUR-Lex 원문 재확인 필요"
+  },
+  {
+    "lang": "ko",
+    "code": "AGS",
+    "sourceId": "AGS-N2",
+    "note": " 채택 전 EUR-Lex 원문 재확인 필요"
+  },
+  {
+    "lang": "ko",
+    "code": "AGS",
+    "sourceId": "AGS-N3",
+    "note": " 채택 전 EUR-Lex 원문 재확인 필요"
+  },
+  {
+    "lang": "ko",
+    "code": "AGS",
+    "sourceId": "AGS-N6",
+    "note": " 채택 전 EUR-Lex 원문 재확인 필요"
+  },
+  {
+    "lang": "ko",
+    "code": "AGS",
+    "sourceId": "AGS-N7",
+    "note": " 채택 전 EUR-Lex 원문 재확인 필요"
+  },
+  {
+    "lang": "ko",
+    "code": "ALF",
+    "sourceId": "Q94",
+    "note": " 채택 전 확인 필요."
+  },
+  {
+    "lang": "ko",
+    "code": "ALF",
+    "sourceId": "Q95",
+    "note": " 채택 전 확인 필요."
+  },
+  {
+    "lang": "ko",
+    "code": "ALF",
+    "sourceId": "Q95",
+    "note": " 거버넌스 시험(AGS)의 데이터 분류 영역과 겹칠 수 있어 채택 전 확인이 필요합니다."
+  },
+  {
+    "lang": "ko",
+    "code": "SES",
+    "sourceId": "SES-N3",
+    "note": " 초안의 \"Tool Output Poisoning\"은 표준화된 용어가 아니어서 표준 용어인 Indirect Prompt Injection으로 바꿨습니다."
+  },
+  {
+    "lang": "en",
+    "code": "AGS",
+    "sourceId": "AGS-N1",
+    "note": "; the source requests rechecking the EUR-Lex original before adoption"
+  },
+  {
+    "lang": "en",
+    "code": "AGS",
+    "sourceId": "AGS-N2",
+    "note": "; the source requests rechecking the EUR-Lex original before adoption"
+  },
+  {
+    "lang": "en",
+    "code": "AGS",
+    "sourceId": "AGS-N3",
+    "note": "; the source requests rechecking the EUR-Lex original before adoption"
+  },
+  {
+    "lang": "en",
+    "code": "AGS",
+    "sourceId": "AGS-N6",
+    "note": "; the source requests rechecking EUR-Lex before adoption"
+  },
+  {
+    "lang": "en",
+    "code": "AGS",
+    "sourceId": "AGS-N7",
+    "note": "; the source requests rechecking the EUR-Lex original before adoption"
+  },
+  {
+    "lang": "en",
+    "code": "ALF",
+    "sourceId": "Q94",
+    "note": " Verification is required before adoption."
+  },
+  {
+    "lang": "en",
+    "code": "ALF",
+    "sourceId": "Q95",
+    "note": " Verification is required before adoption."
+  },
+  {
+    "lang": "en",
+    "code": "ALF",
+    "sourceId": "Q95",
+    "note": " It may overlap with the data classification domain in the governance exam (AGS), so review is needed before adoption."
+  },
+  {
+    "lang": "en",
+    "code": "SES",
+    "sourceId": "SES-N3",
+    "note": " The draft's \"Tool Output Poisoning\" was replaced with the standard term Indirect Prompt Injection because it is not standardized."
+  }
+]

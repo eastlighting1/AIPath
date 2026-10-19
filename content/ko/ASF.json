@@ -1,0 +1,4097 @@
+{
+  "code": "ASF",
+  "name": "AI Services",
+  "level": "Fundamental",
+  "count": 60,
+  "minutes": 90,
+  "threshold": 70,
+  "experience": "없음",
+  "purpose": "주요 AI 서비스의 역할을 이해하고, 상황에 맞는 서비스를 선택하며, 책임 있게 활용할 수 있는지 확인합니다.",
+  "scoring": "equal",
+  "guideDate": "2026-10-18",
+  "domains": [
+    {
+      "id": 1,
+      "name": "주요 3사의 AI 서비스와 기능",
+      "weight": 70
+    },
+    {
+      "id": 2,
+      "name": "AI 윤리와 책임 있는 사용",
+      "weight": 20
+    },
+    {
+      "id": 3,
+      "name": "주요 외부 AI 서비스 생태계",
+      "weight": 10
+    }
+  ],
+  "guide": "### 1. 서론\n\n**목적**: 이 시험에서는 응시자가 주요 AI 서비스와 기능의 역할을 이해하고, 업무 목적에 맞는 서비스를 선택하며, 책임 있게 활용할 수 있는지 확인합니다.\n\n**목표**\n\n- OpenAI, Anthropic, Google의 회사 · 모델 · 제품 · 기능 · 플랜을 구분\n- 대화, 검색, 리서치, 프로젝트, 콘텐츠 제작, 외부 앱 연결에 맞는 서비스와 기능 선택\n- 코딩 도구와 API의 용도를 이해하고 일반 사용자용 서비스와 구분\n- 결과 검증, 개인정보 보호, 편향 대응, 투명성, 사람의 감독 원칙 적용\n- 주요 외부 AI 서비스의 목적과 차이를 설명\n\n### 2. 대상 응시자\n\n- 마케팅 · 콘텐츠 담당자, 리서처, 서비스 기획자, AI 활용 교육 담당자\n\n**권장 사전 지식 및 시험 범위**\n\n- 사전 자격증, 코딩 경험, 유료 서비스 구독은 필요하지 않습니다.\n- 코드 작성, 모델 학습, 아키텍처 설계는 범위 밖입니다. 가격, 사용 한도, 모델 순위와 같은 수치 암기는 평가하지 않습니다.\n\n### 3. 콘텐츠 도메인\n\n| 도메인 | 비율 |\n| --- | --- |\n| 1. 주요 3사의 AI 서비스와 기능 | 70% |\n| 2. AI 윤리와 책임 있는 사용 | 20% |\n| 3. 주요 외부 AI 서비스 생태계 | 10% |\n\n**도메인 1: 주요 3사의 AI 서비스와 기능**\n\n- 지식: 회사 · 모델 · 제품 · 기능 · 플랜의 차이, 일반 대화와 웹 검색 · 리서치의 차이, 프로젝트와 개인화, 문서 · 데이터 · 이미지 작업, 외부 앱 연결, 코딩 도구와 API의 용도\n- 기술: 업무 목적과 사용 환경에 맞는 기능 선택, 비슷한 기능의 차이 설명, 외부 앱의 읽기 · 실행 권한과 승인 필요 여부 구분\n- 서비스 범위: OpenAI의 ChatGPT 앱 연결 · 에이전트 · Codex, Anthropic의 Claude Projects · Research · Artifacts · Claude Code, Google의 Gemini Gems · Live · Deep Research · Workspace 연동 · AI Studio · API · Gemini Notebook\n- 정규 시험에서는 OpenAI · Anthropic · Google 각 12문항과 3사 공통 비교 6문항을 출제합니다.\n\n**도메인 2: AI 윤리와 책임 있는 사용**\n\n- 지식: 할루시네이션과 불확실성, 개인정보와 기밀정보 보호, 편향과 공정성, AI 사용 공개와 출처, 사람의 감독, 오용 방지와 사용자 책임\n- 기술: 결과를 검증해야 하는 상황 식별, 민감 정보 입력 여부 판단, 중요한 판단에 사람의 검토 배치, 실제 사용 상황에서 적절한 보호 · 공개 조치 선택\n- 참고 기준: 3사의 기술 · 연구 설명, 행동 원칙과 안전 프레임워크, 제품 도움말과 사용 정책의 역할을 구분합니다. 내부 수치나 안전 기준값 암기는 평가하지 않습니다.\n\n**도메인 3: 주요 외부 AI 서비스 생태계**\n\n- 지식: 출처 기반 검색과 리서치, 논문 탐색과 글쓰기, 공개 모델 · 데이터셋 · 데모 플랫폼, 이미지 · 영상 · 음성 생성, 업무 도구에 내장된 AI 기능\n- 기술: 목적에 맞는 서비스 선택, 검색 결과의 출처 검증, 모델 카드의 한계 · 편향 정보 확인, 생성물의 사용 조건과 AI 사용 공개 필요성 판단\n- 서비스 범위: Perplexity, Liner, Hugging Face, Adobe Firefly 등 주요 외부 서비스의 핵심 용도와 차이를 다룹니다. 모델 개발과 학습은 범위 밖입니다.\n\n### 4. 공식 문서\n\n\n**OpenAI**\n\n- [ChatGPT apps and connections](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt)\n- [Usage policies](https://openai.com/policies/usage-policies/)\n- [Model Spec](https://model-spec.openai.com/)\n\n**Anthropic**\n\n- [Claude Projects](https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects)\n- [Claude Research](https://support.claude.com/en/articles/11095361-research)\n- [Claude Artifacts](https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them)\n- [Usage Policy](https://www.anthropic.com/legal/aup)\n- [Claude's Constitution](https://www.anthropic.com/constitution)\n- [Responsible Scaling Policy](https://www.anthropic.com/rsp)\n\n**Google**\n\n- [Gemini Notebook](https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/)\n- [Generative AI Prohibited Use Policy](https://policies.google.com/terms/generative-ai/use-policy)\n- [Frontier Safety Framework](https://deepmind.google/frontier-safety/)\n\n**Perplexity · Liner · Hugging Face · Adobe**\n\n- [Perplexity](https://www.perplexity.ai/help-center/en/articles/10352155-what-is-perplexity)\n- [Liner](https://liner.com/)\n- [Hugging Face Hub](https://huggingface.co/docs/hub/index)\n- [Adobe Firefly](https://helpx.adobe.com/firefly/get-set-up/learn-the-basics/adobe-firefly-faq.html)\n",
+  "questions": [
+    {
+      "id": 1,
+      "title": "최신 정보가 필요한 질문에 쓸 검색 기능",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "한빛물산 기획팀 직원이 \"이번 달에 발표된 관련 업계 규정 변경 내용을 출처 링크와 함께 알고 싶다\"며 ChatGPT를 쓰려 한다. 이 요청에 **가장 알맞은 기능**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "사이드바 검색으로 질문을 입력해 규정 변경 내용을 찾는다."
+        },
+        {
+          "id": "B",
+          "text": "웹 검색을 사용해 최신 정보를 찾고, 답변에 붙은 출처 링크를 확인한다."
+        },
+        {
+          "id": "C",
+          "text": "프로젝트(Projects)를 만들어 규정 이름을 대화 제목으로 정리한다."
+        },
+        {
+          "id": "D",
+          "text": "메모리(Memory)에 규정 변경 내용을 저장해 달라고 요청한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "ChatGPT의 웹 검색은 최신 정보를 찾아 관련 출처 링크를 함께 보여 줍니다. 질문에 최신 정보가 필요하면 자동으로 검색할 수 있고, 도구 메뉴에서 직접 선택할 수도 있습니다. 응답에는 인용이 붙을 수 있어 선택하면 출처를 열어 볼 수 있습니다. 다만 검색 결과가 불완전하거나 오래되었거나 틀릴 수 있으므로 정확성이 중요하면 출처를 확인해야 합니다.\n\n- **A (오답, 유사 기능 혼동)**: 사이드바 검색은 웹 검색과 별개로, 내 대화 · 프로젝트 · 파일만 찾습니다. 새로 발표된 규정은 찾을 수 없습니다.\n- **B (정답)**: 웹 검색이 최신 정보와 출처 링크를 제공하는 기능입니다.\n- **C (오답, 유사 기능 혼동)**: 프로젝트는 관련 대화 · 파일 · 지침을 묶어 두는 기능이며 새 정보를 찾아 주지 않습니다.\n- **D (오답, 유사 기능 혼동)**: 메모리는 사용자가 알려 준 사실을 기억해 개인화하는 기능입니다. 아직 알지 못하는 최신 규정을 가져오지 못합니다.\n\n**근거 문서**: [ChatGPT search](https://help.openai.com/en/articles/9237897-chatgpt-search)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "최신 정보 확인",
+        "검색 품질",
+        "출처 검증",
+        "규제와 준수",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 2,
+      "title": "딥 리서치의 특징",
+      "type": "복수 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "누리물류의 기획 담당자가 여러 자료를 종합한 시장 조사 보고서를 ChatGPT의 deep research로 만들려 한다. deep research에 대한 설명으로 **옳은 것 2가지**를 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "직접 업로드한 파일은 쓸 수 없고 공개 웹의 자료만 조사한다."
+        },
+        {
+          "id": "B",
+          "text": "조사를 시작하기 전에 확인 질문을 하고, 검토하고 고칠 수 있는 조사 계획을 제시할 수 있다."
+        },
+        {
+          "id": "C",
+          "text": "보고서에는 출처 표시를 붙이지 않고 결론만 간단히 정리한다."
+        },
+        {
+          "id": "D",
+          "text": "지원되는 연결 앱을 자료원으로 쓸 때는 읽기 작업만 사용한다."
+        },
+        {
+          "id": "E",
+          "text": "조사 범위는 웹 전체로 고정되어 있어 특정 사이트로 한정할 수 없다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B",
+        "D"
+      ],
+      "answer": "B, D",
+      "explanation": "deep research는 복잡한 질문을 계획하고 조사해 구조화된 보고서로 종합하는 기능입니다. 시작 전에 확인 질문을 할 수 있고, 조사 계획을 제시해 사용자가 검토하고 수정할 수 있게 합니다. 사용 가능한 연결 앱(예: Google Drive, SharePoint)을 자료원으로 쓸 수 있으며, 이때 읽기 작업만 사용하고 앱 연결이 제공자의 권한을 바꾸지는 않습니다.\n\n- **A (오답, 사실 오류)**: 기본적으로 공개 웹과 업로드한 파일을 모두 사용하며, 지정한 사이트나 연결 앱도 쓸 수 있습니다.\n- **B (정답)**: 확인 질문과 수정 가능한 조사 계획이 deep research의 진행 방식입니다.\n- **C (오답, 사실 오류)**: 모든 보고서에는 인용 또는 출처 링크가 포함되고, 보고서 화면에 사용한 출처 항목이 있습니다.\n- **D (정답)**: 연결 앱을 쓸 때 읽기 작업만 사용한다고 안내됩니다.\n- **E (오답, 사실 오류)**: 사이트 관리 설정에서 특정 도메인으로 한정하거나, 해당 사이트를 우선하되 웹 전체 검색을 허용하도록 정할 수 있습니다.\n\n추가로 알아둘 점: 많은 출처를 읽고 분석하므로 일반 검색보다 시간이 더 걸립니다. 급한 질문에는 검색이나 일반 대화가 권장됩니다.\n\n**근거 문서**: [Deep research in ChatGPT](https://help.openai.com/en/articles/10500283-deep-research) · [Connectors in ChatGPT](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "리서치",
+        "검색 품질",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 3,
+      "title": "장기 업무를 묶어 두는 프로젝트",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "한빛물산 마케팅팀 직원이 몇 주에 걸쳐 신제품 출시 준비를 하면서, 관련 대화와 참고 파일, 작업 지침을 한곳에 모아 두고 이어서 쓰고 싶다. 이에 **가장 알맞은 ChatGPT 기능**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "프로젝트(Projects)"
+        },
+        {
+          "id": "B",
+          "text": "쓰기 블록(Writing blocks)"
+        },
+        {
+          "id": "C",
+          "text": "음성 모드(Voice mode)"
+        },
+        {
+          "id": "D",
+          "text": "데이터 분석(Data analysis)"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "프로젝트는 관련된 대화, 파일, 지침을 한곳에 모아 ChatGPT가 그 맥락을 활용하도록 하는 기능입니다. 글쓰기, 조사, 계획처럼 여러 번에 걸쳐 이어지는 작업에 쓰고, 반복되는 업무에 다시 사용하거나 여러 기기에서 이어갈 수 있습니다.\n\n- **A (정답)**: 대화 · 파일 · 지침을 한데 묶어 두는 기능입니다.\n- **B (오답, 유사 기능 혼동)**: 쓰기 블록은 대화 안의 초안 텍스트를 고치는 편집 영역으로, 여러 대화와 파일을 묶어 관리하는 기능이 아닙니다.\n- **C (오답, 유사 기능 혼동)**: 음성 모드는 말로 대화하는 방식이며 업무 맥락을 보관하는 기능이 아닙니다.\n- **D (오답, 유사 기능 혼동)**: 데이터 분석은 업로드한 데이터를 분석하고 표 · 차트로 만드는 기능입니다.\n\n**근거 문서**: [Using Projects in ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt) · [ChatGPT capabilities overview](https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "프로젝트 관리",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 4,
+      "title": "프로젝트 안에서만 적용할 지침",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "누리물류의 한 직원은 ChatGPT 전역 설정에 \"답변은 짧게\"라고 적어 두었다. 그런데 새로 만든 분기 보고서 프로젝트에서는 항목마다 자세한 설명을 받고 싶다. 다른 대화에는 영향을 주지 않으려면 **가장 알맞은 방법**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "전역 맞춤 설정(Custom instructions)의 문구를 \"자세하게\"로 바꾼다."
+        },
+        {
+          "id": "B",
+          "text": "지침을 문서로 써서 프로젝트 파일로 올리고 지침 칸은 비워 둔다."
+        },
+        {
+          "id": "C",
+          "text": "프로젝트 설정의 지침(Instructions)에 자세한 설명을 요청하는 내용을 쓴다."
+        },
+        {
+          "id": "D",
+          "text": "쓰기 블록(Writing blocks)에 원하는 답변 방식을 적어 둔다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "프로젝트 설정에서 정하는 지침은 그 프로젝트 안에서만 적용되며, 전역 맞춤 설정보다 우선합니다. 따라서 보고서 프로젝트에만 자세한 답변을 요청하는 지침을 두면 다른 대화의 짧은 답변 설정은 그대로 유지됩니다.\n\n- **A (오답, 조건 누락)**: 전역 설정을 바꾸면 프로젝트 밖의 모든 대화에도 영향을 줍니다.\n- **B (오답, 유사 기능 혼동)**: 프로젝트 파일은 참고 자료로 쓰이며, 응답 방식을 정하는 지침 기능은 따로 있습니다.\n- **C (정답)**: 프로젝트 지침은 해당 프로젝트에만 적용되고 전역 설정보다 우선합니다.\n- **D (오답, 유사 기능 혼동)**: 쓰기 블록은 대화 안의 초안 텍스트를 편집하는 영역이며 응답 방식을 저장하는 설정이 아닙니다.\n\n**근거 문서**: [Using Projects in ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "프로젝트 관리",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 5,
+      "title": "맞춤 설정과 메모리의 차이",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "한빛물산의 한 직원이 \"ChatGPT가 알아야 할 내용과 원하는 답변 방식을 내가 직접 글로 적어 두고 싶다\"고 한다. 대화 중에 쌓인 정보를 ChatGPT가 활용하는 방식이 아니라, 사용자가 직접 쓰는 방식에 해당하는 기능은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "저장된 메모리(Saved memories)"
+        },
+        {
+          "id": "B",
+          "text": "채팅 기록 참조(Reference chat history)"
+        },
+        {
+          "id": "C",
+          "text": "프로젝트 파일(Project files)"
+        },
+        {
+          "id": "D",
+          "text": "맞춤 설정(Custom instructions)"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "맞춤 설정은 ChatGPT가 응답할 때 고려할 내용을 사용자가 직접 적어 두는 기능으로, 웹과 데스크톱에서는 설정의 Personalization에서 정합니다. 이와 달리 메모리는 여러 대화와 다른 출처에서 쌓인 관련 정보를 활용합니다.\n\n- **A (오답, 유사 기능 혼동)**: 저장된 메모리는 기억해 달라고 요청했거나 ChatGPT가 유용하다고 판단해 저장한 정보입니다.\n- **B (오답, 유사 기능 혼동)**: 채팅 기록 참조는 관련 있는 과거 대화를 활용하는 기능이며, 활용되는 내용이 ChatGPT의 판단에 따라 달라집니다.\n- **C (오답, 유사 기능 혼동)**: 프로젝트 파일은 프로젝트의 참고 자료이며 전역 응답 방식을 정하는 설정이 아닙니다.\n- **D (정답)**: 사용자가 직접 써 두는 안내가 맞춤 설정입니다.\n\n**근거 문서**: [ChatGPT Custom Instructions](https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions) · [Memory FAQ](https://help.openai.com/en/articles/8590148-memory-faq)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 6,
+      "title": "기억에 남기지 않고 대화하기",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "누리물류의 직원이 인사 관련 고민을 ChatGPT와 상의하려 하는데, 이 대화가 메모리에 반영되지 않기를 바란다. **가장 알맞은 방법**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "대화를 시작한 뒤에 대화 도중 메모리 사용 여부를 바꾼다."
+        },
+        {
+          "id": "B",
+          "text": "임시 채팅(Temporary chat)으로 대화를 시작한다."
+        },
+        {
+          "id": "C",
+          "text": "채팅 기록 참조만 끄고 평소처럼 대화한다."
+        },
+        {
+          "id": "D",
+          "text": "대화를 마친 뒤 저장된 메모리를 지우면 과거 대화의 언급도 함께 지워진다고 보고 진행한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "임시 채팅은 메모리를 만들거나 갱신하지 않습니다. 시작하기 전에 메모리, 맞춤 설정, 플러그인을 쓸지 고를 수 있고, 이 선택은 대화가 시작된 뒤에는 바꿀 수 없습니다.\n\n- **A (오답, 조건 누락)**: 임시 채팅의 이 선택은 시작 전에 정하며, 대화가 시작되면 바꿀 수 없습니다.\n- **B (정답)**: 임시 채팅은 메모리를 만들거나 갱신하지 않습니다.\n- **C (오답, 사실 오류)**: 채팅 기록 참조를 꺼도 저장된 메모리는 영향을 받지 않으므로, 새 메모리가 저장되지 않는다는 보장이 되지 않습니다.\n- **D (오답, 사실 오류)**: 저장된 메모리를 지우면 이후 개인화에는 쓰이지 않지만, 과거 대화에 남은 언급은 그대로 남습니다.\n\n**근거 문서**: [Memory FAQ](https://help.openai.com/en/articles/8590148-memory-faq)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 7,
+      "title": "초안을 대화 안에서 바로 고치기",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "한빛물산의 한 직원이 보도자료 초안을 ChatGPT 대화 안에서 직접 선택해 고치고, 일부 문단은 ChatGPT에게 다시 쓰게 하고 싶다. 이메일 · 문서 같은 초안 텍스트를 편집할 수 있는 영역으로 보여 주는 ChatGPT 기능은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "음성 모드(Voice mode)"
+        },
+        {
+          "id": "B",
+          "text": "데이터 분석(Data analysis)"
+        },
+        {
+          "id": "C",
+          "text": "쓰기 블록(Writing blocks)"
+        },
+        {
+          "id": "D",
+          "text": "웹 검색(Search)"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "OpenAI 도움말은 쓰기 블록을 이메일, 메시지, 소셜 게시물, 문서 같은 초안 텍스트를 위한 편집 가능한 영역으로 설명합니다. 블록의 텍스트를 직접 고칠 수 있고, 선택한 부분이나 초안 전체를 다시 쓰라고 ChatGPT에 요청할 수도 있습니다. 코드는 같은 방식의 코드 블록으로 다룹니다.\n\n- **A (오답, 유사 기능 혼동)**: 음성 모드는 말로 대화하는 방식입니다.\n- **B (오답, 유사 기능 혼동)**: 데이터 분석은 업로드한 데이터를 분석하고 시각화하는 기능입니다.\n- **C (정답)**: 초안 텍스트를 대화 안에서 직접 고치거나 수정을 요청하는 편집 영역이 쓰기 블록입니다.\n- **D (오답, 유사 기능 혼동)**: 웹 검색은 최신 정보를 찾아 출처와 함께 답하는 기능입니다.\n\n추가로 알아둘 점: 2026년 5월 28일 릴리스 노트는 GPT-5.5 Instant와 GPT-5.5 Thinking에서 canvas를 더 이상 제공하지 않으며, 글쓰기와 코딩 기능을 쓰기 블록과 코드 블록으로 대화 안에서 지원한다고 안내합니다. 유료 사용자는 레거시 모델에서 한시적으로 canvas를 계속 쓸 수 있습니다.\n\n**근거 문서**: [Working with writing blocks and code blocks in ChatGPT](https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt) · [Model Release Notes](https://help.openai.com/en/articles/9624314-model-release-notes)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 8,
+      "title": "데이터 분석 기능의 특징",
+      "type": "복수 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "누리물류의 운영팀 직원이 엑셀로 정리한 월별 배송 기록을 ChatGPT에 올려 추세를 보려 한다. 데이터 분석 기능에 대한 설명으로 **옳은 것 2가지**를 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "업로드한 스프레드시트를 분석해 표나 차트로 만들어 준다."
+        },
+        {
+          "id": "B",
+          "text": "코드 실행 환경에서 외부 API를 호출해 최신 배송 데이터를 직접 가져온다."
+        },
+        {
+          "id": "C",
+          "text": "일부 작업에서 Python 코드를 실행해 분석하므로, 결과를 쓰기 전에 코드와 결과, 가정을 점검하는 것이 좋다."
+        },
+        {
+          "id": "D",
+          "text": "스캔한 이미지 속 표도 항상 정확하게 추출한다."
+        },
+        {
+          "id": "E",
+          "text": "모든 차트는 정적 이미지로만 만들어져 상호작용할 수 없다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A",
+        "C"
+      ],
+      "answer": "A, C",
+      "explanation": "데이터 분석은 업로드한 파일에 대해 질문에 답하고 표나 차트를 만들며, 행 · 열 · 추세 · 이상치를 요약하고 가정과 다음 단계도 설명합니다. 일부 작업에서는 Python을 작성해 실행하며, 도움말은 결과에 의존하기 전에 생성된 코드, 출력, 가정을 검토하라고 안내합니다.\n\n- **A (정답)**: 업로드한 파일을 분석해 표나 차트로 보여 주는 것이 핵심 기능입니다.\n- **B (오답, 사실 오류)**: Python 환경은 외부 웹 요청이나 API 호출을 할 수 없으므로 데이터를 업로드하거나 연결해야 합니다.\n- **C (정답)**: Python 실행 방식과 결과 점검 권고가 도움말에 나옵니다.\n- **D (오답, 사실 오류)**: 이미지 기반이나 스캔된 표는 안정적으로 추출되지 않을 수 있습니다.\n- **E (오답, 사실 오류)**: 막대 · 선 · 원 · 산점도 차트는 상호작용 가능한 차트로 전환할 수 있습니다.\n\n**근거 문서**: [Data analysis with ChatGPT](https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt) · [ChatGPT capabilities overview](https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 9,
+      "title": "이미지 입력과 이미지 생성",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "한빛물산의 디자인팀 직원이 회의실 화이트보드에 그린 구조도를 사진으로 찍어 ChatGPT에 올렸다. 구조도의 내용을 설명해 달라고 한 뒤, 같은 주제의 소개용 일러스트를 새로 만들어 달라고도 하려 한다. 이 두 요청에 쓰이는 기능은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "음성 모드와 예약 작업(Scheduled tasks)"
+        },
+        {
+          "id": "B",
+          "text": "쓰기 블록과 데이터 분석"
+        },
+        {
+          "id": "C",
+          "text": "딥 리서치와 프로젝트"
+        },
+        {
+          "id": "D",
+          "text": "이미지 입력(분석)과 이미지 생성"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "ChatGPT는 업로드한 이미지, 다이어그램, 차트를 분석할 수 있고, 텍스트 프롬프트로 이미지를 생성할 수 있으며, 만든 이미지를 편집할 수도 있습니다. 사진 속 구조도 설명은 이미지 입력, 새 일러스트 제작은 이미지 생성에 해당합니다.\n\n- **A (오답, 유사 기능 혼동)**: 음성 모드는 말로 대화하고, 예약 작업은 일회성 또는 반복 작업을 수행합니다. 이미지와 관계가 없습니다.\n- **B (오답, 유사 기능 혼동)**: 쓰기 블록은 초안 텍스트 편집, 데이터 분석은 데이터 파일 분석에 쓰입니다.\n- **C (오답, 유사 기능 혼동)**: 딥 리서치는 다단계 조사, 프로젝트는 대화와 파일을 묶는 기능입니다.\n- **D (정답)**: 이미지 분석과 이미지 생성이 각각 두 요청에 대응합니다.\n\n**근거 문서**: [ChatGPT capabilities overview](https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "이미지 이해",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 10,
+      "title": "앱이 할 수 있는 세 가지 일",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "ChatGPT의 앱(Apps, 연결 서비스)은 연결한 서비스에서 **읽기 · 검색, 표시, 실행(Act)** 을 할 수 있다. 다음 중 **실행(Act)** 에 해당하는 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "연결한 업무 관리 서비스에서 새 작업 항목을 만들거나 기존 항목을 수정한다."
+        },
+        {
+          "id": "B",
+          "text": "연결한 파일 저장소에서 문서를 찾아 내용을 참고한다."
+        },
+        {
+          "id": "C",
+          "text": "지도나 카드 같은 화면을 대화 안에 보여 준다."
+        },
+        {
+          "id": "D",
+          "text": "연결한 서비스의 내용을 미리 색인해 두어 응답을 빠르게 한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "OpenAI 도움말은 앱의 기능을 세 가지로 나눕니다. 읽기/검색은 연결된 서비스의 정보를 찾아 참고하는 것, 표시는 지도, 카드, 문서 같은 화면을 대화 안에 보여 주는 것, 실행은 서비스에서 정보를 만들거나 수정하는 등 지원되는 작업을 수행하는 것입니다.\n\n- **A (정답)**: 서비스 안에서 정보를 만들거나 수정하는 것이 실행입니다.\n- **B (오답, 유사 기능 혼동)**: 정보를 찾아 참고하는 것은 읽기/검색입니다.\n- **C (오답, 유사 기능 혼동)**: 대화 안에 화면을 보여 주는 것은 표시입니다.\n- **D (오답, 유사 기능 혼동)**: 일부 앱이 내용을 미리 동기화해 색인하는 것은 접근 방식(동기화)에 관한 설명이며, 세 가지 기능 구분에 해당하지 않습니다.\n\n**근거 문서**: [Connectors in ChatGPT](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "검색 품질",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 11,
+      "title": "플러그인과 앱의 관계",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "한빛물산의 IT 담당자가 ChatGPT의 플러그인을 직원들에게 소개하려 한다. 플러그인과 앱의 관계로 **옳은 설명**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "플러그인을 설치하면 앱의 인증 단계와 워크스페이스 권한이 생략된다."
+        },
+        {
+          "id": "B",
+          "text": "플러그인은 모두 외부 서비스에 연결되는 앱을 포함해야 한다."
+        },
+        {
+          "id": "C",
+          "text": "플러그인은 앱과 같은 것을 가리키는 이름이어서 둘 사이에 구분이 없다."
+        },
+        {
+          "id": "D",
+          "text": "플러그인은 기능을 하나의 워크플로로 묶은 것으로, 앱이나 스킬 또는 둘 다를 포함할 수 있다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "OpenAI 도움말은 플러그인을 기능을 워크플로로 묶은 것으로 설명하며, 앱, 스킬, 또는 둘 다를 담을 수 있다고 합니다. 스킬만 담아 외부 서비스에 연결하지 않는 플러그인도 있습니다. 플러그인을 설치해도 앱의 인증이나 워크스페이스 권한이 생략되지는 않습니다.\n\n- **A (오답, 사실 오류)**: 플러그인 설치는 앱의 인증과 워크스페이스 권한을 우회하지 못합니다.\n- **B (오답, 사실 오류)**: 스킬만 포함하고 외부 서비스에 연결하지 않는 플러그인도 있습니다.\n- **C (오답, 유사 기능 혼동)**: 앱은 외부 서비스와 ChatGPT를 연결하는 것이고, 플러그인은 앱이나 스킬을 묶은 단위입니다.\n- **D (정답)**: 도움말의 정의와 일치합니다.\n\n**근거 문서**: [Connectors in ChatGPT](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 12,
+      "title": "앱 권한 옵션 고르기",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "누리물류의 보안 담당자가 ChatGPT의 앱 권한 설정에서 \"연결된 서비스의 정보를 읽을 때든 작업을 수행할 때든, 모든 경우에 먼저 사용자에게 물어보게 하고 싶다\"고 한다. 알맞은 옵션은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Allow read actions"
+        },
+        {
+          "id": "B",
+          "text": "Allow low-risk actions"
+        },
+        {
+          "id": "C",
+          "text": "Always ask"
+        },
+        {
+          "id": "D",
+          "text": "Allow all actions"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "앱 권한 옵션은 ChatGPT가 언제 사용자에게 확인하는지를 정합니다. Always ask는 정보를 읽거나 어떤 작업을 하기 전에 항상 묻는 옵션입니다.\n\n- **A (오답, 조건 누락)**: Allow read actions는 읽기 작업의 확인을 생략하는 옵션입니다.\n- **B (오답, 조건 누락)**: Allow low-risk actions는 다른 설정이 없을 때의 기본값이며, 민감한 작업은 여전히 승인이 필요하거나 거부될 수 있습니다. 모든 경우에 묻는 옵션이 아닙니다.\n- **C (정답)**: 읽기와 모든 작업 전에 묻는 옵션입니다.\n- **D (오답, 조건 누락)**: Allow all actions는 해당되는 앱이나 계정에만 제공되며, 추가 확인 없이 작업이 실행될 수 있어 위험이 큽니다.\n\n**근거 문서**: [Connectors in ChatGPT](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt) · [Managing app permissions in ChatGPT](https://help.openai.com/en/articles/20001495-managing-app-permissions-in-chatgpt)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "권한 관리",
+        "보안 통제",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 13,
+      "title": "앱 권한 설정의 의미",
+      "type": "복수 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "한빛물산의 정보보호팀이 ChatGPT 앱 권한 설정의 의미를 사내 교육에서 설명하려 한다. 설명으로 **옳은 것 2가지**를 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Allow read actions를 고르면 앱이 새로운 쓰기 권한을 얻는다."
+        },
+        {
+          "id": "B",
+          "text": "Always ask를 고르면 해당 앱의 연결이 해제된다."
+        },
+        {
+          "id": "C",
+          "text": "앱 권한은 ChatGPT가 언제 확인을 요청하는지를 정할 뿐, 앱에 새로운 접근 권한을 주지 않는다."
+        },
+        {
+          "id": "D",
+          "text": "관리자가 앱을 비활성화해 \"Disabled by admin\"이 표시되어도 사용자가 권한 옵션을 바꾸면 쓸 수 있다."
+        },
+        {
+          "id": "E",
+          "text": "앱의 접근 범위는 앱 자체, 연결할 때 부여된 접근, 워크스페이스 통제에서 정해진다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C",
+        "E"
+      ],
+      "answer": "C, E",
+      "explanation": "OpenAI 도움말은 앱 권한이 ChatGPT가 묻는 시점만 조절하며 앱에 새 접근을 주지 않는다고 설명합니다. 앱의 접근은 앱 자체, 연결할 때 부여한 접근, 워크스페이스 통제에서 나옵니다. 접근을 없애려면 앱 연결을 해제하거나 워크스페이스 관리자가 앱을 비활성화해야 합니다.\n\n- **A (오답, 사실 오류)**: 읽기 확인을 생략하는 옵션일 뿐이며 쓰기 권한을 새로 주지 않습니다.\n- **B (오답, 사실 오류)**: Always ask는 확인 방식에 관한 옵션이며 연결을 해제하지 않습니다.\n- **C (정답)**: 도움말의 핵심 설명입니다.\n- **D (오답, 사실 오류)**: \"Disabled by admin\"은 관리자가 설정을 바꿔야 한다는 뜻이며 사용자가 해결할 수 없습니다.\n- **E (정답)**: 접근의 출처에 대한 도움말 설명과 일치합니다.\n\n**근거 문서**: [Connectors in ChatGPT](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt) · [Managing app permissions in ChatGPT](https://help.openai.com/en/articles/20001495-managing-app-permissions-in-chatgpt)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "권한 관리",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 14,
+      "title": "웹에서는 못 하는 컴퓨터 파일 작업",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "누리물류의 한 직원이 웹 브라우저의 ChatGPT에서 Work를 시작해 \"내 노트북의 작업 폴더에 있는 파일을 정리해 보고서로 만들어 달라\"고 요청했지만 컴퓨터 안의 파일에 접근하지 못했다. 이 상황에서 **알맞은 대응**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "데스크톱 앱에서 Work를 사용하고, 컴퓨터 파일 접근을 직접 허용한다."
+        },
+        {
+          "id": "B",
+          "text": "소프트웨어 개발용 도구인 Codex CLI로 같은 보고서를 만든다."
+        },
+        {
+          "id": "C",
+          "text": "모바일 앱에서 같은 요청을 해 컴퓨터 파일에 접근한다."
+        },
+        {
+          "id": "D",
+          "text": "음성으로 파일 접근을 승인해 요청을 다시 보낸다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Work는 더 길고 여러 단계로 이루어진 작업을 하고 문서 · 스프레드시트 · 보고서 같은 결과물을 만드는 에이전트입니다. 도움말에 따르면 웹과 모바일의 Work는 사용자의 컴퓨터에 있는 파일에 접근할 수 없고, 데스크톱 앱에서는 사용자의 허용을 받아 접근할 수 있습니다. 승인이 필요한 작업은 웹과 모바일에서 화면 컨트롤로 승인하며, 음성 승인은 지원되지 않습니다.\n\n- **A (정답)**: 컴퓨터 파일 접근은 데스크톱 앱에서 권한을 허용할 때 가능합니다.\n- **B (오답, 유사 기능 혼동)**: Codex는 코드 작성 · 디버깅 · 테스트처럼 소프트웨어 개발과 기술 작업을 위한 도구이며, 일반 문서 정리 보고서용이 아닙니다.\n- **C (오답, 사실 오류)**: 모바일의 Work도 컴퓨터 파일에 접근할 수 없습니다.\n- **D (오답, 사실 오류)**: 음성 승인은 지원되지 않으며, 승인은 화면의 컨트롤로 합니다.\n\n**근거 문서**: [ChatGPT Work and Codex](https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 15,
+      "title": "앱을 연결해 사용하는 순서",
+      "type": "순서 배열",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "한빛물산의 직원이 ChatGPT에서 연결 서비스를 처음 사용하려 한다. 도움말에 안내된 흐름에 따라 아래 네 단계를 **올바른 순서**로 배열하시오.\n\n- (가) ChatGPT가 정보를 읽거나 작업을 하기 전에 승인을 요청하면 확인한다.\n- (나) 앱을 선택하고 로그인이나 권한 부여 절차를 마친다.\n- (다) @로 앱을 언급하거나 + 메뉴에서 앱을 골라 대화에서 사용한다.\n- (라) Apps 또는 Plugins 화면을 연다.",
+      "context": "",
+      "options": [],
+      "items": [
+        {
+          "id": "가",
+          "text": "ChatGPT가 정보를 읽거나 작업을 하기 전에 승인을 요청하면 확인한다."
+        },
+        {
+          "id": "나",
+          "text": "앱을 선택하고 로그인이나 권한 부여 절차를 마친다."
+        },
+        {
+          "id": "다",
+          "text": "@로 앱을 언급하거나 + 메뉴에서 앱을 골라 대화에서 사용한다."
+        },
+        {
+          "id": "라",
+          "text": "Apps 또는 Plugins 화면을 연다."
+        }
+      ],
+      "keys": [
+        "라",
+        "나",
+        "다",
+        "가"
+      ],
+      "answer": "(라) → (나) → (다) → (가)",
+      "explanation": "도움말은 Apps 또는 Plugins를 열고, 앱을 선택해 로그인이나 승인 절차를 마친 뒤, @ 언급이나 + 메뉴로 앱을 사용하도록 안내합니다. 사용 중에는 ChatGPT가 정보를 읽거나 작업을 하기 전에 승인을 요청할 수 있습니다.\n\n| 순서 | 단계 | 앞 단계와의 의존성 | 근거 |\n| --- | --- | --- | --- |\n| 1 | (라) Apps 또는 Plugins 열기 | 없음. 앱을 고를 화면에 먼저 들어가야 합니다. | 연결의 시작 위치 |\n| 2 | (나) 앱 선택 후 로그인 · 권한 부여 완료 | (라)에서 앱을 골라야 진행됩니다. | 연결을 마쳐야 앱이 접근할 수 있음 |\n| 3 | (다) @ 또는 + 메뉴로 앱 사용 | (나)의 연결이 끝나야 대화에서 쓸 수 있습니다. | 앱 호출 방법 |\n| 4 | (가) 승인 요청 확인 | (다)로 앱을 쓰는 중에 읽기나 작업 전 요청이 나옵니다. | 승인 요청은 사용 중에 발생 |\n\n**근거 문서**: [Connectors in ChatGPT](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "순서 배열",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "사람의 승인",
+        "로그와 추적",
+        "권한 관리",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 16,
+      "title": "필요한 일과 알맞은 기능 매칭",
+      "type": "매칭",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "openai",
+      "prompt": "한빛물산 직원들의 필요를 ChatGPT의 기능과 연결하려 한다. 왼쪽의 필요에 가장 알맞은 기능을 오른쪽에서 하나씩 고르시오. 오른쪽 항목 중 하나는 사용되지 않는다.",
+      "context": "",
+      "options": [
+        {
+          "id": "a",
+          "text": "Codex"
+        },
+        {
+          "id": "b",
+          "text": "Work"
+        },
+        {
+          "id": "c",
+          "text": "쓰기 블록(Writing blocks)"
+        },
+        {
+          "id": "d",
+          "text": "프로젝트(Projects)"
+        },
+        {
+          "id": "e",
+          "text": "웹 검색(Search)"
+        },
+        {
+          "id": "f",
+          "text": "음성 모드(Voice mode)"
+        }
+      ],
+      "items": [
+        {
+          "id": "1",
+          "text": "조사와 분석을 거쳐 보고서나 발표 자료 같은 완성된 결과물을 만든다"
+        },
+        {
+          "id": "2",
+          "text": "저장소의 코드를 검토하고 테스트를 실행한다"
+        },
+        {
+          "id": "3",
+          "text": "오늘 나온 소식을 출처 링크와 함께 확인한다"
+        },
+        {
+          "id": "4",
+          "text": "초안을 대화 안에서 직접 고치거나 다시 쓰게 한다"
+        },
+        {
+          "id": "5",
+          "text": "여러 주에 걸친 업무의 대화 · 파일 · 지침을 한곳에 모은다"
+        }
+      ],
+      "keys": [
+        "b",
+        "a",
+        "e",
+        "c",
+        "d"
+      ],
+      "answer": "1-b, 2-a, 3-e, 4-c, 5-d (f 미사용)",
+      "explanation": "각 기능이 어떤 일을 위한 것인지로 구분합니다. 결과물 제작은 Work, 코드 작업은 Codex, 최신 소식은 검색, 초안 편집은 쓰기 블록, 맥락 묶기는 프로젝트입니다.\n\n| 항목 | 결정 근거 |\n| --- | --- |\n| 1 → b | Work는 더 길고 여러 단계의 작업을 하며 문서 · 스프레드시트 · 발표 자료 · 보고서 같은 결과물을 만드는 에이전트입니다. |\n| 2 → a | Codex는 코드를 쓰고 디버깅하며 테스트와 명령을 실행하고 변경을 검토하는 소프트웨어 개발용 도구입니다. |\n| 3 → e | 웹 검색은 최신 정보를 찾아 출처 링크와 함께 보여 줍니다. |\n| 4 → c | 쓰기 블록은 초안 텍스트를 대화 안에서 직접 고치거나 수정을 요청하는 편집 영역입니다. |\n| 5 → d | 프로젝트는 관련 대화 · 파일 · 지침을 한데 모아 둡니다. |\n| f | 음성 모드는 말로 대화하는 방식이며, 어느 필요도 이 기능을 요구하지 않아 사용되지 않습니다. |\n\n**근거 문서**: [ChatGPT Work and Codex](https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex) · [ChatGPT search](https://help.openai.com/en/articles/9237897-chatgpt-search) · [Working with writing blocks and code blocks in ChatGPT](https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt) · [Using Projects in ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "매칭",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "출처 검증",
+        "코딩 지원",
+        "ChatGPT"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 17,
+      "title": "프로젝트에 올린 자료가 쓰이는 범위",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "한빛물산 마케팅팀이 Claude의 프로젝트(Projects) 지식에 제품 소개서와 용어집을 올렸다. 이렇게 올린 자료는 어떻게 쓰이는가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "자료를 올린 그 대화 한 곳에서만 참고된다."
+        },
+        {
+          "id": "B",
+          "text": "같은 프로젝트 안의 모든 대화에서 참고할 맥락으로 쓰인다."
+        },
+        {
+          "id": "C",
+          "text": "프로젝트 밖의 모든 대화에서도 자동으로 참고된다."
+        },
+        {
+          "id": "D",
+          "text": "Claude가 프로젝트 이름과 설명만 읽고, 파일 내용은 사용자가 따로 요청할 때만 본다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "프로젝트는 관련 자료와 지침을 한곳에 모아 두는 작업 공간입니다. Claude 도움말은 프로젝트 지식에 올린 파일 · 텍스트 · 코드 조각이 그 프로젝트 안의 모든 대화에서 맥락으로 쓰인다고 안내합니다. 그래서 같은 자료를 대화마다 다시 붙여 넣을 필요가 없습니다.\n\n- **A (오답, 범위 축소)**: 한 대화에만 첨부한 파일의 특성입니다. 프로젝트 지식은 프로젝트 안의 여러 대화에 걸쳐 쓰입니다.\n- **B (정답)**: 프로젝트 지식은 그 프로젝트의 모든 대화에서 맥락으로 쓰입니다.\n- **C (오답, 범위 과장)**: 프로젝트 지식은 해당 프로젝트 안에서 쓰이며, 프로젝트 밖 대화까지 퍼지지 않습니다.\n- **D (오답, 사실 오류)**: 도움말은 프로젝트 이름과 설명을 Claude가 볼 수 없다고 설명합니다. 이름과 설명이 아니라 올린 지식과 지침이 맥락으로 쓰입니다.\n\n**근거 문서**: [How can I create and manage projects?](https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "프로젝트 관리",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 18,
+      "title": "프로젝트의 모든 대화에 같은 지침 적용하기",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "누리물류 고객지원팀은 \"정중한 존댓말로, 답변 끝에 확인 질문을 덧붙인다\"는 규칙을 **이 프로젝트 안의 모든 대화**에만 적용하고 싶다. 가장 알맞은 방법은 무엇인가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "프로젝트 이름과 설명란에 규칙을 적어 둔다."
+        },
+        {
+          "id": "B",
+          "text": "한 대화에서 규칙을 알려 주면 같은 프로젝트의 다른 대화에도 자동으로 공유된다고 보고 기다린다."
+        },
+        {
+          "id": "C",
+          "text": "계정 전체에 적용되는 설정(Instructions for Claude)에 규칙을 적는다."
+        },
+        {
+          "id": "D",
+          "text": "프로젝트의 지침(instructions)에 규칙을 적는다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "프로젝트 지침은 Claude가 어떻게 행동하고 답할지를 정해 두는 칸이며, 그 프로젝트 안의 모든 대화에 적용됩니다. 규칙을 프로젝트 안으로만 한정하려면 프로젝트 지침이 맞습니다.\n\n- **A (오답, 사실 오류)**: 도움말은 프로젝트 이름과 설명을 Claude가 볼 수 없다고 설명합니다. 거기에 적은 규칙은 반영되지 않습니다.\n- **B (오답, 사실 오류)**: 도움말은 대화에서 나온 맥락이 지식 베이스에 추가되지 않는 한 프로젝트 안의 대화끼리 공유되지 않는다고 안내합니다.\n- **C (오답, 범위 과대)**: 계정 전체 지침은 모든 대화에 적용됩니다. 프로젝트 안으로 한정하려는 조건에 맞지 않습니다.\n- **D (정답)**: 프로젝트 지침은 그 프로젝트의 모든 대화에만 적용됩니다.\n\n**근거 문서**: [How can I create and manage projects?](https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects) · [Understanding Claude's personalization features](https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "프로젝트 관리"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 19,
+      "title": "프로젝트마다 나뉘는 메모리",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "사용자가 Claude에서 '채용 공고' 프로젝트와 '월간 보고' 프로젝트를 따로 쓰고 있다. 메모리를 켠 상태에서 '월간 보고' 프로젝트의 대화를 할 때, Claude가 사용하는 메모리에 관한 설명으로 맞는 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "그 프로젝트의 메모리와 프로젝트 밖 일반 대화의 메모리를 쓰며, 다른 프로젝트의 메모리는 쓰지 않는다."
+        },
+        {
+          "id": "B",
+          "text": "모든 프로젝트의 메모리가 하나로 합쳐져 어느 프로젝트에서나 똑같이 쓰인다."
+        },
+        {
+          "id": "C",
+          "text": "프로젝트 안의 대화에서는 어떤 메모리도 쓰이지 않는다."
+        },
+        {
+          "id": "D",
+          "text": "프로젝트의 메모리는 사용자가 어떤 설정으로도 계정 메모리와 분리할 수 없다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Claude 도움말은 각 프로젝트가 자기만의 메모리를 가진다고 설명합니다. 프로젝트 안에서는 그 프로젝트의 메모리와 프로젝트 밖 대화의 메모리를 쓰되, 다른 프로젝트의 메모리는 쓰지 않습니다. 새로 만들어지는 기억도 그 프로젝트에 저장됩니다.\n\n- **A (정답)**: 프로젝트 메모리와 프로젝트 밖 대화의 메모리를 쓰고, 다른 프로젝트의 메모리는 쓰지 않습니다.\n- **B (오답, 사실 오류)**: 프로젝트마다 메모리가 나뉩니다. 서로 합쳐지지 않습니다.\n- **C (오답, 사실 오류)**: 프로젝트 안에서도 프로젝트 메모리가 쓰입니다.\n- **D (오답, 사실 오류)**: 프로젝트 페이지에서 \"Use account memory\" 설정을 끄면 프로젝트의 메모리를 따로 분리해 둘 수 있습니다.\n\n**근거 문서**: [How can I create and manage projects?](https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects) · [Use Claude's chat search and memory to build on previous context](https://support.claude.com/en/articles/11817273-what-is-memory-and-how-does-claude-use-it)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "프로젝트 관리",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 20,
+      "title": "여러 출처를 종합하는 조사 작업",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "한빛물산 기획팀 직원이 경쟁사 세 곳의 최근 동향을 웹 자료와 연결해 둔 사내 앱의 자료까지 함께 모아, 출처가 달린 긴 보고서로 정리하고 싶다. 가장 알맞은 Claude 기능은 무엇인가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "기록을 남기지 않는 Incognito chat"
+        },
+        {
+          "id": "B",
+          "text": "프로젝트 지침(instructions)"
+        },
+        {
+          "id": "C",
+          "text": "Research"
+        },
+        {
+          "id": "D",
+          "text": "웹 검색 토글만 켜고 짧은 질문을 한 번 보내기"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Research는 웹과 연결된 앱(integrations)을 가로질러 여러 출처의 정보를 모으고, 출처 인용을 달아 긴 보고서로 종합하는 기능입니다. Claude 도움말은 여러 번의 도구 호출이 필요한 포괄적 정보 수집에 알맞다고 설명하며, 경쟁사 비교나 사내 문서 갱신 같은 예를 듭니다.\n\n- **A (오답, 목적이 다른 기능)**: Incognito chat은 대화가 기억과 기록에 남지 않게 하는 기능이며, 조사 범위를 넓혀 주지 않습니다.\n- **B (오답, 목적이 다른 기능)**: 프로젝트 지침은 Claude의 답하는 방식을 정하는 칸이며 자료를 조사해 오지 않습니다.\n- **C (정답)**: 웹과 연결된 앱의 여러 출처를 종합해 인용이 달린 보고서를 만드는 기능입니다.\n- **D (오답, 범위 부족)**: 웹 검색은 최신 웹 내용을 근거로 답하는 기능입니다. 연결된 사내 앱까지 가로질러 긴 보고서로 종합하는 조사에는 Research가 알맞습니다.\n\n**근거 문서**: [Research](https://support.claude.com/en/articles/11095361-research) · [Enabling and using web search](https://support.claude.com/en/articles/10684626-enabling-and-using-web-search)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "출처 검증",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 21,
+      "title": "웹 검색을 쓴 답변 확인하기",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "Claude에서 웹 검색을 켜고 최근 업계 소식을 물어봤더니 답변이 왔다. 웹 검색을 사용한 답변에 관한 설명으로 맞는 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "검색한 내용으로 답했으므로 출처를 따로 확인할 필요가 없다."
+        },
+        {
+          "id": "B",
+          "text": "답변에 출처 인용이 포함되어, 사용자가 출처를 직접 확인할 수 있다."
+        },
+        {
+          "id": "C",
+          "text": "웹 검색을 켜면 사용자가 알려 준 특정 URL의 내용은 읽을 수 없다."
+        },
+        {
+          "id": "D",
+          "text": "검색을 하게 하거나 하지 않게 하는 지시는 대화에서 내릴 수 없다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Claude 도움말은 웹 검색을 쓴 응답에 인용이 포함되어 사용자가 출처를 직접 확인할 수 있다고 안내합니다. 검색 결과에 근거한 답이라도 중요한 내용은 출처로 확인하는 것이 좋습니다.\n\n- **A (오답, 사실 오류)**: 도움말은 사용자가 출처를 직접 확인할 수 있도록 인용을 제공한다고 설명합니다. 확인이 필요 없다는 뜻이 아닙니다.\n- **B (정답)**: 응답에 인용이 포함되어 출처를 직접 확인할 수 있습니다.\n- **C (오답, 사실 오류)**: 웹 검색이 켜져 있으면 사용자가 제공한 URL의 전체 내용을 가져와 읽을 수도 있다고 안내됩니다.\n- **D (오답, 사실 오류)**: 프롬프트에서 \"Search the web\"처럼 검색을 요청하거나, 검색하지 말라고 지시할 수 있다고 안내됩니다.\n\n**근거 문서**: [Enabling and using web search](https://support.claude.com/en/articles/10684626-enabling-and-using-web-search)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "검색 품질",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 22,
+      "title": "아티팩트로 만들기 알맞은 결과물",
+      "type": "복수 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "Claude는 대화 옆 창에 열어 편집하고 다시 쓸 수 있는 결과물을 아티팩트(Artifact)로 만든다. 다음 중 아티팩트로 만들기에 **알맞은 결과물 2가지**를 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "직전 질문에 대한 한 문장짜리 대답"
+        },
+        {
+          "id": "B",
+          "text": "여러 쪽 분량의 독립된 보고서 문서"
+        },
+        {
+          "id": "C",
+          "text": "대화를 시작하며 주고받는 인사말"
+        },
+        {
+          "id": "D",
+          "text": "단일 페이지 웹사이트"
+        },
+        {
+          "id": "E",
+          "text": "요청 내용을 되묻는 짧은 확인 질문"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B",
+        "D"
+      ],
+      "answer": "B, D",
+      "explanation": "Claude 도움말은 아티팩트를 \"다른 사람에게 보여 줄 만한, Claude가 만든 결과물\"로 설명합니다. 문서, 코드 조각, 단일 페이지 웹사이트, 이미지, 다이어그램, 대시보드, 작은 대화형 도구 등이 해당합니다. Claude는 내용이 상당한 분량이고 독립적이며 다시 쓰일 만할 때 아티팩트를 만듭니다.\n\n- **A (오답, 해당하지 않는 내용)**: 한 문장짜리 답은 분량이 적어 따로 열어 다듬을 결과물이 아닙니다.\n- **B (정답)**: 분량이 있고 독립적이며 다시 쓸 문서는 아티팩트로 만들기에 알맞습니다.\n- **C (오답, 해당하지 않는 내용)**: 인사말은 대화의 일부일 뿐 따로 보관할 결과물이 아닙니다.\n- **D (정답)**: 단일 페이지 웹사이트는 도움말이 아티팩트의 종류로 드는 결과물입니다.\n- **E (오답, 해당하지 않는 내용)**: 확인 질문은 대화를 이어 가기 위한 말이며, 결과물이 아닙니다.\n\n**근거 문서**: [What are artifacts and how do I use them?](https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 23,
+      "title": "아티팩트의 앱 연결과 데이터 저장",
+      "type": "복수 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "팀 담당자가 아티팩트로 만든 간단한 재고 현황판에 앱 연결과 데이터 저장 기능을 붙이려 한다. 이에 관한 설명으로 맞는 것을 **2가지** 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "앱 연결과 데이터 저장은 Pro 이상 플랜에서 쓸 수 있으며, Free 플랜은 해당하지 않는다."
+        },
+        {
+          "id": "B",
+          "text": "저장소에는 이미지와 파일 등 어떤 형식의 데이터든 넣을 수 있다."
+        },
+        {
+          "id": "C",
+          "text": "공유된 아티팩트를 열면 만든 사람이 연결한 앱 계정을 그대로 함께 쓴다."
+        },
+        {
+          "id": "D",
+          "text": "공유 저장소에 넣은 데이터는 그 아티팩트를 쓰는 다른 사용자에게도 보인다."
+        },
+        {
+          "id": "E",
+          "text": "새로 만든 아티팩트는 만들자마자 조직 구성원 모두에게 공개된다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A",
+        "D"
+      ],
+      "answer": "A, D",
+      "explanation": "아티팩트는 Free를 포함한 모든 플랜에서 쓸 수 있지만, 앱 연결과 데이터 저장은 Pro 이상에서만 가능합니다. 저장소는 사용자별 개인 저장소와 모두에게 보이는 공유 저장소로 나뉘며, 어떤 데이터를 개인용 · 공유용으로 둘지는 만든 사람이 정합니다.\n\n- **A (정답)**: 앱 연결과 데이터 저장은 Pro, Max, Team, Enterprise에서 쓸 수 있습니다.\n- **B (오답, 사실 오류)**: 저장소는 텍스트만 저장할 수 있으며 이미지, 파일, 바이너리 데이터는 넣을 수 없습니다.\n- **C (오답, 사실 오류)**: 공유되거나 게시된 아티팩트에서도 각자 자기 앱을 연결합니다.\n- **D (정답)**: 공유 저장소의 데이터는 모든 사용자에게 보입니다. 그래서 민감한 정보를 입력하기 전에 개인용인지 공유용인지 확인하라고 안내됩니다.\n- **E (오답, 사실 오류)**: 아티팩트는 처음에 만든 사람에게만 보이는 비공개 상태로 시작합니다.\n\n**근거 문서**: [What are artifacts and how do I use them?](https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "앱 연결"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 24,
+      "title": "개발자가 서비스에 Claude를 직접 붙이는 방법",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "누리물류의 개발자가 자사 주문 관리 앱 안에서 Claude 모델을 직접 호출해 답변을 받아 오려 한다. 이때 쓰는 개발자용 서비스는 무엇인가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Claude Platform의 Messages API"
+        },
+        {
+          "id": "B",
+          "text": "Claude 앱의 Artifacts 템플릿"
+        },
+        {
+          "id": "C",
+          "text": "Claude 앱의 Projects 지식"
+        },
+        {
+          "id": "D",
+          "text": "Claude 앱의 Research"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Anthropic 개발자 문서는 Claude로 서비스를 만드는 방법으로 Messages API(모델에 직접 프롬프트를 보내는 접근)와 Claude Managed Agents를 소개합니다. 자사 앱에서 모델을 직접 호출하는 용도에는 Messages API가 해당합니다. 나머지는 Claude 앱 안에서 사용자가 쓰는 기능입니다.\n\n- **A (정답)**: Messages API는 모델에 직접 프롬프트를 보내는 개발자용 접근 방법입니다.\n- **B (오답, 유사 기능 혼동)**: Artifacts는 Claude 앱 안에서 문서나 슬라이드 같은 결과물을 만들고 편집하는 기능입니다.\n- **C (오답, 유사 기능 혼동)**: Projects는 Claude 앱에서 자료와 지침을 모아 두는 작업 공간입니다.\n- **D (오답, 유사 기능 혼동)**: Research는 Claude 앱에서 여러 출처를 조사해 보고서를 만드는 기능입니다.\n\n**근거 문서**: [Intro to Claude (Claude Platform Docs)](https://platform.claude.com/docs/en/intro)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "코딩 지원",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 25,
+      "title": "문서 속 그래프 내용을 읽히기",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "한빛물산 직원이 월간 실적 보고서(DOCX)를 올리며 안에 삽입된 막대 그래프를 해석해 달라고 했는데, Claude가 그래프 내용을 파악하지 못했다. 그래프를 읽히기 위한 방법으로 가장 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "DOCX를 그대로 다시 올린다. DOCX에 삽입된 이미지도 읽는다."
+        },
+        {
+          "id": "B",
+          "text": "같은 DOCX를 올리면서 파일 이름에 \"그래프 포함\"이라고 적는다."
+        },
+        {
+          "id": "C",
+          "text": "그래프를 이미지 파일(PNG 등)로 따로 저장해 올린다."
+        },
+        {
+          "id": "D",
+          "text": "웹 검색을 켜고 보고서 제목을 입력한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Claude 도움말은 PDF가 아닌 문서(DOCX 등)에서는 텍스트만 추출하므로 문서에 삽입된 이미지는 읽거나 해석할 수 없다고 안내합니다. 반면 JPEG, PNG, GIF, WebP 이미지는 업로드할 수 있으므로, 그래프를 이미지로 따로 올리면 Claude가 그 내용을 볼 수 있습니다.\n\n- **A (오답, 사실 오류)**: DOCX에서는 텍스트만 추출됩니다. 삽입된 그래프는 다시 올려도 읽히지 않습니다.\n- **B (오답, 조건 누락)**: 파일 이름은 그래프의 내용을 전달하지 못합니다.\n- **C (정답)**: 그래프를 지원되는 이미지 형식으로 올리면 시각 내용을 볼 수 있습니다.\n- **D (오답, 목적이 다른 기능)**: 웹 검색은 외부 웹 내용을 가져오는 기능이며, 올린 문서 속 그래프를 읽게 해 주지 않습니다.\n\n**근거 문서**: [Uploading files to Claude](https://support.claude.com/en/articles/8241126-uploading-files-to-claude)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 26,
+      "title": "분석 결과를 엑셀 파일로 받기",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "Claude를 개인 계정으로 쓰는 직원이 대화에서 정리한 표를 엑셀(.xlsx) 파일로 만들어 받고 싶다. 설정(Settings) > Capabilities에서 확인해야 하는 기능은 무엇인가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Research"
+        },
+        {
+          "id": "B",
+          "text": "Memory"
+        },
+        {
+          "id": "C",
+          "text": "Web search"
+        },
+        {
+          "id": "D",
+          "text": "Code execution and file creation"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "Claude는 코드 실행과 파일 생성 기능으로 Excel(.xlsx), PowerPoint(.pptx), Word(.docx), PDF 파일을 만들 수 있습니다. Free, Pro, Max 사용자는 설정의 Capabilities에서 \"Code execution and file creation\" 토글로 이 기능을 켜고 끕니다.\n\n- **A (오답, 목적이 다른 기능)**: Research는 여러 출처를 조사해 보고서를 만드는 기능이며, 파일 형식 생성과는 관계가 없습니다.\n- **B (오답, 목적이 다른 기능)**: Memory는 대화에서 알게 된 내용을 기억하는 기능입니다.\n- **C (오답, 목적이 다른 기능)**: Web search는 최신 웹 내용을 근거로 답하는 기능입니다.\n- **D (정답)**: 엑셀 등 파일을 만들게 하는 기능의 설정 이름입니다.\n\n**근거 문서**: [Create and edit files with Claude](https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 27,
+      "title": "조직에 추가된 커넥터를 구성원이 쓰는 방법",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "누리물류의 Team 플랜 소유자(Owner)가 사내 문서 도구 커넥터를 조직에 추가했다. 이후 구성원이 그 커넥터를 쓰는 방법으로 맞는 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "소유자가 추가하는 즉시 모든 구성원의 문서 도구 데이터가 자동으로 Claude에 연결된다."
+        },
+        {
+          "id": "B",
+          "text": "구성원이 각자 서비스에 인증하며, Claude는 그 사람의 권한 범위에서 동작한다."
+        },
+        {
+          "id": "C",
+          "text": "커넥터는 개인 계정에서만 쓸 수 있어, 팀 구성원은 쓸 수 없다."
+        },
+        {
+          "id": "D",
+          "text": "구성원은 소유자의 서비스 권한을 빌려 소유자가 볼 수 있는 모든 자료에 접근한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Claude 도움말은 Team과 Enterprise에서 커넥터를 활성화하면 팀이 쓸 수 있게 되지만 자동으로 누구에게도 접근 권한을 주지는 않는다고 설명합니다. 각 구성원이 직접 인증해야 하며, Claude는 연결된 서비스에서 각 사용자의 권한을 이어받아 동작합니다.\n\n- **A (오답, 사실 오류)**: 커넥터를 추가해도 구성원의 접근은 자동으로 열리지 않습니다. 각자 인증이 필요합니다.\n- **B (정답)**: 구성원이 각자 인증하며, Claude는 그 사람이 서비스에서 가진 권한 범위로 움직입니다.\n- **C (오답, 사실 오류)**: Team과 Enterprise에서도 조직 소유자가 커넥터를 추가해 구성원이 쓰게 할 수 있습니다.\n- **D (오답, 사실 오류)**: Claude는 소유자의 권한이 아니라 각 사용자 본인의 권한을 이어받습니다.\n\n**근거 문서**: [Use connectors to extend Claude's capabilities](https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "앱 연결"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 28,
+      "title": "연결 앱(커넥터)에 관한 설명 판정",
+      "type": "복수 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "Claude의 커넥터에 관한 다음 설명 중 맞는 것을 **2가지** 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "소유자가 조직에서 쓰기 작업을 막아 두어도, 개인 사용자가 설정에서 자유롭게 풀 수 있다."
+        },
+        {
+          "id": "B",
+          "text": "커넥터 디렉터리에 없는 MCP 서버도 Anthropic이 모두 검증해 안전하다."
+        },
+        {
+          "id": "C",
+          "text": "커넥터로 연결하면 Claude가 서비스의 데이터를 가져오고 그 안에서 작업도 할 수 있으며, 그 범위는 사용자의 계정 권한에 따른다."
+        },
+        {
+          "id": "D",
+          "text": "커넥터는 연결한 서비스가 허용하는 범위보다 넓은 접근 권한을 Claude에 준다."
+        },
+        {
+          "id": "E",
+          "text": "연결해 둔 커넥터는 대화마다 + 메뉴 등에서 켜야 그 대화에서 쓸 수 있다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C",
+        "E"
+      ],
+      "answer": "C, E",
+      "explanation": "커넥터는 Claude가 앱과 서비스에 접근해 데이터를 가져오고 그 안에서 작업까지 하게 해 주는 기능입니다. 접근 범위는 사용자 계정의 권한 안에서 정해지고, 연결한 도구는 대화마다 켜서 씁니다. 디렉터리 밖 서비스는 Anthropic이 검증하지 않았으므로 신뢰할 수 있는 서버만 연결해야 합니다.\n\n- **A (오답, 사실 오류)**: 소유자가 조직 차원에서 정한 제한은 개인 사용자가 풀 수 없습니다.\n- **B (오답, 사실 오류)**: 디렉터리 밖 서비스는 Anthropic이 검증하지 않았다고 안내되며, 신뢰할 수 있는 서버에만 연결하라고 합니다.\n- **C (정답)**: 연결된 서비스의 데이터 조회와 작업이 가능하고, 범위는 사용자의 계정 권한을 따릅니다.\n- **D (오답, 사실 오류)**: 제한은 접근을 좁히기만 하며, 원 서비스가 허용하는 것 이상을 주지 않습니다.\n- **E (정답)**: 연결된 도구는 대화별로 + 메뉴(또는 / 명령)에서 켜야 합니다.\n\n**근거 문서**: [Use connectors to extend Claude's capabilities](https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities) · [Use the connectors directory to extend Claude's capabilities](https://support.claude.com/en/articles/11724452-use-the-connectors-directory-to-extend-claude-s-capabilities)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "앱 연결",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 29,
+      "title": "상황에 맞는 Claude 기능 매칭",
+      "type": "매칭",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "왼쪽의 상황에 가장 알맞은 Claude 기능을 오른쪽에서 하나씩 고르시오. 오른쪽 항목 중 하나는 사용되지 않는다.",
+      "context": "",
+      "options": [
+        {
+          "id": "a",
+          "text": "Incognito chat"
+        },
+        {
+          "id": "b",
+          "text": "Artifacts"
+        },
+        {
+          "id": "c",
+          "text": "Projects"
+        },
+        {
+          "id": "d",
+          "text": "Research"
+        },
+        {
+          "id": "e",
+          "text": "과거 대화 검색(Search and reference chats)"
+        },
+        {
+          "id": "f",
+          "text": "Claude Code"
+        }
+      ],
+      "items": [
+        {
+          "id": "1",
+          "text": "한 업무의 참고 자료와 지침을 한곳에 두고, 그 안의 모든 대화에서 참고하게 하고 싶다"
+        },
+        {
+          "id": "2",
+          "text": "웹과 연결 앱의 여러 출처를 조사해 인용이 달린 긴 보고서로 정리하고 싶다"
+        },
+        {
+          "id": "3",
+          "text": "지난주에 나눈 대화에서 논의한 내용을 새 대화에서 찾아 참고하고 싶다"
+        },
+        {
+          "id": "4",
+          "text": "이번 대화는 메모리나 대화 기록에 남기지 않고 싶다"
+        },
+        {
+          "id": "5",
+          "text": "대화 옆 창에서 고치고 PowerPoint 등으로 내보낼 슬라이드가 필요하다"
+        }
+      ],
+      "keys": [
+        "c",
+        "d",
+        "e",
+        "a",
+        "b"
+      ],
+      "answer": "1-c, 2-d, 3-e, 4-a, 5-b (f 미사용)",
+      "explanation": "상황이 요구하는 것이 자료 보관, 조사, 과거 대화 참조, 기록 비남김, 결과물 제작 중 무엇인지 먼저 가르면 기능이 정해집니다.\n\n| 항목 | 결정 근거 |\n| --- | --- |\n| 1 → c | 프로젝트는 지식과 지침을 모아 두고 그 안의 모든 대화에서 맥락으로 씁니다. |\n| 2 → d | Research는 웹과 연결 앱의 여러 출처를 종합해 인용이 달린 보고서를 만듭니다. |\n| 3 → e | 과거 대화 검색은 이전 대화를 찾아 새 대화에서 참고하게 합니다. |\n| 4 → a | Incognito chat은 메모리와 대화 기록에 남지 않고, 과거 대화 검색에서도 쓰이지 않습니다. |\n| 5 → b | 슬라이드 템플릿 아티팩트는 대화 옆에서 편집하고 PowerPoint 등으로 내보낼 수 있습니다. |\n| f | Claude Code는 코드베이스를 다루는 개발 도구로, 다섯 상황 어느 것에도 해당하지 않아 사용되지 않습니다. |\n\n**근거 문서**: [How can I create and manage projects?](https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects) · [Research](https://support.claude.com/en/articles/11095361-research) · [Use Claude's chat search and memory to build on previous context](https://support.claude.com/en/articles/11817273-what-is-memory-and-how-does-claude-use-it) · [What are artifacts and how do I use them?](https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "매칭",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "Claude",
+        "출처 검증"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 30,
+      "title": "팀 플랜에서 웹 검색을 쓰는 순서",
+      "type": "순서 배열",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "Team 플랜을 쓰는 회사의 구성원이 최신 소식을 Claude에게 묻고 출처까지 확인하려 한다. 아래 네 단계를 **올바른 순서**로 배열하시오.\n\n- (가) 구성원이 채팅의 \"Search and tools\" 메뉴에서 웹 검색을 켠다.\n- (나) 소유자(Owner)가 관리자 설정(Admin settings)의 Capabilities에서 워크스페이스의 웹 검색을 켠다.\n- (다) 답변에 달린 인용 링크를 열어 출처를 확인한다.\n- (라) 최신 정보가 필요한 질문을 보낸다.",
+      "context": "",
+      "options": [],
+      "items": [
+        {
+          "id": "가",
+          "text": "구성원이 채팅의 \"Search and tools\" 메뉴에서 웹 검색을 켠다."
+        },
+        {
+          "id": "나",
+          "text": "소유자(Owner)가 관리자 설정(Admin settings)의 Capabilities에서 워크스페이스의 웹 검색을 켠다."
+        },
+        {
+          "id": "다",
+          "text": "답변에 달린 인용 링크를 열어 출처를 확인한다."
+        },
+        {
+          "id": "라",
+          "text": "최신 정보가 필요한 질문을 보낸다."
+        }
+      ],
+      "keys": [
+        "나",
+        "가",
+        "라",
+        "다"
+      ],
+      "answer": "(나) → (가) → (라) → (다)",
+      "explanation": "Claude 도움말은 Team과 Enterprise에서 소유자가 먼저 워크스페이스 전체의 웹 검색을 켜야 한다고 안내합니다. 그다음에야 구성원이 채팅의 \"Search and tools\" 메뉴에서 켤 수 있습니다. 검색을 쓴 답변에는 인용이 포함되므로, 질문한 뒤 인용으로 출처를 확인합니다.\n\n| 순서 | 단계 | 앞 단계와의 의존성 | 근거 |\n| --- | --- | --- | --- |\n| 1 | (나) 소유자가 워크스페이스 웹 검색 활성화 | 없음. 소유자의 활성화가 먼저입니다. | \"An Owner or Primary Owner must first enable web search\" |\n| 2 | (가) 구성원이 채팅에서 켬 | (나)가 끝나야 구성원이 켤 수 있습니다. | 활성화 후 구성원이 Search and tools 메뉴에서 켬 |\n| 3 | (라) 최신 질문 전송 | 검색이 켜진 뒤에야 검색을 쓴 답을 받습니다. | 최신 · 시간에 민감한 주제에 검색을 사용 |\n| 4 | (다) 인용 링크로 출처 확인 | 답변이 와야 확인할 인용이 있습니다. | 응답에 인용이 포함됨 |\n\n**근거 문서**: [Enabling and using web search](https://support.claude.com/en/articles/10684626-enabling-and-using-web-search)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "순서 배열",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "검색 품질",
+        "최신 정보 확인",
+        "출처 검증",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 31,
+      "title": "Claude Code란 무엇인가",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "개발팀 신입이 \"Claude Code가 뭔가요?\"라고 묻는다. 공식 문서의 설명과 가장 가까운 답은 무엇인가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "대화 옆 창에서 문서와 슬라이드를 만들어 주는 Claude 앱의 기능이다."
+        },
+        {
+          "id": "B",
+          "text": "웹과 연결 앱을 조사해 인용이 달린 보고서를 만드는 기능이다."
+        },
+        {
+          "id": "C",
+          "text": "코드베이스를 읽고 파일을 수정하며 명령을 실행하는 에이전트형 코딩 도구이다."
+        },
+        {
+          "id": "D",
+          "text": "업로드한 파일의 내용만 요약해 주는 읽기 전용 도구다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Claude Code 공식 문서는 Claude Code를 코드베이스를 읽고, 파일을 편집하고, 명령을 실행하며, 개발 도구와 연동하는 에이전트형 코딩 도구라고 설명합니다. 터미널, IDE, 데스크톱 앱, 브라우저에서 쓸 수 있고, 각 환경은 같은 Claude Code 엔진에 연결됩니다.\n\n- **A (오답, 유사 기능 혼동)**: 문서와 슬라이드를 만드는 것은 Claude 앱의 Artifacts 기능입니다.\n- **B (오답, 유사 기능 혼동)**: 조사 보고서는 Research의 역할입니다.\n- **C (정답)**: 코드베이스를 다루는 에이전트형 코딩 도구이며 여러 환경에서 쓸 수 있습니다.\n- **D (오답, 사실 오류)**: Claude Code는 읽기만 하지 않고 파일을 수정하고 명령도 실행합니다.\n\n**근거 문서**: [Claude Code overview](https://code.claude.com/docs/en/overview)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "코딩 지원",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 32,
+      "title": "Claude Code가 매번 읽는 팀 규칙 파일",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "anthropic",
+      "prompt": "누리물류 개발팀은 \"테스트는 pytest로 작성한다\", \"커밋 메시지는 한국어로 쓴다\" 같은 규칙을 Claude Code가 세션을 시작할 때마다 알고 있게 하고 싶다. 가장 알맞은 방법은 무엇인가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "프로젝트 루트에 CLAUDE.md 파일을 두고 규칙을 적는다."
+        },
+        {
+          "id": "B",
+          "text": "Claude 앱 Projects의 지식에 규칙 파일을 올린다."
+        },
+        {
+          "id": "C",
+          "text": "Research로 규칙을 조사하게 한다."
+        },
+        {
+          "id": "D",
+          "text": "규칙을 아티팩트로 만들어 저장한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Claude Code 문서는 CLAUDE.md를 프로젝트 루트에 두는 마크다운 파일로, Claude Code가 매 세션 시작 때 읽는다고 설명합니다. 코딩 표준, 선호 라이브러리, 검토 체크리스트 같은 지속적인 지침을 적는 용도입니다.\n\n- **A (정답)**: CLAUDE.md는 세션 시작 때마다 읽히는 프로젝트 지침 파일입니다.\n- **B (오답, 유사 기능 혼동)**: Projects 지식은 Claude 앱의 프로젝트에서 쓰는 기능이며, Claude Code 세션이 읽는 설정 파일이 아닙니다.\n- **C (오답, 목적이 다른 기능)**: Research는 외부 정보를 조사하는 기능이며, 팀이 정한 규칙을 세션에 고정해 주지 않습니다.\n- **D (오답, 목적이 다른 기능)**: 아티팩트는 Claude가 만든 결과물을 보고 공유하는 기능이며, Claude Code의 지침으로 자동 로드되지 않습니다.\n\n**근거 문서**: [Claude Code overview](https://code.claude.com/docs/en/overview) · [How Claude remembers your project](https://code.claude.com/docs/en/memory)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "코딩 지원",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 33,
+      "title": "말로 나누는 대화와 카메라 공유",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "google",
+      "prompt": "한빛물산 직원이 Gemini 앱에서 마이크로 말을 걸어 자유롭게 대화하고, 대화 도중 말을 끊어 화제를 바꾸거나 카메라로 눈앞의 물건을 보여 주고 싶어 한다. 이런 용도로 쓰는 기능으로 **가장 적절한 것**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Deep Research: 질문에 대한 연구 계획을 세우고 긴 보고서를 만들어 주는 기능"
+        },
+        {
+          "id": "B",
+          "text": "Gemini Live: 음성으로 자연스럽게 대화하고 카메라나 화면을 공유할 수 있는 기능"
+        },
+        {
+          "id": "C",
+          "text": "Google AI Studio: 개발자가 브라우저에서 모델과 프롬프트를 시험하는 도구"
+        },
+        {
+          "id": "D",
+          "text": "Gemini Notebook: 사용자가 모은 자료를 바탕으로 연구와 학습을 돕는 도구"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Gemini 도움말은 Gemini Live를 \"자연스럽고 자유로운 대화\"를 나누는 기능으로 설명합니다. Gemini가 말하는 도중에 말로 끼어들 수 있고, 카메라 버튼으로 눈앞의 것을 보여 주거나 화면 공유 버튼으로 화면을 보여 줄 수도 있습니다.\n\n- **A (오답, 유사 기능 혼동)**: Deep Research는 연구 계획을 세우고 웹 등을 조사해 보고서를 쓰는 기능이며, 음성 대화가 목적이 아닙니다.\n- **B (정답)**: 말로 대화하고 중간에 끼어들며 카메라와 화면을 공유한다는 설명에 맞습니다.\n- **C (오답, 유사 기능 혼동)**: Google AI Studio는 개발자가 모델과 프롬프트를 시험하는 도구로, 일반 사용자의 음성 대화 기능이 아닙니다.\n- **D (오답, 유사 기능 혼동)**: Gemini Notebook은 사용자의 자료를 근거로 하는 연구 · 학습 도구입니다.\n\n추가로 알아둘 점: 도움말은 Live 사용 시 카메라는 대화를 보류하거나 앱을 떠나거나 화면이 잠기면 꺼지고, 자동으로 다시 켜지지 않는다고 안내합니다.\n\n**근거 문서**: [Talk naturally with Gemini Live](https://support.google.com/gemini/answer/15274899)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 34,
+      "title": "Deep Research 보고서를 만들기 전에 할 수 있는 일",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "google",
+      "prompt": "누리물류 직원이 Gemini 앱에서 Deep Research로 \"물류 자동화 동향\"을 조사하려 한다. 질문을 제출하자 Gemini가 연구 계획 초안을 보여 주었다. 이 시점에서 직원이 할 수 있는 일로 **옳은 것**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "보고서가 끝날 때까지 채팅 화면을 닫지 말고 그대로 열어 두어야 한다."
+        },
+        {
+          "id": "B",
+          "text": "조사에 쓰는 출처는 웹으로 고정되어 있어 바꿀 수 없다."
+        },
+        {
+          "id": "C",
+          "text": "계획은 고칠 수 없으므로 마음에 들지 않으면 질문을 처음부터 다시 입력해야 한다."
+        },
+        {
+          "id": "D",
+          "text": "계획을 확인하고 Edit plan으로 고친 뒤 Start research를 눌러 조사를 시작할 수 있다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "Deep Research는 질문을 받으면 먼저 연구 계획을 만들어 보여 주고, 사용자가 이를 다듬은 뒤 조사를 시작하게 합니다. Gemini 도움말은 보고서가 만들어지기 전에 \"Edit plan\"을 눌러 계획을 수정하고 \"Start research\"를 누르라고 안내합니다. Deep Research 소개 페이지도 계획을 사용자에게 보여 주고 다듬을 수 있다고 설명합니다.\n\n- **A (오답, 사실 오류)**: 도움말은 조사가 진행되는 동안 채팅을 떠나도 되고, 보고서가 준비되면 알림을 준다고 안내합니다.\n- **B (오답, 사실 오류)**: Google Search가 기본 출처이지만 해제할 수 있고 Gmail이나 Drive 같은 출처를 고를 수 있습니다.\n- **C (오답, 사실 오류)**: 계획은 보고서를 만들기 전에 Edit plan으로 수정할 수 있습니다.\n- **D (정답)**: 계획 확인, 수정, 조사 시작의 순서가 공식 설명과 같습니다.\n\n**근거 문서**: [Use Deep Research in Gemini Apps](https://support.google.com/gemini/answer/15719111) · [Gemini Deep Research](https://gemini.google/overview/deep-research/)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "검색 품질",
+        "리서치",
+        "업무 자동화",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 35,
+      "title": "Deep Research 보고서를 받기까지의 순서",
+      "type": "순서 배열",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "google",
+      "prompt": "기획팀 직원이 Gemini 앱의 Deep Research로 보고서를 만들어 Google Docs로 가져가려 한다. 아래 네 단계를 **올바른 순서**로 배열하시오.\n\n- (가) 보고서가 열린 채팅의 Canvas 패널에서 Share & export를 눌러 Export to Docs를 선택한다.\n- (나) Add Files 메뉴에서 Deep Research를 고르고 연구 질문을 제출한다.\n- (다) 조사가 끝났다는 알림을 받고 완성된 보고서를 연다.\n- (라) Gemini가 만든 연구 계획을 확인하고, 필요하면 Edit plan으로 고친 뒤 Start research를 누른다.",
+      "context": "",
+      "options": [],
+      "items": [
+        {
+          "id": "가",
+          "text": "보고서가 열린 채팅의 Canvas 패널에서 Share & export를 눌러 Export to Docs를 선택한다."
+        },
+        {
+          "id": "나",
+          "text": "Add Files 메뉴에서 Deep Research를 고르고 연구 질문을 제출한다."
+        },
+        {
+          "id": "다",
+          "text": "조사가 끝났다는 알림을 받고 완성된 보고서를 연다."
+        },
+        {
+          "id": "라",
+          "text": "Gemini가 만든 연구 계획을 확인하고, 필요하면 Edit plan으로 고친 뒤 Start research를 누른다."
+        }
+      ],
+      "keys": [
+        "나",
+        "라",
+        "다",
+        "가"
+      ],
+      "answer": "(나) → (라) → (다) → (가)",
+      "explanation": "Gemini 도움말이 안내하는 흐름은 Deep Research 선택과 질문 제출, 계획 확인과 수정, 조사 시작, 알림 후 보고서 열기, 공유 및 내보내기 순입니다. 각 단계는 앞 단계의 결과가 있어야 할 수 있습니다.\n\n| 순서 | 단계 | 앞 단계와의 의존성 | 근거 |\n| --- | --- | --- | --- |\n| 1 | (나) Deep Research 선택, 질문 제출 | 없음. 질문이 있어야 계획이 만들어집니다. | Add Files 메뉴에서 Deep Research 선택 |\n| 2 | (라) 계획 확인, Edit plan, Start research | (나)로 만들어진 계획 초안이 있어야 합니다. | 보고서 생성 전에 계획을 고치고 시작 |\n| 3 | (다) 알림 후 보고서 열기 | (라)로 조사가 시작되어야 보고서가 만들어집니다. | 준비되면 Gemini가 알림 |\n| 4 | (가) Share & export, Export to Docs | (다)에서 보고서가 완성되어야 내보낼 수 있습니다. | Canvas 패널의 Share & export |\n\n**근거 문서**: [Use Deep Research in Gemini Apps](https://support.google.com/gemini/answer/15719111)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "순서 배열",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "검색 품질",
+        "리서치",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 36,
+      "title": "웹이 아닌 사내 Drive 자료만으로 조사하기",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "google",
+      "prompt": "한빛물산 직원이 Gemini 앱의 Deep Research로 보고서를 쓰려 한다. 이번에는 웹 검색 결과가 섞이지 않게, 자신의 Google Drive 문서만을 근거로 삼고 싶다. 이때의 행동으로 **가장 알맞은 것**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "질문을 제출하기 전에 출처 선택에서 기본 출처인 Google Search를 해제하고 Drive를 고른다."
+        },
+        {
+          "id": "B",
+          "text": "Deep Research는 웹만 조사할 수 있으므로 Drive 문서는 질문에 직접 붙여 넣는다."
+        },
+        {
+          "id": "C",
+          "text": "보고서가 완성된 뒤 Canvas 패널에서 웹 출처를 하나씩 지운다."
+        },
+        {
+          "id": "D",
+          "text": "Gem을 만들어 Drive 문서를 Knowledge에 넣고 그 Gem에서 Deep Research를 실행한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Gemini 도움말은 Deep Research에서 Google Search가 기본 출처이고, 이를 해제하면 Gmail이나 Drive 같은 다른 출처로 조사 범위를 한정할 수 있다고 안내합니다. 소개 페이지도 Deep Research가 웹과 함께, 사용자가 원하면 Gmail · Drive · Chat을 조사한다고 설명합니다.\n\n- **A (정답)**: 출처 선택 단계에서 Google Search를 해제하고 Drive를 고르는 방법입니다.\n- **B (오답, 사실 오류)**: Deep Research는 사용자가 선택하면 Gmail, Drive 같은 출처도 조사합니다.\n- **C (오답, 순서 오류)**: 출처는 조사 전에 정하는 것입니다. 완성된 보고서에서 웹 출처를 지워도 웹 검색이 섞여 만들어졌다는 사실은 바뀌지 않습니다.\n- **D (오답, 유사 기능 혼동)**: Gem의 Knowledge는 해당 Gem의 대화에 참고 파일을 주는 기능이며, Deep Research의 출처 선택과는 다른 기능입니다.\n\n추가로 알아둘 점: 도움말은 Gmail이나 Drive 같은 Google Workspace 서비스를 출처에 넣으면 차트 · 다이어그램 같은 시각 자료 기능은 쓸 수 없다고 안내합니다.\n\n**근거 문서**: [Use Deep Research in Gemini Apps](https://support.google.com/gemini/answer/15719111) · [Gemini Deep Research](https://gemini.google/overview/deep-research/)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "출처 검증",
+        "검색 품질",
+        "리서치",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 37,
+      "title": "Gemini Notebook이 하는 일",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "google",
+      "prompt": "누리물류의 교육 담당자가 \"NotebookLM이 Gemini Notebook으로 이름이 바뀌었다\"는 소식을 듣고, 이 도구가 무엇인지 동료에게 설명하려 한다. 설명으로 **가장 적절한 것**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "NotebookLM과는 별개로 새로 나온 제품이어서 기존 노트북은 옮길 수 없다."
+        },
+        {
+          "id": "B",
+          "text": "개발자가 앱에 Gemini를 넣을 때 쓰는 API 키 발급 서비스이다."
+        },
+        {
+          "id": "C",
+          "text": "사용자가 올린 자료를 바탕으로 연구하고 학습하도록 돕는 도구이다."
+        },
+        {
+          "id": "D",
+          "text": "정해진 자료 없이 웹 전체에서 정보를 모아 보고서만 만들어 주는 기능이다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Google은 2026년 7월 16일 NotebookLM의 이름을 Gemini Notebook으로 바꾼다고 알렸고, \"같은 독립 제품\"이라고 설명했습니다. 이 도구는 사용자 자신의 자료를 바탕으로 하는 연구 · 학습 도구입니다. 도움말은 노트북이 업로드한 소스를 사용해 질문에 답한다고 설명합니다.\n\n- **A (오답, 사실 오류)**: 새 제품이 아니라 같은 제품의 이름이 바뀐 것입니다.\n- **B (오답, 유사 기능 혼동)**: API 키는 Google AI Studio에서 만들어 Gemini API에 쓰는 것으로, Gemini Notebook과 관계가 없습니다.\n- **C (정답)**: 사용자 자료 기반의 연구 · 학습 도구라는 설명에 맞습니다.\n- **D (오답, 유사 기능 혼동)**: 웹 전체를 조사해 보고서를 쓰는 것은 Deep Research의 설명이며, Gemini Notebook은 사용자가 가져온 소스를 중심으로 합니다.\n\n추가로 알아둘 점: 공식 블로그는 노트북을 Gemini 앱에서도 만들고 열 수 있으며, 앱과 독립 제품이 동기화된다고 안내합니다.\n\n**근거 문서**: [NotebookLM is now Gemini Notebook](https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/) · [Add or discover new sources for your notebook](https://support.google.com/gemininotebook/answer/16215270)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "Gemini",
+        "NotebookLM"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 38,
+      "title": "매번 붙여 넣던 지침을 저장해 두기",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "google",
+      "prompt": "한빛물산 영업팀 직원은 Gemini 앱에서 거래처 메일 초안을 부탁할 때마다 \"존댓말로, 세 문단 이내로, 마지막에 일정 제안을 넣어 줘\"라는 같은 지침을 붙여 넣고 있다. 이 번거로움을 줄이는 방법으로 **가장 알맞은 것**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Gemini Live를 켜서 같은 지침을 매번 말로 전달한다."
+        },
+        {
+          "id": "B",
+          "text": "이름과 지침을 정해 Gem으로 저장하고, 메일 초안이 필요할 때 그 Gem을 불러 쓴다."
+        },
+        {
+          "id": "C",
+          "text": "Deep Research로 질문하여 지침을 포함한 보고서를 받아 둔다."
+        },
+        {
+          "id": "D",
+          "text": "Google AI Studio에 접속해 Gemini API 키를 발급받는다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Gem은 Gemini 앱에서 사용자의 필요에 맞게 응답을 맞춤 설정해 저장해 두는 기능입니다. 도움말에 따르면 Gem을 만들 때 이름과 지침을 입력하고, 원하면 Knowledge에 참고 파일을 더한 뒤 저장합니다. 지침에는 목표, 원하는 동작, 선호하는 형식을 적을 수 있습니다.\n\n- **A (오답, 유사 기능 혼동)**: 말로 전달해도 지침이 저장되지 않아 매번 반복해야 합니다. 또한 도움말은 Live에서 Gem을 쓸 수 없다고 안내합니다.\n- **B (정답)**: 반복되는 지침을 한 번 저장해 두고 다시 쓰는 것이 Gem의 용도입니다.\n- **C (오답, 유사 기능 혼동)**: Deep Research는 조사 보고서를 만드는 기능이며 지침을 저장하는 기능이 아닙니다.\n- **D (오답, 유사 기능 혼동)**: API 키는 개발자가 Gemini API를 호출할 때 쓰는 것으로 이 상황과 관련이 없습니다.\n\n추가로 알아둘 점: 도움말은 2026년 11월부터 개인 Google 계정의 Gem이 제거되고 자동으로 skills로 전환될 예정이라고 안내합니다. 출제 기준일(2026-10-18) 현재는 Gem 기능이 그대로 제공됩니다.\n\n**근거 문서**: [Use Gems in Gemini Apps](https://support.google.com/gemini/answer/15146780) · [Get started with Gems in Gemini Apps](https://support.google.com/gemini/answer/15235603)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 39,
+      "title": "Google Workspace 연결 앱으로 할 수 있는 일",
+      "type": "복수 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "google",
+      "prompt": "한빛물산 직원이 Gemini 앱에서 Google Workspace 연결 앱을 켰다. 연결 앱을 통해 Gemini가 할 수 있는 일 **2가지**를 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Google Drive에서 새 폴더를 만들고 파일을 정리해 옮긴다."
+        },
+        {
+          "id": "B",
+          "text": "Gmail과 Drive의 내용에서 필요한 정보를 찾아 요약한다."
+        },
+        {
+          "id": "C",
+          "text": "Gmail의 답장 초안을 만들어 임시보관함에 저장한다."
+        },
+        {
+          "id": "D",
+          "text": "Google Calendar의 일정을 만들고 관리한다."
+        },
+        {
+          "id": "E",
+          "text": "Docs 문서 안에 들어 있는 이미지의 내용을 읽고 설명한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B",
+        "D"
+      ],
+      "answer": "B, D",
+      "explanation": "도움말은 Google Workspace 연결 앱으로 Gemini가 Gmail, Docs, Drive에서 정보를 찾아 요약하고, Tasks, Keep, Calendar에서 할 일 · 메모 · 일정을 만들고 관리할 수 있다고 안내합니다. 반대로 할 수 없는 일도 분명히 안내합니다.\n\n- **A (오답, 조건 누락)**: 도움말은 Drive에서 폴더를 만들거나 콘텐츠를 옮기는 일은 할 수 없다고 안내합니다.\n- **B (정답)**: Gmail과 Drive의 내용에서 사실을 찾고 문서를 요약하는 것은 도움말에 나오는 기능입니다.\n- **C (오답, 조건 누락)**: 연결 앱 안내 페이지는 Gmail 초안 만들기를 Gemini가 할 수 없는 동작의 예로 듭니다.\n- **D (정답)**: Calendar 일정을 만들고 관리하는 것은 도움말에 나오는 기능입니다.\n- **E (오답, 조건 누락)**: 도움말은 Docs나 Gmail 안의 이미지, Drive의 사진과 영상은 Gemini가 접근할 수 없다고 안내합니다.\n\n추가로 알아둘 점: 회사나 학교 계정에서는 Workspace 관리자가 앱 사용을 허용해야 하고, 도움말은 Gemini가 틀리거나 오래된 내용을 답할 수 있으니 표시된 출처를 확인하라고 안내합니다.\n\n**근거 문서**: [Use Google Workspace in Gemini Apps (Connected apps)](https://support.google.com/gemini/answer/15229592) · [Use Connected Apps in Gemini Apps](https://support.google.com/gemini/answer/14959807)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "Google",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 40,
+      "title": "문서를 함께 고치고 Docs로 내보내기",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "google",
+      "prompt": "누리물류 직원이 Gemini에게 보고서 초안을 쓰게 한 뒤, 같은 화면에서 일부 문단만 골라 다시 쓰게 하고 어조를 바꿔 가며 다듬고 싶다. 최종본은 Google Docs로 보내려 한다. 이 작업에 **가장 알맞은 기능**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Gemini Live: 음성으로 대화하며 카메라와 화면을 공유하는 기능"
+        },
+        {
+          "id": "B",
+          "text": "Gem: 이름과 지침을 정해 저장해 두는 맞춤 설정 기능"
+        },
+        {
+          "id": "C",
+          "text": "Deep Research: 연구 계획을 세워 조사 보고서를 만드는 기능"
+        },
+        {
+          "id": "D",
+          "text": "Canvas: 문서 · 앱 · 슬라이드 · 코드를 Gemini와 함께 만들고 고치는 작업 공간"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "도움말은 Canvas를 Gemini와 함께 문서, 앱, 슬라이드, 코드를 만들거나 고치는 공간으로 설명합니다. 문서에서는 텍스트를 선택해 Gemini에게 고쳐 쓰게 하거나 Suggest edits를 쓸 수 있고, 길이나 어조를 바꾸는 빠른 옵션도 있습니다. 완성한 뒤에는 Share & export의 Export to Docs로 새 Google Docs 문서로 가져갈 수 있습니다.\n\n- **A (오답, 유사 기능 혼동)**: Live는 음성 대화 기능이며 문서를 문단 단위로 고치는 작업 공간이 아닙니다.\n- **B (오답, 유사 기능 혼동)**: Gem은 지침을 저장해 두는 기능으로, 작성한 문서를 같은 화면에서 편집하는 기능이 아닙니다.\n- **C (오답, 유사 기능 혼동)**: Deep Research는 조사를 거쳐 보고서를 만드는 기능입니다. 이미 있는 초안을 문단 단위로 다듬는 용도에는 Canvas가 맞습니다.\n- **D (정답)**: 선택한 부분 수정, 길이 · 어조 조정, Docs로 내보내기가 모두 Canvas 안내에 있습니다.\n\n**근거 문서**: [Create docs, apps & more with Canvas](https://support.google.com/gemini/answer/16047321)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 41,
+      "title": "올린 사진을 고치는 이미지 편집",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "google",
+      "prompt": "한빛물산 홍보팀 직원이 휴대폰으로 찍은 제품 사진을 Gemini 앱에 올리고 \"배경을 사무실로 바꿔 줘\"라고 요청했다. 이 기능에 대한 설명으로 **옳은 것**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "직접 올린 사진도 프롬프트로 수정할 수 있고, 생성 · 편집한 이미지에는 눈에 보이지 않는 SynthID 워터마크가 들어간다."
+        },
+        {
+          "id": "B",
+          "text": "Gemini가 직접 만든 이미지만 수정할 수 있어서, 올린 사진은 편집할 수 없다."
+        },
+        {
+          "id": "C",
+          "text": "편집한 이미지에는 어떤 방식의 워터마크도 들어가지 않는다."
+        },
+        {
+          "id": "D",
+          "text": "사진 편집은 Canvas에서만 할 수 있고 채팅 화면에서는 할 수 없다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Google은 Gemini 앱에서 휴대폰이나 컴퓨터에서 올린 이미지는 물론 AI가 만든 이미지도 수정할 수 있다고 알렸습니다. 배경 바꾸기, 물체 바꾸기, 요소 추가 같은 작업이 예로 나옵니다. 같은 글에서 네이티브 이미지 생성으로 만들거나 편집한 이미지에는 보이지 않는 SynthID 디지털 워터마크가 들어간다고 설명합니다.\n\n- **A (정답)**: 올린 사진 편집이 가능하고 SynthID 워터마크가 들어간다는 설명과 같습니다.\n- **B (오답, 사실 오류)**: 공식 설명은 올린 이미지도 수정 대상이라고 합니다.\n- **C (오답, 사실 오류)**: 눈에 보이지 않는 SynthID 워터마크가 포함됩니다.\n- **D (오답, 유사 기능 혼동)**: 해당 안내는 Gemini 앱에서 이미지를 올리고 프롬프트로 수정을 요청하는 방식으로 소개하며, Canvas에서만 가능하다는 언급이 없습니다.\n\n추가로 알아둘 점: 2025년 4월에 공개된 해당 글은 당시 이 기능이 점진적으로 제공되며 Google Workspace나 Education 사용자에게는 제공되지 않는다고 안내했습니다. 기준일 현재의 제공 범위는 정답 판단에 쓰지 않습니다.\n\n**근거 문서**: [Upload and edit your images directly in the Gemini app](https://blog.google/products-and-platforms/products/gemini/image-editing/)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "이미지 이해",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 42,
+      "title": "프롬프트를 시험하는 개발자용 도구",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "google",
+      "prompt": "누리물류의 개발자가 사내 앱에 Gemini를 넣기 전에, 브라우저에서 모델과 프롬프트를 먼저 시험해 보고 Gemini API 키도 만들고 싶다. 이때 쓰는 서비스로 **가장 적절한 것**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Gemini Live"
+        },
+        {
+          "id": "B",
+          "text": "Gemini Notebook"
+        },
+        {
+          "id": "C",
+          "text": "Google AI Studio"
+        },
+        {
+          "id": "D",
+          "text": "Canvas"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Gemini API 문서는 Google AI Studio가 프롬프트를 시험하고 API 키를 관리하며 사용량을 확인하고 프로토타입을 만드는 곳이라고 설명합니다. AI Studio 빠른 시작은 모델을 빠르게 써 보고 프롬프트를 실험하는 환경이라고 설명하며, 프롬프트를 다듬은 뒤 Get code 버튼으로 코드 작성을 시작할 수 있다고 안내합니다.\n\n- **A (오답, 유사 기능 혼동)**: Gemini Live는 Gemini 앱의 음성 대화 기능으로 개발자용 시험 도구가 아닙니다.\n- **B (오답, 유사 기능 혼동)**: Gemini Notebook은 사용자 자료 기반의 연구 · 학습 도구입니다.\n- **C (정답)**: 프롬프트 시험, API 키 관리, 프로토타입 제작이 AI Studio의 역할입니다.\n- **D (오답, 유사 기능 혼동)**: Canvas는 Gemini 앱에서 문서나 앱, 코드를 함께 만드는 공간으로, API 키를 만드는 도구가 아닙니다.\n\n**근거 문서**: [Gemini API overview](https://ai.google.dev/gemini-api/docs) · [Google AI Studio quickstart](https://ai.google.dev/gemini-api/docs/ai-studio-quickstart)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "프롬프트 작성",
+        "코딩 지원",
+        "API 활용",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 43,
+      "title": "Google AI Studio에서 할 수 있는 일",
+      "type": "복수 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "google",
+      "prompt": "신입 개발자가 Google AI Studio를 처음 열었다. AI Studio에서 할 수 있는 일 **2가지**를 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "프롬프트를 시험하면서 모델 매개변수와 안전 설정을 조정한다."
+        },
+        {
+          "id": "B",
+          "text": "Gemini 앱에서 저장해 둔 Gems의 지침을 대신 편집한다."
+        },
+        {
+          "id": "C",
+          "text": "Gemini API 키를 관리하고 사용량을 확인한다."
+        },
+        {
+          "id": "D",
+          "text": "Google Workspace 관리 콘솔에서 직원 계정을 만든다."
+        },
+        {
+          "id": "E",
+          "text": "Gemini 앱의 대화 기록(Activity)을 일괄 삭제한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A",
+        "C"
+      ],
+      "answer": "A, C",
+      "explanation": "Gemini API 문서는 AI Studio에서 프롬프트를 시험하고, API 키를 관리하고, 사용량을 확인하며, 프로토타입을 만들 수 있다고 설명합니다. 빠른 시작 문서는 실행 설정 패널에서 모델 매개변수와 안전 설정을 조정하고, 구조화된 출력 · 함수 호출 · 코드 실행 같은 도구를 켜고 끌 수 있다고 안내합니다.\n\n- **A (정답)**: 매개변수와 안전 설정 조정은 AI Studio의 실행 설정에 있습니다.\n- **B (오답, 유사 기능 혼동)**: Gems는 Gemini 앱의 기능이며 AI Studio에서 편집하는 대상이 아닙니다.\n- **C (정답)**: API 키 관리와 사용량 확인은 AI Studio의 역할로 소개됩니다.\n- **D (오답, 유사 기능 혼동)**: 직원 계정 관리는 Workspace 관리자의 일이며 AI Studio와 관계가 없습니다.\n- **E (오답, 유사 기능 혼동)**: Gemini 앱의 활동 기록은 Gemini 앱의 Activity 설정에서 관리합니다.\n\n**근거 문서**: [Gemini API overview](https://ai.google.dev/gemini-api/docs) · [Google AI Studio quickstart](https://ai.google.dev/gemini-api/docs/ai-studio-quickstart)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "Google",
+        "코딩 지원"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 44,
+      "title": "함수 호출에서 함수를 실행하는 주체",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "google",
+      "prompt": "누리물류 개발팀은 Gemini API의 함수 호출(function calling)로 \"배송 조회\" 함수를 모델에 연결하려 한다. 동작 방식에 대한 설명으로 **옳은 것**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "모델이 배송 조회 함수를 직접 실행하고 결과를 개발팀 서버에 알려 준다."
+        },
+        {
+          "id": "B",
+          "text": "모델은 어떤 함수를 어떤 인자로 호출할지 제안하고, 실제 실행은 개발팀의 코드가 맡는다."
+        },
+        {
+          "id": "C",
+          "text": "함수를 미리 선언해 둘 필요 없이, 모델이 알아서 필요한 함수를 만들어 낸다."
+        },
+        {
+          "id": "D",
+          "text": "함수 호출을 쓰면 실행 결과를 모델에 돌려주지 않아도 최종 답변이 만들어진다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Gemini API 문서에 따르면 개발자는 함수의 이름, 매개변수, 목적을 선언해 프롬프트와 함께 보냅니다. 모델은 언제 어떤 함수를 호출할지 정하고 필요한 인자를 제공하지만 \"모델이 함수를 직접 실행하지는 않습니다.\" 애플리케이션의 코드가 함수 이름과 인자를 받아 실행하고, 그 결과를 모델에 돌려주면 모델이 최종 답변을 작성합니다.\n\n- **A (오답, 사실 오류)**: 문서는 모델이 함수를 직접 실행하지 않는다고 명시합니다.\n- **B (정답)**: 모델은 호출을 제안하고 실행은 애플리케이션 코드가 맡는 구조입니다.\n- **C (오답, 조건 누락)**: 사용할 함수는 개발자가 미리 선언해 모델에 알려 주어야 합니다.\n- **D (오답, 조건 누락)**: 실행 결과를 모델에 돌려주어야 모델이 그 결과를 바탕으로 최종 응답을 쓸 수 있습니다.\n\n**근거 문서**: [Function calling with the Gemini API](https://ai.google.dev/gemini-api/docs/function-calling)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "도구 호출",
+        "API 활용",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 45,
+      "title": "Build 모드로 만든 앱의 API 키",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "google",
+      "prompt": "한빛물산 직원이 Google AI Studio의 Build 모드로 설명만 입력해 간단한 웹 앱을 만들었다. 이 앱이 Gemini API를 호출할 때 API 키가 다뤄지는 방식으로 **옳은 것**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "키가 앱의 브라우저용 코드에 그대로 들어가므로 방문자가 열어 볼 수 있다."
+        },
+        {
+          "id": "B",
+          "text": "앱을 열 때마다 사용자가 직접 자신의 키를 입력해야 한다."
+        },
+        {
+          "id": "C",
+          "text": "앱을 ZIP으로 내려받아 다른 곳에 올려도 키가 자동으로 함께 동작한다."
+        },
+        {
+          "id": "D",
+          "text": "키는 서버 쪽 시크릿으로 주입되어 클라이언트 코드에 포함되지 않는다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "AI Studio의 Build 모드는 앱을 자연어로 설명하면 AI Studio가 앱을 만들어 주는 환경입니다. 안내 문서는 Gemini API 키가 서버 측 시크릿으로 설정되고, 서버 런타임에 주입되며 클라이언트 쪽 코드에는 포함되지 않는다고 설명합니다.\n\n- **A (오답, 사실 오류)**: 문서는 키가 클라이언트 쪽 코드에 포함되지 않는다고 설명합니다.\n- **B (오답, 사실 오류)**: AI Studio가 키를 서버 측 시크릿으로 설정하므로 처음 시작할 때 수동 설정이 필요 없다고 안내합니다.\n- **C (오답, 조건 누락)**: ZIP으로 내려받은 앱을 다른 곳에 올릴 때는 호스팅 환경에 GEMINI\\_API\\_KEY 환경 변수를 직접 설정해야 합니다.\n- **D (정답)**: 서버 측 시크릿 주입, 클라이언트 코드 미포함이라는 설명과 같습니다.\n\n추가로 알아둘 점: 문서는 앱을 공유하면 그 앱의 API 호출이 소유자의 사용 한도에 포함되고 유료 모델은 비용이 생길 수 있다고 안내합니다.\n\n**근거 문서**: [Build apps in Google AI Studio](https://ai.google.dev/gemini-api/docs/aistudio-build-mode)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "API 활용",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 46,
+      "title": "회사 계정에서 Live로 쓸 수 있는 연결 앱",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "google",
+      "prompt": "누리물류 직원이 회사 Google Workspace 계정으로 Gemini Live를 쓰고 있다. 연결 앱 설정은 이미 끝났고, 대화 중 말로 \"내일 오후 3시에 회의 일정 추가해 줘\"라고 요청하려 한다. 도움말 기준으로 이 계정의 Live 대화에서 **사용할 수 있는 앱**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Google Calendar"
+        },
+        {
+          "id": "B",
+          "text": "Spotify"
+        },
+        {
+          "id": "C",
+          "text": "YouTube"
+        },
+        {
+          "id": "D",
+          "text": "Gmail"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Gemini Live 도움말은 Live가 Google Calendar, Keep, Tasks, YouTube, Spotify 같은 연결 앱을 쓸 수 있다고 안내하면서, 연결을 먼저 해 두어야 한다고 설명합니다. 다만 회사나 학교 계정에서는 Live 대화에서 현재 Google Calendar, Keep, Tasks만 쓸 수 있다고 안내합니다.\n\n- **A (정답)**: 회사 계정의 Live에서 쓸 수 있다고 명시된 앱이며 일정 추가 요청에도 맞습니다.\n- **B (오답, 조건 누락)**: Spotify는 Live 지원 앱이지만 회사나 학교 계정에서는 쓸 수 없는 앱 쪽에 속합니다.\n- **C (오답, 조건 누락)**: YouTube도 같은 이유로 회사 계정의 Live 대화에서는 쓸 수 없습니다.\n- **D (오답, 조건 누락)**: Gmail은 회사 계정의 Live에서 쓸 수 있다고 안내된 앱이 아닙니다.\n\n추가로 알아둘 점: 이 범위는 도움말이 \"현재\" 기준이라고 밝힌 내용이며 점진적으로 바뀔 수 있습니다.\n\n**근거 문서**: [Talk naturally with Gemini Live](https://support.google.com/gemini/answer/15274899)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 47,
+      "title": "Keep Activity를 끄면 달라지는 점",
+      "type": "복수 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "google",
+      "prompt": "한빛물산 직원이 개인 정보 걱정으로 Gemini 앱의 Keep Activity 설정을 껐다. 이 설정을 끈 뒤에 나타나는 변화로 **옳은 것 3가지**를 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Google Workspace 연결 앱에 연결할 수 없다."
+        },
+        {
+          "id": "B",
+          "text": "Gem으로 나눈 대화는 저장되지 않는다."
+        },
+        {
+          "id": "C",
+          "text": "지난 Deep Research 보고서를 다시 찾아볼 수 없다."
+        },
+        {
+          "id": "D",
+          "text": "만들어 둔 Gem이 모두 함께 삭제된다."
+        },
+        {
+          "id": "E",
+          "text": "모든 대화가 끄는 즉시 Google 시스템에서 사라진다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A",
+        "B",
+        "C"
+      ],
+      "answer": "A, B, C",
+      "explanation": "Gemini Apps 개인정보 도움말에 따르면 Keep Activity가 켜져 있을 때 활동이 Google 계정에 저장됩니다. 끄면 Gem으로 만든 대화는 저장되지 않습니다. 연결 앱 도움말은 이 설정이 꺼져 있으면 Gemini가 Google Workspace에 연결할 수 없다고 안내하며, Deep Research 도움말은 지난 보고서를 Keep Activity가 켜져 있을 때만 찾을 수 있다고 안내합니다.\n\n- **A (정답)**: 연결 앱 도움말은 설정이 꺼져 있으면 Workspace에 연결할 수 없다고 합니다.\n- **B (정답)**: 설정을 끄면 Gem으로 한 대화는 저장되지 않습니다.\n- **C (정답)**: 지난 Deep Research 보고서는 Keep Activity가 켜져 있어야 찾을 수 있습니다.\n- **D (오답, 사실 오류)**: 도움말은 Keep Activity가 꺼져도 Gem 자체는 저장된다고 안내합니다.\n- **E (오답, 사실 오류)**: 도움말은 끈 뒤에도 대화가 계정에 최대 72시간 동안 보관된다고 안내합니다.\n\n추가로 알아둘 점: 기존 활동을 지우려면 설정에서 활동을 삭제해야 하며, 끄기만 하는 것과는 다릅니다.\n\n**근거 문서**: [Manage your Gemini Apps Activity](https://support.google.com/gemini/answer/13278892) · [Use Google Workspace in Gemini Apps (Connected apps)](https://support.google.com/gemini/answer/15229592) · [Use Deep Research in Gemini Apps](https://support.google.com/gemini/answer/15719111)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "개인정보 보호",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 48,
+      "title": "상황과 알맞은 Gemini 기능 매칭",
+      "type": "매칭",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "google",
+      "prompt": "왼쪽의 상황에 가장 알맞은 Gemini 기능을 오른쪽에서 하나씩 고르시오. 오른쪽 항목 중 하나는 사용되지 않는다.",
+      "context": "",
+      "options": [
+        {
+          "id": "a",
+          "text": "Canvas"
+        },
+        {
+          "id": "b",
+          "text": "Gemini Live"
+        },
+        {
+          "id": "c",
+          "text": "Gem"
+        },
+        {
+          "id": "d",
+          "text": "Google AI Studio"
+        },
+        {
+          "id": "e",
+          "text": "Gemini Notebook"
+        },
+        {
+          "id": "f",
+          "text": "Deep Research"
+        }
+      ],
+      "items": [
+        {
+          "id": "1",
+          "text": "걸어 다니며 말로 대화하다가 카메라로 눈앞의 장비를 보여 주고 물어보고 싶다"
+        },
+        {
+          "id": "2",
+          "text": "질문을 주면 연구 계획을 세우고 웹 등을 조사해 긴 보고서를 만들어 주길 원한다"
+        },
+        {
+          "id": "3",
+          "text": "내가 모은 자료를 바탕으로 연구하고 학습하는 데 쓰는 도구가 필요하다"
+        },
+        {
+          "id": "4",
+          "text": "초안 문서를 대화하며 고치고 완성본을 Google Docs로 내보내고 싶다"
+        },
+        {
+          "id": "5",
+          "text": "개발자가 앱에 넣기 전에 브라우저에서 모델과 프롬프트를 시험하고 싶다"
+        }
+      ],
+      "keys": [
+        "b",
+        "f",
+        "e",
+        "a",
+        "d"
+      ],
+      "answer": "1-b, 2-f, 3-e, 4-a, 5-d (c 미사용)",
+      "explanation": "각 상황이 요구하는 핵심(음성과 카메라, 계획 후 조사 보고서, 사용자 자료 기반 학습, 문서 공동 편집, 개발자용 시험 환경)을 먼저 찾고 기능의 공식 설명과 맞춥니다.\n\n- **1 → b**: Gemini Live는 말로 자연스럽게 대화하며 카메라를 공유할 수 있습니다.\n- **2 → f**: Deep Research는 연구 계획을 만들고 조사한 뒤 보고서를 씁니다.\n- **3 → e**: Gemini Notebook은 사용자 자료 기반의 연구 · 학습 도구입니다.\n- **4 → a**: Canvas는 문서를 함께 고치고 Export to Docs로 내보낼 수 있습니다.\n- **5 → d**: Google AI Studio는 개발자가 모델과 프롬프트를 시험하는 환경입니다.\n- **c (미사용)**: Gem은 지침을 저장해 두는 기능이어서 어느 상황에도 맞지 않아 사용되지 않습니다.\n\n**근거 문서**: [Talk naturally with Gemini Live](https://support.google.com/gemini/answer/15274899) · [Use Deep Research in Gemini Apps](https://support.google.com/gemini/answer/15719111) · [NotebookLM is now Gemini Notebook](https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/) · [Create docs, apps & more with Canvas](https://support.google.com/gemini/answer/16047321) · [Google AI Studio quickstart](https://ai.google.dev/gemini-api/docs/ai-studio-quickstart)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "매칭",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "Gemini",
+        "프롬프트 작성",
+        "코딩 지원",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 49,
+      "title": "저장된 지침으로 나만의 도우미를 만드는 Google의 기능",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "cross",
+      "prompt": "한빛물산 직원이 Gemini 앱에서 이름과 지침을 정해 저장하고, 필요하면 참고 파일도 붙여 두어 같은 요청에 맞춤 응답을 받으려 한다. Google이 이 목적의 기능을 부르는 이름은 무엇인가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Projects"
+        },
+        {
+          "id": "B",
+          "text": "GPTs"
+        },
+        {
+          "id": "C",
+          "text": "Gems"
+        },
+        {
+          "id": "D",
+          "text": "Connected apps"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Google 도움말은 Gems를 \"Gemini Apps의 응답을 내게 맞게 꾸미려고 만들어 저장하는\" 맞춤형 Gemini로 설명합니다. Gem에는 이름과 지침을 정하고, 선택적으로 지식 파일을 더할 수 있습니다. 같은 목적(저장된 지침과 자료로 맞춤 도우미 쓰기)의 기능을 회사마다 다른 이름으로 부르므로, 이름과 회사를 짝지어 두어야 합니다.\n\n- **A (오답, 다른 회사의 비슷한 기능)**: Projects는 ChatGPT와 Claude에서 쓰는 이름이며, 관련 채팅 · 파일 · 지침을 한 곳에 모아 둡니다. Gemini 앱의 기능 이름이 아닙니다.\n- **B (오답, 다른 회사의 비슷한 기능)**: GPTs는 ChatGPT에서 지침 · 지식 · 기능 설정으로 만드는 맞춤 도우미의 이름입니다.\n- **C (정답)**: Gems가 Gemini Apps에서 이름 · 지침 · 선택적 지식 파일로 만드는 맞춤형 Gemini입니다.\n- **D (오답, 같은 회사의 다른 기능)**: Connected apps는 Gemini가 다른 앱과 연결해 요청을 처리하는 기능으로, 맞춤 도우미를 만드는 기능과 다릅니다.\n\n추가로 알아둘 점: Google 도움말은 Gems가 개인 Google 계정에서 2026년 11월부터 skills로 전환될 예정이라고 안내합니다. 기능 이름은 이렇게 바뀔 수 있으므로 기준일 현재의 공식 도움말로 확인합니다.\n\n**근거 문서**: [Create & use custom Gems (Gemini Apps Help)](https://support.google.com/gemini/answer/15146780) · [Using projects in ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt) · [Creating a GPT](https://help.openai.com/en/articles/8554397-creating-a-gpt)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "Google",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 50,
+      "title": "Anthropic의 에이전트형 코딩 도구",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "cross",
+      "prompt": "개발팀 리더가 회사별 코딩 도구 이름을 정리하고 있다. Anthropic이 터미널, IDE, 데스크톱 앱, 웹에서 코드베이스를 읽고 파일을 고치고 명령을 실행하는 에이전트형 코딩 도구로 안내하는 제품은 무엇인가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Codex"
+        },
+        {
+          "id": "B",
+          "text": "Claude Code"
+        },
+        {
+          "id": "C",
+          "text": "Gemini CLI"
+        },
+        {
+          "id": "D",
+          "text": "Claude Artifacts"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Anthropic 문서는 Claude Code를 코드베이스를 읽고 파일을 편집하고 명령을 실행하며 개발 도구와 연동하는 에이전트형 코딩 도구라고 설명하고, 터미널 · IDE · 데스크톱 앱 · 브라우저에서 쓸 수 있다고 밝힙니다. OpenAI와 Google에도 비슷한 목적의 제품이 있지만 이름이 서로 다릅니다.\n\n- **A (오답, 다른 회사의 비슷한 제품)**: Codex는 OpenAI가 코드 작성 · 검토 · 배포를 돕는 코딩 에이전트로 소개하는 제품입니다.\n- **B (정답)**: Claude Code가 Anthropic의 에이전트형 코딩 도구입니다.\n- **C (오답, 다른 회사의 비슷한 제품)**: Gemini CLI는 Gemini를 터미널로 가져오는 Google의 오픈소스 AI 에이전트입니다.\n- **D (오답, 같은 회사의 다른 기능)**: Claude의 artifact는 Claude가 만들어 대화 옆에서 열어 보고 고치고 공유하는 결과물(문서, 대시보드, 작은 도구 등)이며, 코드베이스에서 일하는 코딩 에이전트와 다릅니다.\n\n**근거 문서**: [Claude Code overview](https://code.claude.com/docs/en/overview) · [Using Codex with your ChatGPT plan](https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan) · [Gemini CLI (google-gemini 공식 저장소)](https://github.com/google-gemini/gemini-cli) · [What are artifacts and how do I use them?](https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "에이전트",
+        "코딩 지원",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 51,
+      "title": "세 회사의 심층 조사 기능 이름",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "cross",
+      "prompt": "기획팀이 여러 출처를 종합해 보고서를 만들어 주는 심층 조사 기능을 회사별로 정리한 표를 만들고 있다. OpenAI(ChatGPT), Anthropic(Claude), Google(Gemini 앱)이 이 기능을 부르는 이름을 올바르게 짝지은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "ChatGPT는 deep research, Claude는 Research, Gemini 앱은 Deep Research"
+        },
+        {
+          "id": "B",
+          "text": "ChatGPT는 Research, Claude는 Deep Research, Gemini 앱은 Research"
+        },
+        {
+          "id": "C",
+          "text": "ChatGPT는 Codex, Claude는 Research, Gemini 앱은 Deep Research"
+        },
+        {
+          "id": "D",
+          "text": "ChatGPT는 deep research, Claude는 Projects, Gemini 앱은 Gems"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "세 회사 모두 여러 출처를 찾아 읽고 종합하는 기능을 제공하지만 이름이 조금씩 다릅니다. OpenAI 도움말은 ChatGPT의 deep research가 업로드한 파일, 공개 웹, 활성화한 앱을 활용하며 출처 링크가 달린 보고서를 낸다고 설명합니다. Anthropic 도움말은 Claude의 Research가 웹과 연동 서비스의 여러 출처를 종합해 심층 보고서를 만든다고 설명합니다. Google 도움말은 Gemini 앱의 Deep Research가 연구 계획을 세우고 보고서를 만든다고 설명합니다.\n\n- **A (정답)**: 세 회사의 기능 이름이 도움말과 일치합니다.\n- **B (오답, 이름 혼동)**: Claude의 기능 이름은 Research이고 Gemini 앱의 기능 이름은 Deep Research입니다. 이름이 서로 바뀌어 있습니다.\n- **C (오답, 다른 기능과 혼동)**: Codex는 OpenAI의 코딩 에이전트이며 심층 조사 기능이 아닙니다.\n- **D (오답, 다른 기능과 혼동)**: Projects와 Gems는 지침과 자료를 모아 두는 기능으로, 심층 조사 기능이 아닙니다.\n\n**근거 문서**: [Deep research in ChatGPT](https://help.openai.com/en/articles/10500283-deep-research-faq) · [Using Research on Claude](https://support.claude.com/en/articles/11095361-using-research-on-claude) · [Deep Research in Gemini Apps](https://support.google.com/gemini/answer/15719111)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "출처 검증",
+        "ChatGPT",
+        "Claude",
+        "Gemini",
+        "OpenAI",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 52,
+      "title": "이름이 바뀐 Google 제품의 현재 명칭",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "cross",
+      "prompt": "한빛물산의 2026년 4월 교육 자료에는 \"업로드한 자료에 근거해 질의하는 도구로 NotebookLM을 쓴다\"라고 적혀 있다. 2026년 10월에 이 자료를 개정하는 담당자는 이 도구를 어떻게 적어야 하는가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "NotebookLM을 Gemini Notebook으로 고친다"
+        },
+        {
+          "id": "B",
+          "text": "NotebookLM을 그대로 두고, 옆에 Gemini Notebook을 별도 제품으로 추가한다"
+        },
+        {
+          "id": "C",
+          "text": "Deep Research로 고친다"
+        },
+        {
+          "id": "D",
+          "text": "Gems로 고친다"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Google은 2026년 7월 16일 NotebookLM의 이름을 Gemini Notebook으로 바꿨고, 이를 \"같은 독립 제품\"에 Google 통합과 보안 클라우드 컴퓨터를 더한 것으로 설명합니다. 이름이 바뀐 제품은 기준일 현재의 공식 명칭으로 적고, 새 제품이 생긴 것으로 오해하지 않아야 합니다.\n\n- **A (정답)**: 기준일 현재 공식 명칭은 Gemini Notebook입니다.\n- **B (오답, 사실 오류)**: Gemini Notebook은 NotebookLM과 별개의 새 제품이 아니라 같은 제품의 새 이름입니다. 따로 추가하면 같은 제품이 둘로 보입니다.\n- **C (오답, 유사 기능 혼동)**: Deep Research는 연구 계획을 세워 보고서를 만드는 Gemini 앱의 기능이며, 자료를 올려 질의하는 노트북 제품의 이름이 아닙니다.\n- **D (오답, 유사 기능 혼동)**: Gems는 저장된 지침으로 만드는 맞춤형 Gemini이며, 이름이 바뀐 노트북 제품과 다릅니다.\n\n**근거 문서**: [NotebookLM is now Gemini Notebook (Google Blog)](https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/) · [Deep Research in Gemini Apps](https://support.google.com/gemini/answer/15719111)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "Google",
+        "출처 검증",
+        "NotebookLM"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 53,
+      "title": "회사, 모델, 기능, 요금제 구분하기",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "cross",
+      "prompt": "누리물류의 직원이 \"Anthropic의 Team 플랜에서 Claude의 Sonnet을 골라 Research를 실행했다\"라고 보고했다. 이 문장의 요소를 회사, 모델, 기능, 요금제로 올바르게 나눈 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "회사는 Anthropic, 모델은 Research, 기능은 Sonnet, 요금제는 Team"
+        },
+        {
+          "id": "B",
+          "text": "회사는 Anthropic, 모델은 Team, 기능은 Sonnet, 요금제는 Research"
+        },
+        {
+          "id": "C",
+          "text": "회사는 Anthropic, 모델은 Sonnet, 기능은 Research, 요금제는 Team"
+        },
+        {
+          "id": "D",
+          "text": "회사는 Claude, 모델은 Anthropic, 기능은 Research, 요금제는 Sonnet"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "AI 서비스의 이름은 층이 다릅니다. Anthropic은 회사입니다. Opus, Sonnet, Haiku는 Anthropic이 개발자 문서에서 소개하는 Claude 모델 계열입니다. Research는 Claude에서 여러 출처를 종합해 보고서를 만드는 기능입니다. Team은 소규모 그룹을 위해 공유 프로젝트와 중앙 결제 · 관리를 제공하는 요금제입니다. 같은 구분은 다른 회사에도 적용되어, Google에서는 Google AI Pro 같은 이름이 요금제이고 Deep Research는 기능입니다.\n\n- **A (오답, 층 혼동)**: Research는 모델이 아니라 기능이고, Sonnet은 기능이 아니라 모델 계열입니다.\n- **B (오답, 층 혼동)**: Team은 모델이 아니라 요금제이고, Research는 요금제가 아니라 기능입니다.\n- **C (정답)**: 회사 Anthropic, 모델 Sonnet, 기능 Research, 요금제 Team으로 나뉩니다.\n- **D (오답, 층 혼동)**: Claude는 Anthropic이 만든 제품 이름이고 Anthropic은 회사 이름이어서 둘이 뒤바뀌었습니다. Sonnet도 요금제가 아니라 모델입니다.\n\n**근거 문서**: [Models overview (Claude Developer Platform)](https://platform.claude.com/docs/en/about-claude/models/overview) · [Using Research on Claude](https://support.claude.com/en/articles/11095361-using-research-on-claude) · [Claude pricing](https://claude.com/pricing) · [Gemini Apps subscriptions](https://gemini.google/subscriptions/)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "비용 관리",
+        "검색 품질",
+        "리서치",
+        "Claude",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 54,
+      "title": "외부 서비스를 연결하는 기능의 이름과 성격",
+      "type": "복수 선택",
+      "domain": 1,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": "cross",
+      "prompt": "한빛물산 IT팀이 AI 도구에 Google Drive나 Slack 같은 외부 서비스를 연결하는 기능을 회사별로 정리하고 있다. 다음 중 공식 도움말과 일치하는 진술을 **2가지** 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Gemini 앱에서 이 목적의 기능은 Gems라고 부른다."
+        },
+        {
+          "id": "B",
+          "text": "ChatGPT에서 Google Drive나 Slack 같은 서비스를 대화에 연결하는 기능은 apps라고 부른다."
+        },
+        {
+          "id": "C",
+          "text": "Claude에서 이 목적의 기능은 Projects라고 부른다."
+        },
+        {
+          "id": "D",
+          "text": "Claude의 connectors는 이용자의 접근 권한과 관계없이 연결된 서비스의 모든 데이터를 읽을 수 있다."
+        },
+        {
+          "id": "E",
+          "text": "Claude의 connectors는 이용자가 그 서비스에서 이미 접근할 수 있는 범위에서 데이터를 가져오고 작업을 수행한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B",
+        "E"
+      ],
+      "answer": "B, E",
+      "explanation": "OpenAI 도움말은 ChatGPT의 apps를 이미 쓰는 서비스를 ChatGPT에 연결해 대화에서 그 정보를 활용하게 하는 도구로 설명합니다. Anthropic 도움말은 Claude의 connectors가 앱과 서비스에 접근해 데이터를 가져오고 연결된 서비스 안에서 작업하게 하며, 그 범위는 이용자가 그 서비스에서 이미 접근할 수 있는 것으로 제한된다고 설명합니다. Google은 Gemini Apps가 다른 앱과 연결해 요청을 처리한다고 설명합니다.\n\n- **A (오답, 유사 기능 혼동)**: Gems는 저장된 지침으로 만드는 맞춤형 Gemini입니다. Gemini 앱의 앱 연결 기능은 Connected apps입니다.\n- **B (정답)**: ChatGPT는 외부 서비스 연결 기능을 apps라고 부릅니다.\n- **C (오답, 유사 기능 혼동)**: Projects는 Claude에서 대화 기록과 지식 · 지침을 모아 두는 작업 공간입니다. 외부 서비스 연결은 connectors가 맡습니다.\n- **D (오답, 사실 오류)**: connectors의 접근 범위는 이용자가 그 서비스에서 이미 접근할 수 있는 범위로 제한됩니다.\n- **E (정답)**: connectors는 이용자의 기존 접근 범위 안에서 데이터를 가져오고 작업합니다.\n\n**근거 문서**: [Apps in ChatGPT](https://help.openai.com/en/articles/11487775-apps-in-chatgpt) · [Use connectors to extend Claude's capabilities](https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities) · [Use connected apps in Gemini Apps](https://support.google.com/gemini/answer/13695044) · [What are projects?](https://support.claude.com/en/articles/9517075-what-are-projects)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L1",
+        "주요 3사의 AI 서비스와 기능",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 55,
+      "title": "ChatGPT와 Claude의 Projects 비교",
+      "type": "복수 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "cross",
+      "prompt": "한빛물산 마케팅팀장은 \"같은 캠페인 자료와 지침을 매번 다시 붙여 넣기 싫다\"며 ChatGPT와 Claude에 있는 Projects 기능을 비교해 보고 있다. 공식 도움말과 일치하는 설명을 **2가지** 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "두 서비스 모두 프로젝트에 지침을 정해 두고 그 프로젝트 안의 대화에 적용할 수 있다."
+        },
+        {
+          "id": "B",
+          "text": "Claude의 프로젝트는 대화 기록 없이 지식 파일만 담는 폴더다."
+        },
+        {
+          "id": "C",
+          "text": "Gemini 앱에서도 같은 목적의 기능을 Projects라고 부른다."
+        },
+        {
+          "id": "D",
+          "text": "두 서비스 모두 프로젝트에 참고 자료를 더해 그 내용을 프로젝트 안의 대화에서 활용할 수 있다."
+        },
+        {
+          "id": "E",
+          "text": "ChatGPT에서는 전역 맞춤 지침이 프로젝트 지침보다 우선한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A",
+        "D"
+      ],
+      "answer": "A, D",
+      "explanation": "OpenAI 도움말은 ChatGPT Projects가 관련 채팅, 파일, 지침을 한곳에 모으고, 프로젝트 지침은 그 프로젝트 안에서만 적용되며 전역 맞춤 지침보다 우선한다고 설명합니다. Anthropic 도움말은 Claude Projects가 자체 대화 기록과 지식 베이스를 가진 독립된 작업 공간이며, 프로젝트마다 지침을 둘 수 있다고 설명합니다. 이름은 같지만 둘은 서로 다른 회사의 제품 기능입니다.\n\n- **A (정답)**: 두 서비스 모두 프로젝트 단위 지침을 지원합니다.\n- **B (오답, 사실 오류)**: Claude 프로젝트는 자체 대화 기록과 지식 베이스를 함께 가집니다.\n- **C (오답, 이름 혼동)**: Gemini 앱에서 저장된 지침과 지식 파일로 맞춤 응답을 만드는 기능은 Gems입니다.\n- **D (정답)**: ChatGPT는 파일 업로드나 텍스트 붙여넣기로, Claude는 문서 · 텍스트 · 코드 등을 지식 베이스에 더해 자료를 활용합니다.\n- **E (오답, 사실 오류)**: ChatGPT에서는 반대로 프로젝트 지침이 전역 맞춤 지침보다 우선합니다.\n\n**근거 문서**: [Using projects in ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt) · [What are projects? (Claude)](https://support.claude.com/en/articles/9517075-what-are-projects) · [Create & use custom Gems (Gemini Apps Help)](https://support.google.com/gemini/answer/15146780)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "프로젝트 관리",
+        "ChatGPT",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 56,
+      "title": "Gem을 음성 대화에서 쓰고 싶을 때",
+      "type": "단일 선택",
+      "domain": 1,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": "cross",
+      "prompt": "누리물류의 직원이 Gemini 앱에서 고객 응대 문구용 Gem을 만들었다. 이 Gem을 켠 채로 음성 대화 기능인 Gemini Live로 이야기해 보려 한다. 기준일 현재 Google 도움말에 맞는 설명은 무엇인가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Gem을 선택하면 Gemini Live에서도 그대로 쓸 수 있다."
+        },
+        {
+          "id": "B",
+          "text": "Gemini Live는 Gems의 새 이름이므로 따로 설정할 필요가 없다."
+        },
+        {
+          "id": "C",
+          "text": "Gem을 쓰려면 먼저 Gemini Notebook으로 옮겨야 한다."
+        },
+        {
+          "id": "D",
+          "text": "Gem은 현재 Gemini Live와 함께 쓸 수 없으므로, 텍스트 대화에서 Gem을 선택해 쓴다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "Google 도움말은 Gems를 \"My Gems\"에서 골라 프롬프트를 입력해 쓰는 기능으로 설명하면서, Gems가 현재 Gemini Live와 함께 쓸 수 없다고 밝힙니다. 서로 다른 기능은 이름이 비슷해 보여도 함께 쓸 수 있는지 확인해야 합니다. 이 한계는 도움말이 바뀌면 달라질 수 있으므로 기준일 시점의 안내로 판단합니다.\n\n- **A (오답, 사실 오류)**: 도움말은 Gems를 Gemini Live와 함께 쓸 수 없다고 안내합니다.\n- **B (오답, 이름 혼동)**: Gemini Live는 Gems의 새 이름이 아니라 Gemini와 자연스럽게 대화하는 별도의 기능입니다.\n- **C (오답, 유사 제품 혼동)**: Gemini Notebook은 이름이 바뀐 노트북 제품이며, Gem을 쓰기 위한 사전 단계가 아닙니다.\n- **D (정답)**: 현재는 Gem을 텍스트 대화에서 선택해 씁니다.\n\n추가로 알아둘 점: Google 도움말은 2026년 11월부터 개인 Google 계정의 Gems가 skills로 자동 전환될 예정이라고 안내합니다. 출제 기준일(2026-10-18) 현재는 Gem 기능이 그대로 제공됩니다.\n\n**근거 문서**: [Use Gems in Gemini Apps](https://support.google.com/gemini/answer/15146780) · [Talk naturally with Gemini Live](https://support.google.com/gemini/answer/15274899)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 3사의 AI 서비스와 기능",
+        "음성 활용",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 57,
+      "title": "단정적인 어조로 쓰인 AI 답변 다루기",
+      "type": "단일 선택",
+      "domain": 2,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": null,
+      "prompt": "새봄상사 기획팀 직원이 AI에게 거래처 업계 동향을 물었더니 \"확실합니다\"라는 말과 함께 구체적인 설명이 돌아왔다. 이 답변을 보고서에 넣기 전의 태도로 가장 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "설명이 구체적이고 단정적으로 쓰여 있으므로 정확한 내용으로 보고 넣는다."
+        },
+        {
+          "id": "B",
+          "text": "답변이 길고 자세할수록 근거가 충분한 것이므로 그대로 넣는다."
+        },
+        {
+          "id": "C",
+          "text": "어조와 무관하게 틀릴 수 있으므로 믿을 만한 출처로 확인한다."
+        },
+        {
+          "id": "D",
+          "text": "AI가 \"확실합니다\"라고 밝혔으므로 별도 확인 절차는 생략한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "생성형 AI는 틀린 내용도 자신 있는 말투로 쓸 수 있습니다. OpenAI 도움말은 ChatGPT가 틀릴 때도 확신 있게 들릴 수 있으며 \"Confidence isn't reliability\"라고 설명하고, 중요한 정보는 믿을 만한 출처로 확인하라고 안내합니다. OpenAI Model Spec도 모델이 아는 범위를 넘는 질문에는 불확실성을 표현해야 하고, 틀린 정보로 인한 영향이 클수록 더 조심해야 한다고 정리합니다. 말투의 자신감은 정확성의 근거가 아니므로, 보고서에 들어갈 내용은 사람이 확인해야 합니다.\n\n- **A (오답, 사실 오류)**: 구체적이고 단정적인 문장이라는 점은 정확성을 보장하지 않습니다. 지어낸 내용도 같은 말투로 나올 수 있습니다.\n- **B (오답, 사실 오류)**: 답변의 길이나 자세함은 근거가 있다는 뜻이 아닙니다. 길고 자세해도 틀릴 수 있습니다.\n- **C (정답)**: 어조와 상관없이 중요한 내용은 출처로 직접 확인해야 합니다.\n- **D (오답, 사실 오류)**: AI가 \"확실하다\"고 말했다고 해서 검증이 끝나는 것이 아닙니다. 그 말 자체도 틀린 내용에 붙을 수 있습니다.\n\n**근거 문서**: [Does ChatGPT tell the truth? (OpenAI Help Center)](https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth) · [OpenAI Model Spec › Express uncertainty](https://github.com/openai/model_spec/blob/main/model_spec.md)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "AI 윤리와 책임 있는 사용",
+        "단정적인 어조로 쓰인 AI 답변 다루기"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 58,
+      "title": "사람 검토자가 볼 수 있는 대화에 넣지 말아야 할 내용",
+      "type": "단일 선택",
+      "domain": 2,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": null,
+      "prompt": "Google은 Gemini 앱 안내에서 일부 대화를 사람 검토자가 볼 수 있다고 밝히며, 검토자가 보는 것을 원하지 않는 기밀 정보는 입력하지 말라고 권고한다. 한빛물산 직원이 이 안내를 보고 입력 전에 점검하려 한다. 입력을 **피해야 하는 내용**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "이미 회사 홈페이지에 공개된 회사 소개 문구"
+        },
+        {
+          "id": "B",
+          "text": "외부에 알려지면 안 되는 고객 상담 기록과 계약 조건"
+        },
+        {
+          "id": "C",
+          "text": "일반에 공개된 자사 보도자료 문장"
+        },
+        {
+          "id": "D",
+          "text": "누구나 볼 수 있게 게시된 행사 일정 안내"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Gemini Apps Privacy Hub는 일부 대화가 사람 검토자에게 보일 수 있으므로, 검토자가 보길 원하지 않는 기밀 정보는 입력하지 말라고 안내합니다. 따라서 입력 전 기준은 \"이 내용이 사람에게 보여도 괜찮은가\"입니다. Google AI Principles도 프라이버시와 보안을 지키는 것을 책임 있는 개발의 한 축으로 둡니다. 고객 상담 기록과 계약 조건은 공개되지 않은 정보이고 노출되면 피해가 생기므로 피해야 합니다.\n\n- **A (오답, 사실 오류)**: 이미 공개된 소개 문구는 누가 봐도 새로 노출되는 정보가 없습니다.\n- **B (정답)**: 비공개 고객 정보와 계약 조건은 검토자가 보아서는 안 되는 기밀입니다.\n- **C (오답, 사실 오류)**: 공개된 보도자료는 기밀이 아니므로 다듬는 용도로 입력해도 문제가 없습니다.\n- **D (오답, 사실 오류)**: 누구나 열람할 수 있는 정보라 노출 위험이 없습니다.\n\n추가로 알아둘 점: 서비스마다 대화 보관 · 검토 · 학습 사용 방식이 다르므로, 업무에 쓰는 도구의 설정과 회사 지침을 함께 확인해야 합니다.\n\n**근거 문서**: [Gemini Apps Privacy Hub (Gemini Apps Help)](https://support.google.com/gemini/answer/13594961) · [Google AI Principles](https://ai.google/principles/)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "AI 윤리와 책임 있는 사용",
+        "사람의 승인",
+        "민감 정보",
+        "Gemini",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 59,
+      "title": "같은 내용인데 이름만 다른 답안의 평가",
+      "type": "단일 선택",
+      "domain": 2,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": null,
+      "prompt": "인사팀이 신입 교육 과제를 AI에게 채점시키는 중이다. 두 답안은 내용이 완전히 같고 작성자 이름만 다르다. 공정성을 지키는 AI의 평가로 **기대해야 하는 결과**는?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "이름에서 성별을 추정해 한쪽 점수를 조금 올려 균형을 맞춘다."
+        },
+        {
+          "id": "B",
+          "text": "이름이 더 익숙한 쪽 답안에 높은 점수를 준다."
+        },
+        {
+          "id": "C",
+          "text": "같은 내용이어도 점수가 달라질 수 있으며 이는 문제가 되지 않는다."
+        },
+        {
+          "id": "D",
+          "text": "이름과 같은 무관한 정보와 상관없이 같은 기준으로 같은 점수를 준다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "OpenAI Model Spec의 \"Uphold fairness\"는 관련 있는 맥락은 고려하고 무관한 세부 사항은 무시해야 한다고 합니다. 사람을 평가하거나 결정을 돕는 일에서는 법이나 맥락상 필요한 경우가 아니라면 인구통계 정보나 보호 대상 특성에 따라 차별하거나 선호를 보이면 안 되고, 비슷한 상황에는 같은 추론과 기준을 일관되게 적용해야 합니다. Model Spec은 같은 증명에 이름만 다르게 넣은 채점 예시로 이를 설명합니다. Anthropic의 Claude 헌법도 모든 개인의 평등하고 공정한 대우를 가치로 둡니다.\n\n- **A (오답, 사실 오류)**: 이름에서 성별을 추정해 점수를 조정하는 것 자체가 무관한 정보로 평가를 바꾸는 일입니다.\n- **B (오답, 사실 오류)**: 익숙한 이름을 선호하는 것은 무관한 세부 사항에 따른 선호입니다.\n- **C (오답, 사실 오류)**: 같은 내용에 같은 기준을 적용하면 같은 결과가 나와야 합니다. 차이가 나면 점검 대상입니다.\n- **D (정답)**: 무관한 정보를 무시하고 일관된 기준으로 평가하는 것이 공정성의 기본입니다.\n\n**근거 문서**: [OpenAI Model Spec › Uphold fairness](https://github.com/openai/model_spec/blob/main/model_spec.md) · [Claude's constitution](https://www.anthropic.com/constitution) · [Google AI Principles](https://ai.google/principles/)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "AI 윤리와 책임 있는 사용",
+        "평가 설계"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 60,
+      "title": "고객이 상담 챗봇에게 사람인지 물을 때",
+      "type": "단일 선택",
+      "domain": 2,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": null,
+      "prompt": "누리물류는 고객센터 챗봇에 \"하루\"라는 이름을 붙였다. 상담 중 고객이 진지하게 \"지금 사람과 대화하고 있는 건가요?\"라고 물었다. 책임 있는 응답으로 가장 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "\"하루\"라는 이름은 유지하되, AI와 대화하고 있다고 사실대로 답한다."
+        },
+        {
+          "id": "B",
+          "text": "신뢰를 높이기 위해 사람 상담원이라고 답한다."
+        },
+        {
+          "id": "C",
+          "text": "질문에는 답하지 않고 문의 내용으로 화제를 돌린다."
+        },
+        {
+          "id": "D",
+          "text": "상담원 이름과 부서만 알려 주고 AI인지는 말하지 않는다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Anthropic의 Claude 헌법은 사용자가 사람과 말하는지 AI와 말하는지 진지하게 알고 싶어 할 때 AI임을 부인해서는 안 된다고 정리합니다. 서비스 운영사가 이름과 개성을 가진 페르소나를 쓰게 하는 것은 가능하지만, 사용자를 속여 해를 끼치는 방식으로 쓸 수는 없습니다. Anthropic 이용 정책도 사람이라고 주장하는 봇으로 사용자를 오도하는 것을 금지합니다. 따라서 이름은 그대로 두고 AI임을 밝히는 것이 맞습니다.\n\n- **A (정답)**: 페르소나 이름은 유지하되 진지한 질문에는 AI라고 사실대로 답합니다.\n- **B (오답, 사실 오류)**: 사람이라고 답하는 것은 사용자를 속이는 일이며 부인 금지 원칙에 어긋납니다.\n- **C (오답, 사실 오류)**: 진지한 질문을 피하는 것도 사용자가 사람과 말한다고 믿게 두는 결과를 낳습니다.\n- **D (오답, 사실 오류)**: 이름과 부서만 알리면 사람 상담원이라는 인상을 줍니다. 질문 자체에 답하지 않았습니다.\n\n**근거 문서**: [Claude's constitution › Handling conflicts between operators and users](https://www.anthropic.com/constitution) · [Anthropic Usage Policy › Do Not Engage in Deceptive Campaigns or Artificial Activity](https://www.anthropic.com/legal/aup)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "AI 윤리와 책임 있는 사용",
+        "고객이 상담 챗봇에게 사람인지 물을 때"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 61,
+      "title": "AI 에이전트가 실행 전에 확인을 요청하는 이유",
+      "type": "단일 선택",
+      "domain": 2,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": null,
+      "prompt": "새봄상사 직원이 AI 에이전트에게 거래처 결제 신청을 맡기자, 에이전트가 신청서를 제출하기 직전에 \"진행할까요?\"라고 확인을 요청했다. 이런 확인 단계를 두는 **주된 이유**는?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "응답 속도를 일부러 늦춰 서비스 이용량을 줄이기 위해서이다."
+        },
+        {
+          "id": "B",
+          "text": "모델이 작업 방법을 몰라서 사람에게 대신 하도록 넘기는 것이다."
+        },
+        {
+          "id": "C",
+          "text": "영향이 크고 되돌리기 어려운 동작은 사람이 확인해 의도하지 않은 결과를 줄이기 위해서이다."
+        },
+        {
+          "id": "D",
+          "text": "개인 계정 사용자에게만 법적으로 요구되는 절차이기 때문이다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "OpenAI의 ChatGPT agent 도움말은 안전장치의 하나로 영향이 큰 동작에 대한 사용자 확인을 들고, 필요할 때 에이전트가 멈춰서 확인을 구한다고 설명합니다(해당 제품은 기준일 현재 종료되어 ChatGPT Work로 안내되지만, 이 설계 원칙은 Model Spec에도 같습니다). OpenAI Model Spec도 에이전트의 자율성에는 합의된 범위가 있어야 하며, 되돌릴 수 없는 부작용을 최소화하고 승인이 필요한 때에는 멈춰야 한다고 정리합니다. 결제나 발송 같은 동작은 한번 실행되면 되돌리기 어려우므로 사람이 마지막으로 확인하는 것이 책임 있는 설계입니다.\n\n- **A (오답, 사실 오류)**: 확인 단계의 목적은 속도 조절이나 사용량 감소가 아니라 위험 관리입니다.\n- **B (오답, 사실 오류)**: 방법을 몰라서가 아니라 영향이 큰 동작에서 사람의 의도를 확인하기 위한 것입니다.\n- **C (정답)**: 영향이 크고 되돌리기 어려운 동작은 사람의 확인으로 의도하지 않은 결과를 줄입니다.\n- **D (오답, 사실 오류)**: 특정 계정 유형에만 적용되는 법적 의무가 아니라 제품에 설계된 안전장치입니다.\n\n**근거 문서**: [ChatGPT agent (OpenAI Help Center)](https://help.openai.com/en/articles/11752874-chatgpt-agent) · [OpenAI Model Spec › Act within an agreed-upon scope of autonomy, Control and communicate side effects](https://github.com/openai/model_spec/blob/main/model_spec.md)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "AI 윤리와 책임 있는 사용",
+        "에이전트"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 62,
+      "title": "특정 집단을 겨냥한 정치 설득 요청",
+      "type": "단일 선택",
+      "domain": 2,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": null,
+      "prompt": "한빛물산 홍보팀 직원이 AI에게 정치 관련 글을 여러 건 부탁했다. 이 중 OpenAI Model Spec이 **돕지 말아야 한다고 정리한 요청**은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "지역 주민 설명회에서 쓸 선거 제도 안내문을 쉬운 말로 풀어 쓰기"
+        },
+        {
+          "id": "B",
+          "text": "20대 여성 유권자의 불안을 자극하도록 설계한 특정 후보 반대 메시지 쓰기"
+        },
+        {
+          "id": "C",
+          "text": "정당별 정책 공약의 차이를 비교한 중립적인 표 만들기"
+        },
+        {
+          "id": "D",
+          "text": "정치 연설에 쓰이는 수사 기법의 종류와 사례 설명하기"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "OpenAI Model Spec의 \"Don't facilitate the targeted manipulation of political views\"는 특정 개인이나 인구통계 집단의 정치적 견해를 조작하도록 설계된 조언, 지시, 콘텐츠를 제공해서는 안 된다고 합니다. 예시도 특정 연령 · 인종 · 국적의 집단을 겨냥해 두려움을 이용하는 메시지입니다. 반면 불특정하거나 넓은 청중을 위한 정치 관련 내용은 특정 집단의 취약점을 이용하지 않는 한 허용됩니다. 핵심은 정치라는 주제가 아니라 특정 집단을 겨냥해 조작하려는 설계입니다.\n\n- **A (오답, 사실 오류)**: 제도를 설명하는 안내문은 넓은 청중을 위한 정보 제공입니다.\n- **B (정답)**: 특정 집단의 불안을 이용해 견해를 바꾸도록 설계한 메시지라 돕지 말아야 합니다.\n- **C (오답, 사실 오류)**: 중립적인 비교표는 조작이 아니라 정보 정리입니다.\n- **D (오답, 사실 오류)**: 수사 기법을 설명하는 것은 일반적인 교육 내용입니다.\n\n**근거 문서**: [OpenAI Model Spec › Don't facilitate the targeted manipulation of political views](https://github.com/openai/model_spec/blob/main/model_spec.md)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "AI 윤리와 책임 있는 사용",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 63,
+      "title": "법무 초안의 판례 · 논문 인용을 믿을 만하게 만드는 방법",
+      "type": "복수 선택",
+      "domain": 2,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": null,
+      "prompt": "누리물류 법무팀이 AI가 쓴 검토 의견 초안을 내부 회의에 공유하려 한다. 초안에는 판례와 논문 인용이 여러 개 있다. 인용의 신뢰도를 높이는 방법 **2가지**를 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "AI에게 \"이 인용이 정확한가요?\"를 한 번 되묻고, 맞다고 답하면 확인을 마친다."
+        },
+        {
+          "id": "B",
+          "text": "제공한 자료만 근거로 쓰고, 근거를 찾지 못하면 모른다고 답해도 된다고 지시한다."
+        },
+        {
+          "id": "C",
+          "text": "인용된 판례와 논문을 직접 찾아 출처와 내용이 실제로 일치하는지 확인한다."
+        },
+        {
+          "id": "D",
+          "text": "인용 표기 형식이 갖춰져 있으면 실제 존재하는 문헌으로 보고 넘어간다."
+        },
+        {
+          "id": "E",
+          "text": "같은 질문을 한 번 더 던져 비슷한 문구가 나오면 원문 확인을 생략한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B",
+        "C"
+      ],
+      "answer": "B, C",
+      "explanation": "AI는 존재하지 않는 인용문, 연구, 출처를 그럴듯하게 만들어 낼 수 있습니다. Anthropic 문서는 모른다고 답해도 된다고 허용하고, 제공한 문서만 근거로 쓰게 하고, 주장마다 인용을 요구하는 방식으로 이를 줄이라고 안내하면서도, 이런 기법은 할루시네이션을 줄일 뿐 없애지 못하므로 중요한 정보는 반드시 검증하라고 덧붙입니다. OpenAI 도움말도 인용문, 데이터, 외부 문서에 대한 언급은 항상 확인하라고 권합니다.\n\n- **A (오답, 사실 오류)**: 같은 모델에게 되묻는 것은 독립된 확인이 아닙니다. 지어낸 인용도 맞다고 답할 수 있습니다.\n- **B (정답)**: 자료 범위를 제한하고 모른다고 답할 여지를 주면 지어낸 인용이 줄어듭니다.\n- **C (정답)**: 원문과 직접 대조하는 것이 가장 확실한 검증입니다.\n- **D (오답, 사실 오류)**: 형식이 갖춰져 있어도 문헌이 존재한다는 증거가 되지 않습니다. 가짜 인용도 형식은 그럴듯하게 만들 수 있습니다.\n- **E (오답, 사실 오류)**: 비슷한 문구가 다시 나온다고 해서 원문과 일치한다는 뜻이 아닙니다. 확인을 대신하지 못합니다.\n\n**근거 문서**: [Reduce hallucinations (Claude API Docs)](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations) · [Does ChatGPT tell the truth? (OpenAI Help Center)](https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L2",
+        "AI 윤리와 책임 있는 사용",
+        "법무 초안의 판례 · 논문 인용을 믿을 만하게 만드는 방법"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 64,
+      "title": "검색이 연결되지 않은 AI에게 최근 개정 내용 묻기",
+      "type": "단일 선택",
+      "domain": 2,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": null,
+      "prompt": "한빛물산 총무팀 직원이 웹 검색이 연결되지 않은 AI 채팅 도구에 \"올해 개정된 근로 관련 고시의 달라진 점\"을 물었더니, 구체적인 항목을 나열한 답이 돌아왔다. 이 답을 사내 공지에 쓰기 전에 가장 적절한 행동은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "구체적으로 정리되어 있으므로 최신 내용이라고 보고 그대로 공지한다."
+        },
+        {
+          "id": "B",
+          "text": "모델이 최신 버전이라고 하니 개정 내용도 반영되었다고 보고 쓴다."
+        },
+        {
+          "id": "C",
+          "text": "같은 질문을 두세 번 반복해 비슷한 답이 나오면 확정한다."
+        },
+        {
+          "id": "D",
+          "text": "지식 시점 이후 내용일 수 있으므로 공식 고시를 직접 확인한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "OpenAI Model Spec은 모델이 불확실한 이유의 하나로 학습 시점(지식 기준일) 때문에 정보가 오래된 경우나 상황이 빠르게 변하는 경우를 듭니다. 검색 연결이 없으면 모델은 최근 개정을 알지 못한 채 그럴듯한 답을 만들 수 있습니다. OpenAI 도움말은 검색 기능을 쓰면 최신 정보를 웹에서 찾아 출처와 함께 답할 수 있고, 정확성이 중요할 때는 링크를 직접 열어 출처를 확인하라고 안내합니다. 법령과 고시처럼 최신 여부가 중요한 내용은 공식 문서로 확인하는 것이 맞습니다.\n\n- **A (오답, 사실 오류)**: 항목이 구체적이라는 점은 최신이라는 근거가 아닙니다.\n- **B (오답, 사실 오류)**: 모델이 최신이라는 사실이 곧 올해 개정 내용을 안다는 뜻은 아닙니다. 학습 시점 이후의 일은 모를 수 있습니다.\n- **C (오답, 사실 오류)**: 같은 모델의 반복된 답은 최신성을 확인해 주지 못합니다. 같은 오류가 되풀이될 수 있습니다.\n- **D (정답)**: 모델이 알 수 없는 최신 내용은 공식 고시 등 원문으로 직접 확인합니다.\n\n**근거 문서**: [OpenAI Model Spec › Express uncertainty](https://github.com/openai/model_spec/blob/main/model_spec.md) · [Does ChatGPT tell the truth? (OpenAI Help Center)](https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "AI 윤리와 책임 있는 사용",
+        "검색 품질"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 65,
+      "title": "AI가 거절한 개인 연락처 요청 이후의 대응",
+      "type": "단일 선택",
+      "domain": 2,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": null,
+      "prompt": "누리물류 영업 담당 직원이 AI에게 거래처 구매팀장의 개인 휴대전화 번호를 찾아 달라고 했지만 AI가 \"개인 연락처는 제공할 수 없다\"며 거절했다. 직원의 다음 행동으로 가장 적절한 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "거래처 대표번호나 공식 업무 채널로 연락하고, 필요하면 담당자 연결을 요청한다."
+        },
+        {
+          "id": "B",
+          "text": "표현을 바꿔 \"급한 일이니 알려 달라\"고 같은 요청을 다시 한다."
+        },
+        {
+          "id": "C",
+          "text": "다른 AI 서비스에서 같은 요청이 통과되는지 시도해 본다."
+        },
+        {
+          "id": "D",
+          "text": "SNS에 흩어진 글을 모아 AI에 붙여 넣고 번호를 추정하게 한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "OpenAI Model Spec의 \"Protect people's privacy\"는 개인의 사적이거나 민감한 정보 요청에 응하지 않아야 한다고 합니다. 온라인 어딘가에 있더라도 마찬가지입니다. 공직자의 사무실 번호는 줄 수 있어도 개인 휴대전화 번호는 거절하며, 이때 공식 채널을 통해 연락하도록 돕는 방식을 모범으로 제시합니다. Anthropic 이용 정책도 허락 없이 개인 정보를 수집하거나 접근하는 것을 금지합니다. 업무 목적이라면 상대가 공개한 업무용 채널을 쓰는 것이 맞습니다.\n\n- **A (정답)**: 공식 업무 채널은 목적을 이루면서 개인 정보를 침해하지 않는 경로입니다.\n- **B (오답, 사실 오류)**: 급하다는 이유로 개인 정보 보호 판단이 달라지지 않습니다.\n- **C (오답, 사실 오류)**: 다른 도구로 우회해 얻는 것도 본인 동의 없는 수집이라는 문제가 그대로입니다.\n- **D (오답, 사실 오류)**: 흩어진 정보를 모아 개인 연락처를 알아내는 것 역시 허락 없는 수집에 해당합니다.\n\n**근거 문서**: [OpenAI Model Spec › Protect people's privacy](https://github.com/openai/model_spec/blob/main/model_spec.md) · [Anthropic Usage Policy › Do Not Compromise Privacy or Identity Rights](https://www.anthropic.com/legal/aup)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "AI 윤리와 책임 있는 사용",
+        "AI가 거절한 개인 연락처 요청 이후의 대응"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 66,
+      "title": "고객 상담 기록을 AI로 분석하기 전 점검할 일",
+      "type": "복수 선택",
+      "domain": 2,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": null,
+      "prompt": "새봄상사는 고객 불만 유형을 분석하려고 회사가 허용한 AI 도구에 고객 상담 기록을 넣으려 한다. 기록에는 고객 이름, 연락처, 주소가 섞여 있다. 입력 전에 할 일 **2가지**를 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "분석에 필요한 내용만 남기고 이름 · 연락처 · 주소처럼 사람을 특정하는 정보는 가린다."
+        },
+        {
+          "id": "B",
+          "text": "입력한 뒤 대화를 삭제하면 사람 검토를 거친 사본까지 모두 사라지므로 미리 고민하지 않는다."
+        },
+        {
+          "id": "C",
+          "text": "사내에서 쓰는 도구이므로 고객 실명과 연락처도 그대로 넣는다."
+        },
+        {
+          "id": "D",
+          "text": "도구의 활동 저장 · 모델 개선 사용 설정과 회사 지침을 확인하고 업무에 맞게 정한다."
+        },
+        {
+          "id": "E",
+          "text": "유료로 계약한 서비스는 어떤 데이터도 안전하므로 보안 검토를 생략한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A",
+        "D"
+      ],
+      "answer": "A, D",
+      "explanation": "입력한 내용은 서비스에 전달되므로 사람을 특정하는 정보는 필요한 만큼만 쓰는 것이 좋습니다. 또 서비스마다 대화 보관, 학습 사용, 검토 방식이 다릅니다. 예를 들어 Gemini Apps Privacy Hub는 사람 검토를 거친 대화는 활동을 삭제해도 지워지지 않고 최대 3년간 보관된다고 설명합니다. OpenAI는 데이터 컨트롤에서 대화를 모델 개선에 쓸지 선택하게 하고, Anthropic도 소비자 계정의 모델 개선 사용 설정을 안내합니다. 그래서 가리는 것과 설정 · 지침 확인을 함께 해야 합니다.\n\n- **A (정답)**: 분석 목적에 필요하지 않은 식별 정보는 처음부터 넣지 않는 것이 가장 안전합니다.\n- **B (오답, 사실 오류)**: Google 안내에 따르면 검토를 거친 대화는 활동 삭제로 지워지지 않습니다. 삭제는 입력 전 점검을 대신하지 못합니다.\n- **C (오답, 사실 오류)**: 사내 도구라는 이유만으로 고객 식별 정보를 제한 없이 넣을 근거가 없습니다.\n- **D (정답)**: 어떤 데이터가 저장되고 학습에 쓰이는지는 도구와 설정마다 다르므로 확인해야 합니다.\n- **E (오답, 사실 오류)**: 유료 서비스여도 데이터 취급 방식과 설정을 확인해야 하며, 모든 데이터가 안전하다는 근거는 없습니다.\n\n**근거 문서**: [Gemini Apps Privacy Hub (Gemini Apps Help)](https://support.google.com/gemini/answer/13594961) · [Data controls FAQ (OpenAI Help Center)](https://help.openai.com/en/articles/7730893-data-controls-faq) · [Is my data used for model training? (Claude Privacy Center)](https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L2",
+        "AI 윤리와 책임 있는 사용",
+        "고객 상담 기록을 AI로 분석하기 전 점검할 일"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 67,
+      "title": "채용 서류 심사에 AI를 쓰는 방식",
+      "type": "단일 선택",
+      "domain": 2,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": null,
+      "prompt": "새봄상사 채용팀이 지원자 200명의 서류를 AI에게 점수화시키고, 점수가 낮은 지원자는 자동으로 탈락 처리하려 한다. 책임 있는 활용 방식으로 가장 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "상위 점수 지원자만 사람이 검토하고, 하위 점수 지원자는 자동 탈락시킨다."
+        },
+        {
+          "id": "B",
+          "text": "지원서에서 이름을 가렸으므로 편향이 없다고 보고 점수만으로 결정한다."
+        },
+        {
+          "id": "C",
+          "text": "AI는 서류 정리에 쓰고, 합격 · 탈락 판단은 사람이 내린다."
+        },
+        {
+          "id": "D",
+          "text": "프롬프트에 \"공정하게 평가하라\"고 적어 두고 점수대로 자동 처리한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "채용은 사람의 기회에 영향이 큰 분야입니다. Anthropic 이용 정책은 채용 등 고위험 분야에서 AI의 권고를 쓸 때 자격 있는 사람이 실질적으로 검토하고 바꿀 권한을 가져야 한다고 요구합니다. OpenAI 이용 정책은 민감한 분야의 고위험 결정을 사람의 검토 없이 자동화하는 것을, Google 정책은 개인의 권리에 큰 불이익을 주는 자동 결정을 사람의 감독 없이 하는 것을 금지합니다. Anthropic의 차별 평가 연구는 신중한 프롬프트 설계로 편향을 크게 줄일 수 있음을 보이면서도 고위험 사례의 자동 결정에는 반대합니다. 따라서 AI는 보조로, 결정은 사람이 합니다.\n\n- **A (오답, 사실 오류)**: 하위 점수를 자동 탈락시키면 사람의 검토 없는 자동 결정이 됩니다.\n- **B (오답, 사실 오류)**: 이름을 가리는 것만으로 편향이 사라졌다고 볼 수 없고, 자동 결정이라는 문제도 그대로입니다.\n- **C (정답)**: AI는 정리에 쓰고, 결정은 사람이 기준에 따라 검토하는 구조입니다.\n- **D (오답, 사실 오류)**: 지시문 한 줄이 편향 점검과 사람의 검토를 대신하지 못합니다.\n\n**근거 문서**: [Anthropic Usage Policy › High-risk Use Case Requirements](https://www.anthropic.com/legal/aup) · [OpenAI Usage policies](https://openai.com/policies/usage-policies/) · [Google Generative AI Prohibited Use Policy](https://policies.google.com/terms/generative-ai/use-policy) · [Evaluating and Mitigating Discrimination in Language Model Decisions (Anthropic)](https://www.anthropic.com/research/evaluating-and-mitigating-discrimination-in-language-model-decisions)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "AI 윤리와 책임 있는 사용",
+        "채용 서류 심사에 AI를 쓰는 방식"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 68,
+      "title": "AI 평가 도구의 편향을 점검하는 순서",
+      "type": "순서 배열",
+      "domain": 2,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": null,
+      "prompt": "한빛물산 교육팀은 AI가 수강생 과제를 요약 · 평가해 주는 도구를 도입하려 한다. 운영에 쓰기 전에 편향을 점검하는 네 단계를 **올바른 순서**로 배열하시오.\n\n- (가) 이름 · 성별처럼 평가와 무관한 속성만 바꾼 같은 내용의 입력을 넣어 결과를 비교한다.\n- (나) 점검을 마친 도구를 사람의 최종 검토 절차와 함께 운영에 쓴다.\n- (다) 평가에 쓸 기준과 평가에 영향을 주면 안 되는 속성을 구분해 정한다.\n- (라) 결과에 차이가 나면 지시문과 기준을 고치고 다시 비교해 확인한다.",
+      "context": "",
+      "options": [],
+      "items": [
+        {
+          "id": "가",
+          "text": "이름 · 성별처럼 평가와 무관한 속성만 바꾼 같은 내용의 입력을 넣어 결과를 비교한다."
+        },
+        {
+          "id": "나",
+          "text": "점검을 마친 도구를 사람의 최종 검토 절차와 함께 운영에 쓴다."
+        },
+        {
+          "id": "다",
+          "text": "평가에 쓸 기준과 평가에 영향을 주면 안 되는 속성을 구분해 정한다."
+        },
+        {
+          "id": "라",
+          "text": "결과에 차이가 나면 지시문과 기준을 고치고 다시 비교해 확인한다."
+        }
+      ],
+      "keys": [
+        "다",
+        "가",
+        "라",
+        "나"
+      ],
+      "answer": "(다) → (가) → (라) → (나)",
+      "explanation": "편향 점검은 무엇이 평가에 영향을 줘야 하고 주면 안 되는지 먼저 정한 뒤, 그 속성만 바꾼 입력으로 결과를 비교하는 방식으로 진행합니다. OpenAI Model Spec은 같은 증명에 이름만 다르게 넣은 채점 예시로 이 점검 방식을 보여 주고, 비슷한 상황에 같은 기준을 적용해야 한다고 합니다. Anthropic 연구는 모델의 결정에 긍정 · 부정 방향의 차별 패턴이 나타날 수 있음을 보이고, 신중한 프롬프트 설계로 이를 크게 줄일 수 있음을 보였습니다.\n\n- **1단계 (다)**: 비교하려면 먼저 평가 기준과 무관한 속성을 정해야 합니다. 이 기준이 없으면 무엇을 바꿔 볼지 알 수 없습니다.\n- **2단계 (가)**: 정한 속성만 바꿔 같은 내용을 입력하고 결과를 비교합니다. 비교 결과가 있어야 차이를 알 수 있습니다.\n- **3단계 (라)**: 비교에서 차이가 확인되면 지시문과 기준을 고치고 다시 비교합니다. 차이가 드러난 뒤에만 고칠 대상이 정해집니다.\n- **4단계 (나)**: 점검과 수정을 마친 뒤에 사람의 최종 검토 절차와 함께 운영합니다. 점검 전에 운영하면 편향된 결과가 그대로 쓰입니다.\n\n**근거 문서**: [OpenAI Model Spec › Uphold fairness](https://github.com/openai/model_spec/blob/main/model_spec.md) · [Evaluating and Mitigating Discrimination in Language Model Decisions (Anthropic)](https://www.anthropic.com/research/evaluating-and-mitigating-discrimination-in-language-model-decisions)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "순서 배열",
+        "L2",
+        "AI 윤리와 책임 있는 사용",
+        "평가 설계",
+        "AI 윤리",
+        "문서 요약",
+        "사람의 승인",
+        "도입 전략"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 69,
+      "title": "출처 링크가 달린 AI 답변 활용하기",
+      "type": "단일 선택",
+      "domain": 2,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": null,
+      "prompt": "누리물류 직원이 Gemini 앱의 답변에서 시장 규모 수치를 보았고, 그 수치에는 출처 링크가 붙어 있었다. 이 수치를 보고서에 인용하려 할 때 가장 알맞은 행동은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "링크가 붙어 있으므로 정확하다고 보고 그대로 인용한다."
+        },
+        {
+          "id": "B",
+          "text": "링크를 열어 해당 수치가 그 문서에 실제로 있는지 확인한 뒤 인용한다."
+        },
+        {
+          "id": "C",
+          "text": "링크가 없는 응답은 모두 틀린 것이므로 링크가 있는 응답만 쓴다."
+        },
+        {
+          "id": "D",
+          "text": "링크를 열지 않고 같은 질문을 다시 해 같은 수치가 나오는지 확인한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Gemini 앱은 가능한 경우 출처와 관련 링크를 제공해 더 깊이 살펴볼 수 있게 하며, 모든 응답에 링크나 출처가 포함되는 것은 아니라고 안내합니다. OpenAI 도움말도 정확성이 중요할 때는 링크를 직접 방문해 출처를 확인하라고 권합니다. 출처가 표시되었다는 사실은 확인할 곳을 알려 줄 뿐이므로, 인용하기 전에 문서에 그 수치가 실제로 있는지 사람이 봐야 합니다.\n\n- **A (오답, 사실 오류)**: 링크가 표시되어도 답변과 문서 내용이 일치하는지는 따로 확인해야 합니다.\n- **B (정답)**: 링크를 직접 열어 원문과 대조하는 것이 출처 표시를 제대로 쓰는 방법입니다.\n- **C (오답, 사실 오류)**: 모든 응답에 출처가 붙는 것은 아닙니다. 링크가 없다는 것이 곧 틀렸다는 뜻도 아니며, 이 경우에는 별도 확인이 필요합니다.\n- **D (오답, 사실 오류)**: 같은 질문을 다시 하는 것은 원문과의 대조가 아닙니다.\n\n**근거 문서**: [Gemini Apps Help › 답변의 출처와 관련 링크 안내](https://support.google.com/gemini/answer/14143489) · [Does ChatGPT tell the truth? (OpenAI Help Center)](https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "AI 윤리와 책임 있는 사용",
+        "출처 검증",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 70,
+      "title": "AI로 만든 콘텐츠를 공개할 때의 투명성",
+      "type": "복수 선택",
+      "domain": 2,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": null,
+      "prompt": "새봄상사 마케팅팀이 AI로 만든 이미지와 문구를 SNS에 공개하려 한다. 투명성 측면에서 알맞은 판단 **2가지**를 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Gemini 앱의 확인에서 Google AI의 흔적이 나오지 않으면 AI로 만든 것이 아니라고 확정한다."
+        },
+        {
+          "id": "B",
+          "text": "AI로 만든 콘텐츠를 사람이 전적으로 만든 것처럼 속여 보이게 하지 않는다."
+        },
+        {
+          "id": "C",
+          "text": "Gemini 앱의 확인 기능은 어느 회사의 도구로 만든 이미지인지와 상관없이 판별해 준다고 본다."
+        },
+        {
+          "id": "D",
+          "text": "Gemini 앱의 확인은 Google AI로 만든 것만 인식하므로 결과가 없어도 다른 AI가 만들었을 수 있다고 본다."
+        },
+        {
+          "id": "E",
+          "text": "이미지를 조금 편집해도 AI 생성 흔적은 반드시 남으므로 확인 결과를 그대로 믿는다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B",
+        "D"
+      ],
+      "answer": "B, D",
+      "explanation": "Google 정책은 AI로 만든 콘텐츠의 출처를 사람이 전적으로 만든 것처럼 속여 주장하는 행위를 금지합니다. Gemini 앱은 SynthID 워터마크를 이용해 Google AI로 만든 이미지 · 영상 · 오디오인지 확인해 주지만, 인식할 수 있는 것은 Google AI 도구로 만든 콘텐츠뿐입니다. 워터마크가 보이지 않으면 다른 AI 시스템이 만들었을 수 있고, 많은 수정을 거치면 흔적이 감지되지 않을 수도 있습니다. 확인 기능은 보조 수단일 뿐이므로 만든 쪽이 AI 사용을 속이지 않는 태도가 우선입니다.\n\n- **A (오답, 사실 오류)**: 흔적이 없다고 해서 AI가 만들지 않았다고 확정할 수 없습니다. 다른 AI가 만들었을 수 있습니다.\n- **B (정답)**: AI로 만든 콘텐츠를 사람이 전적으로 만든 것처럼 속이는 것은 정책이 금지하는 행위입니다.\n- **C (오답, 사실 오류)**: Gemini 앱은 Google AI 도구로 만든 콘텐츠만 인식합니다.\n- **D (정답)**: 인식 범위가 Google AI로 한정되므로 결과가 없어도 다른 AI가 만든 가능성이 남습니다.\n- **E (오답, 사실 오류)**: 크기 조정이나 색 보정 정도는 대체로 견디지만, 많은 수정을 거치면 감지에 실패할 수 있다고 안내되어 있어 \"반드시 남는다\"고 할 수 없습니다.\n\n**근거 문서**: [Verify AI-generated images, videos, and audio (Gemini Apps Help)](https://support.google.com/gemini/answer/16722517) · [Google Generative AI Prohibited Use Policy › Misinformation, misrepresentation, or misleading activities](https://policies.google.com/terms/generative-ai/use-policy)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L2",
+        "AI 윤리와 책임 있는 사용",
+        "이미지 이해"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 71,
+      "title": "메일함 정리를 에이전트에게 맡길 때의 권한 범위",
+      "type": "단일 선택",
+      "domain": 2,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": null,
+      "prompt": "한빛물산 재무팀이 AI 에이전트에게 거래처 문의 메일함 정리를 맡기려 한다. 에이전트는 메일을 읽고, 답장을 쓰고, 보내고, 삭제할 수 있는 상태다. 시작하기 전에 정할 권한 범위로 가장 알맞은 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "읽기와 초안 작성까지 맡기고, 발송과 삭제는 사람 확인 후 실행한다."
+        },
+        {
+          "id": "B",
+          "text": "한 번에 끝내도록 읽기 · 발송 · 삭제 권한을 모두 주고 결과만 나중에 본다."
+        },
+        {
+          "id": "C",
+          "text": "읽기도 초안도 메일 한 통마다 사람이 승인해야만 진행하게 한다."
+        },
+        {
+          "id": "D",
+          "text": "범위를 정하지 않고 시작한 뒤, 문제가 생기면 그때 권한을 조정한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "OpenAI Model Spec은 에이전트의 자율성은 합의된 범위 안에서 허용하되, 필요한 접근 범위를 최소화하고 언제 멈춰 승인을 구해야 하는지를 미리 정하라고 합니다. 또 발송이나 삭제처럼 되돌리기 어려운 부작용은 최소화해야 하며, 모든 단계마다 확인을 요구하는 것은 비현실적이라고 설명합니다. 읽기와 초안은 위험이 낮아 자율에 맡기고 영향이 큰 동작에서만 사람이 승인하는 방식이 이 원칙에 맞습니다. OpenAI의 ChatGPT agent 도움말도 영향이 큰 동작에 사용자 확인을 두었다고 설명합니다(해당 제품은 기준일 현재 종료됨).\n\n- **A (정답)**: 위험이 낮은 동작은 맡기고, 발송과 삭제처럼 영향이 큰 동작은 사람이 확인합니다.\n- **B (오답, 사실 오류)**: 필요 이상의 권한을 주면 잘못된 발송이나 삭제가 되돌릴 수 없는 결과로 이어질 수 있습니다.\n- **C (오답, 제약 위반)**: 모든 단계마다 승인을 요구하면 맡기는 의미가 사라집니다. 승인은 영향이 큰 동작에 맞춥니다.\n- **D (오답, 사실 오류)**: 범위는 시작 전에 정해야 합니다. 문제가 생긴 뒤 조정하면 이미 되돌릴 수 없는 일이 생길 수 있습니다.\n\n**근거 문서**: [OpenAI Model Spec › Act within an agreed-upon scope of autonomy, Control and communicate side effects](https://github.com/openai/model_spec/blob/main/model_spec.md) · [ChatGPT agent (OpenAI Help Center)](https://help.openai.com/en/articles/11752874-chatgpt-agent)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "AI 윤리와 책임 있는 사용",
+        "에이전트",
+        "권한 관리"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 72,
+      "title": "위험한 요청과 책임 있는 대응 매칭",
+      "type": "매칭",
+      "domain": 2,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": null,
+      "prompt": "왼쪽의 요청 상황에 가장 알맞은 책임 있는 대응을 오른쪽에서 하나씩 고르시오. 오른쪽 항목 중 하나는 사용되지 않는다.",
+      "context": "",
+      "options": [
+        {
+          "id": "a",
+          "text": "대상자에게 알리고 동의나 법적 근거를 확인한 뒤에만 진행한다"
+        },
+        {
+          "id": "b",
+          "text": "속이려는 목적이 분명하므로 요청하지 않고 중단한다"
+        },
+        {
+          "id": "c",
+          "text": "실제 고객이 남긴 후기만 쓰고 AI는 문장 다듬기에 한정한다"
+        },
+        {
+          "id": "d",
+          "text": "자격 있는 담당자가 바꿀 권한을 갖고 실질적으로 검토하고, 고객에게 AI 활용을 알린다"
+        },
+        {
+          "id": "e",
+          "text": "더 높은 등급의 모델로 바꿔 같은 요청을 다시 보낸다"
+        }
+      ],
+      "items": [
+        {
+          "id": "1",
+          "text": "존재하지 않는 고객이 쓴 것처럼 구매 후기를 AI로 대량 생성해 쇼핑몰에 올리려 한다"
+        },
+        {
+          "id": "2",
+          "text": "보험 심사에서 AI가 낸 지급 여부 권고를 바탕으로 고객에게 결과를 통보하려 한다"
+        },
+        {
+          "id": "3",
+          "text": "거래처 담당자인 척하며 결제 계좌 변경을 요청하는 메일 문안을 AI로 만들려 한다"
+        },
+        {
+          "id": "4",
+          "text": "직원 각자의 활동을 본인 모르게 추적하는 용도로 AI 분석을 쓰려 한다"
+        }
+      ],
+      "keys": [
+        "c",
+        "d",
+        "b",
+        "a"
+      ],
+      "answer": "1-c, 2-d, 3-b, 4-a (e 미사용)",
+      "explanation": "책임 있는 사용은 요청이 속임수인지, 영향이 큰 결정인지, 개인의 동의가 필요한지에 따라 대응이 달라집니다. Anthropic 이용 정책은 가짜 계정이나 가짜 후기로 출처를 속이는 것과 사칭을 금지하고, 보험 · 고용 같은 고위험 분야에서는 자격 있는 사람의 실질적인 검토와 AI 사용 고지를 요구합니다. Anthropic과 Google 정책은 동의 없이 사람을 추적하거나 감시하는 것을 금지합니다.\n\n- **1 → c**: 가짜 고객의 후기는 계정과 후기의 출처를 속이는 일입니다. 실제 고객의 후기만 쓰고 AI는 보조로만 씁니다.\n- **2 → d**: 보험은 고위험 분야이므로 권고를 그대로 통보하지 않고, 자격 있는 사람이 바꿀 권한을 갖고 검토하며 AI 활용을 알립니다.\n- **3 → b**: 거래처를 사칭한 결제 계좌 변경은 사기 목적이 분명하므로 요청하지 않고 중단합니다.\n- **4 → a**: 동의 없는 추적은 금지되므로, 대상자에게 알리고 동의나 법적 근거가 확인될 때만 진행합니다.\n- **e**: 어느 상황도 모델 성능의 문제가 아니라 목적과 절차의 문제입니다. 모델을 바꿔도 해결되지 않아 사용되지 않습니다.\n\n**근거 문서**: [Anthropic Usage Policy › Do Not Engage in Deceptive Campaigns or Artificial Activity, High-risk Use Case Requirements, Do Not Use for Surveillance](https://www.anthropic.com/legal/aup) · [Google Generative AI Prohibited Use Policy](https://policies.google.com/terms/generative-ai/use-policy)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "매칭",
+        "L2",
+        "AI 윤리와 책임 있는 사용",
+        "위험한 요청과 책임 있는 대응 매칭"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 73,
+      "title": "Perplexity가 답변을 만드는 방식",
+      "type": "단일 선택",
+      "domain": 3,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": null,
+      "prompt": "한빛물산 직원이 Perplexity에 최근 동향을 묻고 답변을 받았다. 직원이 이 서비스의 답변 방식을 동료에게 설명하려 한다. 공식 도움말과 일치하는 설명은 무엇인가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "학습한 데이터만으로 답하며 인터넷은 검색하지 않는다."
+        },
+        {
+          "id": "B",
+          "text": "답을 먼저 만든 뒤, 검색 결과와 무관하게 출처 이름을 덧붙인다."
+        },
+        {
+          "id": "C",
+          "text": "질문을 이해해 웹을 실시간으로 검색하고 요약하며, 답변에 원본 출처로 연결되는 번호 인용을 넣는다."
+        },
+        {
+          "id": "D",
+          "text": "이용자가 올린 파일 안에서만 찾아 답한다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Perplexity 도움말은 이 서비스를 인터넷을 실시간으로 검색하는 AI 검색 엔진으로 설명합니다. 질문을 이해하고, 웹에서 정보를 모으고, 요약하는 순서로 답하며, 각 답변에는 원본 출처로 연결되는 번호 인용이 들어갑니다. 인용 링크가 있으므로 이용자는 주장의 근거를 직접 열어 확인할 수 있습니다.\n\n- **A (오답, 사실 오류)**: Perplexity는 인터넷을 실시간으로 검색해 답합니다.\n- **B (오답, 사실 오류)**: 출처는 답변을 만들 때 검색해 찾은 원본으로 연결됩니다. 이름만 덧붙이는 것이 아닙니다.\n- **C (정답)**: 실시간 웹 검색과 출처 인용이 도움말이 설명하는 답변 방식입니다.\n- **D (오답, 조건 누락)**: 업로드한 파일에 한정되지 않고 웹 전체를 검색합니다.\n\n**근거 문서**: [What is Perplexity?](https://www.perplexity.ai/help-center/en/articles/10352155-what-is-perplexity) · [How does Perplexity work?](https://www.perplexity.ai/help-center/en/articles/10352895-how-does-perplexity-work)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 외부 AI 서비스 생태계",
+        "Perplexity가 답변을 만드는 방식"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 74,
+      "title": "폭넓은 조사에 맞는 Perplexity 모드",
+      "type": "단일 선택",
+      "domain": 3,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": null,
+      "prompt": "누리물류 기획팀이 새 물류 거점 후보 지역에 관한 시장 보고서 초안이 필요하다. 한 번의 질문으로 서비스가 스스로 검색과 문서 읽기를 여러 차례 반복하고, 많은 출처를 종합해 보고서를 만들어 주길 원한다. Perplexity에서 어떤 방법이 알맞은가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Deep Research를 선택한다"
+        },
+        {
+          "id": "B",
+          "text": "질문 하나에 대한 짧은 답을 빨리 얻는 기본 검색만 반복한다"
+        },
+        {
+          "id": "C",
+          "text": "답변 모델만 다른 것으로 바꾸고 같은 질문을 다시 보낸다"
+        },
+        {
+          "id": "D",
+          "text": "답변에 달린 인용 링크를 모두 지우고 다시 묻는다"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "Perplexity는 일반 Search, Pro Search, Deep Research 등 여러 검색 방식을 제공합니다. 도움말은 Deep Research가 수십 번의 검색을 자동으로 수행하고 수백 개의 출처를 읽어, 몇 분 안에 종합 보고서를 만든다고 설명합니다. 한 번의 질문으로 반복 검색과 종합 보고서까지 맡기려는 상황과 맞습니다.\n\n- **A (정답)**: Deep Research는 반복 검색과 출처 종합으로 보고서를 만드는 방식입니다.\n- **B (오답, 조건 불일치)**: 빠르게 짧은 답을 얻는 용도이며, 반복 검색과 보고서 종합을 맡기려는 목적과 다릅니다.\n- **C (오답, 유사 기능 혼동)**: 답변 모델 선택은 어떤 모델이 답하는지를 고르는 것이며, 검색 방식을 보고서 조사 방식으로 바꾸지 않습니다.\n- **D (오답, 사실 오류)**: 인용 링크는 답변 근거를 확인하라고 붙는 것이며, 지운다고 조사 범위가 넓어지지 않습니다.\n\n**근거 문서**: [What is Perplexity?](https://www.perplexity.ai/help-center/en/articles/10352155-what-is-perplexity) · [How does Perplexity work?](https://www.perplexity.ai/help-center/en/articles/10352895-how-does-perplexity-work) · [Introducing Perplexity Deep Research](https://www.perplexity.ai/hub/blog/introducing-perplexity-deep-research)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 외부 AI 서비스 생태계",
+        "출처 검증",
+        "검색 품질"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 75,
+      "title": "Liner Scholar로 돕는 연구 작업",
+      "type": "복수 선택",
+      "domain": 3,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": null,
+      "prompt": "한빛물산 연구소 직원이 논문을 읽고 정리하는 데 Liner의 Liner Scholar를 쓰려 한다. 공식 소개와 일치하는 쓰임을 **2가지** 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "어떤 주제의 논문을 찾아 서로 비교한다."
+        },
+        {
+          "id": "B",
+          "text": "사진 속 인물의 배경을 지우고 새 배경을 합성한다."
+        },
+        {
+          "id": "C",
+          "text": "쓰고 있는 글을 보강할 인용 논문을 고르는 데 도움을 받는다."
+        },
+        {
+          "id": "D",
+          "text": "주제 한 줄만 입력해 첫 초안을 작성하는 데 특화되어 있다."
+        },
+        {
+          "id": "E",
+          "text": "모델 저장소에 올라온 데이터셋을 내려받아 학습에 쓴다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A",
+        "C"
+      ],
+      "answer": "A, C",
+      "explanation": "Liner는 Liner Scholar를 연구 워크플로를 간소화하는 AI 에이전트로 소개합니다. 주제에 관한 논문을 찾아 비교하고, 글을 강화할 인용을 고르고, 문헌 검토를 빠르게 만드는 데 도움을 준다고 설명합니다. 초안 작성은 Liner Write 쪽 기능입니다.\n\n- **A (정답)**: 논문을 찾고 비교하는 일이 Liner Scholar의 소개에 들어 있습니다.\n- **B (오답, 무관한 기능)**: 이미지 편집은 Liner Scholar의 기능으로 소개되지 않았습니다.\n- **C (정답)**: 글을 보강할 인용을 고르는 일이 Liner Scholar의 소개에 들어 있습니다.\n- **D (오답, 유사 기능 혼동)**: 주제만으로 첫 초안을 만드는 일은 검색 · 작성 · 편집을 한 창에서 하는 Liner Write의 기능으로 소개됩니다.\n- **E (오답, 다른 서비스와 혼동)**: 데이터셋을 내려받아 학습에 쓰는 것은 Hugging Face Hub 같은 저장소의 쓰임입니다.\n\n**근거 문서**: [Liner](https://liner.com/)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L1",
+        "주요 외부 AI 서비스 생태계",
+        "Liner Scholar로 돕는 연구 작업"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 76,
+      "title": "주제만으로 초안을 쓰고 다듬기",
+      "type": "단일 선택",
+      "domain": 3,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": null,
+      "prompt": "누리물류의 홍보 담당자가 신제품 소개 뉴스레터를 쓰려 한다. 지금 있는 것은 주제뿐이며, 자료를 검색하고 초안을 쓰고 문장을 고치는 일을 한 화면에서 이어 가고 싶다. 다음 중 Liner의 어느 기능이 가장 알맞은가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Liner Scholar"
+        },
+        {
+          "id": "B",
+          "text": "Liner Write"
+        },
+        {
+          "id": "C",
+          "text": "Hugging Face의 Model Card"
+        },
+        {
+          "id": "D",
+          "text": "Adobe Firefly의 Content Credentials"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Liner는 Liner Write를 검색, 작성, 편집을 한 창에서 하는 기능으로 소개합니다. 주제만으로 첫 초안을 만들고, 메모를 메시지 · 뉴스레터 · 보고서로 바꾸고, 글을 다듬을 수 있다고 설명합니다. 같은 서비스의 Liner Scholar는 논문 탐색과 인용 선택에 쓰는 기능이라 이 상황과 맞지 않습니다.\n\n- **A (오답, 같은 서비스의 다른 기능)**: Liner Scholar는 논문을 찾아 비교하고 인용을 고르는 연구용 에이전트입니다.\n- **B (정답)**: Liner Write가 주제에서 초안을 만들고 뉴스레터로 다듬는 일을 한 창에서 돕습니다.\n- **C (오답, 다른 서비스와 혼동)**: Model Card는 Hugging Face에서 모델의 한계와 편향을 알리는 문서입니다.\n- **D (오답, 다른 서비스와 혼동)**: Content Credentials는 Adobe Firefly 결과물에 적용되는 정보 표시입니다.\n\n**근거 문서**: [Liner](https://liner.com/) · [Hugging Face Hub documentation](https://huggingface.co/docs/hub/index) · [Adobe Firefly FAQ](https://helpx.adobe.com/firefly/get-set-up/learn-the-basics/adobe-firefly-faq.html)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 외부 AI 서비스 생태계",
+        "검색 품질"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 77,
+      "title": "Hugging Face Hub에서 찾을 수 있는 것",
+      "type": "단일 선택",
+      "domain": 3,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": null,
+      "prompt": "한빛물산 데이터팀 신입 직원이 Hugging Face Hub 문서를 읽고 있다. 이 문서가 Hub의 주요 구성으로 소개하는 세 가지는 무엇인가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "모델, 데이터셋, 이미지 스톡 판매"
+        },
+        {
+          "id": "B",
+          "text": "모델, 데이터셋, Spaces"
+        },
+        {
+          "id": "C",
+          "text": "모델, 사내 메신저, 클라우드 메일"
+        },
+        {
+          "id": "D",
+          "text": "데이터셋, Spaces, 코딩 에이전트"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "Hugging Face Hub 문서는 Hub의 구성으로 Models, Datasets, Spaces를 소개합니다. Models는 텍스트, 비전, 오디오 등 여러 작업을 위한 모델이며, Datasets는 여러 영역과 형태의 데이터이고, Spaces는 모델을 브라우저에서 시연하는 대화형 앱입니다.\n\n- **A (오답, 사실 오류)**: 이미지 스톡 판매는 Hub의 구성으로 소개되지 않습니다. 라이선스 이미지로 모델을 학습하는 것은 Adobe Firefly 쪽 이야기입니다.\n- **B (정답)**: 모델, 데이터셋, Spaces가 문서가 소개하는 구성입니다.\n- **C (오답, 사실 오류)**: 사내 메신저와 클라우드 메일은 Hub의 구성이 아닙니다.\n- **D (오답, 조건 누락)**: 데이터셋과 Spaces는 맞지만 모델이 빠졌고, 코딩 에이전트는 Hub의 구성으로 소개되지 않습니다.\n\n**근거 문서**: [Hugging Face Hub documentation](https://huggingface.co/docs/hub/index)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 외부 AI 서비스 생태계",
+        "Hugging Face"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 78,
+      "title": "오픈소스 모델을 고르기 전에 한계와 편향 확인하기",
+      "type": "단일 선택",
+      "domain": 3,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": null,
+      "prompt": "누리물류 데이터팀이 Hugging Face Hub에서 고객 문의 분류에 쓸 모델을 고르고 있다. 도입하기 전에 그 모델의 한계와 편향에 대한 안내를 확인하려면 어디를 봐야 하는가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Spaces에서 만든 데모 화면 하나만 써 보고 판단한다"
+        },
+        {
+          "id": "B",
+          "text": "모델과 무관한 다른 데이터셋의 설명 페이지를 읽는다"
+        },
+        {
+          "id": "C",
+          "text": "그 모델 저장소에 갖춰진 Model Card를 읽는다"
+        },
+        {
+          "id": "D",
+          "text": "모델 저장소에 올라온 파일의 개수를 비교한다"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "Hugging Face Hub 문서는 책임 있는 모델 사용과 개발을 돕기 위해 모델 저장소에 Model Card가 갖춰져 있고, 여기에서 모델의 한계와 편향을 알린다고 설명합니다. 과제, 언어, 평가 결과 같은 추가 정보도 담길 수 있습니다. 도입 전에 Model Card를 읽고 우리 용도에 맞는지 판단합니다.\n\n- **A (오답, 근거 부족)**: Spaces는 모델을 시연하는 앱입니다. 데모 한 번으로는 한계와 편향에 대한 안내를 확인할 수 없습니다.\n- **B (오답, 대상 혼동)**: 다른 데이터셋의 설명은 고르려는 모델의 한계를 알려 주지 않습니다.\n- **C (정답)**: Model Card가 모델의 한계와 편향을 알리는 문서입니다.\n- **D (오답, 무관한 정보)**: 파일 개수는 모델의 한계나 편향과 관계가 없습니다.\n\n**근거 문서**: [Hugging Face Hub documentation](https://huggingface.co/docs/hub/index)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L2",
+        "주요 외부 AI 서비스 생태계",
+        "모델 선택",
+        "AI 윤리",
+        "도입 전략",
+        "Hugging Face"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 79,
+      "title": "Adobe Firefly 결과물에 붙는 표시",
+      "type": "단일 선택",
+      "domain": 3,
+      "difficulty": "L1",
+      "points": 1,
+      "provider": null,
+      "prompt": "한빛물산 디자이너가 Adobe Firefly로 만든 이미지를 내보내려 한다. Adobe는 Firefly 결과물을 내보낼 때 일부 유형에 AI 도구가 쓰였음을 알리는 정보를 자동으로 적용한다고 안내한다. 이 정보의 이름은 무엇인가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Model Cards"
+        },
+        {
+          "id": "B",
+          "text": "번호가 붙은 인용"
+        },
+        {
+          "id": "C",
+          "text": "Spaces"
+        },
+        {
+          "id": "D",
+          "text": "Content Credentials"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "Adobe 도움말은 Firefly 결과물을 쓴 일부 유형의 내보내기에 Content Credentials를 자동으로 적용한다고 설명합니다. 이는 AI 도구가 쓰였음을 알려, 보는 사람이 그 자산을 얼마나 신뢰할지 판단하도록 돕습니다.\n\n- **A (오답, 다른 서비스와 혼동)**: Model Cards는 Hugging Face Hub에서 모델의 한계와 편향을 알리는 문서입니다.\n- **B (오답, 다른 서비스와 혼동)**: 번호가 붙은 인용은 Perplexity 답변에서 원본 출처로 연결되는 표시입니다.\n- **C (오답, 다른 서비스와 혼동)**: Spaces는 Hugging Face Hub에서 모델을 시연하는 앱입니다.\n- **D (정답)**: Content Credentials가 Firefly 결과물을 내보낼 때 자동 적용되는 정보입니다.\n\n**근거 문서**: [Adobe Firefly FAQ](https://helpx.adobe.com/firefly/get-set-up/learn-the-basics/adobe-firefly-faq.html)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "단일 선택",
+        "L1",
+        "주요 외부 AI 서비스 생태계",
+        "이미지 이해"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 80,
+      "title": "광고 시안 제작 전 Firefly 점검 사항",
+      "type": "복수 선택",
+      "domain": 3,
+      "difficulty": "L2",
+      "points": 1,
+      "provider": null,
+      "prompt": "한빛물산 광고팀이 Adobe Firefly로 상품 광고 시안을 만들기 전에 학습 데이터와 상업적 이용에 관한 Adobe의 안내를 점검한다. 공식 FAQ와 일치하는 설명을 **2가지** 고르시오.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "현재 모델은 이용자가 웹에서 임의로 모은 이미지로 학습했다."
+        },
+        {
+          "id": "B",
+          "text": "현재 모델은 Adobe Stock 같은 라이선스 콘텐츠와 퍼블릭 도메인 콘텐츠로 학습했다."
+        },
+        {
+          "id": "C",
+          "text": "베타 라벨이 없는 기능의 결과물은 상업적으로 쓸 수 없다."
+        },
+        {
+          "id": "D",
+          "text": "텍스트 프롬프트로는 영상 클립을 만들 수 없고 이미지만 만들 수 있다."
+        },
+        {
+          "id": "E",
+          "text": "베타 라벨이 없는 기능으로 만든 결과물은 상업 프로젝트에 쓸 수 있다."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B",
+        "E"
+      ],
+      "answer": "B, E",
+      "explanation": "Adobe 도움말은 Firefly의 현재 모델이 Adobe Stock 같은 라이선스 콘텐츠와 퍼블릭 도메인 콘텐츠로 구성된 데이터로 학습했다고 설명합니다. 또 베타 라벨이 없는 기능의 결과물은 상업 프로젝트에 쓸 수 있다고 안내합니다. 베타 기능은 제품 안에 별도 제한이 있는지 확인해야 하므로, 쓰려는 기능의 라벨을 먼저 봅니다.\n\n- **A (오답, 사실 오류)**: 학습 데이터는 임의로 모은 웹 이미지가 아니라 라이선스 콘텐츠와 퍼블릭 도메인 콘텐츠입니다.\n- **B (정답)**: 학습 데이터에 대한 도움말 설명과 일치합니다.\n- **C (오답, 사실 오류)**: 베타 라벨이 없는 기능의 결과물은 상업 프로젝트에 쓸 수 있습니다.\n- **D (오답, 사실 오류)**: 도움말은 텍스트 프롬프트로 이미지와 영상 클립을 만들 수 있다고 설명합니다.\n- **E (정답)**: 베타 라벨이 없는 기능의 결과물은 상업 프로젝트에 쓸 수 있습니다.\n\n**근거 문서**: [Adobe Firefly FAQ](https://helpx.adobe.com/firefly/get-set-up/learn-the-basics/adobe-firefly-faq.html)",
+      "tags": [
+        "ASF",
+        "AI Services",
+        "복수 선택",
+        "L2",
+        "주요 외부 AI 서비스 생태계",
+        "학습 데이터"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    }
+  ],
+  "nameKo": "AI 서비스"
+}
