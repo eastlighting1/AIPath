@@ -2,7 +2,7 @@
 // A static Pages deployment has no upload API. A link carries the attempt,
 // and the receiver recomputes the score from the same question bank.
 getShareLink=async function(r=lastResult){
- const payload={v:1,code:exams[r.exam].code,mode:r.mode,name:r.candidateName||'',ids:r.questionOrder,choices:r.choiceOrder||{},answers:r.answers,elapsed:r.elapsed,lang:window.APP_LANG};
+ const payload={v:2,scoringVersion:r.scoringVersion,code:exams[r.exam].code,mode:r.mode,name:r.candidateName||'',ids:r.questionOrder,choices:r.choiceOrder||{},answers:r.answers,elapsed:r.elapsed,lang:window.APP_LANG};
  const packed=btoa(String.fromCharCode(...new TextEncoder().encode(JSON.stringify(payload)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
  return new URL(document.baseURI).href.split('?')[0].split('#')[0]+'?lang='+window.APP_LANG+'#report='+packed;
 };
@@ -11,7 +11,8 @@ getShareLink=async function(r=lastResult){
  try{
  const raw=location.hash.slice(8);if(raw.length>50000)throw Error();
  const p=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(raw.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0))));
- const i=exams.findIndex(e=>e.code===p.code);if(p.v!==1||i<0||!['demo','full'].includes(p.mode)||!Array.isArray(p.ids)||!Array.isArray(p.answers)||p.answers.length!==p.ids.length||p.answers.some(a=>!Array.isArray(a)||a.length>12||a.some(x=>typeof x!=='string'||x.length>10))||!Number.isFinite(p.elapsed)||p.elapsed<0)throw Error();
+ const i=exams.findIndex(e=>e.code===p.code);if(p.v!==2||i<0||!['demo','full'].includes(p.mode)||!Array.isArray(p.ids)||!Array.isArray(p.answers)||p.answers.length!==p.ids.length||p.answers.some(a=>!Array.isArray(a)||a.length>12||a.some(x=>typeof x!=='string'||x.length>10))||!Number.isFinite(p.elapsed)||p.elapsed<0)throw Error();
+ if(p.scoringVersion!==exams[i].scaling.version)throw Error('Scoring version mismatch');
  const response=await fetch('courses/'+window.APP_LANG+'/'+p.code+'.json');if(!response.ok)throw Error();const bank=await response.json();
  originalQuestions[i]=bank.questions;exams[i].guide=bank.guide;selected=i;examMode=p.mode;questionOrder=p.ids;choiceOrder=p.choices&&typeof p.choices==='object'?p.choices:{};applyQuestionOrder(i);
  candidateName=cleanCandidate(String(p.name||'')).slice(0,40);answers=p.answers;

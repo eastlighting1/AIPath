@@ -1,7 +1,16 @@
 const fs=require('fs'),path=require('path');
 const root=path.resolve(__dirname,'..'),codes=['ALF','WFA','ADA','SDA','AEP','SDP','SES','AGS','MOS','ASF','AOA','AOP'];
+const Scaling=require('../public/scaling.js'),crypto=require('crypto');
+const scalingModels={};
+for(const code of codes){
+ const bank=JSON.parse(fs.readFileSync(path.join(root,'content/ko',code+'.json'),'utf8'));
+ const model=Scaling.build(bank);
+ model.version+='-'+crypto.createHash('sha256').update(JSON.stringify({model,keys:bank.questions.map(q=>[q.id,q.keys])})).digest('hex').slice(0,16);
+ scalingModels[code]=model;
+}
 for(const lang of ['ko','en']){
  const exams=codes.map(code=>JSON.parse(fs.readFileSync(path.join(root,'content',lang,code+'.json'),'utf8')));
+ for(const e of exams){e.scaling=scalingModels[e.code];e.scoring='evidence';}
  // These option bodies explicitly refer to another option; preserve the stable
  // ID in a token so the UI can label it using the current attempt's order.
  if(lang==='ko')for(const e of exams)for(const q of e.questions)for(const o of q.options){
