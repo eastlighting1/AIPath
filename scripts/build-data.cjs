@@ -1,5 +1,5 @@
 const fs=require('fs'),path=require('path');
-const root=path.resolve(__dirname,'..'),codes=['ALF','WFA','ADA','SDA','AEP','SDP','SES','AGS','MOS','ASF'];
+const root=path.resolve(__dirname,'..'),codes=['ALF','WFA','ADA','SDA','AEP','SDP','SES','AGS','MOS','ASF','AOA','AOP'];
 for(const lang of ['ko','en']){
  const exams=codes.map(code=>JSON.parse(fs.readFileSync(path.join(root,'content',lang,code+'.json'),'utf8')));
  // These option bodies explicitly refer to another option; preserve the stable
