@@ -4684,6 +4684,886 @@
         "version": 1,
         "method": "rule-based-draft"
       }
+    },
+    {
+      "id": 93,
+      "sourceId": "RGV-I01",
+      "title": "A partner training a small model on collected responses",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 1,
+      "difficulty": "L3",
+      "sourceTopic": "Usage policies and model behavior principles",
+      "prompt": "A partner sends large volumes of questions through one Claude account used in a supported region. The account has never been suspended. Without tampering with safeguards, the partner collects the responses and adjusts its own small model’s weights to reproduce them. Which Anthropic Usage Policy prohibition applies without prior approval?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Coordinating malicious activity across multiple accounts to evade detection"
+        },
+        {
+          "id": "B",
+          "text": "Automating account creation or engaging in spam"
+        },
+        {
+          "id": "C",
+          "text": "Using inputs and outputs to train another AI model"
+        },
+        {
+          "id": "D",
+          "text": "A suspended party regaining access through a new or different account"
+        },
+        {
+          "id": "E",
+          "text": "Deliberately disabling safeguards to obtain harmful outputs"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** Incorrect. Only one account is used; no multi-account detection evasion is described.\n\n- **{{option:B}}.** Incorrect. Neither automated account creation nor spam is stated.\n\n- **{{option:C}}.** Correct. Adjusting another model’s weights using returned responses constitutes training on inputs and outputs (model scraping or model distillation), which is prohibited without prior approval.\n\n- **{{option:D}}.** Incorrect. The account has never been suspended, so this is not suspension evasion.\n\n- **{{option:E}}.** Incorrect. Safeguards are explicitly left intact, rather than circumvented.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Usage policies and model behavior principles",
+        "Human approval",
+        "Usage policies",
+        "Claude",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 94,
+      "sourceId": "RGV-I02",
+      "title": "A channel for users to report issues after launch",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "Responsible operational procedures",
+      "prompt": "A deployed chatbot will provide a way for end users to report inappropriate answers. People will monitor the reports and respond appropriately. Which OpenAI safety best practice does this implement?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Human in the loop (HITL)"
+        },
+        {
+          "id": "B",
+          "text": "Adversarial testing"
+        },
+        {
+          "id": "C",
+          "text": "Prompt engineering"
+        },
+        {
+          "id": "D",
+          "text": "Understand and communicate limitations"
+        },
+        {
+          "id": "E",
+          "text": "Allow users to report issues"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** Incorrect. This means human review before outputs are used; the scenario concerns reports after users see an answer.\n\n- **{{option:B}}.** Incorrect. This tests robustness with adversarial inputs before launch, rather than receiving user reports afterward.\n\n- **{{option:C}}.** Incorrect. This constrains output topics and tone through prompts.\n\n- **{{option:D}}.** Incorrect. This assesses suitability for the intended purpose and communicates limitations; it is not a user-reporting procedure.\n\n- **{{option:E}}.** Correct. This provides a way for users to report problems, with human monitoring and appropriate responses.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Responsible operating procedures",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 95,
+      "sourceId": "RGV-I03",
+      "title": "Inputs designed to elicit blocked content",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 1,
+      "difficulty": "L3",
+      "sourceTopic": "Usage policies and model behavior principles",
+      "prompt": "A user crafts input wording to induce a model to produce content it should not provide. The request is not intended to track people, make decisions, obtain money through deception, or generate phishing copy. Which Google Generative AI Prohibited Use Policy provision applies?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Circumventing abuse protections or safety filters"
+        },
+        {
+          "id": "B",
+          "text": "Creating spam, phishing content, or malware"
+        },
+        {
+          "id": "C",
+          "text": "Deceptive activities such as fraud or scams"
+        },
+        {
+          "id": "D",
+          "text": "Tracking or monitoring people without consent"
+        },
+        {
+          "id": "E",
+          "text": "Making automated decisions that materially harm individual rights without human oversight"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. This provision prohibits manipulating a model to act against policy by circumventing abuse protections or safety filters.\n\n- **{{option:B}}.** Incorrect. The scenario explicitly excludes obtaining phishing copy or malware.\n\n- **{{option:C}}.** Incorrect. The purpose is not deception such as financial fraud.\n\n- **{{option:D}}.** Incorrect. The scenario explicitly excludes tracking or monitoring people.\n\n- **{{option:E}}.** Incorrect. The scenario explicitly excludes making decisions.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Usage policies and model behavior principles",
+        "Usage policies",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 96,
+      "sourceId": "RGV-I04",
+      "title": "Top-level authority independent of an individual",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 3,
+      "difficulty": "L3",
+      "sourceTopic": "Organizational access controls",
+      "prompt": "A Claude Enterprise organization wants authority to request data exports to remain independent of any individual employee. Which configuration is supported by the documentation?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Designate a service account, rather than an individual, as Primary Owner."
+        },
+        {
+          "id": "B",
+          "text": "Designate two employees jointly as Primary Owner."
+        },
+        {
+          "id": "C",
+          "text": "Designate a service account as Owner and have that Owner request exports."
+        },
+        {
+          "id": "D",
+          "text": "Assign Admin to several people and have an Admin request exports."
+        },
+        {
+          "id": "E",
+          "text": "Designate an individual as Primary Owner and a service account as Owner."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. Only the Primary Owner may request data exports, and the Primary Owner can be a service account not tied to an individual.\n\n- **{{option:B}}.** Incorrect. An organization can have only one Primary Owner.\n\n- **{{option:C}}.** Incorrect. Only the Primary Owner may request exports; an Owner cannot.\n\n- **{{option:D}}.** Incorrect. Only the Primary Owner may request exports; an Admin cannot.\n\n- **{{option:E}}.** Incorrect. The Primary Owner requesting exports is still an individual, so the independence requirement is not met.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Organizational usage controls",
+        "Access control",
+        "Source verification",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 97,
+      "sourceId": "RGV-I05",
+      "title": "Conversation data deleted after its retention period",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Data governance",
+      "prompt": "Claude Enterprise has an organization-wide retention period set by its owner. Conversation data is irreversibly deleted at midnight UTC after the specified number of days. Which item does the documentation exclude from this setting?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Standalone chats outside projects"
+        },
+        {
+          "id": "B",
+          "text": "Artifacts created within standalone chats"
+        },
+        {
+          "id": "C",
+          "text": "Content within projects"
+        },
+        {
+          "id": "D",
+          "text": "The feature for running Claude Code in the cloud"
+        },
+        {
+          "id": "E",
+          "text": "Chats created before a retention reduction that now fall outside the new period"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** Incorrect. Standalone chats outside projects are deleted under this setting.\n\n- **{{option:B}}.** Incorrect. Artifacts within standalone chats are deleted along with their chats.\n\n- **{{option:C}}.** Incorrect. Custom retention periods also apply to project content.\n\n- **{{option:D}}.** Correct. The documentation states that this setting does not apply to running Claude Code in the cloud.\n\n- **{{option:E}}.** Incorrect. When retention is shortened, data outside the new period is scheduled for permanent deletion, so it is covered.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Data governance",
+        "Data retention",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 98,
+      "sourceId": "RGV-I06",
+      "title": "The pre-release procedure triggered by a capability threshold",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 5,
+      "difficulty": "L3",
+      "sourceTopic": "Frontier safety frameworks",
+      "prompt": "Under Google DeepMind’s Frontier Safety Framework, which procedure is performed before external release when a model reaches the relevant dangerous capability level?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Publish a model card"
+        },
+        {
+          "id": "B",
+          "text": "Safety case review"
+        },
+        {
+          "id": "C",
+          "text": "Designate a Critical Capability Level for harmful manipulation"
+        },
+        {
+          "id": "D",
+          "text": "Define risks arising from model misalignment"
+        },
+        {
+          "id": "E",
+          "text": "Apply safety and security mitigations before reaching a CCL"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** Incorrect. A model card describes a model; it is not the procedure specified for reaching the threshold before release.\n\n- **{{option:B}}.** Correct. The framework states that a safety case review is conducted before external release when a relevant CCL is reached.\n\n- **{{option:C}}.** Incorrect. Harmful manipulation is a risk area covered by CCLs, not a pre-release procedure.\n\n- **{{option:D}}.** Incorrect. Misalignment is a concept describing risk, not a pre-release procedure.\n\n- **{{option:E}}.** Incorrect. These measures apply before reaching certain CCLs, whereas the question asks what happens when the level is reached.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Frontier safety frameworks",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 99,
+      "sourceId": "RGV-I07",
+      "title": "A vector search entry under its former name",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T3",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Data governance",
+      "prompt": "An internal data governance standard lists “Vertex AI Vector Search 2.0.” According to Google Cloud’s renaming notice, what is its current name?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Vector Search on Gemini Enterprise Agent Platform"
+        },
+        {
+          "id": "B",
+          "text": "Gemini Enterprise Agent Platform Pipelines"
+        },
+        {
+          "id": "C",
+          "text": "Gemini Enterprise Agent Platform API"
+        },
+        {
+          "id": "D",
+          "text": "Agent Platform Generative AI"
+        },
+        {
+          "id": "E",
+          "text": "Agent Retrieval on Gemini Enterprise Agent Platform"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** Incorrect. This is the current name of Vertex AI Vector Search without “2.0.”\n\n- **{{option:B}}.** Incorrect. This is the current name of Vertex AI Pipelines.\n\n- **{{option:C}}.** Incorrect. This is the current name of Vertex AI API.\n\n- **{{option:D}}.** Incorrect. This is the current name of Vertex AI Generative AI.\n\n- **{{option:E}}.** Correct. Vertex AI Vector Search 2.0 was renamed Agent Retrieval on Gemini Enterprise Agent Platform.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T3",
+        "Single choice",
+        "L3",
+        "Data governance",
+        "Retrieval quality",
+        "Vector search",
+        "Governance",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 100,
+      "sourceId": "RGV-I08",
+      "title": "A prompt development tool under its former name",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T3",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Data governance",
+      "prompt": "The same standard lists “Vertex AI Studio.” According to Google Cloud’s renaming notice, what is its current name?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Google AI Studio"
+        },
+        {
+          "id": "B",
+          "text": "Agent Studio on Gemini Enterprise Agent Platform"
+        },
+        {
+          "id": "C",
+          "text": "Agent Platform Generative AI"
+        },
+        {
+          "id": "D",
+          "text": "Gemini Enterprise Agent Platform Pipelines"
+        },
+        {
+          "id": "E",
+          "text": "Gemini Enterprise Agent Platform API"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** Incorrect. Google AI Studio is not a renamed Vertex AI Studio and is not the subject of the renaming notice.\n\n- **{{option:B}}.** Correct. Vertex AI Studio was renamed Agent Studio on Gemini Enterprise Agent Platform.\n\n- **{{option:C}}.** Incorrect. This is the current name of Vertex AI Generative AI.\n\n- **{{option:D}}.** Incorrect. This is the current name of Vertex AI Pipelines.\n\n- **{{option:E}}.** Incorrect. This is the current name of Vertex AI API.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T3",
+        "Single choice",
+        "L3",
+        "Data governance",
+        "Prompt writing",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 101,
+      "sourceId": "RGV-I09",
+      "title": "A role limited to membership management and viewing analytics",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 3,
+      "difficulty": "L3",
+      "sourceTopic": "Organizational access controls",
+      "prompt": "In a Claude Enterprise organization, an HR employee should invite and remove members and view usage analytics. They must not grant or revoke others’ administrative roles, manage SSO or authentication, or change retention settings. Which built-in role should they receive?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Owner"
+        },
+        {
+          "id": "B",
+          "text": "Primary Owner"
+        },
+        {
+          "id": "C",
+          "text": "User"
+        },
+        {
+          "id": "D",
+          "text": "Admin"
+        },
+        {
+          "id": "E",
+          "text": "Custom (without an assigned custom role)"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** Incorrect. Owner also permits granting and revoking administrative roles, managing SSO and authentication, and changing retention settings, exceeding the assigned responsibilities.\n\n- **{{option:B}}.** Incorrect. Primary Owner is similarly overprivileged, and only one is allowed per organization.\n\n- **{{option:C}}.** Incorrect. The permissions table does not give User the authority to invite or remove members.\n\n- **{{option:D}}.** Correct. Admin can invite and remove members and view Enterprise usage analytics. Administrative role assignment, SSO, and retention settings belong to Owner and Primary Owner.\n\n- **{{option:E}}.** Incorrect. A Custom member without an assigned custom role has no default permissions and cannot perform these membership or viewing tasks.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L3",
+        "Organizational usage controls",
+        "Authentication",
+        "Data retention",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 102,
+      "sourceId": "RGV-I10",
+      "title": "An invitation blocked by a lack of available seats",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 3,
+      "difficulty": "L3",
+      "sourceTopic": "Organizational access controls",
+      "prompt": "A Claude Team organization has 10 seats and seven active members, including the Primary Owner. Three email invitations were sent this week, but their recipients have not joined. No members have been removed, and SSO provisioning is not used. Adding a new member reports no available seats. Which documented rule explains this?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Invitations expire after 21 days and must be resent."
+        },
+        {
+          "id": "B",
+          "text": "An Owner must first secure seats for SSO provisioning."
+        },
+        {
+          "id": "C",
+          "text": "Unaccepted invitations also occupy seats."
+        },
+        {
+          "id": "D",
+          "text": "Removing a member does not reduce the plan’s total seat count."
+        },
+        {
+          "id": "E",
+          "text": "The Primary Owner also consumes one license."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** Incorrect. Invitations sent this week have not expired. Expiration would require reinvitation, rather than explaining the seat shortage.\n\n- **{{option:B}}.** Incorrect. The scenario does not use SSO provisioning.\n\n- **{{option:C}}.** Correct. Pending invitations occupy seats regardless of acceptance, so seven active members plus three invitations fill all 10 seats.\n\n- **{{option:D}}.** Incorrect. No member has been removed.\n\n- **{{option:E}}.** Incorrect. The seven active members already include the Primary Owner, so this fact does not explain why no seats remain.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L3",
+        "Organizational usage controls",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 103,
+      "sourceId": "RGV-S1-1",
+      "title": "Topic constraints and pre-launch robustness testing",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "Responsible operational procedures",
+      "caseSet": "RGV-S1",
+      "prompt": "The support assistant must answer only within specified topics and tone, and its robustness against malicious inputs must be tested before launch. Human review of every response before delivery is not feasible. Which combination of OpenAI safety best practices is needed?",
+      "context": "**Environment:** A fintech AI committee reviewing an OpenAI-based customer support assistant and ChatGPT and Claude workspaces\n\n**Scenario:** SaebitPay’s AI committee plans to approve an OpenAI-based customer support assistant for launch at the end of the quarter. Its six support staff cannot review every response before delivery, and no external lawyer will be retained. Internal document work uses the plan whose workspace was called ChatGPT Team before August 29, 2025; partner employees use Claude Enterprise. The approval document must quote the terminology used in vendor documentation exactly.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Know your customer + Adversarial testing"
+        },
+        {
+          "id": "B",
+          "text": "Prompt engineering + Adversarial testing"
+        },
+        {
+          "id": "C",
+          "text": "Human in the loop + Adversarial testing"
+        },
+        {
+          "id": "D",
+          "text": "Prompt engineering + Human in the loop"
+        },
+        {
+          "id": "E",
+          "text": "Understand and communicate limitations + Prompt engineering"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** Incorrect. Know your customer manages access through registration and sign-in; it does not constrain response topics and tone.\n\n- **{{option:B}}.** Correct. Prompt engineering constrains output topics and tone, while adversarial testing checks robustness against adversarial inputs before launch. Neither requires human pre-review of every response.\n\n- **{{option:C}}.** Incorrect. Human in the loop involves prior human review of outputs, conflicting with the six-person staffing constraint, and does not address topic and tone constraints.\n\n- **{{option:D}}.** Incorrect. Human in the loop conflicts with staffing constraints, and pre-launch testing of malicious inputs is missing.\n\n- **{{option:E}}.** Incorrect. Understand and communicate limitations evaluates and communicates limitations; it cannot replace robustness testing against malicious inputs.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L4",
+        "Responsible operating procedures",
+        "Human approval",
+        "Cost management",
+        "ChatGPT",
+        "Claude",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 104,
+      "sourceId": "RGV-S1-2",
+      "title": "Personalized guidance on whether to sue",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 1,
+      "difficulty": "L4",
+      "sourceTopic": "Usage policies and model behavior principles",
+      "caseSet": "RGV-S1",
+      "prompt": "A feature would tell customers whether to file a lawsuit and explain the procedure tailored to their circumstances. No lawyer will be retained to review it. Which OpenAI Usage Policy prohibition applies?",
+      "context": "**Environment:** A fintech AI committee reviewing an OpenAI-based customer support assistant and ChatGPT and Claude workspaces\n\n**Scenario:** SaebitPay’s AI committee plans to approve an OpenAI-based customer support assistant for launch at the end of the quarter. Its six support staff cannot review every response before delivery, and no external lawyer will be retained. Internal document work uses the plan whose workspace was called ChatGPT Team before August 29, 2025; partner employees use Claude Enterprise. The approval document must quote the terminology used in vendor documentation exactly.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Evaluating or classifying individuals based on social behavior or personal traits"
+        },
+        {
+          "id": "B",
+          "text": "National security or intelligence use without review and approval"
+        },
+        {
+          "id": "C",
+          "text": "Providing tailored advice requiring a license without appropriate involvement of a licensed professional"
+        },
+        {
+          "id": "D",
+          "text": "Real-money gambling"
+        },
+        {
+          "id": "E",
+          "text": "Assessing or predicting an individual’s risk of committing a crime"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** Incorrect. The feature provides litigation guidance rather than evaluating or classifying individuals.\n\n- **{{option:B}}.** Incorrect. The scenario is unrelated to national security or intelligence.\n\n- **{{option:C}}.** Correct. Advice on whether and how to sue, tailored to personal circumstances, requires a licensed professional. No lawyer is involved, so this prohibition applies.\n\n- **{{option:D}}.** Incorrect. No real-money game is described.\n\n- **{{option:E}}.** Incorrect. Guidance on whether to sue does not assess or predict criminal risk.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L4",
+        "Usage policies and model behavior principles",
+        "Human approval",
+        "Cost management",
+        "Usage policies",
+        "ChatGPT",
+        "Claude",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 105,
+      "sourceId": "RGV-S1-3",
+      "title": "A term for unprecedented risk pathways",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 5,
+      "difficulty": "L4",
+      "sourceTopic": "Frontier safety frameworks",
+      "caseSet": "RGV-S1",
+      "prompt": "The approval document must quote OpenAI Preparedness Framework terminology. Which term describes a capability level posing a meaningful risk of severe harm through qualitatively new threat pathways with no prior response precedent, rather than merely amplifying existing pathways?",
+      "context": "**Environment:** A fintech AI committee reviewing an OpenAI-based customer support assistant and ChatGPT and Claude workspaces\n\n**Scenario:** SaebitPay’s AI committee plans to approve an OpenAI-based customer support assistant for launch at the end of the quarter. Its six support staff cannot review every response before delivery, and no external lawyer will be retained. Internal document work uses the plan whose workspace was called ChatGPT Team before August 29, 2025; partner employees use Claude Enterprise. The approval document must quote the terminology used in vendor documentation exactly.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Tracked Categories"
+        },
+        {
+          "id": "B",
+          "text": "Research Categories"
+        },
+        {
+          "id": "C",
+          "text": "High capability thresholds"
+        },
+        {
+          "id": "D",
+          "text": "Critical capability thresholds"
+        },
+        {
+          "id": "E",
+          "text": "Safeguards Report"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** Incorrect. Tracked Categories are the capability areas monitored most closely, not capability levels or thresholds.\n\n- **{{option:B}}.** Incorrect. Research Categories cover capabilities not yet meeting the criteria for tracked categories; they are not thresholds.\n\n- **{{option:C}}.** Incorrect. High capability thresholds describe substantial amplification of existing risk pathways, unlike the new pathways in the question.\n\n- **{{option:D}}.** Correct. Critical capability thresholds describe capabilities posing a meaningful risk of qualitatively new threat pathways to severe harm.\n\n- **{{option:E}}.** Incorrect. A Safeguards Report documents planned safeguards; it is not a capability level.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L4",
+        "Frontier safety frameworks",
+        "Human approval",
+        "Cost management",
+        "ChatGPT",
+        "Claude",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 106,
+      "sourceId": "RGV-S1-4",
+      "title": "Granting partner employees features through groups",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 3,
+      "difficulty": "L4",
+      "sourceTopic": "Organizational access controls",
+      "caseSet": "RGV-S1",
+      "prompt": "Partner employees must have no default permissions in Claude Enterprise. Available features must be granted according to group membership. Which configuration is required?",
+      "context": "**Environment:** A fintech AI committee reviewing an OpenAI-based customer support assistant and ChatGPT and Claude workspaces\n\n**Scenario:** SaebitPay’s AI committee plans to approve an OpenAI-based customer support assistant for launch at the end of the quarter. Its six support staff cannot review every response before delivery, and no external lawyer will be retained. Internal document work uses the plan whose workspace was called ChatGPT Team before August 29, 2025; partner employees use Claude Enterprise. The approval document must quote the terminology used in vendor documentation exactly.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Set members to User and assign custom roles to their groups."
+        },
+        {
+          "id": "B",
+          "text": "Set members to Admin and assign custom roles to their groups."
+        },
+        {
+          "id": "C",
+          "text": "Set members to Custom and grant Owner to individual users."
+        },
+        {
+          "id": "D",
+          "text": "Set members to Custom without assigning roles to groups."
+        },
+        {
+          "id": "E",
+          "text": "Set members to Custom and assign custom roles to the relevant groups."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** Incorrect. User includes default permissions, violating the requirement to start with none.\n\n- **{{option:B}}.** Incorrect. Admin also includes default permissions and violates the same requirement.\n\n- **{{option:C}}.** Incorrect. Granting Owner to individuals is too broad and is not group-based.\n\n- **{{option:D}}.** Incorrect. Custom members have no default permissions, but without group role assignments no features become accessible.\n\n- **{{option:E}}.** Correct. Custom members have no default permissions, and access is determined by custom roles assigned to their groups, satisfying both requirements.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L4",
+        "Organizational usage controls",
+        "Human approval",
+        "Cost management",
+        "Access control",
+        "ChatGPT",
+        "Claude",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 107,
+      "sourceId": "RGV-S1-5",
+      "title": "Conversations left by a removed member",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T6",
+      "domain": 2,
+      "difficulty": "L4",
+      "sourceTopic": "Data governance",
+      "caseSet": "RGV-S1",
+      "prompt": "A member is removed from the internal document workspace described in the scenario. According to the documentation, what happens to that member’s conversations and uploaded files?",
+      "context": "**Environment:** A fintech AI committee reviewing an OpenAI-based customer support assistant and ChatGPT and Claude workspaces\n\n**Scenario:** SaebitPay’s AI committee plans to approve an OpenAI-based customer support assistant for launch at the end of the quarter. Its six support staff cannot review every response before delivery, and no external lawyer will be retained. Internal document work uses the plan whose workspace was called ChatGPT Team before August 29, 2025; partner employees use Claude Enterprise. The approval document must quote the terminology used in vendor documentation exactly.",
+      "options": [
+        {
+          "id": "A",
+          "text": "They are retained indefinitely."
+        },
+        {
+          "id": "B",
+          "text": "They are retained only for the workspace’s configured retention period."
+        },
+        {
+          "id": "C",
+          "text": "They are transferred with projects and become visible to the new owner."
+        },
+        {
+          "id": "D",
+          "text": "They are deleted when the member is removed."
+        },
+        {
+          "id": "E",
+          "text": "They cannot be restored even if the member is added again."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. ChatGPT Team was renamed ChatGPT Business on August 29, 2025. Conversations and files of members removed from a Business workspace are retained indefinitely.\n\n- **{{option:B}}.** Incorrect. Retention limited to a configured period applies to Enterprise and Edu workspaces with such settings; this workspace is Business.\n\n- **{{option:C}}.** Incorrect. Ownership of projects and GPTs transfers, but the member’s conversations and files do not transfer and are not visible even to workspace owners.\n\n- **{{option:D}}.** Incorrect. Removing a member does not delete their conversations and files.\n\n- **{{option:E}}.** Incorrect. Adding the member again restores that member’s content.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "Indirect reasoning",
+        "T6",
+        "Single choice",
+        "L4",
+        "Data governance",
+        "Human approval",
+        "Cost management",
+        "ChatGPT",
+        "Claude",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
     }
   ],
   "nameKo": "AI 거버넌스"

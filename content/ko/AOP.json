@@ -36,7 +36,7 @@
       "weight": 20
     }
   ],
-  "guide": "### 1. 서론\n\n**목적**: 이 시험에서는 응시자가 규모 · 비용 · 장애 · 거버넌스 제약을 함께 고려해 AI 서비스의 운영 구조를 설계하고, 릴리스와 장애 대응을 통제할 수 있는지 확인합니다.\n\n**목표**\n\n- 주어진 플랫폼 환경과 지원 수명에 맞는 운영 아키텍처 선택\n- GPU 자원, 자동 확장, 서빙 성능과 컴퓨트 비용의 제약 조정\n- 데이터 접근 정책과 모델 수명주기 통제 체계 운영\n- 트레이스 · SLO · 비용 이상을 분석하고 장애 대응 절차 수립\n- 평가 게이트와 릴리스 자동화, 롤백, 지출 통제로 변경 위험 관리\n\n### 2. 대상 응시자\n\n- 플랫폼 엔지니어, SRE 엔지니어, LLMOps 엔지니어, DevOps 엔지니어\n\n**권장 사전 지식 및 시험 범위**\n\n- 플랫폼 · SRE 관련 실무 3년 이상과 AOA 수준 지식을 권장합니다. AOA 합격은 권장 사항이며 응시 필수 조건이 아닙니다.\n- 이미 개발된 AI 서비스의 패키징 · 배포 · 관측 · 릴리스 운영을 다룹니다. 일반 Kubernetes 클러스터 · 노드 관리와 AWS · Azure · Google의 매니지드 AI 운영 서비스는 범위 밖입니다.\n- 앱 · 에이전트 로직 개발은 ADA · AEP, 모델 튜닝 · 평가 방법론은 MOS, 보안 공격과 방어는 SES, 정책 · 규제 해석은 AGS의 범위입니다.\n- 콘솔 메뉴, 가격, 버전 번호를 암기하는 대신 제시된 설정 · 코드 · 명령 · 지표를 해석합니다. 필요한 일정과 임계값은 지문에서 제공합니다.\n\n**시험 구성**\n\n- 정규 시험은 75문항 · 180분이며 합격 기준은 환산 점수 750 / 1,000점입니다. 현재 문제은행 95문항은 모두 5지선다 단일 정답입니다. 코드 빈칸은 별도 문항 유형으로 표시됩니다.\n- 정규 시험은 전체 문제은행에서 개별 문항을 무작위 추출합니다. 데모 시험은 10문항이며, 케이스 문항에는 해당 문항을 푸는 데 필요한 공통 상황을 함께 제공합니다.\n- 한 케이스의 공통 상황을 읽고 각 문항을 독립적으로 풉니다. 앞 문항의 정답을 알아야 다음 문항을 풀 수 있는 구조가 아닙니다.\n\n### 3. 콘텐츠 도메인\n\n| 도메인 | 기준 문항 수 | 목표 비율 |\n| --- | --- | --- |\n| 1. 플랫폼 선택 · 아키텍처 | 14 | 18.67% |\n| 2. 서빙 · 확장 · 성능 | 15 | 20.00% |\n| 3. 데이터 · 모델 수명주기 · 거버넌스 | 15 | 20.00% |\n| 4. 관측 · SLO · 장애 대응 | 16 | 21.33% |\n| 5. 릴리스 자동화 · 평가 게이트 · 비용 통제 | 15 | 20.00% |\n\n비율은 출제 범위의 목표 비중을 정규 시험 문항 수 기준으로 소수 둘째 자리까지 표시합니다. 개별 문항을 무작위로 추출하므로 실제 시험의 도메인 · 유형별 구성은 달라질 수 있습니다.\n\n**도메인 1: 플랫폼 선택 · 아키텍처**\n\n- 지식: 추론 게이트웨이, Gateway API Inference Extension, Kubernetes 지원 수명, AI Conformance, 교차 리전 추론과 데이터 거주 요구\n- 기술: 지문에 제시된 지원 일정 · 플랫폼 · 리전 제약을 충족하는 운영 구조와 변경 계획 선택\n\n**도메인 2: 서빙 · 확장 · 성능**\n\n- 지식: Dynamic Resource Allocation, GPU 스케줄링, HPA behavior, KEDA 확장, 서빙 route optimization, scale-to-zero, Snowpark Container Services 컴퓨트 풀\n- 기술: 처리량 · 지연 시간 · 기동 시간 · 비용 요구를 함께 만족하는 서빙 및 확장 전략 판단\n\n**도메인 3: 데이터 · 모델 수명주기 · 거버넌스**\n\n- 지식: Unity Catalog 권한, row filter와 column mask, 리니지, 모델 alias 승급, Snowflake 모델 접근 통제와 Model Registry\n- 기술: 데이터 보호 조건과 플랫폼 제약을 확인하고 모델 버전 승급 및 접근 권한 변경 설계\n\n**도메인 4: 관측 · SLO · 장애 대응**\n\n- 지식: Datadog 지표와 비용 태그, OpenTelemetry 수집 조건, 민감 정보 탐지 평가, Cluster Agent와 Autodiscovery, Snowflake AI Observability, Databricks 트레이스 저장, 제품 중립 SLO 개념\n- 기술: 트레이스 누락과 지표 이상을 진단하고, 서비스 목표와 영향 범위에 따라 장애 대응 순서 결정\n\n**도메인 5: 릴리스 자동화 · 평가 게이트 · 비용 통제**\n\n- 지식: 평가 게이트, 환경별 프롬프트 배포와 롤백, Databricks 번들 validate · deploy · run, 예산 · 쿼터 · 리소스 모니터, 청구 사용량 집계\n- 기술: 평가 실패 시 승급을 차단하고 복구 가능한 릴리스 흐름을 구성하며, 비용 통제 수단의 적용 범위와 한계 판단\n\n### 4. 공식 문서\n\nDocker: [Model Runner](https://docs.docker.com/ai/model-runner/), [Compose models](https://docs.docker.com/ai/compose/models-and-compose/), [GPU 지원](https://docs.docker.com/compose/how-tos/gpu-support/), [빌드 시크릿](https://docs.docker.com/build/building/secrets/), [모범 사례](https://docs.docker.com/build/building/best-practices/)\n\nKubernetes·CNCF: [릴리스](https://kubernetes.io/releases/), [Dynamic Resource Allocation](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/), [Gateway API Inference Extension](https://gateway-api-inference-extension.sigs.k8s.io/), [KEDA ScaledObject](https://keda.sh/docs/latest/reference/scaledobject-spec/), [AI Conformance](https://github.com/cncf/k8s-ai-conformance), [OpenTelemetry GenAI 규약](https://opentelemetry.io/docs/specs/semconv/gen-ai/)\n\nDatabricks: [모델 수명주기](https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/), [Model Serving](https://docs.databricks.com/aws/en/machine-learning/model-serving/), [행·열 필터](https://docs.databricks.com/aws/en/tables/row-and-column-filters), [예산](https://docs.databricks.com/aws/en/admin/account-settings/budgets), [청구 시스템 테이블](https://docs.databricks.com/aws/en/admin/system-tables/billing)\n\nSnowflake: [AI 함수](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql), [권한과 접근](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql-privileges-and-access), [Cortex Search 생성](https://docs.snowflake.com/en/sql-reference/sql/create-cortex-search), [Model Registry 컨테이너 서빙](https://docs.snowflake.com/en/developer-guide/snowflake-ml/model-registry/container), [교차 리전 추론](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cross-region-inference), [리소스 모니터](https://docs.snowflake.com/en/user-guide/resource-monitors)\n\nDatadog: [Python SDK 설정](https://docs.datadoghq.com/llm_observability/instrumentation/sdk/?tab=python), [OpenTelemetry 계측](https://docs.datadoghq.com/llm_observability/instrumentation/otel_instrumentation/), [비용](https://docs.datadoghq.com/llm_observability/monitoring/cost/), [지표](https://docs.datadoghq.com/llm_observability/monitoring/metrics/)\n",
+  "guide": "### 1. 서론\n\n**목적**: 이 시험에서는 응시자가 규모 · 비용 · 장애 · 거버넌스 제약을 함께 고려해 AI 서비스의 운영 구조를 설계하고, 릴리스와 장애 대응을 통제할 수 있는지 확인합니다.\n\n**목표**\n\n- 주어진 플랫폼 환경과 지원 수명에 맞는 운영 아키텍처 선택\n- GPU 자원, 자동 확장, 서빙 성능과 컴퓨트 비용의 제약 조정\n- 데이터 접근 정책과 모델 수명주기 통제 체계 운영\n- 트레이스 · SLO · 비용 이상을 분석하고 장애 대응 절차 수립\n- 평가 게이트와 릴리스 자동화, 롤백, 지출 통제로 변경 위험 관리\n\n### 2. 대상 응시자\n\n- 플랫폼 엔지니어, SRE 엔지니어, LLMOps 엔지니어, DevOps 엔지니어\n\n**권장 사전 지식 및 시험 범위**\n\n- 플랫폼 · SRE 관련 실무 3년 이상과 AOA 수준 지식을 권장합니다. AOA 합격은 권장 사항이며 응시 필수 조건이 아닙니다.\n- 이미 개발된 AI 서비스의 패키징 · 배포 · 관측 · 릴리스 운영을 다룹니다. 일반 Kubernetes 클러스터 · 노드 관리와 AWS · Azure · Google의 매니지드 AI 운영 서비스는 범위 밖입니다.\n- 앱 · 에이전트 로직 개발은 ADA · AEP, 모델 튜닝 · 평가 방법론은 MOS, 보안 공격과 방어는 SES, 정책 · 규제 해석은 AGS의 범위입니다.\n- 콘솔 메뉴, 가격, 버전 번호를 암기하는 대신 제시된 설정 · 코드 · 명령 · 지표를 해석합니다. 필요한 일정과 임계값은 지문에서 제공합니다.\n\n**시험 구성**\n\n- 정규 시험은 75문항 · 180분이며 합격 기준은 환산 점수 750 / 1,000점입니다. 현재 문제은행 109문항은 모두 5지선다 단일 정답입니다. 코드 빈칸은 별도 문항 유형으로 표시됩니다.\n- 정규 시험은 전체 문제은행에서 개별 문항을 무작위 추출합니다. 데모 시험은 10문항이며, 케이스 문항에는 해당 문항을 푸는 데 필요한 공통 상황을 함께 제공합니다.\n- 한 케이스의 공통 상황을 읽고 각 문항을 독립적으로 풉니다. 앞 문항의 정답을 알아야 다음 문항을 풀 수 있는 구조가 아닙니다.\n\n### 3. 콘텐츠 도메인\n\n| 도메인 | 기준 문항 수 | 목표 비율 |\n| --- | --- | --- |\n| 1. 플랫폼 선택 · 아키텍처 | 14 | 18.67% |\n| 2. 서빙 · 확장 · 성능 | 15 | 20.00% |\n| 3. 데이터 · 모델 수명주기 · 거버넌스 | 15 | 20.00% |\n| 4. 관측 · SLO · 장애 대응 | 16 | 21.33% |\n| 5. 릴리스 자동화 · 평가 게이트 · 비용 통제 | 15 | 20.00% |\n\n비율은 출제 범위의 목표 비중을 정규 시험 문항 수 기준으로 소수 둘째 자리까지 표시합니다. 개별 문항을 무작위로 추출하므로 실제 시험의 도메인 · 유형별 구성은 달라질 수 있습니다.\n\n**도메인 1: 플랫폼 선택 · 아키텍처**\n\n- 지식: 추론 게이트웨이, Gateway API Inference Extension, Kubernetes 지원 수명, AI Conformance, 교차 리전 추론과 데이터 거주 요구\n- 기술: 지문에 제시된 지원 일정 · 플랫폼 · 리전 제약을 충족하는 운영 구조와 변경 계획 선택\n\n**도메인 2: 서빙 · 확장 · 성능**\n\n- 지식: Dynamic Resource Allocation, GPU 스케줄링, HPA behavior, KEDA 확장, 서빙 route optimization, scale-to-zero, Snowpark Container Services 컴퓨트 풀\n- 기술: 처리량 · 지연 시간 · 기동 시간 · 비용 요구를 함께 만족하는 서빙 및 확장 전략 판단\n\n**도메인 3: 데이터 · 모델 수명주기 · 거버넌스**\n\n- 지식: Unity Catalog 권한, row filter와 column mask, 리니지, 모델 alias 승급, Snowflake 모델 접근 통제와 Model Registry\n- 기술: 데이터 보호 조건과 플랫폼 제약을 확인하고 모델 버전 승급 및 접근 권한 변경 설계\n\n**도메인 4: 관측 · SLO · 장애 대응**\n\n- 지식: Datadog 지표와 비용 태그, OpenTelemetry 수집 조건, 민감 정보 탐지 평가, Cluster Agent와 Autodiscovery, Snowflake AI Observability, Databricks 트레이스 저장, 제품 중립 SLO 개념\n- 기술: 트레이스 누락과 지표 이상을 진단하고, 서비스 목표와 영향 범위에 따라 장애 대응 순서 결정\n\n**도메인 5: 릴리스 자동화 · 평가 게이트 · 비용 통제**\n\n- 지식: 평가 게이트, 환경별 프롬프트 배포와 롤백, Databricks 번들 validate · deploy · run, 예산 · 쿼터 · 리소스 모니터, 청구 사용량 집계\n- 기술: 평가 실패 시 승급을 차단하고 복구 가능한 릴리스 흐름을 구성하며, 비용 통제 수단의 적용 범위와 한계 판단\n\n### 4. 공식 문서\n\nDocker: [Model Runner](https://docs.docker.com/ai/model-runner/), [Compose models](https://docs.docker.com/ai/compose/models-and-compose/), [GPU 지원](https://docs.docker.com/compose/how-tos/gpu-support/), [빌드 시크릿](https://docs.docker.com/build/building/secrets/), [모범 사례](https://docs.docker.com/build/building/best-practices/)\n\nKubernetes·CNCF: [릴리스](https://kubernetes.io/releases/), [Dynamic Resource Allocation](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/), [Gateway API Inference Extension](https://gateway-api-inference-extension.sigs.k8s.io/), [KEDA ScaledObject](https://keda.sh/docs/latest/reference/scaledobject-spec/), [AI Conformance](https://github.com/cncf/k8s-ai-conformance), [OpenTelemetry GenAI 규약](https://opentelemetry.io/docs/specs/semconv/gen-ai/)\n\nDatabricks: [모델 수명주기](https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/), [Model Serving](https://docs.databricks.com/aws/en/machine-learning/model-serving/), [행·열 필터](https://docs.databricks.com/aws/en/tables/row-and-column-filters), [예산](https://docs.databricks.com/aws/en/admin/account-settings/budgets), [청구 시스템 테이블](https://docs.databricks.com/aws/en/admin/system-tables/billing)\n\nSnowflake: [AI 함수](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql), [권한과 접근](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql-privileges-and-access), [Cortex Search 생성](https://docs.snowflake.com/en/sql-reference/sql/create-cortex-search), [Model Registry 컨테이너 서빙](https://docs.snowflake.com/en/developer-guide/snowflake-ml/model-registry/container), [교차 리전 추론](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cross-region-inference), [리소스 모니터](https://docs.snowflake.com/en/user-guide/resource-monitors)\n\nDatadog: [Python SDK 설정](https://docs.datadoghq.com/llm_observability/instrumentation/sdk/?tab=python), [OpenTelemetry 계측](https://docs.datadoghq.com/llm_observability/instrumentation/otel_instrumentation/), [비용](https://docs.datadoghq.com/llm_observability/monitoring/cost/), [지표](https://docs.datadoghq.com/llm_observability/monitoring/metrics/)\n",
   "questions": [
     {
       "id": 1,
@@ -5503,6 +5503,808 @@
         "L1",
         "릴리스 자동화 · 평가 게이트 · 비용 통제",
         "비용 관리"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 96,
+      "sourceId": "AOP-I01",
+      "title": "성공할 때까지 다른 검사를 보류하는 검사",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Kubernetes",
+      "prompt": "컨테이너에 걸 수 있는 세 종류의 점검 중 하나가 설정되어 있으면, 쿠버네티스는 나머지 두 종류를 이 점검이 성공할 때까지 실행하지 않아 애플리케이션이 초기화를 마칠 시간을 준다. 나머지 두 종류가 주기적으로 실행되는 것과 달리, 이 점검은 컨테이너가 처음 뜰 때에만 실행된다. 이 설명에 해당하는 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`livenessProbe`"
+        },
+        {
+          "id": "B",
+          "text": "`readinessProbe`"
+        },
+        {
+          "id": "C",
+          "text": "`startupProbe`"
+        },
+        {
+          "id": "D",
+          "text": "`readinessGates`"
+        },
+        {
+          "id": "E",
+          "text": "`lifecycle.postStart`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** `livenessProbe`는 컨테이너를 재시작할 시점을 판정하는 검사이며 주기적으로 실행된다. 다른 검사를 보류하게 하지 않으므로 틀렸다.\n\n- **{{option:B}}.** `readinessProbe`는 트래픽을 받을 준비가 되었는지 판정하며 컨테이너 수명 전체에 걸쳐 실행된다. 처음 뜰 때에만 실행되지 않으므로 틀렸다.\n\n- **{{option:C}}.** `startupProbe`는 설정되어 있으면 liveness·readiness 검사를 자신이 성공할 때까지 실행하지 않게 하고 기동 시에만 실행된다. 정답이다.\n\n- **{{option:D}}.** `readinessGates`는 Pod 준비 상태 판정에 kubelet이 평가할 추가 조건 목록을 더하는 필드다. 검사 종류가 아니며 다른 검사를 보류한다는 설명이 문서에 없어 틀렸다.\n\n- **{{option:E}}.** `lifecycle.postStart`는 컨테이너가 만들어진 직후 실행되는 훅이며 ENTRYPOINT보다 먼저 실행된다는 보장은 없다. 검사 실행을 보류한다는 설명이 문서에 없어 틀렸다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "간접",
+        "T1",
+        "단일 선택",
+        "L3",
+        "서빙 · 확장 · 성능",
+        "컨테이너 운영",
+        "쿠버네티스"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 97,
+      "sourceId": "AOP-I02",
+      "title": "통합 라이브러리가 시작한 span을 한꺼번에 고치는 메서드",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "Datadog",
+      "prompt": "Datadog Agent Observability(LLM Observability)의 Python SDK를 쓴다. 우리 코드가 아니라 통합 라이브러리가 대신 시작하는 span이 있다. `with` 문에 쓰는 객체를 돌려주며, 그 `with` 블록이 실행되는 동안 시작된 그런 span을 모두 수정할 수 있는 메서드는?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`LLMObs.annotate()`"
+        },
+        {
+          "id": "B",
+          "text": "`LLMObs.export_span()`"
+        },
+        {
+          "id": "C",
+          "text": "`LLMObs.submit_evaluation()`"
+        },
+        {
+          "id": "D",
+          "text": "`LLMObs.inject_distributed_headers()`"
+        },
+        {
+          "id": "E",
+          "text": "`LLMObs.annotation_context()`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** `LLMObs.annotate()`는 입력·출력·메타데이터로 span을 보강하며 대상 span 인수의 기본값이 현재 활성 span이다. `with` 문에 쓰는 객체를 돌려주지 않고, 블록이 실행되는 동안 시작된 span 전체를 다루지도 않아 틀렸다.\n\n- **{{option:B}}.** `LLMObs.export_span()`은 span에서 span 컨텍스트를 추출해 평가를 연결할 때 쓴다. span을 수정하는 메서드가 아니라 틀렸다.\n\n- **{{option:C}}.** `LLMObs.submit_evaluation()`은 특정 span에 연결되는 사용자 지정 평가를 제출한다. span 수정이 아니라 틀렸다.\n\n- **{{option:D}}.** `LLMObs.inject_distributed_headers()`는 span의 컨텍스트를 요청 HTTP 헤더에 주입해 분산 추적에 쓴다. span 수정이 아니라 틀렸다.\n\n- **{{option:E}}.** `LLMObs.annotation_context()`는 컨텍스트 관리자를 돌려주며 활성인 동안 시작된 자동 계측 span을 수정한다. 정답이다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "간접",
+        "T1",
+        "단일 선택",
+        "L3",
+        "관측 · SLO · 장애 대응",
+        "Datadog",
+        "에이전트",
+        "모니터링",
+        "코딩 지원"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 98,
+      "sourceId": "AOP-I03",
+      "title": "끝난 Job이 정리 대상이 되기까지의 시간",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 5,
+      "difficulty": "L3",
+      "sourceTopic": "Kubernetes",
+      "prompt": "Job 객체의 명세(`spec`)에 쓰는 필드 중, Job이 끝난 뒤(성공으로 완료되었든 실패했든) 지정한 초가 지나면 그 Job이 정리 대상이 되도록 하는 필드는?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`ttlSecondsAfterFinished`"
+        },
+        {
+          "id": "B",
+          "text": "`activeDeadlineSeconds`"
+        },
+        {
+          "id": "C",
+          "text": "`successfulJobsHistoryLimit`"
+        },
+        {
+          "id": "D",
+          "text": "`backoffLimit`"
+        },
+        {
+          "id": "E",
+          "text": "`failedJobsHistoryLimit`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** `ttlSecondsAfterFinished`는 Job이 끝난(`Complete` 또는 `Failed`) 뒤 TTL초가 지나면 정리 대상이 되게 한다. 정답이다.\n\n- **{{option:B}}.** `activeDeadlineSeconds`는 Job의 실행 기간 한도다. 한도에 이르면 실행 중인 파드를 종료하고 Job이 `Failed`(`DeadlineExceeded`)가 된다. 끝난 뒤가 아니라 실행 중을 기준으로 하므로 틀렸다.\n\n- **{{option:C}}.** `successfulJobsHistoryLimit`은 CronJob 명세에서 보관할 성공 Job 개수(기본 3)를 정한다. Job의 필드가 아니고 시간 기준도 아니라 틀렸다.\n\n- **{{option:D}}.** `backoffLimit`은 파드 실패 재시도 한도이며 도달하면 Job이 실패로 표시된다. 끝난 뒤의 정리와 관계없어 틀렸다.\n\n- **{{option:E}}.** `failedJobsHistoryLimit`은 CronJob 명세에서 보관할 실패 Job 개수(기본 1)를 정한다. Job의 필드가 아니고 시간 기준도 아니라 틀렸다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "간접",
+        "T2",
+        "단일 선택",
+        "L3",
+        "릴리스 자동화 · 평가 게이트 · 비용 통제",
+        "오류 대응"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 99,
+      "sourceId": "AOP-I04",
+      "title": "한 번에 내보내는 스팬 수의 상한",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "OpenTelemetry",
+      "prompt": "OpenTelemetry SDK의 배치 스팬 처리기를 환경 변수로 설정한다. 한 번의 내보내기에 담는 스팬 수의 최댓값을 정하며, 대기열의 최대 크기 이하여야 한다는 조건이 붙은 환경 변수는?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`OTEL_BSP_SCHEDULE_DELAY`"
+        },
+        {
+          "id": "B",
+          "text": "`OTEL_BSP_EXPORT_TIMEOUT`"
+        },
+        {
+          "id": "C",
+          "text": "`OTEL_BSP_MAX_QUEUE_SIZE`"
+        },
+        {
+          "id": "D",
+          "text": "`OTEL_BSP_MAX_EXPORT_BATCH_SIZE`"
+        },
+        {
+          "id": "E",
+          "text": "`OTEL_EXPORTER_OTLP_TIMEOUT`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** `OTEL_BSP_SCHEDULE_DELAY`는 연속된 두 내보내기 사이의 지연(ms)이다. 개수 상한이 아니라 틀렸다.\n\n- **{{option:B}}.** `OTEL_BSP_EXPORT_TIMEOUT`은 내보내기에 허용되는 최대 시간(ms)이다. 개수 상한이 아니라 틀렸다.\n\n- **{{option:C}}.** `OTEL_BSP_MAX_QUEUE_SIZE`는 대기열의 최대 크기이며, 배치 크기가 이 값 이하여야 한다. 조건의 상한 쪽이지 배치 크기를 정하는 변수가 아니라 틀렸다.\n\n- **{{option:D}}.** `OTEL_BSP_MAX_EXPORT_BATCH_SIZE`는 최대 배치 크기이며 `OTEL_BSP_MAX_QUEUE_SIZE` 이하여야 한다. 정답이다.\n\n- **{{option:E}}.** `OTEL_EXPORTER_OTLP_TIMEOUT`은 OTLP 익스포터가 각 배치 내보내기를 기다리는 최대 시간이다. 배치 스팬 처리기의 개수 설정이 아니라 틀렸다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "간접",
+        "T2",
+        "단일 선택",
+        "L3",
+        "관측 · SLO · 장애 대응",
+        "OpenTelemetry",
+        "배치 처리"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 100,
+      "sourceId": "AOP-I05",
+      "title": "CLASSIFY_TEXT의 현행 이름",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T3",
+      "domain": 3,
+      "difficulty": "L3",
+      "sourceTopic": "Snowflake",
+      "prompt": "Snowflake Cortex에서 `SNOWFLAKE.CORTEX.CLASSIFY_TEXT`로 텍스트를 지정한 범주로 분류하던 쿼리를 문서가 안내하는 현행 함수로 옮긴다. 현행 함수로 바꾸면 `:label` 경로가 아니라 배열의 첫 요소를 가리키는 `:labels[0]` 경로로 결과를 읽어야 한다. 이 현행 함수는?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`AI_FILTER`"
+        },
+        {
+          "id": "B",
+          "text": "`AI_CLASSIFY`"
+        },
+        {
+          "id": "C",
+          "text": "`AI_EXTRACT`"
+        },
+        {
+          "id": "D",
+          "text": "`AI_SENTIMENT`"
+        },
+        {
+          "id": "E",
+          "text": "`AI_SUMMARIZE`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** `AI_FILTER`는 마이그레이션 문서의 매핑 표에 CLASSIFY_TEXT의 대체로 나오지 않는다. 틀렸다.\n\n- **{{option:B}}.** `AI_CLASSIFY`는 CLASSIFY_TEXT의 갱신 버전이며 매핑 표의 대체이고 결과를 `:labels[0]`으로 읽는다. 정답이다.\n\n- **{{option:C}}.** `AI_EXTRACT`는 매핑 표에서 EXTRACT_ANSWER의 대체다. CLASSIFY_TEXT의 대체가 아니라 틀렸다.\n\n- **{{option:D}}.** `AI_SENTIMENT`는 매핑 표에서 SENTIMENT의 대체다. CLASSIFY_TEXT의 대체가 아니라 틀렸다.\n\n- **{{option:E}}.** `AI_SUMMARIZE`는 매핑 표에서 SUMMARIZE의 직접 대체다. CLASSIFY_TEXT의 대체가 아니라 틀렸다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "간접",
+        "T3",
+        "단일 선택",
+        "L3",
+        "데이터 · 모델 수명주기 · 거버넌스",
+        "Snowflake"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 101,
+      "sourceId": "AOP-I06",
+      "title": "옛 Vector Search의 현재 이름",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T3",
+      "domain": 1,
+      "difficulty": "L3",
+      "sourceTopic": "Databricks",
+      "prompt": "사내 위키에 「Databricks Vector Search」라고 적힌 기능이 있다. 이 기능을 Databricks 문서가 지금 쓰는 이름으로 고쳐 쓰려 한다. 현행 이름은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Databricks AI Gateway"
+        },
+        {
+          "id": "B",
+          "text": "Databricks Model Serving"
+        },
+        {
+          "id": "C",
+          "text": "Databricks AI Search"
+        },
+        {
+          "id": "D",
+          "text": "Databricks Foundation Model APIs"
+        },
+        {
+          "id": "E",
+          "text": "Unity Catalog"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** Databricks AI Gateway는 AI Search와 별개의 기능 이름이며, 문서가 Vector Search의 이전 이름으로 밝힌 이름이 아니다. 틀렸다.\n\n- **{{option:B}}.** Databricks Model Serving은 별개의 모델 서빙 기능 이름이다. 문서는 AI Search가 model serving endpoint를 쓴다고만 말하며 Vector Search의 이전 이름으로 밝히지 않는다. 틀렸다.\n\n- **{{option:C}}.** Databricks AI Search는 문서가 「formerly Databricks Vector Search」라고 밝힌 현행 이름이다. 정답이다.\n\n- **{{option:D}}.** Foundation Model APIs는 문서가 AI Search의 임베딩 계산에 쓸 수 있다고 언급하는 사전 구성 엔드포인트 계열 이름이다. Vector Search의 이전 이름으로 밝힌 것이 아니라 틀렸다.\n\n- **{{option:E}}.** Unity Catalog는 거버넌스 기능 이름이며 Vector Search의 새 이름이 아니다. 틀렸다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "간접",
+        "T3",
+        "단일 선택",
+        "L3",
+        "플랫폼 선택 · 아키텍처",
+        "검색 품질",
+        "벡터 검색",
+        "Databricks"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 102,
+      "sourceId": "AOP-I07",
+      "title": "토큰·재받기·빌드 도구 세 요구를 함께 만족하는 빌드",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 5,
+      "difficulty": "L4",
+      "sourceTopic": "Docker",
+      "prompt": "파이썬 서비스 이미지를 빌드한다. 요구는 세 가지다. 첫째, 사설 패키지 저장소의 토큰은 빌드를 실행하는 호스트의 환경 변수 `PKG_TOKEN`에만 있고, 보안 정책상 빌드 인자나 환경 변수로 넘기지 않으며 빌드 컨텍스트에 파일로 두지도 않는다. 토큰은 이미지에 남아서는 안 된다. 둘째, 의존성 목록이 바뀌어 의존성 설치 명령의 레이어가 다시 만들어질 때에도 이미 내려받은 패키지는 다시 받지 않고 새로 바뀐 것만 내려받는다. 셋째, 컴파일러 같은 빌드 도구는 최종 이미지에 들어가지 않는다. 세 요구를 모두 만족하는 구성은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`ARG`로 토큰을 전달 + `RUN --mount=type=cache` + 멀티 스테이지 빌드"
+        },
+        {
+          "id": "B",
+          "text": "`docker build --secret id=PKG_TOKEN`(환경 변수 소스) + `RUN --mount=type=secret` + `RUN --mount=type=cache` + 멀티 스테이지 빌드"
+        },
+        {
+          "id": "C",
+          "text": "`docker build --secret id=PKG_TOKEN`(환경 변수 소스) + `RUN --mount=type=secret` + `RUN --mount=type=cache` + 단일 스테이지 빌드"
+        },
+        {
+          "id": "D",
+          "text": "`docker build --secret id=PKG_TOKEN`(환경 변수 소스) + `RUN --mount=type=secret` + 멀티 스테이지 빌드 + 레이어 캐시만 사용(의존성 목록을 먼저 `COPY`)"
+        },
+        {
+          "id": "E",
+          "text": "토큰 파일을 컨텍스트에 두고 `RUN --mount=type=bind` + `RUN --mount=type=cache` + 멀티 스테이지 빌드"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** `ARG`는 빌드 인자라서 문서가 비밀 전달에 부적절하다고 설명하고, 지문의 보안 정책도 인자 전달을 막는다. 틀렸다.\n\n- **{{option:B}}.** 시크릿 마운트(환경 변수 소스)는 명령 실행 동안에만 토큰을 노출하고, 캐시 마운트는 레이어를 다시 만들어도 바뀐 패키지만 받게 하며, 멀티 스테이지는 빌드 도구를 최종 이미지에서 뺀다. 세 요구를 모두 만족하므로 정답이다.\n\n- **{{option:C}}.** 단일 스테이지는 선택적으로 복사해 남기지 않는 수단이 없어 컴파일러 같은 빌드 도구가 최종 이미지에 남는다. 셋째 요구를 어겨 틀렸다.\n\n- **{{option:D}}.** 레이어 캐시는 명령이나 의존 파일이 바뀌면 레이어가 무효화되어 다시 만들어지며, 이때 패키지를 처음부터 내려받는다. 둘째 요구를 어겨 틀렸다(캐시 마운트가 이 경우에 쓰인다).\n\n- **{{option:E}}.** bind 마운트는 빌드 컨텍스트의 파일을 마운트하므로 토큰 파일이 컨텍스트에 있어야 한다. 지문이 컨텍스트에 파일로 두지 않는다고 했으므로 첫째 요구를 어겨 틀렸다(마운트된 파일이 이미지에 남지 않는다는 점은 맞다).",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "간접",
+        "T4",
+        "단일 선택",
+        "L4",
+        "릴리스 자동화 · 평가 게이트 · 비용 통제",
+        "토큰 관리",
+        "맥락 관리",
+        "이미지 이해",
+        "보안 통제"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 103,
+      "sourceId": "AOP-I08",
+      "title": "자발적 중단 상한과 롤링 업데이트 여유를 함께 맞추기",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 2,
+      "difficulty": "L4",
+      "sourceTopic": "Kubernetes",
+      "prompt": "GPU 추론 Deployment를 운영한다. 지금 레플리카는 6개이지만 **오토스케일로 레플리카 수가 달라지며, 수가 달라질 때마다 중단 상한 규칙의 값을 손으로 고치지 않아야 한다.** GPU 노드에 여유가 없어 롤링 업데이트 중에도 목표 수를 넘겨 파드를 만들 수 없다. 요구는 세 가지다. 첫째, 노드를 비우는 작업처럼 관리자가 일으키는 자발적 중단 때 한꺼번에 내려가는 파드가 1개를 넘지 않아야 하며, 레플리카 수가 달라져도 이 규칙의 값을 고치지 않는다. 둘째, 이미지를 교체하는 롤링 업데이트 중에도 동시에 사용할 수 없는 파드가 1개를 넘지 않아야 한다. 셋째, 노드를 비우는 작업이 끝나지 못하고 막히는 구성이어서는 안 된다. 세 요구를 모두 만족하는 구성은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "PodDisruptionBudget `maxUnavailable: 1` + Deployment `strategy.rollingUpdate`의 `maxSurge: 0`, `maxUnavailable: 1`"
+        },
+        {
+          "id": "B",
+          "text": "PodDisruptionBudget `minAvailable: 5` + Deployment `strategy.rollingUpdate`의 `maxSurge: 0`, `maxUnavailable: 1`"
+        },
+        {
+          "id": "C",
+          "text": "PodDisruptionBudget `maxUnavailable: 1` + Deployment `strategy.rollingUpdate` 기본값(`maxSurge`, `maxUnavailable` 모두 25%)"
+        },
+        {
+          "id": "D",
+          "text": "PodDisruptionBudget `minAvailable: \"100%\"` + Deployment `strategy.rollingUpdate`의 `maxSurge: 0`, `maxUnavailable: 1`"
+        },
+        {
+          "id": "E",
+          "text": "PodDisruptionBudget `maxUnavailable: 1` + Deployment `strategy.type: Recreate`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** PDB `maxUnavailable: 1`은 레플리카 수가 달라져도 값을 고치지 않고 동시 중단 1개를 유지하고, Deployment의 `maxSurge: 0`·`maxUnavailable: 1`은 초과 파드 없이 롤링 업데이트 중 동시 불가용을 1개로 묶으며 `maxSurge`가 0일 때 `maxUnavailable`은 0이 아니므로 유효하다. 노드 비우기도 한 번에 1개씩 진행되어 막히지 않는다. 정답이다.\n\n- **{{option:B}}.** `minAvailable: 5`는 고정 수라서 오토스케일로 레플리카 수가 달라지면 값을 고쳐야 한다(레플리카가 5개 이하로 내려가면 자발적 축출이 모두 막히기도 한다). 문서는 `maxUnavailable`이 레플리카 수 변화에 자동으로 맞춰진다고 권장한다. 첫째 요구를 어겨 틀렸다.\n\n- **{{option:C}}.** 기본값 25%에서 `maxSurge`는 6개의 25%=1.5를 올림해 2개이므로 목표 수를 넘겨 파드를 만든다. GPU 여유가 없다는 조건을 어겨 틀렸다(`maxUnavailable`은 내림해 1개).\n\n- **{{option:D}}.** `minAvailable: \"100%\"`는 자발적 축출을 0건으로 요구해 그 파드가 있는 노드를 비우는 작업이 성공하지 못한다. 셋째 요구를 어겨 틀렸다.\n\n- **{{option:E}}.** `Recreate`는 새 파드를 만들기 전에 기존 파드를 모두 종료하므로 롤링 업데이트 중 동시 불가용이 6개가 된다. 둘째 요구를 어겨 틀렸다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "간접",
+        "T4",
+        "단일 선택",
+        "L4",
+        "서빙 · 확장 · 성능",
+        "추론 모델",
+        "이미지 이해",
+        "배포 관리"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 104,
+      "sourceId": "AOP-I09",
+      "title": "5분 동안 줄지 않는 레플리카 — 이 HPA에서만 바꿀 수 있는 항목",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 2,
+      "difficulty": "L4",
+      "sourceTopic": "Kubernetes",
+      "prompt": "Deployment를 대상으로 하는 HorizontalPodAutoscaler(`autoscaling/v2`)에서 다음 현상이 관찰된다. 요청이 급감해 지표가 목표값을 한참 밑돌아도 레플리카 수가 약 5분 동안 줄지 않는다. 5분이 지난 뒤의 감소 폭에는 문제가 없고, 늘리는 쪽 동작도 평소와 같다. 조건은 두 가지다. 이 HPA의 동작만 바꿔야 하고 클러스터의 다른 HPA에는 영향이 없어야 하며, 컨트롤 플레인 구성요소의 실행 옵션은 바꿀 수 없다. 이 현상의 원인이 되는 값을 이 조건에서 조정할 수 있는 설정 항목은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`behavior.scaleDown.policies`의 `Percent` 정책 값"
+        },
+        {
+          "id": "B",
+          "text": "`behavior.scaleUp.stabilizationWindowSeconds`"
+        },
+        {
+          "id": "C",
+          "text": "kube-controller-manager의 `--horizontal-pod-autoscaler-downscale-stabilization` 옵션"
+        },
+        {
+          "id": "D",
+          "text": "`behavior.scaleDown.stabilizationWindowSeconds`"
+        },
+        {
+          "id": "E",
+          "text": "`minReplicas`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** `policies`는 한 번에 줄이는 속도(비율·개수)를 제한한다. 지문은 5분 뒤의 감소 폭이 정상이라고 했고 지연의 원인이 아니라 틀렸다.\n\n- **{{option:B}}.** `scaleUp.stabilizationWindowSeconds`는 확장 쪽 창이며 기본값이 0이다. 확장 동작이 평소와 같다고 했으므로 틀렸다.\n\n- **{{option:C}}.** 이 옵션도 축소 안정화 창의 기본 길이를 정하지만 클러스터 전체에 적용되고 컨트롤 플레인 실행 옵션이다. 다른 HPA에 영향이 없어야 하고 실행 옵션을 바꿀 수 없다는 조건에 어긋나 틀렸다.\n\n- **{{option:D}}.** `behavior.scaleDown.stabilizationWindowSeconds`는 이 HPA의 축소 안정화 창이다. 기본 300초 동안 이전 희망 상태 중 가장 큰 값을 쓰므로 5분간 줄지 않는다. HPA 단위로 조정되어 조건을 모두 만족하므로 정답이다.\n\n- **{{option:E}}.** `minReplicas`는 축소의 하한이다. 5분 동안 줄지 않는 지연과 관계없어 틀렸다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "간접",
+        "T5",
+        "단일 선택",
+        "L4",
+        "서빙 · 확장 · 성능",
+        "쿠버네티스",
+        "배포 관리"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 105,
+      "sourceId": "AOP-I10",
+      "title": "잔여 메시지 때문에 0으로 내려가지 않는 ScaledObject",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 2,
+      "difficulty": "L4",
+      "sourceTopic": "KEDA",
+      "prompt": "큐 길이를 지표로 쓰는 ScaledObject가 있다. 트리거 매개변수는 큐 이름과 스케일링 목표값만 지정했다. `minReplicaCount`와 `idleReplicaCount`는 지정하지 않았고 `cooldownPeriod`는 기본값(300초)이며, 강제로 활성화하는 애너테이션은 없다. 처리 대상이 아닌 잔여 메시지 3건이 큐에 남아 있어서, 업무 메시지가 모두 처리된 지 한 시간이 지나도 워크로드가 0개로 내려가지 않고 1개로 남는다. 운영 요구는 세 가지다. 잔여 메시지가 3건 이하이면 0개여야 하고, 4건 이상 쌓이면 0개에서 1개로 올라와야 하며, 1개에서 N개로 늘리는 계산(스케일링 목표값)과 `cooldownPeriod`는 바꾸지 않는다. 0개로 내려가지 못하게 만든 원인 설정 항목은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`cooldownPeriod`"
+        },
+        {
+          "id": "B",
+          "text": "`minReplicaCount`"
+        },
+        {
+          "id": "C",
+          "text": "`pollingInterval`"
+        },
+        {
+          "id": "D",
+          "text": "`idleReplicaCount`"
+        },
+        {
+          "id": "E",
+          "text": "트리거의 `activation` 접두 매개변수(예: `activationThreshold`)"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** `cooldownPeriod`는 마지막으로 트리거가 활성이라고 보고한 뒤 기다리는 시간이다. 잔여 메시지 때문에 트리거가 활성으로 계속 보고되면 기다림이 끝나지 않으며, 한 시간이 지났어도 값이 짧거나 긴 문제가 아니다. 지문이 바꾸지 말라고도 했다. 틀렸다.\n\n- **{{option:B}}.** `minReplicaCount`의 기본값은 0이고 지정하지 않았다. 1 이상이면 스케일러가 항상 활성으로 취급되지만 이 사례의 설정이 아니라 틀렸다.\n\n- **{{option:C}}.** `pollingInterval`은 트리거를 확인하는 주기다. 활성 여부를 가르는 기준이 아니라 틀렸다.\n\n- **{{option:D}}.** `idleReplicaCount`는 지정하지 않으면 무시되고 `minReplicaCount`보다 작아야 하는 값이다. 지정하지 않은 항목이라 원인이 아니어서 틀렸다.\n\n- **{{option:E}}.** 활성화 매개변수를 지정하지 않으면 기본값 0이 적용되어 지표가 1 이상이면 활성으로 판정된다. 잔여 메시지 3건이 남아 있으면 계속 활성이므로 0개로 내려가지 못한다. 활성화 값을 3으로 두면 3건 이하에서 비활성이 되고 스케일링 값과 `cooldownPeriod`는 그대로다. 정답이다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "간접",
+        "T5",
+        "단일 선택",
+        "L4",
+        "서빙 · 확장 · 성능",
+        "잔여 메시지 때문에 0으로 내려가지 않는 ScaledObject"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 106,
+      "sourceId": "AOP-I11",
+      "title": "같은 버전 표기가 옮겨져도 같은 코드를 실행하는 이미지 지정",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T6",
+      "domain": 5,
+      "difficulty": "L4",
+      "sourceTopic": "Kubernetes · Docker",
+      "prompt": "운영 Deployment의 컨테이너 이미지 참조를 정한다. 요구는 세 가지다. 첫째, 게시자가 같은 버전 표기를 새 이미지를 가리키도록 갱신해도 모든 레플리카가 처음 정한 같은 이미지 버전을 쓴다. 둘째, 오토스케일로 새로 붙은 노드(이미지를 미리 넣어 두지 않았다)에서도 파드가 뜬다. 셋째, 이미지가 이미 있는 노드에서는 kubelet이 이미지 풀을 요청하지 않고 컨테이너를 시작한다. 세 요구를 모두 만족하는 지정은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`image: app:1.4` (풀 정책 필드 생략)"
+        },
+        {
+          "id": "B",
+          "text": "`image: app:1.4` + `imagePullPolicy: Always`"
+        },
+        {
+          "id": "C",
+          "text": "`image: app@sha256:…` (풀 정책 필드 생략)"
+        },
+        {
+          "id": "D",
+          "text": "`image: app@sha256:…` + `imagePullPolicy: Never`"
+        },
+        {
+          "id": "E",
+          "text": "`image: app` (태그·다이제스트 없음, 풀 정책 필드 생략)"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** 태그 `app:1.4`는 게시자가 다른 이미지를 가리키도록 갱신할 수 있다. 풀 정책을 생략하면 태그가 `:latest`가 아니므로 `IfNotPresent`가 되어 이미지가 캐시된 노드는 옛 이미지를, 새 노드는 새 이미지를 실행해 섞인다. 첫째 요구를 어겨 틀렸다.\n\n- **{{option:B}}.** 태그를 쓰므로 첫째 요구를 어기고, `Always`는 컨테이너를 시작할 때마다 kubelet이 풀을 요청해 셋째 요구도 어긴다. 틀렸다.\n\n- **{{option:C}}.** 다이제스트로 고정하면 태그가 새 이미지로 바뀌어도 같은 이미지 버전을 쓰고(Docker 문서), 다이제스트를 지정하고 풀 정책을 생략하면 `IfNotPresent`가 되어 이미지가 없는 새 노드는 받고 있는 노드는 풀을 건너뛴다(Kubernetes 문서). 세 요구를 모두 만족하므로 정답이다.\n\n- **{{option:D}}.** 다이제스트로 첫째·셋째 요구는 만족하지만 `Never`는 kubelet이 이미지를 가져오려 하지 않아, 이미지가 없는 새 노드에서는 시작이 실패한다. 둘째 요구를 어겨 틀렸다.\n\n- **{{option:E}}.** 태그가 없으면 `latest`로 간주되고 풀 정책이 `Always`가 되어, 태그 이동에 따라 이미지가 섞이고 시작할 때마다 풀을 요청한다. 첫째·셋째 요구를 어겨 틀렸다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "간접",
+        "T6",
+        "단일 선택",
+        "L4",
+        "릴리스 자동화 · 평가 게이트 · 비용 통제",
+        "이미지 이해",
+        "코딩 지원",
+        "컨테이너 운영",
+        "배포 관리"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 107,
+      "sourceId": "AOP-I12",
+      "title": "호출자가 기록하지 않았다고 표시한 요청의 판정 위치",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T6",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "OpenTelemetry · 공개 표준(W3C Trace Context)",
+      "prompt": "서비스 B는 OpenTelemetry SDK의 부모 기반 샘플러를 쓰며, 부모가 없는 스팬은 기록하도록(AlwaysOn) 설정했다. 서비스 A가 B를 호출하면서 보낸 추적 문맥 HTTP 헤더에서 플래그 필드의 가장 오른쪽 비트가 꺼져 있는 요청도 B가 기록하도록 바꾸려 한다. 단, 같은 프로세스 안의 부모를 둔 스팬과 부모가 없는 스팬의 판정, 그리고 가장 오른쪽 비트가 켜진 요청의 판정은 지금 그대로 둔다. AlwaysOn으로 바꿔야 할 부모 기반 샘플러의 매개변수는?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`root`"
+        },
+        {
+          "id": "B",
+          "text": "`remoteParentNotSampled`"
+        },
+        {
+          "id": "C",
+          "text": "`remoteParentSampled`"
+        },
+        {
+          "id": "D",
+          "text": "`localParentNotSampled`"
+        },
+        {
+          "id": "E",
+          "text": "`localParentSampled`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** `root`는 부모가 없는 스팬에 호출되는 샘플러다. 이 요청은 부모가 있으므로 해당하지 않고, 지문이 부모 없는 스팬은 그대로 두라고 했다. 틀렸다.\n\n- **{{option:B}}.** `remoteParentNotSampled`는 원격 부모가 있고 샘플링되지 않은(비트가 꺼진) 요청에 호출된다. 이 분기를 AlwaysOn으로 바꾸면 해당 요청만 기록되고 나머지 분기는 유지된다. 정답이다.\n\n- **{{option:C}}.** `remoteParentSampled`는 원격 부모의 비트가 켜진 요청에 호출된다. 지문이 켜진 요청의 판정은 그대로 두라고 했고 대상은 꺼진 요청이라 틀렸다.\n\n- **{{option:D}}.** `localParentNotSampled`는 같은 프로세스 안의 부모가 샘플링되지 않은 경우에 호출된다. 헤더로 전파된 부모는 원격이므로 해당하지 않고 지문도 로컬 부모 판정은 그대로 두라고 했다. 틀렸다.\n\n- **{{option:E}}.** `localParentSampled`는 같은 프로세스 안의 부모가 샘플링된 경우에 호출된다. 원격이고 꺼진 요청에 해당하지 않아 틀렸다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "간접",
+        "T6",
+        "단일 선택",
+        "L4",
+        "관측 · SLO · 장애 대응",
+        "OpenTelemetry"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 108,
+      "sourceId": "AOP-I13",
+      "title": "지표를 못 가져올 때 레플리카 수를 정해 두는 설정",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "KEDA",
+      "prompt": "ScaledObject의 한 설정은 스케일러가 지표 원본에서 지표를 가져오는 데 연속으로 실패한 횟수가 정해 둔 한도를 넘으면, 지표를 HPA에 전달하지 않는 기본 오류 동작 대신 정해 둔 레플리카 수가 되도록 HPA 계산을 조정한다. 이 설명에 해당하는 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`minReplicaCount`"
+        },
+        {
+          "id": "B",
+          "text": "`cooldownPeriod`"
+        },
+        {
+          "id": "C",
+          "text": "`advanced.scalingModifiers`"
+        },
+        {
+          "id": "D",
+          "text": "`fallback`"
+        },
+        {
+          "id": "E",
+          "text": "`idleReplicaCount`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** `minReplicaCount`는 레플리카 수의 하한이다. 지표를 가져오지 못한 횟수와 관계가 없어 틀렸다.\n\n- **{{option:B}}.** `cooldownPeriod`는 마지막으로 트리거가 활성이라고 보고한 뒤 0으로 되돌리기 전까지 기다리는 시간이다. 연속 실패 횟수를 기준으로 하지 않아 틀렸다.\n\n- **{{option:C}}.** `advanced.scalingModifiers`는 여러 트리거의 지표를 수식으로 합쳐 스케일링 지표를 계산하는 설정이다. 연속 실패 횟수가 한도를 넘을 때 정해 둔 레플리카 수가 되게 하는 설정이 아니라 틀렸다.\n\n- **{{option:D}}.** `fallback`은 `failureThreshold`를 넘도록 지표 획득에 연속으로 실패하면 지표를 HPA에 전달하지 않는 기본 오류 동작 대신 `replicas`로 지정한 수가 되도록 HPA 계산을 조정한다. 정답이다.\n\n- **{{option:E}}.** `idleReplicaCount`는 활동이 없을 때 내려가는 레플리카 수이며 지정하지 않으면 무시된다. 지표 획득 실패와 관계가 없어 틀렸다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "간접",
+        "T1",
+        "단일 선택",
+        "L3",
+        "서빙 · 확장 · 성능",
+        "쿠버네티스",
+        "오류 대응"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 109,
+      "sourceId": "AOP-I14",
+      "title": "새 파드를 사용 가능으로 세기까지 버티는 시간",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Kubernetes",
+      "prompt": "Deployment 명세(`spec`)의 선택 필드 중, 새로 만든 파드가 컨테이너 중 어느 것도 충돌하지 않은 채 준비 상태로 유지되어야 하는 최소 초를 정해, 그 시간이 지나야 사용 가능한 파드로 간주되게 하는 필드는?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`progressDeadlineSeconds`"
+        },
+        {
+          "id": "B",
+          "text": "`revisionHistoryLimit`"
+        },
+        {
+          "id": "C",
+          "text": "`paused`"
+        },
+        {
+          "id": "D",
+          "text": "`strategy.rollingUpdate.maxSurge`"
+        },
+        {
+          "id": "E",
+          "text": "`minReadySeconds`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** `progressDeadlineSeconds`는 Deployment가 진행되지 못했다고 보고하기까지 기다리는 초(기본 600)이며 `minReadySeconds`보다 커야 한다. 파드가 사용 가능으로 간주되는 기준 시간이 아니라 틀렸다.\n\n- **{{option:B}}.** `revisionHistoryLimit`은 롤백을 위해 보관할 이전 ReplicaSet의 수(기본 10)다. 시간이 아니라 개수라 틀렸다.\n\n- **{{option:C}}.** `paused`는 Deployment를 멈추고 다시 시작하는 불리언 필드다. 파드의 사용 가능 판정 시간과 관계없어 틀렸다.\n\n- **{{option:D}}.** `strategy.rollingUpdate.maxSurge`는 목표 수를 넘겨 만들 수 있는 파드의 최대 수다. 개수 상한이며 사용 가능 판정 시간이 아니라 틀렸다.\n\n- **{{option:E}}.** `minReadySeconds`는 새로 만든 파드가 컨테이너 충돌 없이 준비 상태로 있어야 하는 최소 초이고, 그 시간이 지나야 사용 가능으로 간주된다(기본 0). 정답이다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "간접",
+        "T2",
+        "단일 선택",
+        "L3",
+        "서빙 · 확장 · 성능",
+        "컨테이너 운영",
+        "배포 관리"
       ],
       "tagging": {
         "version": 1,

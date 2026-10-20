@@ -5268,6 +5268,1315 @@
         "version": 1,
         "method": "rule-based-draft"
       }
+    },
+    {
+      "id": 103,
+      "sourceId": "AIP-I01",
+      "title": "A single source for permission decisions",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "Claude Code managed policies · Permission rules",
+      "prompt": "Which managed-only key disables Claude Code's default merging of permission rules from user, project, and local settings, making the organization's deployed rules the sole basis for permission decisions? Hooks and MCP server allowlists are outside this key's scope.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "allowManagedHooksOnly"
+        },
+        {
+          "id": "B",
+          "text": "allowManagedMcpServersOnly"
+        },
+        {
+          "id": "C",
+          "text": "allowManagedPermissionRulesOnly"
+        },
+        {
+          "id": "D",
+          "text": "permissions.disableBypassPermissionsMode"
+        },
+        {
+          "id": "E",
+          "text": "strictPluginOnlyCustomization"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** This key limits where executable hooks may originate. The question explicitly excludes hooks.\n\n- **{{option:B}}.** This key restricts the source of MCP server allowlists to managed settings. The documentation says it is separate from locking permission rules, and the question excludes MCP.\n\n- **{{option:C}}.** Correct. It makes managed settings the sole configuration source for permission rules, disabling the default merging of rules across scopes.\n\n- **{{option:D}}.** This key prohibits a mode that bypasses permission checks. It does not change the scopes from which rules originate.\n\n- **{{option:E}}.** This key restricts the sources of skills, agents, hooks, and MCP servers; it does not govern the source of permission rules.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Security and Compliance Integration",
+        "Source verification",
+        "Access control",
+        "MCP integration",
+        "Deployment",
+        "Project organization",
+        "Coding assistance"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 104,
+      "sourceId": "AIP-I02",
+      "title": "Refusing startup when the policy cannot be refreshed",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "Claude Code managed policies · Server-delivered policies",
+      "prompt": "Which managed-only key prevents the CLI from starting until it retrieves the latest server-delivered Claude Code managed policy, and exits the CLI if retrieval fails?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "forceRemoteSettingsRefresh"
+        },
+        {
+          "id": "B",
+          "text": "managedSourcesBehavior"
+        },
+        {
+          "id": "C",
+          "text": "policyHelper"
+        },
+        {
+          "id": "D",
+          "text": "requiredMinimumVersion"
+        },
+        {
+          "id": "E",
+          "text": "allowedProviders"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. It blocks startup until remote managed settings are refreshed and exits if retrieval fails.\n\n- **{{option:B}}.** This key selects whether to use only the highest-priority managed source or merge all sources. It does not decide whether startup is allowed after policy retrieval fails.\n\n- **{{option:C}}.** This key computes managed settings through an executable at startup. It does not require a current server policy as a startup condition.\n\n- **{{option:D}}.** This key rejects startup when the running version is outside the approved range. The criterion is version, not policy retrieval.\n\n- **{{option:E}}.** This key rejects sessions configured with API providers outside the allowlist. The criterion is provider, not policy retrieval.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Security and Compliance Integration",
+        "Current information",
+        "Error handling",
+        "Deployment",
+        "Coding assistance",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 105,
+      "sourceId": "AIP-I03",
+      "title": "Restricting extension sources",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "Claude Code managed policies · Plugins",
+      "prompt": "Which managed-only key blocks skills, agents, hooks, and MCP servers originating from user or project settings, retaining only those from plugins, managed settings, and built-in features? This key does not determine which plugins users may install.",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "strictKnownMarketplaces"
+        },
+        {
+          "id": "B",
+          "text": "disableSideloadFlags"
+        },
+        {
+          "id": "C",
+          "text": "allowManagedHooksOnly"
+        },
+        {
+          "id": "D",
+          "text": "disableCommandPluginSources"
+        },
+        {
+          "id": "E",
+          "text": "strictPluginOnlyCustomization"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** This key restricts the marketplace sources from which plugins can be obtained. The question excludes determining which plugins may be installed.\n\n- **{{option:B}}.** This key rejects command-line arguments such as --plugin-dir at startup. It does not block extensions originating from user or project settings.\n\n- **{{option:C}}.** This only restricts the sources of executable hooks. It does not cover skills, agents, and MCP servers as required.\n\n- **{{option:D}}.** This only blocks installation and loading of plugins using command sources. It does not govern the sources of all four extension types.\n\n- **{{option:E}}.** Correct. It blocks skills, agents, hooks, and MCP servers that do not originate from plugins, managed settings, or built-in features.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Security and Compliance Integration",
+        "Source verification",
+        "MCP integration",
+        "Agents",
+        "Project organization"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 106,
+      "sourceId": "AIP-I04",
+      "title": "Unit prices used for displayed costs",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 3,
+      "difficulty": "L3",
+      "sourceTopic": "Claude Code managed policies · Cost reporting",
+      "prompt": "Costs shown to developers in /usage and the status line use list prices and differ from the organization's contract prices. Which managed-only key makes only displayed and telemetry-reported costs use contract prices without changing Anthropic's actual billing?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "availableModels"
+        },
+        {
+          "id": "B",
+          "text": "modelPricing"
+        },
+        {
+          "id": "C",
+          "text": "maxEffortLevel"
+        },
+        {
+          "id": "D",
+          "text": "autoContinueAtUsageLimit"
+        },
+        {
+          "id": "E",
+          "text": "enforceAvailableModels"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** This key restricts the selectable model list. It cannot change the unit prices used to calculate reported costs.\n\n- **{{option:B}}.** Correct. Supplying contract prices in managed settings changes only the costs reported by Claude Code; actual billing remains unchanged.\n\n- **{{option:C}}.** This key caps effort levels. It is unrelated to the calculation basis of reported costs.\n\n- **{{option:D}}.** This key controls resuming after a usage limit resets. It is unrelated to reported monetary amounts.\n\n- **{{option:E}}.** This key restricts even default model options to the allowed model list. It is unrelated to reporting unit prices.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Large-Scale Cost and Capacity Optimization",
+        "Cost management",
+        "Coding assistance",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 107,
+      "sourceId": "AIP-I05",
+      "title": "An invitation role with narrowly scoped key creation",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "Console organization · Member roles",
+      "prompt": "When inviting a developer to an API-billed Console organization, you want them to create API keys only for the coding-agent CLI and no other purposes. Which organization role should the invitation assign?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Developer"
+        },
+        {
+          "id": "B",
+          "text": "Billing"
+        },
+        {
+          "id": "C",
+          "text": "User"
+        },
+        {
+          "id": "D",
+          "text": "Claude Code"
+        },
+        {
+          "id": "E",
+          "text": "Admin"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** Developer can create all types of API keys, violating the requirement that keys for other purposes must not be created.\n\n- **{{option:B}}.** Billing permits playground use and billing information management; it is not a key-creation role.\n\n- **{{option:C}}.** The documented User role only permits playground use, so it cannot create Claude Code keys either.\n\n- **{{option:D}}.** Correct. Users with this role can create only Claude Code API keys.\n\n- **{{option:E}}.** Admin includes all the other listed permissions plus user management, making it the broadest role.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Security and Compliance Integration",
+        "API usage",
+        "Agents",
+        "Cost management",
+        "Coding assistance"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 108,
+      "sourceId": "AIP-I06",
+      "title": "An MCP key read only from device-managed policy sources",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "Claude Code managed policies · MCP controls",
+      "prompt": "Which MCP server control key has no effect in server-delivered managed settings and is read only from device-managed policy sources such as MDM profiles, the HKLM registry, or system managed-settings files?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "allowAllClaudeAiMcps"
+        },
+        {
+          "id": "B",
+          "text": "allowClaudeInChromeWithManagedMcp"
+        },
+        {
+          "id": "C",
+          "text": "managedMcpServers"
+        },
+        {
+          "id": "D",
+          "text": "allowManagedMcpServersOnly"
+        },
+        {
+          "id": "E",
+          "text": "allowedMcpServers"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** This key is read from administrator-controlled policy layers including server-managed settings, MDM, and system managed-settings files, so server-managed settings are effective.\n\n- **{{option:B}}.** Correct. It is read only from device-managed settings: MDM profiles, HKLM registry, and system managed-settings files. Server-managed settings and user-writable sources have no effect.\n\n- **{{option:C}}.** This key can be placed in any managed-settings source, including server-managed settings.\n\n- **{{option:D}}.** This locking key can be placed alongside an allowlist in server-managed settings.\n\n- **{{option:E}}.** This key can be placed in any settings scope, including server-managed settings.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Security and Compliance Integration",
+        "MCP integration",
+        "Deployment"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 109,
+      "sourceId": "AIP-I07",
+      "title": "A workspace role that cannot be assigned directly",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "Console organization · Workspace roles",
+      "prompt": "Which Console workspace role cannot be assigned directly to members and is instead inherited across all workspaces by members with the organization's billing role?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Workspace User"
+        },
+        {
+          "id": "B",
+          "text": "Workspace Limited Developer"
+        },
+        {
+          "id": "C",
+          "text": "Workspace Developer"
+        },
+        {
+          "id": "D",
+          "text": "Workspace Admin"
+        },
+        {
+          "id": "E",
+          "text": "Workspace Billing"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** Organization user members must be explicitly added to each workspace; this role is not inherited from the billing role.\n\n- **{{option:B}}.** This role is assigned by explicitly adding a member to a workspace; it is not inherited from the billing role.\n\n- **{{option:C}}.** Organization developer members receive this role when explicitly added to a workspace; it is not inherited from billing.\n\n- **{{option:D}}.** Organization admin members receive this role in every workspace. It comes from admin, not billing, so it does not meet the condition.\n\n- **{{option:E}}.** Correct. It cannot be directly assigned and is inherited by members with the organization's billing role.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Security and Compliance Integration",
+        "A workspace role that cannot be assigned directly"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 110,
+      "sourceId": "AIP-I08",
+      "title": "The current name of a former plan",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T3",
+      "domain": 5,
+      "difficulty": "L3",
+      "sourceTopic": "ChatGPT plans · Naming",
+      "prompt": "OpenAI announced a name-only change effective August 29, 2025, with features, pricing, and limits unchanged. What is the current name of the plan previously called 'ChatGPT Team'?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "ChatGPT Business"
+        },
+        {
+          "id": "B",
+          "text": "ChatGPT Enterprise"
+        },
+        {
+          "id": "C",
+          "text": "ChatGPT Edu"
+        },
+        {
+          "id": "D",
+          "text": "ChatGPT Plus"
+        },
+        {
+          "id": "E",
+          "text": "ChatGPT Pro"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. The announcement states that the Team plan was renamed ChatGPT Business.\n\n- **{{option:B}}.** This is a separate plan. The announcement describes a name-only change, not migration to another plan.\n\n- **{{option:C}}.** This is a separate plan, not the subject of the announced rename.\n\n- **{{option:D}}.** This is not the announced result of the rename and was not announced as Team's new name.\n\n- **{{option:E}}.** This is not the announced result of the rename and was not announced as Team's new name.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T3",
+        "Single choice",
+        "L3",
+        "Migration and Lifecycle",
+        "Cost management",
+        "ChatGPT",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 111,
+      "sourceId": "AIP-I09",
+      "title": "The current name of a former feature",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T3",
+      "domain": 5,
+      "difficulty": "L3",
+      "sourceTopic": "Gemini Enterprise · Feature naming",
+      "prompt": "In Gemini Enterprise documentation, what is the current name of the feature formerly called 'Agent Designer', which creates and manages chat agents and workflows through no-code or low-code tools in the web app?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Agent Gallery"
+        },
+        {
+          "id": "B",
+          "text": "Gemini Notebook Enterprise"
+        },
+        {
+          "id": "C",
+          "text": "Workflow Builder"
+        },
+        {
+          "id": "D",
+          "text": "Skills"
+        },
+        {
+          "id": "E",
+          "text": "Gemini Enterprise Agent Platform"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** This is a separate agent-browsing feature, not the announced new name of Agent Designer.\n\n- **{{option:B}}.** This research-assistant product was renamed from NotebookLM Enterprise. It is not a no-code/low-code agent-building feature.\n\n- **{{option:C}}.** Correct. The release notes identify this as the current name and say 'formerly known as Agent Designer'.\n\n- **{{option:D}}.** This customizes assistant work with reusable instructions and standard prompts. It is not an agent/workflow authoring tool.\n\n- **{{option:E}}.** This is a separate platform for building and deploying custom agents, not a rename of Agent Designer.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T3",
+        "Single choice",
+        "L3",
+        "Migration and Lifecycle",
+        "Agents",
+        "Coding assistance",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 112,
+      "sourceId": "AIP-I10",
+      "title": "Adding MCP servers from an approved list",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Claude Code managed policies · MCP controls",
+      "prompt": "Claude Code users should be able to add only organization-approved remote MCP servers themselves, without expanding the approved list through their own settings files. User-assigned server names are labels and must not be used as approval evidence. Which configuration is required?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Put serverName entries in allowedMcpServers and set allowManagedMcpServersOnly to true."
+        },
+        {
+          "id": "B",
+          "text": "Put only serverUrl entries in managed allowedMcpServers, without a separate locking key."
+        },
+        {
+          "id": "C",
+          "text": "List unapproved servers in deniedMcpServers and set allowManagedMcpServersOnly to true."
+        },
+        {
+          "id": "D",
+          "text": "Put serverUrl entries in allowedMcpServers and set allowManagedMcpServersOnly to true."
+        },
+        {
+          "id": "E",
+          "text": "Deploy a server set through managed-mcp.json and set allowManagedPermissionRulesOnly to true."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** serverName entries match user-assigned labels, which are not a security control. This violates the requirement not to use names as approval evidence.\n\n- **{{option:B}}.** Without the locking key, allowlists from all settings scopes are merged, allowing users to expand the list through their own settings.\n\n- **{{option:C}}.** A denylist blocks only listed servers. Unlisted servers remain available, so it cannot enforce 'approved servers only'.\n\n- **{{option:D}}.** Correct. URL patterns approve remote servers by address, while limiting the allowlist to managed settings prevents users from expanding it.\n\n- **{{option:E}}.** Fixed deployment gives every user the same servers and prevents other additions. It is not user selection from an approved list, and locking permission rules does not enforce an MCP allowlist.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L3",
+        "Enterprise Platform Architecture",
+        "MCP integration",
+        "Human approval",
+        "Source verification",
+        "Coding assistance",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 113,
+      "sourceId": "AIP-I11",
+      "title": "Beyond-seat usage with individual spending caps",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 3,
+      "difficulty": "L3",
+      "sourceTopic": "Claude Enterprise · Cost controls",
+      "prompt": "In a seat-based Claude for Enterprise organization, members should be able to use Claude Code beyond their seat allowance, but each member must have an individual spending cap. Which combination is required?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Enable usage credits and set individual member spending limits."
+        },
+        {
+          "id": "B",
+          "text": "Enable usage credits without setting spending limits."
+        },
+        {
+          "id": "C",
+          "text": "Enable usage credits and set workspace spending limits."
+        },
+        {
+          "id": "D",
+          "text": "Set modelPricing to contract prices and set individual member spending limits."
+        },
+        {
+          "id": "E",
+          "text": "Create a Claude Code Analytics API key and enable usage credits."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. Usage credits cover consumption beyond the seat allowance, and spending limits can be set at organization, group, or individual-member level.\n\n- **{{option:B}}.** Without spending limits there is no individual cap, violating the requirement.\n\n- **{{option:C}}.** Workspace spending limits are controls for API/Console organizations. Seat-based organization controls are in the claude.ai admin console.\n\n- **{{option:D}}.** modelPricing changes only the unit prices used for reported costs. It does not enable usage beyond the allowance.\n\n- **{{option:E}}.** The Claude Code Analytics API retrieves usage metrics and cannot set spending limits. It is also an API for Console organizations.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L3",
+        "Large-Scale Cost and Capacity Optimization",
+        "Coding assistance",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 114,
+      "sourceId": "AIP-I12",
+      "title": "Why one developer does not receive policy",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Claude Code managed policies · Server delivery",
+      "prompt": "The organization distributes Claude Code policies through claude.ai administration, and they apply to most developers. One developer is signed in with the organization's claude.ai account and does not use apiKeyHelper, yet claude doctor's 'Managed settings (remote)' line reports that fetching was skipped. Which shell-profile entry, added for the internal LLM gateway, causes this?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "The corporate proxy address in HTTPS_PROXY"
+        },
+        {
+          "id": "B",
+          "text": "The corporate CA bundle in NODE_EXTRA_CA_CERTS"
+        },
+        {
+          "id": "C",
+          "text": "A nondefault ANTHROPIC_BASE_URL"
+        },
+        {
+          "id": "D",
+          "text": "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1"
+        },
+        {
+          "id": "E",
+          "text": "A gateway model alias in ANTHROPIC_MODEL"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** Shell proxy settings also apply to policy-fetch requests. They do not cause fetching to be skipped.\n\n- **{{option:B}}.** This configures TLS certificate authorities and is not listed as a reason for skipping policy retrieval.\n\n- **{{option:C}}.** Correct. Claude Code skips server-managed settings retrieval when the shell contains a nondefault ANTHROPIC_BASE_URL or a CLAUDE_CODE_USE_* provider variable.\n\n- **{{option:D}}.** This disables nonessential traffic; the documentation does not identify it as a reason for skipping policy fetching.\n\n- **{{option:E}}.** This chooses the model to use; it does not cause policy retrieval to be skipped.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L3",
+        "Enterprise Platform Architecture",
+        "Logging and tracing",
+        "Deployment",
+        "Coding assistance",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 115,
+      "sourceId": "AIP-I13",
+      "title": "Authentication fails despite an active subscription",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "Claude Code authentication · Credential precedence",
+      "prompt": "A developer with an active subscription receives an organization-status authentication error from Claude Code. Their shell still contains a Console key for an inactive organization, and they approved using that key when first launching interactively. Which entry caused this key to be used instead of the subscription?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "ANTHROPIC_AUTH_TOKEN"
+        },
+        {
+          "id": "B",
+          "text": "apiKeyHelper"
+        },
+        {
+          "id": "C",
+          "text": "CLAUDE_CODE_OAUTH_TOKEN"
+        },
+        {
+          "id": "D",
+          "text": "ANTHROPIC_PROFILE"
+        },
+        {
+          "id": "E",
+          "text": "ANTHROPIC_API_KEY"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** This is a gateway token sent in the Authorization Bearer header. The documentation does not identify it as the Console key in that approval prompt.\n\n- **{{option:B}}.** This is a setting whose script returns a key, not an environment variable. The question specifies a key left in an environment variable.\n\n- **{{option:C}}.** This is a long-lived OAuth token for a subscription account, unrelated to an inactive organization's Console key.\n\n- **{{option:D}}.** This variable selects a named profile. It is not a key and has no approval prompt asking whether to use it.\n\n- **{{option:E}}.** Correct. Once approved, a Console key in this environment variable takes precedence over subscription login. A key belonging to an inactive organization can cause authentication failure.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L3",
+        "Security and Compliance Integration",
+        "Error handling",
+        "Authentication",
+        "Human approval",
+        "Coding assistance",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 116,
+      "sourceId": "AIP-I14",
+      "title": "Combining plugin source, installation, and bypass controls",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "Claude Code managed policies · Plugins",
+      "prompt": "Managed policy must (1) restrict user plugin sources to the official marketplace and repositories in the internal GitHub organization, (2) install and enable two internal-marketplace plugins on every device, (3) block command-line loading of local-directory plugins for a single session, and (4) continue loading the team's directory-based plugins under ~/.claude/skills. Which configuration meets all four requirements?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Only strictKnownMarketplaces listing the official marketplace and internal GitHub organization repositories"
+        },
+        {
+          "id": "B",
+          "text": "strictKnownMarketplaces (official, internal GitHub organization, skills-dir) + extraKnownMarketplaces + enabledPlugins + disableSideloadFlags"
+        },
+        {
+          "id": "C",
+          "text": "blockedMarketplaces blocking external sources but not skills-dir + extraKnownMarketplaces + enabledPlugins + disableSideloadFlags"
+        },
+        {
+          "id": "D",
+          "text": "strictKnownMarketplaces (official, internal GitHub organization, skills-dir) + extraKnownMarketplaces + enabledPlugins, without command-line flag rejection"
+        },
+        {
+          "id": "E",
+          "text": "strictKnownMarketplaces (official and internal GitHub organization, without skills-dir) + extraKnownMarketplaces + enabledPlugins + disableSideloadFlags"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** An allowlist neither registers marketplaces nor installs plugins, and does not block --plugin-dir. It fails (2) and (3) and also lacks the skills-dir entry needed for (4).\n\n- **{{option:B}}.** Correct. The allowlist satisfies (1), marketplace registration and enabledPlugins satisfy (2), rejection of sideload flags satisfies (3), and the skills-dir entry satisfies (4).\n\n- **{{option:C}}.** A blocklist blocks only named sources. It cannot restrict all sources to the official and internal sources required by (1).\n\n- **{{option:D}}.** Without command-line flag rejection, --plugin-dir remains a bypass for loading local plugins, violating (3).\n\n- **{{option:E}}.** Without skills-dir in the allowlist, directory-based skills plugins do not load, violating (4).",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L4",
+        "Security and Compliance Integration",
+        "Source verification",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 117,
+      "sourceId": "AIP-I15",
+      "title": "Connectors disappear after a fixed server list is deployed",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 2,
+      "difficulty": "L4",
+      "sourceTopic": "Claude Code managed policies · MCP controls",
+      "prompt": "After a company deploys a fixed MCP server-list file to each device's system path, all claude.ai connectors disappear from terminal Claude Code, including connectors configured by organization administrators. Requirements are to (1) retain the fixed list's exclusive control, (2) prevent developers from re-enabling connectors through personal settings, and (3) keep the Slack connector blocked. Which diagnosis and action are correct?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "An empty allowlist prevents loading. Add connector URL entries to allowedMcpServers."
+        },
+        {
+          "id": "B",
+          "text": "The fixed server-list file causes it. Remove the file and switch to allowedMcpServers with allowManagedMcpServersOnly."
+        },
+        {
+          "id": "C",
+          "text": "The fixed server-list file suppresses connectors. Have each developer set allowAllClaudeAiMcps to true in user settings."
+        },
+        {
+          "id": "D",
+          "text": "The fixed server-list file suppresses connectors. Set allowAllClaudeAiMcps to true in an administrator-controlled policy source and block Slack with deniedMcpServers."
+        },
+        {
+          "id": "E",
+          "text": "The fixed server-list file suppresses connectors. Set only allowAllClaudeAiMcps to true in an administrator-controlled policy source, without a denylist."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** The allowlist does not apply to servers in the fixed-list file. The file's suppression of connectors is the actual cause, so this diagnosis is wrong.\n\n- **{{option:B}}.** Removing the file loses the exclusive control required by (1).\n\n- **{{option:C}}.** This key is read only from administrator-controlled layers such as server-managed settings, MDM, or system managed-settings files. User settings have no effect and will not restore connectors.\n\n- **{{option:D}}.** Correct. The file suppresses connectors. allowAllClaudeAiMcps in an administrator-controlled layer loads connectors alongside the file, and allow/deny lists also apply to connectors, so deniedMcpServers can block Slack.\n\n- **{{option:E}}.** Connectors return, but without a denylist entry Slack loads too, violating (3).",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L4",
+        "Enterprise Platform Architecture",
+        "App connections",
+        "Deployment",
+        "MCP integration",
+        "Coding assistance",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 118,
+      "sourceId": "AIP-I16",
+      "title": "The authorization path for daily developer metrics",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T6",
+      "domain": 3,
+      "difficulty": "L4",
+      "sourceTopic": "Console organization · Usage metrics API and admin keys",
+      "prompt": "An administrator in a non-Enterprise, API-billed Console organization has the organization developer role and is a workspace admin for the Claude Code workspace. They want to retrieve daily per-developer Claude Code usage metrics programmatically. What is the correct path?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ask a member with the organization admin role to create an admin API key."
+        },
+        {
+          "id": "B",
+          "text": "Create an admin API key directly using their developer role."
+        },
+        {
+          "id": "C",
+          "text": "Ask the organization owner to create an analytics-only key with read:analytics scope."
+        },
+        {
+          "id": "D",
+          "text": "Create a workspace API key in the Claude Code workspace and use it."
+        },
+        {
+          "id": "E",
+          "text": "Ask a member with the organization billing role to create an admin API key."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. This metrics API requires an admin key, which only members with the organization admin role can create.\n\n- **{{option:B}}.** The developer role can manage API keys but cannot create admin keys. In Console organizations, admin keys require the admin role.\n\n- **{{option:C}}.** An analytics-only key with read:analytics scope is the Enterprise-organization path. This organization is not Enterprise.\n\n- **{{option:D}}.** Keys cannot be manually created in the Claude Code workspace, and workspace keys do not work on admin endpoints.\n\n- **{{option:E}}.** The billing role manages billing information. The admin role is required to create admin keys.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T6",
+        "Single choice",
+        "L4",
+        "Large-Scale Cost and Capacity Optimization",
+        "Coding assistance",
+        "Access control",
+        "API usage",
+        "Logging and tracing",
+        "Cost management",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 119,
+      "sourceId": "AIP-I17",
+      "title": "Where to enforce organization-only access from first login",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T6",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "Claude Code authentication · Managed policy delivery",
+      "prompt": "A company already distributes organization-wide policy keys through claude.ai administration (server-managed settings) and will retain this arrangement. From a new employee's very first Claude Code login and thereafter, it must require claude.ai login and accounts belonging to its organization ID, without allowing users to change those values. Where should the login-method and permitted-organization-ID keys be placed?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Only in server-managed settings."
+        },
+        {
+          "id": "B",
+          "text": "Only in device management, such as MDM or system managed-settings files."
+        },
+        {
+          "id": "C",
+          "text": "In both device management and server-managed settings, with identical values."
+        },
+        {
+          "id": "D",
+          "text": "In instructions to distribute a user settings file (~/.claude/settings.json)."
+        },
+        {
+          "id": "E",
+          "text": "In the repository's .claude/settings.json."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** Server-managed settings reach only accounts already authenticated to the organization, so they cannot control the first login.\n\n- **{{option:B}}.** Because server-managed settings remain in use, they become the selected source for policy keys after login and are not merged with device values. These keys are not documented exceptions, so device-only values lose effect after login.\n\n- **{{option:C}}.** Correct. Device management applies the keys before first login. In an organization delivering policy keys through server-managed settings, sources are not merged, so the same keys must be present in both.\n\n- **{{option:D}}.** Users can directly edit this file, violating the requirement that they cannot change the values.\n\n- **{{option:E}}.** Repository settings are below managed policy and user-editable, so they cannot enforce this requirement.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T6",
+        "Single choice",
+        "L4",
+        "Security and Compliance Integration",
+        "Logging and tracing",
+        "Deployment",
+        "Coding assistance",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 120,
+      "sourceId": "AIP-S1-1",
+      "title": "Server-enforced model controls with limited reach",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "Claude Code managed policies · Model controls",
+      "caseSet": "AIP-S1",
+      "prompt": "Which model control is enforced on the server, disables individual unapproved models, and applies only to sessions authenticated through claude.ai or the Anthropic API, not Bedrock sessions?",
+      "context": "**Environment:** Claude for Enterprise · Claude Code (a claude.ai-login team and an Amazon Bedrock team)\n\n**Scenario:** A company uses Claude for Enterprise. Most developers sign in to Claude Code with claude.ai accounts, while some teams connect only through Amazon Bedrock and receive policy files through MDM. Security wants only approved models, the cost team wants effort caps, and the platform team wants to block outdated clients. Server-side enforcement is preferred where possible, but both connection paths must receive the same effect. The currently deployed managed policy is shown below.\n\n```json\n{\n  \"model\": \"sonnet\",\n  \"minimumVersion\": \"2.1.250\"\n}\n```",
+      "options": [
+        {
+          "id": "A",
+          "text": "availableModels, a managed-settings key filtering the selector list"
+        },
+        {
+          "id": "B",
+          "text": "Organization model restrictions"
+        },
+        {
+          "id": "C",
+          "text": "Organization default model"
+        },
+        {
+          "id": "D",
+          "text": "deniedModels, a managed-settings key blocking specific versions"
+        },
+        {
+          "id": "E",
+          "text": "enforceAvailableModels, a managed-settings key restricting default options too"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** This managed-settings key applies through device policy regardless of provider. It does not meet the server-enforcement and no-Bedrock-reach conditions.\n\n- **{{option:B}}.** Correct. Individual models are disabled in claude.ai admin settings and enforced server-side. This does not reach sessions using providers such as Bedrock.\n\n- **{{option:C}}.** This sets the model with which a new session starts. It does not disable individual models.\n\n- **{{option:D}}.** This managed-settings key blocks specific versions as a client-side policy. It does not meet the server-enforcement or no-Bedrock-reach conditions.\n\n- **{{option:E}}.** This managed-settings key restricts default options to the allowed model list. It differs from individual model disabling and server-side enforcement.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L4",
+        "Security and Compliance Integration",
+        "API usage",
+        "Human approval",
+        "Logging and tracing",
+        "Deployment",
+        "Cost management",
+        "Security controls"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 121,
+      "sourceId": "AIP-S1-2",
+      "title": "Keys that allow only approved model choices",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "Claude Code managed policies · Model controls",
+      "caseSet": "AIP-S1",
+      "prompt": "Devices on the Bedrock team receive policy through MDM and must also allow only approved models, including preventing an unapproved model from appearing as a default selector option. What must be added to the supplied policy?",
+      "context": "**Environment:** Claude for Enterprise · Claude Code (a claude.ai-login team and an Amazon Bedrock team)\n\n**Scenario:** A company uses Claude for Enterprise. Most developers sign in to Claude Code with claude.ai accounts, while some teams connect only through Amazon Bedrock and receive policy files through MDM. Security wants only approved models, the cost team wants effort caps, and the platform team wants to block outdated clients. Server-side enforcement is preferred where possible, but both connection paths must receive the same effect. The currently deployed managed policy is shown below.\n\n```json\n{\n  \"model\": \"sonnet\",\n  \"minimumVersion\": \"2.1.250\"\n}\n```",
+      "options": [
+        {
+          "id": "A",
+          "text": "Expand organization model restrictions and set managed model to an approved model."
+        },
+        {
+          "id": "B",
+          "text": "Set availableModels together with model (an approved model)."
+        },
+        {
+          "id": "C",
+          "text": "Set only availableModels, without another key."
+        },
+        {
+          "id": "D",
+          "text": "Set availableModels together with enforceAvailableModels."
+        },
+        {
+          "id": "E",
+          "text": "Block specific versions with deniedModels and also set enforceAvailableModels."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** Organization model restrictions do not reach Bedrock sessions. The managed model setting is only a startup default, not a lock.\n\n- **{{option:B}}.** model is only a startup default, not a lock. A separate key is needed to constrain default options to the allowlist.\n\n- **{{option:C}}.** This establishes an allowed model list but does not prevent a default option from resolving to a model outside it.\n\n- **{{option:D}}.** Correct. The allowlist restricts the selector, and the additional key extends the restriction to default options and automatically selected default models. As managed settings, they also apply to the Bedrock team.\n\n- **{{option:E}}.** A denylist blocks only specific versions and cannot meet the allowlist requirement of 'approved models only'.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L4",
+        "Security and Compliance Integration",
+        "Model selection",
+        "Human approval",
+        "Logging and tracing",
+        "Deployment",
+        "Cost management",
+        "Security controls"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 122,
+      "sourceId": "AIP-S1-3",
+      "title": "Why an older version still starts despite a minimum",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 5,
+      "difficulty": "L4",
+      "sourceTopic": "Claude Code managed policies · Version controls",
+      "caseSet": "AIP-S1",
+      "prompt": "After the supplied policy is deployed, a developer can still start and use Claude Code 2.1.200, below the minimum. The device receives only one server-managed settings source; claude doctor reports the deployed settings were loaded, and the developer has restarted afterward. What is the cause?",
+      "context": "**Environment:** Claude for Enterprise · Claude Code (a claude.ai-login team and an Amazon Bedrock team)\n\n**Scenario:** A company uses Claude for Enterprise. Most developers sign in to Claude Code with claude.ai accounts, while some teams connect only through Amazon Bedrock and receive policy files through MDM. Security wants only approved models, the cost team wants effort caps, and the platform team wants to block outdated clients. Server-side enforcement is preferred where possible, but both connection paths must receive the same effect. The currently deployed managed policy is shown below.\n\n```json\n{\n  \"model\": \"sonnet\",\n  \"minimumVersion\": \"2.1.250\"\n}\n```",
+      "options": [
+        {
+          "id": "A",
+          "text": "forceRemoteSettingsRefresh is not enabled, so startup used cached policy instead of fetching it."
+        },
+        {
+          "id": "B",
+          "text": "Multiple managed sources caused the default managedSourcesBehavior to ignore minimumVersion."
+        },
+        {
+          "id": "C",
+          "text": "The developer's ~/.claude/settings.json overwrote minimumVersion with a lower value."
+        },
+        {
+          "id": "D",
+          "text": "minimumVersion, like model, applies only on the next launch and the developer has not restarted."
+        },
+        {
+          "id": "E",
+          "text": "The policy lacks requiredMinimumVersion; minimumVersion only prevents installation of versions below the floor."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** claude doctor reports loading the deployed settings, so this was not startup with a cached policy.\n\n- **{{option:B}}.** The device receives only one managed source, leaving no source-selection conflict that could ignore the value.\n\n- **{{option:C}}.** Managed settings take precedence over user settings, so a user file cannot overwrite the managed value.\n\n- **{{option:D}}.** The developer already restarted. Moreover, the documentation lists model and other keys as next-launch settings, not minimumVersion.\n\n- **{{option:E}}.** Correct. minimumVersion only prevents updates from installing below the floor. The requiredMinimumVersion family rejects startup of out-of-range versions.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L4",
+        "Migration and Lifecycle",
+        "Human approval",
+        "Logging and tracing",
+        "Deployment",
+        "Cost management",
+        "Security controls",
+        "Coding assistance"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 123,
+      "sourceId": "AIP-S1-4",
+      "title": "Combining login-account and provider restrictions",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "Claude Code authentication · Managed policies",
+      "caseSet": "AIP-S1",
+      "prompt": "claude.ai login must allow only the company's organization accounts, disallow other login methods such as Console keys, and allow only Anthropic API and Amazon Bedrock connection paths, rejecting sessions configured for other paths at startup. Which keys are required?",
+      "context": "**Environment:** Claude for Enterprise · Claude Code (a claude.ai-login team and an Amazon Bedrock team)\n\n**Scenario:** A company uses Claude for Enterprise. Most developers sign in to Claude Code with claude.ai accounts, while some teams connect only through Amazon Bedrock and receive policy files through MDM. Security wants only approved models, the cost team wants effort caps, and the platform team wants to block outdated clients. Server-side enforcement is preferred where possible, but both connection paths must receive the same effect. The currently deployed managed policy is shown below.\n\n```json\n{\n  \"model\": \"sonnet\",\n  \"minimumVersion\": \"2.1.250\"\n}\n```",
+      "options": [
+        {
+          "id": "A",
+          "text": "forceLoginMethod + forceLoginOrgUUID + allowedProviders"
+        },
+        {
+          "id": "B",
+          "text": "forceLoginOrgUUID + availableModels + minimumVersion"
+        },
+        {
+          "id": "C",
+          "text": "allowedProviders + minimumVersion + availableModels"
+        },
+        {
+          "id": "D",
+          "text": "forceLoginMethod + forceLoginOrgUUID + minimumVersion"
+        },
+        {
+          "id": "E",
+          "text": "allowedProviders + availableModels + maxEffortLevel"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. The login-method and organization-ID keys enforce the claude.ai account conditions, while the provider allowlist enforces connection paths.\n\n- **{{option:B}}.** The organization-ID key alone cannot block non-claude.ai login methods or restrict connection paths. The other two keys are unrelated to those requirements.\n\n- **{{option:C}}.** The provider allowlist restricts only connection paths. No key restricts the organization account or login method.\n\n- **{{option:D}}.** This meets the login-method and organization conditions, but cloud-provider sessions are unaffected by the login keys. A connection-path restriction is missing.\n\n- **{{option:E}}.** The provider allowlist addresses only connection paths. The other two keys do not govern login accounts or methods.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L4",
+        "Security and Compliance Integration",
+        "Logging and tracing",
+        "API usage",
+        "Human approval",
+        "Deployment",
+        "Cost management",
+        "Security controls"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 124,
+      "sourceId": "AIP-S1-5",
+      "title": "A provider-independent effort cap",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 3,
+      "difficulty": "L4",
+      "sourceTopic": "Claude Code managed policies · Effort controls",
+      "caseSet": "AIP-S1",
+      "prompt": "Which managed-settings key caps effort globally or per model regardless of connection provider, rather than using the organization's role-based server-side effort limits?",
+      "context": "**Environment:** Claude for Enterprise · Claude Code (a claude.ai-login team and an Amazon Bedrock team)\n\n**Scenario:** A company uses Claude for Enterprise. Most developers sign in to Claude Code with claude.ai accounts, while some teams connect only through Amazon Bedrock and receive policy files through MDM. Security wants only approved models, the cost team wants effort caps, and the platform team wants to block outdated clients. Server-side enforcement is preferred where possible, but both connection paths must receive the same effect. The currently deployed managed policy is shown below.\n\n```json\n{\n  \"model\": \"sonnet\",\n  \"minimumVersion\": \"2.1.250\"\n}\n```",
+      "options": [
+        {
+          "id": "A",
+          "text": "Organization effort limits"
+        },
+        {
+          "id": "B",
+          "text": "CLAUDE_CODE_EFFORT_LEVEL"
+        },
+        {
+          "id": "C",
+          "text": "maxEffortLevel"
+        },
+        {
+          "id": "D",
+          "text": "effortLevel"
+        },
+        {
+          "id": "E",
+          "text": "The /effort command"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** This is the organization setting that caps effort by role on the server and does not reach provider sessions such as Bedrock. The question explicitly excludes it.\n\n- **{{option:B}}.** This environment variable selects an effort level; it does not set a cap.\n\n- **{{option:C}}.** Correct. It caps effort globally or per model and applies to every provider.\n\n- **{{option:D}}.** This setting selects an effort level; it does not impose an upper limit.\n\n- **{{option:E}}.** This command lets a developer change session effort; it is not an organization-imposed cap.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SDP",
+        "Solution Design",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L4",
+        "Large-Scale Cost and Capacity Optimization",
+        "Human approval",
+        "Logging and tracing",
+        "Deployment",
+        "Cost management",
+        "Security controls",
+        "Coding assistance"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
     }
   ],
   "nameKo": "솔루션 설계"

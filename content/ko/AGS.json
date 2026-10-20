@@ -4684,6 +4684,886 @@
         "version": 1,
         "method": "rule-based-draft"
       }
+    },
+    {
+      "id": 93,
+      "sourceId": "RGV-I01",
+      "title": "응답을 모아 소형 모델을 맞추는 협력사",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 1,
+      "difficulty": "L3",
+      "sourceTopic": "사용 정책과 모델 행동 원칙",
+      "prompt": "협력사가 지원 지역 안에서 쓰는 Claude 계정 하나(정지된 적 없음)로 질문을 대량 전송하고, 안전장치는 건드리지 않은 채 돌려받은 응답을 모아 자사 소형 모델이 같은 응답을 내도록 가중치를 조정한다. Anthropic 사용 정책에서 사전 승인 없이 이 행위가 해당하는 금지 사항은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "여러 계정을 만들어 탐지를 피하면서 악의적 활동을 조율하는 행위"
+        },
+        {
+          "id": "B",
+          "text": "자동화로 계정을 만들거나 스팸성 행동을 하는 행위"
+        },
+        {
+          "id": "C",
+          "text": "입력과 출력을 다른 AI 모델의 학습에 사용하는 행위"
+        },
+        {
+          "id": "D",
+          "text": "정지된 주체가 새 계정이나 다른 계정으로 접근하는 행위"
+        },
+        {
+          "id": "E",
+          "text": "안전장치를 의도적으로 무력화해 유해한 출력을 얻는 행위"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** 틀림. 지문의 계정은 하나뿐이라 여러 계정을 이용한 탐지 회피에 해당하지 않는다.\n\n- **{{option:B}}.** 틀림. 지문에는 계정 생성 자동화나 스팸성 행동이 없다.\n\n- **{{option:C}}.** 맞음. 돌려받은 응답으로 다른 모델의 가중치를 조정하는 것은 입력과 출력을 AI 모델 학습에 쓰는 행위(model scraping, model distillation)이며, 사전 승인이 없으면 금지 사항이다.\n\n- **{{option:D}}.** 틀림. 지문의 계정은 정지된 적이 없으므로 정지 우회가 아니다.\n\n- **{{option:E}}.** 틀림. 지문에서 안전장치는 건드리지 않았으므로 무력화에 해당하지 않는다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T1",
+        "단일 선택",
+        "L3",
+        "사용 정책과 모델 행동 원칙",
+        "사람의 승인",
+        "사용 정책",
+        "Claude",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 94,
+      "sourceId": "RGV-I02",
+      "title": "출시 뒤 사용자가 알려 오는 창구",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "책임 있는 운영 절차",
+      "prompt": "출시한 챗봇에서 최종 사용자가 부적절한 답변을 발견하면 알릴 수 있는 창구를 마련하고, 접수된 내용은 사람이 살펴 상황에 맞게 대응하려 한다. OpenAI 안전 모범 사례의 어느 항목에 해당하는가?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Human in the loop (HITL)"
+        },
+        {
+          "id": "B",
+          "text": "Adversarial testing"
+        },
+        {
+          "id": "C",
+          "text": "Prompt engineering"
+        },
+        {
+          "id": "D",
+          "text": "Understand and communicate limitations"
+        },
+        {
+          "id": "E",
+          "text": "Allow users to report issues"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** 틀림. 이 항목은 출력이 실제로 쓰이기 전에 사람이 검토하는 것인데, 지문은 사용자가 답변을 본 뒤 알리는 창구를 다룬다.\n\n- **{{option:B}}.** 틀림. 이 항목은 출시 전에 적대적 입력으로 견고성을 점검하는 것이며, 출시 후 사용자 접수 창구가 아니다.\n\n- **{{option:C}}.** 틀림. 이 항목은 프롬프트로 출력의 주제와 어조를 제한하는 것이다.\n\n- **{{option:D}}.** 틀림. 이 항목은 모델이 목적에 맞는지 따져 한계를 알리는 것이며, 사용자 신고를 받는 절차가 아니다.\n\n- **{{option:E}}.** 맞음. 사용자가 문제를 알릴 수 있는 방법을 두고 사람이 모니터링하여 적절히 대응하는 항목이다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T1",
+        "단일 선택",
+        "L3",
+        "책임 있는 운영 절차",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 95,
+      "sourceId": "RGV-I03",
+      "title": "모델을 구슬려 막힌 내용을 얻어내는 입력",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 1,
+      "difficulty": "L3",
+      "sourceTopic": "사용 정책과 모델 행동 원칙",
+      "prompt": "한 사용자가 모델이 내놓지 않아야 할 내용을 내놓게끔 입력 문구를 교묘하게 가공한다. 이 요청은 사람을 추적하거나 어떤 결정을 내리게 하려는 것이 아니고, 금전 편취나 피싱 문안을 얻으려는 것도 아니다. Google 생성형 AI 금지 사용 정책에서 이 행위가 해당하는 항목은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "남용 방지 장치나 안전 필터를 우회하는 행위"
+        },
+        {
+          "id": "B",
+          "text": "스팸, 피싱 또는 악성코드를 만드는 행위"
+        },
+        {
+          "id": "C",
+          "text": "사기, 스캠 등 기만 행위"
+        },
+        {
+          "id": "D",
+          "text": "사람을 동의 없이 추적하거나 모니터링하는 행위"
+        },
+        {
+          "id": "E",
+          "text": "개인의 권리에 중대한 불리한 영향을 주는 결정을 사람의 감독 없이 자동화된 방식으로 내리는 행위"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** 맞음. 모델이 정책에 어긋나게 동작하도록 조작해 남용 방지 장치나 안전 필터를 우회하는 행위를 금지하는 항목이다.\n\n- **{{option:B}}.** 틀림. 지문은 피싱 문안이나 악성코드를 얻으려는 것이 아니라고 했다.\n\n- **{{option:C}}.** 틀림. 지문은 금전 편취 같은 기만 행위를 목적으로 하지 않는다.\n\n- **{{option:D}}.** 틀림. 지문은 사람을 추적하거나 모니터링하려는 것이 아니라고 했다.\n\n- **{{option:E}}.** 틀림. 지문은 어떤 결정을 내리게 하려는 것이 아니라고 했다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T1",
+        "단일 선택",
+        "L3",
+        "사용 정책과 모델 행동 원칙",
+        "사용 정책",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 96,
+      "sourceId": "RGV-I04",
+      "title": "개인에 묶이지 않는 최상위 권한자",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 3,
+      "difficulty": "L3",
+      "sourceTopic": "조직 내 사용 통제",
+      "prompt": "Claude Enterprise 조직에서 데이터 내보내기를 요청할 수 있는 권한을 특정 직원 개인에 묶이지 않게 두려 한다. 문서에 근거해 가능한 구성은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Primary Owner를 개인이 아닌 서비스 계정으로 지정한다"
+        },
+        {
+          "id": "B",
+          "text": "Primary Owner를 직원 두 명에게 공동으로 지정한다"
+        },
+        {
+          "id": "C",
+          "text": "서비스 계정을 Owner로 지정하고 내보내기를 Owner가 요청한다"
+        },
+        {
+          "id": "D",
+          "text": "Admin 역할을 여러 명에게 주고 내보내기를 Admin이 요청한다"
+        },
+        {
+          "id": "E",
+          "text": "개인을 Primary Owner로, 서비스 계정을 Owner로 함께 지정한다"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** 맞음. 데이터 내보내기 요청은 Primary Owner만 할 수 있고, Primary Owner는 개인에 묶이지 않은 서비스 계정일 수 있다.\n\n- **{{option:B}}.** 틀림. 조직에는 Primary Owner를 한 명만 둘 수 있다.\n\n- **{{option:C}}.** 틀림. 내보내기 요청은 Primary Owner에게만 허용되어 Owner는 요청할 수 없다.\n\n- **{{option:D}}.** 틀림. 내보내기 요청은 Primary Owner에게만 허용되어 Admin은 요청할 수 없다.\n\n- **{{option:E}}.** 틀림. 내보내기를 요청하는 Primary Owner가 여전히 개인이므로 지문의 요구(개인에 묶이지 않을 것)를 충족하지 못한다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T2",
+        "단일 선택",
+        "L3",
+        "조직 내 사용 통제",
+        "권한 관리",
+        "출처 검증",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 97,
+      "sourceId": "RGV-I05",
+      "title": "기한이 지나 사라지는 대화 데이터",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "데이터 거버넌스",
+      "prompt": "조직 소유자가 정한 일수가 지나면 UTC 자정에 대화 데이터가 복구할 수 없게 삭제되도록 Claude Enterprise에 조직 단위 보존 기간을 설정했다. 이 설정의 적용을 받지 않는다고 문서가 밝힌 것은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "프로젝트에 속하지 않은 단독 채팅"
+        },
+        {
+          "id": "B",
+          "text": "단독 채팅 안에서 만들어진 아티팩트"
+        },
+        {
+          "id": "C",
+          "text": "프로젝트 안에 담긴 콘텐츠"
+        },
+        {
+          "id": "D",
+          "text": "클라우드에서 Claude Code를 실행하는 기능"
+        },
+        {
+          "id": "E",
+          "text": "보존 기간을 줄이기 전에 만들어져 새 기간 밖에 놓인 채팅"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** 틀림. 프로젝트에 속하지 않은 단독 채팅은 이 설정에 따라 삭제된다.\n\n- **{{option:B}}.** 틀림. 단독 채팅 안의 아티팩트도 채팅과 함께 삭제된다.\n\n- **{{option:C}}.** 틀림. 사용자 지정 보존 기간은 프로젝트의 콘텐츠에도 적용된다.\n\n- **{{option:D}}.** 맞음. 이 설정은 클라우드에서 Claude Code를 실행하는 기능에는 적용되지 않는다고 문서가 밝혔다.\n\n- **{{option:E}}.** 틀림. 보존 기간을 줄이면 새 기간 밖의 데이터는 영구 삭제 대상으로 예약되므로 적용을 받는다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T2",
+        "단일 선택",
+        "L3",
+        "데이터 거버넌스",
+        "데이터 보존",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 98,
+      "sourceId": "RGV-I06",
+      "title": "위험 능력 수준에 닿았을 때의 출시 전 절차",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 5,
+      "difficulty": "L3",
+      "sourceTopic": "프런티어 안전 프레임워크",
+      "prompt": "Google DeepMind의 Frontier Safety Framework에서, 모델이 해당 위험 능력 수준에 도달했을 때 외부 출시에 앞서 이행한다고 밝힌 절차는?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "모델 카드 게시"
+        },
+        {
+          "id": "B",
+          "text": "Safety case review"
+        },
+        {
+          "id": "C",
+          "text": "해로운 조작 능력 수준(Critical Capability Level)의 지정"
+        },
+        {
+          "id": "D",
+          "text": "모델 오정렬(misalignment)에 따른 위험의 정의"
+        },
+        {
+          "id": "E",
+          "text": "CCL에 이르기 전에 적용하는 안전·보안 완화 조치"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** 틀림. 모델 카드는 모델 설명 문서이며, 지문이 묻는 '도달했을 때 출시 전에 이행하는 절차'로 문서가 밝힌 것이 아니다.\n\n- **{{option:B}}.** 맞음. 문서는 관련 CCL에 도달하면 외부 출시 전에 safety case review를 수행한다고 밝혔다.\n\n- **{{option:C}}.** 틀림. 해로운 조작은 CCL로 다루는 위험 영역이며 출시 전에 이행하는 절차가 아니다.\n\n- **{{option:D}}.** 틀림. 오정렬은 위험을 설명하는 개념이며 출시 전에 이행하는 절차가 아니다.\n\n- **{{option:E}}.** 틀림. 이 조치는 특정 CCL에 이르기 전에 적용하는 것이어서, 지문의 '도달했을 때'와 시점이 다르다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T2",
+        "단일 선택",
+        "L3",
+        "프런티어 안전 프레임워크",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 99,
+      "sourceId": "RGV-I07",
+      "title": "옛 이름으로 적힌 벡터 검색 항목",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T3",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "데이터 거버넌스",
+      "prompt": "사내 데이터 거버넌스 표준에 'Vertex AI Vector Search 2.0'으로 적힌 항목이 있다. Google Cloud의 이름 변경 안내에 따른 현행 명칭은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Vector Search on Gemini Enterprise Agent Platform"
+        },
+        {
+          "id": "B",
+          "text": "Gemini Enterprise Agent Platform Pipelines"
+        },
+        {
+          "id": "C",
+          "text": "Gemini Enterprise Agent Platform API"
+        },
+        {
+          "id": "D",
+          "text": "Agent Platform Generative AI"
+        },
+        {
+          "id": "E",
+          "text": "Agent Retrieval on Gemini Enterprise Agent Platform"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** 틀림. 이 이름은 2.0이 붙지 않은 'Vertex AI Vector Search'의 현행 명칭이다.\n\n- **{{option:B}}.** 틀림. 이 이름은 'Vertex AI Pipelines'의 현행 명칭이다.\n\n- **{{option:C}}.** 틀림. 이 이름은 'Vertex AI API'의 현행 명칭이다.\n\n- **{{option:D}}.** 틀림. 이 이름은 'Vertex AI Generative AI'의 현행 명칭이다.\n\n- **{{option:E}}.** 맞음. 'Vertex AI Vector Search 2.0'은 'Agent Retrieval on Gemini Enterprise Agent Platform'으로 바뀌었다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T3",
+        "단일 선택",
+        "L3",
+        "데이터 거버넌스",
+        "검색 품질",
+        "벡터 검색",
+        "거버넌스",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 100,
+      "sourceId": "RGV-I08",
+      "title": "옛 이름으로 적힌 프롬프트 작업 도구 항목",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T3",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "데이터 거버넌스",
+      "prompt": "같은 표준에 'Vertex AI Studio'로 적힌 항목이 있다. Google Cloud의 이름 변경 안내에 따른 현행 명칭은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Google AI Studio"
+        },
+        {
+          "id": "B",
+          "text": "Agent Studio on Gemini Enterprise Agent Platform"
+        },
+        {
+          "id": "C",
+          "text": "Agent Platform Generative AI"
+        },
+        {
+          "id": "D",
+          "text": "Gemini Enterprise Agent Platform Pipelines"
+        },
+        {
+          "id": "E",
+          "text": "Gemini Enterprise Agent Platform API"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** 틀림. Google AI Studio는 Vertex AI Studio의 이름이 바뀐 것이 아니며, 이름 변경 안내의 대상이 아니다.\n\n- **{{option:B}}.** 맞음. 'Vertex AI Studio'는 'Agent Studio on Gemini Enterprise Agent Platform'으로 바뀌었다.\n\n- **{{option:C}}.** 틀림. 이 이름은 'Vertex AI Generative AI'의 현행 명칭이다.\n\n- **{{option:D}}.** 틀림. 이 이름은 'Vertex AI Pipelines'의 현행 명칭이다.\n\n- **{{option:E}}.** 틀림. 이 이름은 'Vertex AI API'의 현행 명칭이다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T3",
+        "단일 선택",
+        "L3",
+        "데이터 거버넌스",
+        "프롬프트 작성",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 101,
+      "sourceId": "RGV-I09",
+      "title": "초대·제거와 열람만 맡기는 역할",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 3,
+      "difficulty": "L3",
+      "sourceTopic": "조직 내 사용 통제",
+      "prompt": "Claude Enterprise 조직에서 인사 담당자에게 구성원을 초대하고 제거하는 일과 사용량 분석 열람을 맡기려 한다. 다른 사람의 관리자급 역할을 부여하거나 회수하는 일, SSO·인증 관리, 보존 설정 변경은 맡기지 않는다. 부여할 기본 제공 역할은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Owner"
+        },
+        {
+          "id": "B",
+          "text": "Primary Owner"
+        },
+        {
+          "id": "C",
+          "text": "User"
+        },
+        {
+          "id": "D",
+          "text": "Admin"
+        },
+        {
+          "id": "E",
+          "text": "Custom (사용자 지정 역할을 할당받지 않은 상태)"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** 틀림. Owner는 관리자급 역할의 부여·회수와 SSO·인증 관리, 보존 설정 변경도 할 수 있어 맡기지 않을 일까지 포함한다.\n\n- **{{option:B}}.** 틀림. Primary Owner도 같은 이유로 범위가 넓고, 한 조직에 한 명만 둘 수 있다.\n\n- **{{option:C}}.** 틀림. User는 구성원을 초대하거나 제거하는 권한이 표에 없다.\n\n- **{{option:D}}.** 맞음. Admin은 구성원 초대·제거와 (Enterprise의) 사용량 분석 열람이 가능하고, 관리자급 역할 부여·회수와 SSO·보존 설정은 Owner·Primary Owner의 권한이다.\n\n- **{{option:E}}.** 틀림. 할당된 사용자 지정 역할이 없는 Custom 구성원은 기본 권한이 없어 초대·제거와 열람을 할 수 없다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T4",
+        "단일 선택",
+        "L3",
+        "조직 내 사용 통제",
+        "인증",
+        "데이터 보존",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 102,
+      "sourceId": "RGV-I10",
+      "title": "빈 좌석이 없다고 나오는 초대",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 3,
+      "difficulty": "L3",
+      "sourceTopic": "조직 내 사용 통제",
+      "prompt": "Claude Team 조직의 좌석 10개 중 Primary Owner를 포함한 활성 구성원은 7명이고, 이메일 초대 3건은 이번 주에 보냈으나 초대받은 사람들이 아직 합류하지 않았다. 구성원을 제거한 적은 없고 SSO 프로비저닝도 쓰지 않는데, 새 구성원을 추가하려 하면 빈 좌석이 없다고 나온다. 원인에 해당하는 문서 항목은?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "초대는 21일이 지나면 만료되어 다시 초대해야 한다"
+        },
+        {
+          "id": "B",
+          "text": "SSO로 프로비저닝하려면 Owner가 먼저 좌석을 확보해야 한다"
+        },
+        {
+          "id": "C",
+          "text": "수락하지 않은 초대도 좌석을 차지한다"
+        },
+        {
+          "id": "D",
+          "text": "구성원을 제거해도 요금제의 전체 좌석 수는 줄지 않는다"
+        },
+        {
+          "id": "E",
+          "text": "Primary Owner 좌석도 라이선스 하나를 쓴다"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** 틀림. 초대는 이번 주에 보냈으므로 아직 만료 전이고, 만료는 좌석 부족의 원인이 아니라 재초대의 사유다.\n\n- **{{option:B}}.** 틀림. 지문은 SSO 프로비저닝을 쓰지 않는다.\n\n- **{{option:C}}.** 맞음. 대기 중인 초대는 수락 여부와 관계없이 좌석을 차지하므로 활성 7명과 초대 3건이 좌석 10개를 채운다.\n\n- **{{option:D}}.** 틀림. 지문에서 제거한 구성원은 없다.\n\n- **{{option:E}}.** 틀림. 활성 구성원 7명에 이미 Primary Owner가 포함되어 있어, 이 사실로는 빈 좌석이 없는 이유를 설명하지 못한다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T5",
+        "단일 선택",
+        "L3",
+        "조직 내 사용 통제",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 103,
+      "sourceId": "RGV-S1-1",
+      "title": "주제 제한과 출시 전 견고성 점검",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "책임 있는 운영 절차",
+      "caseSet": "RGV-S1",
+      "prompt": "상담 보조가 정해진 주제와 어조 안에서만 답하게 하고, 출시 전에 악의적 입력에도 견디는지 점검하려 한다. 응답을 사람이 전부 사전 검토하는 방식은 쓸 수 없다. 필요한 OpenAI 안전 모범 사례의 조합은?",
+      "context": "**환경:** OpenAI 기반 상담 보조와 ChatGPT·Claude 워크스페이스를 심사하는 핀테크 AI위원회\n\n**지문:** 새빛페이 AI위원회는 분기 말 출시를 목표로 OpenAI 기반 고객 상담 보조를 승인하려 한다. 상담 인력은 6명이라 응답 전부를 사람이 사전에 검토할 수 없고, 외부 변호사는 선임하지 않는다. 사내 문서 작업은 2025년 8월 29일 이전 이름이 ChatGPT Team이던 요금제의 워크스페이스에서 하며, 협력사 직원은 Claude Enterprise를 쓴다. 승인서에는 공급사 문서의 용어를 그대로 인용해야 한다.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Know your customer + Adversarial testing"
+        },
+        {
+          "id": "B",
+          "text": "Prompt engineering + Adversarial testing"
+        },
+        {
+          "id": "C",
+          "text": "Human in the loop + Adversarial testing"
+        },
+        {
+          "id": "D",
+          "text": "Prompt engineering + Human in the loop"
+        },
+        {
+          "id": "E",
+          "text": "Understand and communicate limitations + Prompt engineering"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** 틀림. Know your customer는 사용자 등록·로그인으로 접근을 관리하는 것이어서 응답의 주제와 어조를 제한하지 못한다.\n\n- **{{option:B}}.** 맞음. Prompt engineering은 출력의 주제와 어조를 제한하고, Adversarial testing은 출시 전에 적대적 입력에 대한 견고성을 점검한다. 둘 다 사람의 전수 사전 검토가 필요 없다.\n\n- **{{option:C}}.** 틀림. Human in the loop는 사람이 출력을 사전에 검토하는 방식이라 인력 6명의 제약과 충돌하고, 주제·어조 제한도 해결하지 못한다.\n\n- **{{option:D}}.** 틀림. Human in the loop는 인력 제약과 충돌하며, 출시 전 악의적 입력 점검도 빠져 있다.\n\n- **{{option:E}}.** 틀림. Understand and communicate limitations는 한계를 평가해 알리는 항목이어서 악의적 입력에 대한 견고성 점검을 대신하지 못한다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T4",
+        "단일 선택",
+        "L4",
+        "책임 있는 운영 절차",
+        "사람의 승인",
+        "비용 관리",
+        "ChatGPT",
+        "Claude",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 104,
+      "sourceId": "RGV-S1-2",
+      "title": "소송 여부를 맞춤 안내하는 기능",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 1,
+      "difficulty": "L4",
+      "sourceTopic": "사용 정책과 모델 행동 원칙",
+      "caseSet": "RGV-S1",
+      "prompt": "고객이 자기 사정을 입력하면 소송을 낼지와 그 절차를 사정에 맞춰 알려 주는 기능을 두려 한다. 이 기능을 검토할 변호사는 선임하지 않는다. OpenAI 사용 정책의 어느 금지 항목에 걸리는가?",
+      "context": "**환경:** OpenAI 기반 상담 보조와 ChatGPT·Claude 워크스페이스를 심사하는 핀테크 AI위원회\n\n**지문:** 새빛페이 AI위원회는 분기 말 출시를 목표로 OpenAI 기반 고객 상담 보조를 승인하려 한다. 상담 인력은 6명이라 응답 전부를 사람이 사전에 검토할 수 없고, 외부 변호사는 선임하지 않는다. 사내 문서 작업은 2025년 8월 29일 이전 이름이 ChatGPT Team이던 요금제의 워크스페이스에서 하며, 협력사 직원은 Claude Enterprise를 쓴다. 승인서에는 공급사 문서의 용어를 그대로 인용해야 한다.",
+      "options": [
+        {
+          "id": "A",
+          "text": "사회적 행동이나 인적 특성에 따른 개인의 평가·분류"
+        },
+        {
+          "id": "B",
+          "text": "검토와 승인 없는 국가안보·정보 목적의 사용"
+        },
+        {
+          "id": "C",
+          "text": "면허가 필요한 맞춤 조언을 면허 전문가의 적절한 관여 없이 제공하는 행위"
+        },
+        {
+          "id": "D",
+          "text": "현금을 거는 도박"
+        },
+        {
+          "id": "E",
+          "text": "개인이 범죄를 저지를 위험의 평가·예측"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** 틀림. 지문의 기능은 개인을 평가하거나 분류하지 않고 소송 관련 안내를 한다.\n\n- **{{option:B}}.** 틀림. 지문은 국가안보·정보 목적과 관계가 없다.\n\n- **{{option:C}}.** 맞음. 소송 여부와 절차를 개인 사정에 맞춰 안내하는 것은 면허가 필요한 맞춤 조언이고, 변호사의 관여가 없으므로 해당한다.\n\n- **{{option:D}}.** 틀림. 지문에는 금전을 거는 게임이 없다.\n\n- **{{option:E}}.** 틀림. 소송을 낼지에 대한 안내는 범죄 위험을 평가하거나 예측하는 것이 아니다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T2",
+        "단일 선택",
+        "L4",
+        "사용 정책과 모델 행동 원칙",
+        "사람의 승인",
+        "비용 관리",
+        "사용 정책",
+        "ChatGPT",
+        "Claude",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 105,
+      "sourceId": "RGV-S1-3",
+      "title": "선례 없는 위험을 가리키는 용어",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 5,
+      "difficulty": "L4",
+      "sourceTopic": "프런티어 안전 프레임워크",
+      "caseSet": "RGV-S1",
+      "prompt": "승인서에 OpenAI Preparedness Framework의 용어를 인용하려 한다. 기존 위험 경로를 키우는 정도가 아니라, 이전에 대응 사례가 없던 새로운 위협 경로로 심각한 피해를 낳을 의미 있는 위험이 있는 능력 수준을 가리키는 용어는?",
+      "context": "**환경:** OpenAI 기반 상담 보조와 ChatGPT·Claude 워크스페이스를 심사하는 핀테크 AI위원회\n\n**지문:** 새빛페이 AI위원회는 분기 말 출시를 목표로 OpenAI 기반 고객 상담 보조를 승인하려 한다. 상담 인력은 6명이라 응답 전부를 사람이 사전에 검토할 수 없고, 외부 변호사는 선임하지 않는다. 사내 문서 작업은 2025년 8월 29일 이전 이름이 ChatGPT Team이던 요금제의 워크스페이스에서 하며, 협력사 직원은 Claude Enterprise를 쓴다. 승인서에는 공급사 문서의 용어를 그대로 인용해야 한다.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Tracked Categories"
+        },
+        {
+          "id": "B",
+          "text": "Research Categories"
+        },
+        {
+          "id": "C",
+          "text": "High capability thresholds"
+        },
+        {
+          "id": "D",
+          "text": "Critical capability thresholds"
+        },
+        {
+          "id": "E",
+          "text": "Safeguards Report"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** 틀림. Tracked Categories는 가장 면밀히 추적하는 능력 영역의 묶음이며 능력 수준(임계)이 아니다.\n\n- **{{option:B}}.** 틀림. Research Categories는 추적 범주의 기준에 아직 못 미치는 능력을 다루는 범주이며 임계가 아니다.\n\n- **{{option:C}}.** 틀림. High capability thresholds는 기존 위험 경로를 상당히 키우는 능력을 가리키므로 지문의 '새로운 경로'와 다르다.\n\n- **{{option:D}}.** 맞음. Critical capability thresholds는 심각한 피해에 대해 질적으로 새로운 위협 경로가 될 의미 있는 위험을 가진 능력을 가리킨다.\n\n- **{{option:E}}.** 틀림. Safeguards Report는 계획된 안전장치를 정리한 문서이며 능력 수준이 아니다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T2",
+        "단일 선택",
+        "L4",
+        "프런티어 안전 프레임워크",
+        "사람의 승인",
+        "비용 관리",
+        "ChatGPT",
+        "Claude",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 106,
+      "sourceId": "RGV-S1-4",
+      "title": "협력사 직원에게 기능을 그룹별로 여는 구성",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 3,
+      "difficulty": "L4",
+      "sourceTopic": "조직 내 사용 통제",
+      "caseSet": "RGV-S1",
+      "prompt": "협력사 직원은 Claude Enterprise에서 처음부터 주어지는 권한이 없어야 하고, 쓸 수 있는 기능은 소속 그룹 단위로 정해 열어야 한다. 필요한 구성은?",
+      "context": "**환경:** OpenAI 기반 상담 보조와 ChatGPT·Claude 워크스페이스를 심사하는 핀테크 AI위원회\n\n**지문:** 새빛페이 AI위원회는 분기 말 출시를 목표로 OpenAI 기반 고객 상담 보조를 승인하려 한다. 상담 인력은 6명이라 응답 전부를 사람이 사전에 검토할 수 없고, 외부 변호사는 선임하지 않는다. 사내 문서 작업은 2025년 8월 29일 이전 이름이 ChatGPT Team이던 요금제의 워크스페이스에서 하며, 협력사 직원은 Claude Enterprise를 쓴다. 승인서에는 공급사 문서의 용어를 그대로 인용해야 한다.",
+      "options": [
+        {
+          "id": "A",
+          "text": "구성원 역할을 User로 두고 그룹에 사용자 지정 역할을 할당한다"
+        },
+        {
+          "id": "B",
+          "text": "구성원 역할을 Admin으로 두고 그룹에 사용자 지정 역할을 할당한다"
+        },
+        {
+          "id": "C",
+          "text": "구성원 역할을 Custom으로 두고 개별 사용자에게 Owner를 부여한다"
+        },
+        {
+          "id": "D",
+          "text": "구성원 역할을 Custom으로만 설정하고 그룹에는 역할을 할당하지 않는다"
+        },
+        {
+          "id": "E",
+          "text": "구성원 역할을 Custom으로 설정하고 해당 그룹에 사용자 지정 역할을 할당한다"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** 틀림. User는 기본으로 주어지는 권한이 있어 '처음부터 주어지는 권한이 없어야 한다'는 요구를 충족하지 못한다.\n\n- **{{option:B}}.** 틀림. Admin도 기본 권한이 있어 같은 요구를 충족하지 못한다.\n\n- **{{option:C}}.** 틀림. 개인에게 Owner를 주면 범위가 넓고 그룹 단위가 아니어서 요구와 맞지 않는다.\n\n- **{{option:D}}.** 틀림. Custom 구성원은 기본 권한이 없지만, 그룹에 역할을 할당하지 않으면 쓸 수 있는 기능이 하나도 열리지 않는다.\n\n- **{{option:E}}.** 맞음. Custom 구성원은 기본 권한이 없고 접근은 그룹에 할당된 사용자 지정 역할로 결정되므로 두 요구를 모두 충족한다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T4",
+        "단일 선택",
+        "L4",
+        "조직 내 사용 통제",
+        "사람의 승인",
+        "비용 관리",
+        "권한 관리",
+        "ChatGPT",
+        "Claude",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 107,
+      "sourceId": "RGV-S1-5",
+      "title": "제거된 구성원이 남긴 대화",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T6",
+      "domain": 2,
+      "difficulty": "L4",
+      "sourceTopic": "데이터 거버넌스",
+      "caseSet": "RGV-S1",
+      "prompt": "지문의 사내 문서 작업 워크스페이스에서 구성원 한 명을 제거했다. 문서에 따르면 그 구성원이 만든 대화와 올린 파일은 어떻게 되는가?",
+      "context": "**환경:** OpenAI 기반 상담 보조와 ChatGPT·Claude 워크스페이스를 심사하는 핀테크 AI위원회\n\n**지문:** 새빛페이 AI위원회는 분기 말 출시를 목표로 OpenAI 기반 고객 상담 보조를 승인하려 한다. 상담 인력은 6명이라 응답 전부를 사람이 사전에 검토할 수 없고, 외부 변호사는 선임하지 않는다. 사내 문서 작업은 2025년 8월 29일 이전 이름이 ChatGPT Team이던 요금제의 워크스페이스에서 하며, 협력사 직원은 Claude Enterprise를 쓴다. 승인서에는 공급사 문서의 용어를 그대로 인용해야 한다.",
+      "options": [
+        {
+          "id": "A",
+          "text": "기한 없이 보존된다"
+        },
+        {
+          "id": "B",
+          "text": "워크스페이스에 정한 보존 기간 동안만 보존된다"
+        },
+        {
+          "id": "C",
+          "text": "프로젝트와 함께 새 소유자에게 이전되어 보인다"
+        },
+        {
+          "id": "D",
+          "text": "제거할 때 함께 삭제된다"
+        },
+        {
+          "id": "E",
+          "text": "구성원을 다시 추가해도 복원되지 않는다"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** 맞음. 'ChatGPT Team'은 2025년 8월 29일에 ChatGPT Business로 이름이 바뀐 요금제이고, Business 워크스페이스에서 제거된 구성원의 대화·파일은 기한 없이 보존된다.\n\n- **{{option:B}}.** 틀림. 설정된 기간 동안만 보존되는 것은 보존 기간을 정한 Enterprise·Edu의 경우이며, 지문의 워크스페이스는 Business다.\n\n- **{{option:C}}.** 틀림. 프로젝트와 GPT의 소유권은 넘어가지만, 구성원이 만든 대화와 파일은 이전되지 않고 워크스페이스 소유자에게도 보이지 않는다.\n\n- **{{option:D}}.** 틀림. 구성원을 제거해도 대화와 파일은 삭제되지 않고 남는다.\n\n- **{{option:E}}.** 틀림. 구성원을 다시 추가하면 그 구성원의 콘텐츠가 복원된다.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AGS",
+        "AI Governance",
+        "간접",
+        "T6",
+        "단일 선택",
+        "L4",
+        "데이터 거버넌스",
+        "사람의 승인",
+        "비용 관리",
+        "ChatGPT",
+        "Claude",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
     }
   ],
   "nameKo": "AI 거버넌스"

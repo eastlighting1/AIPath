@@ -5428,6 +5428,1293 @@
         "version": 1,
         "method": "rule-based-draft"
       }
+    },
+    {
+      "id": 104,
+      "sourceId": "ASX-I01",
+      "title": "Approval based on the sandbox boundary",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 3,
+      "difficulty": "L3",
+      "sourceTopic": "3 Agent and tool security",
+      "prompt": "Claude Code's Bash sandbox has two operating modes. A team wants commands inside the sandbox boundary to run without approval prompts, while commands outside it follow the regular permission flow. They do not want a separate classifier model to review actions. Which mode should they choose?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Regular permissions mode"
+        },
+        {
+          "id": "B",
+          "text": "Auto mode"
+        },
+        {
+          "id": "C",
+          "text": "Auto-allow mode"
+        },
+        {
+          "id": "D",
+          "text": "acceptEdits mode"
+        },
+        {
+          "id": "E",
+          "text": "bypassPermissions mode"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** Regular permissions mode keeps even sandboxed commands in the regular permission flow and eligible for prompts, so it does not meet the no-prompt requirement for sandboxed commands.\n\n- **{{option:B}}.** Auto mode uses a separate classifier model to review and approve actions, which the scenario excludes.\n\n- **{{option:C}}.** Correct. Auto-allow mode approves commands inside the sandbox without prompts. Commands running outside through exclusions or unsandboxed retries follow the regular permission flow.\n\n- **{{option:D}}.** acceptEdits mode approves file edits in the working directory and a fixed set of filesystem commands. Its approval boundary is command type, not sandbox containment.\n\n- **{{option:E}}.** bypassPermissions mode also executes unsandboxed retries without prompting, conflicting with the requirement that outside commands follow the regular permission flow.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Agent and tool security",
+        "Human approval",
+        "Sandboxing",
+        "Prompt writing",
+        "Model selection",
+        "Access control",
+        "Coding assistance"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 105,
+      "sourceId": "ASX-I02",
+      "title": "Looking for successful injection after generation",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 6,
+      "difficulty": "L3",
+      "sourceTopic": "6 Detection and response",
+      "prompt": "A chatbot team already validates inputs before sending them to the model and has strengthened its system prompt. It now wants to regularly analyze model outputs for signs of successful prompt injection and iteratively improve prompting, validation, and filtering based on those findings. Which item in Anthropic's jailbreak and injection mitigation documentation describes this activity?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Continuous monitoring"
+        },
+        {
+          "id": "B",
+          "text": "Input validation"
+        },
+        {
+          "id": "C",
+          "text": "Harmlessness screens"
+        },
+        {
+          "id": "D",
+          "text": "Prompt engineering"
+        },
+        {
+          "id": "E",
+          "text": "Respond to repeat offenders"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. Continuous monitoring regularly analyzes outputs for signs of successful injection and uses the findings to iteratively refine prompting, validation, and filtering strategies.\n\n- **{{option:B}}.** Input validation filters known injection patterns before inputs reach the model. It is the input-stage control already in place, not output analysis.\n\n- **{{option:C}}.** Harmlessness screens use a lightweight model to classify user input in advance. This is an input-stage control, not output analysis.\n\n- **{{option:D}}.** Prompt engineering expresses ethical/legal boundaries and refusal behavior in the system prompt, corresponding to the strengthening already completed.\n\n- **{{option:E}}.** Respond to repeat offenders restricts or blocks users repeatedly attempting to bypass guardrails. It is a user-level action, not output analysis.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Detection and response",
+        "Prompt writing",
+        "Anthropic"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 106,
+      "sourceId": "ASX-I03",
+      "title": "Finding improvements through self-directed attacks",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 5,
+      "difficulty": "L3",
+      "sourceTopic": "5 Red teaming and safety evaluation",
+      "prompt": "An organization plans self-directed adversarial attempts against its AI infrastructure and products to identify security and privacy improvements. It is not referring to techniques for making a model itself robust to adversarial inputs. Which SAIF control describes this activity?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Adversarial Training and Testing"
+        },
+        {
+          "id": "B",
+          "text": "Input Validation and Sanitization"
+        },
+        {
+          "id": "C",
+          "text": "Agent Observability"
+        },
+        {
+          "id": "D",
+          "text": "Application Access Management"
+        },
+        {
+          "id": "E",
+          "text": "Red Teaming"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** Adversarial Training and Testing applies techniques to make models robust to adversarial inputs, which the question explicitly excludes.\n\n- **{{option:B}}.** Input Validation and Sanitization blocks or constrains adversarial queries, rather than conducting an activity to discover improvements.\n\n- **{{option:C}}.** Agent Observability makes agent actions, tool use, and reasoning transparent through logs.\n\n- **{{option:D}}.** Application Access Management restricts resource access to authorized users and endpoints.\n\n- **{{option:E}}.** Correct. Red Teaming uses self-directed adversarial attacks against AI infrastructure and products to identify security and privacy improvements.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Red teaming and safety evaluation",
+        "Security controls"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 107,
+      "sourceId": "ASX-I04",
+      "title": "The risk from resource-intensive queries",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 1,
+      "difficulty": "L3",
+      "sourceTopic": "1 LLM threat modeling",
+      "prompt": "During threat modeling, a team lists the risk of making an ML service unavailable by sending resource-intensive queries. Stealing or replicating the model is addressed separately. What name does SAIF give this risk?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Model Exfiltration"
+        },
+        {
+          "id": "B",
+          "text": "Denial of ML Service"
+        },
+        {
+          "id": "C",
+          "text": "Model Evasion"
+        },
+        {
+          "id": "D",
+          "text": "Insecure Integrated Component"
+        },
+        {
+          "id": "E",
+          "text": "Model Reverse Engineering"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** Model Exfiltration is unauthorized acquisition of an AI model, conflicting with the scenario's separate treatment of model theft or replication.\n\n- **{{option:B}}.** Correct. Denial of ML Service reduces ML system availability through resource-intensive queries, causing denial of service.\n\n- **{{option:C}}.** Model Evasion subtly alters prompt inputs to cause incorrect inference; it is not an availability risk.\n\n- **{{option:D}}.** Insecure Integrated Component concerns vulnerabilities in integrated software such as plugins, libraries, and applications.\n\n- **{{option:E}}.** Model Reverse Engineering analyzes inputs, outputs, and behavior to replicate a model, a category the scenario addresses separately.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "LLM threat modeling",
+        "The risk from resource-intensive queries"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 108,
+      "sourceId": "ASX-I05",
+      "title": "Handling user information beyond policy limits",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "4 Data protection",
+      "prompt": "A service collects, retains, processes, and shares user information beyond what applicable policies permit. The issue is the information-handling practice itself, not private information leaking through model queries. What name does SAIF give this risk?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sensitive Data Disclosure"
+        },
+        {
+          "id": "B",
+          "text": "Unauthorized Training Data"
+        },
+        {
+          "id": "C",
+          "text": "Inferred Sensitive Data"
+        },
+        {
+          "id": "D",
+          "text": "Excessive Data Handling"
+        },
+        {
+          "id": "E",
+          "text": "Data Poisoning"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** Sensitive Data Disclosure exposes private or confidential information through queries to a model or agent. The scenario explicitly excludes query-based disclosure.\n\n- **{{option:B}}.** Unauthorized Training Data involves training a model on unauthorized data, rather than the collection, retention, processing, and sharing of user information.\n\n- **{{option:C}}.** Inferred Sensitive Data involves a model inferring sensitive information about a person that is absent from its training data.\n\n- **{{option:D}}.** Correct. Excessive Data Handling means collecting, retaining, processing, or sharing user data beyond what applicable policies permit.\n\n- **{{option:E}}.** Data Poisoning tampers with data sources used for training or retraining.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Data protection",
+        "Handling user information beyond policy limits"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 109,
+      "sourceId": "ASX-I06",
+      "title": "Denying unlisted hosts without prompting",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 3,
+      "difficulty": "L3",
+      "sourceTopic": "3 Agent and tool security",
+      "prompt": "An individual developer who receives no managed settings wants to use only their user settings to deny sandboxed commands access to hosts outside the allowlist instead of displaying a prompt. Which setting should they use?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "sandbox.network.allowManagedDomainsOnly"
+        },
+        {
+          "id": "B",
+          "text": "sandbox.network.strictAllowlist"
+        },
+        {
+          "id": "C",
+          "text": "sandbox.network.deniedDomains"
+        },
+        {
+          "id": "D",
+          "text": "sandbox.autoAllowBashIfSandboxed"
+        },
+        {
+          "id": "E",
+          "text": "sandbox.allowUnsandboxedCommands"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** allowManagedDomainsOnly is a lock that must be enabled in managed settings. A developer without managed settings cannot enable it through user settings.\n\n- **{{option:B}}.** Correct. Setting strictAllowlist to true in user settings or another applicable scope denies sandboxed commands access to unlisted hosts instead of prompting.\n\n- **{{option:C}}.** deniedDomains blocks only explicitly listed domains; it does not deny all hosts absent from an allowlist.\n\n- **{{option:D}}.** autoAllowBashIfSandboxed controls automatic approval of sandboxed commands, not whether a host connection is permitted.\n\n- **{{option:E}}.** allowUnsandboxedCommands controls whether commands that fail inside the sandbox may retry outside it. It does not control the allowlist.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Agent and tool security",
+        "Prompt writing",
+        "Deployment",
+        "Sandboxing",
+        "Coding assistance"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 110,
+      "sourceId": "ASX-I07",
+      "title": "Restricting the source of permission rules",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 3,
+      "difficulty": "L3",
+      "sourceTopic": "3 Agent and tool security",
+      "prompt": "An organization wants managed settings to be the sole source from which Claude Code loads tool permission rules. This must lock the permission rules themselves, not sandbox domains or readable paths. Which setting should it use?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "allowManagedDomainsOnly"
+        },
+        {
+          "id": "B",
+          "text": "allowManagedReadPathsOnly"
+        },
+        {
+          "id": "C",
+          "text": "permissions.disableAutoMode"
+        },
+        {
+          "id": "D",
+          "text": "permissions.disableBypassPermissionsMode"
+        },
+        {
+          "id": "E",
+          "text": "allowManagedPermissionRulesOnly"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** allowManagedDomainsOnly locks sandbox network domains to managed values, but the question excludes domain locking.\n\n- **{{option:B}}.** allowManagedReadPathsOnly accepts only managed sandbox allowRead entries, but the question excludes read-path locking.\n\n- **{{option:C}}.** disableAutoMode prohibits auto mode; it does not control where permission rules originate.\n\n- **{{option:D}}.** disableBypassPermissionsMode prohibits bypass mode; it does not control the source of permission rules.\n\n- **{{option:E}}.** Correct. allowManagedPermissionRulesOnly makes managed settings the sole configuration source for permission rules.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Agent and tool security",
+        "Source verification",
+        "Access control",
+        "Sandboxing",
+        "Coding assistance",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 111,
+      "sourceId": "ASX-I08",
+      "title": "Implementing a policy shared across agents",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "2 Injection and jailbreak defense",
+      "prompt": "Across several ADK agents, a team wants to prevalidate tool and model inputs and outputs through a policy that is not limited to a single agent. What implementation approach does the ADK safety documentation recommend?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Plugins"
+        },
+        {
+          "id": "B",
+          "text": "Before Tool Callback"
+        },
+        {
+          "id": "C",
+          "text": "Agent-Auth"
+        },
+        {
+          "id": "D",
+          "text": "In-tool guardrails"
+        },
+        {
+          "id": "E",
+          "text": "Gemini content filters"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. The documentation recommends plugins for policies that are not confined to a single agent.\n\n- **{{option:B}}.** Callbacks attach prevalidation of tool and model inputs/outputs to individual agents, not a policy spanning agents.\n\n- **{{option:C}}.** Agent-Auth makes tools interact with external systems using the agent's own identity, such as a service account. It is not input/output validation.\n\n- **{{option:D}}.** In-tool guardrails limit actions exposed by each tool and must be implemented per tool. They differ from validation of model inputs and outputs.\n\n- **{{option:E}}.** Gemini content filters are built-in filters for harmful output, not a mechanism for implementing tool-call validation policy.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Prompt injection and jailbreak defense",
+        "Agents"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 112,
+      "sourceId": "ASX-I09",
+      "title": "Where the formerly named service belongs",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T3",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "4 Data protection",
+      "prompt": "Google Cloud provides capabilities to discover, classify, and de-identify sensitive data, formerly called Cloud Data Loss Prevention (Cloud DLP). Which service does current Google documentation say Cloud DLP is part of?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Security Command Center"
+        },
+        {
+          "id": "B",
+          "text": "Secret Manager"
+        },
+        {
+          "id": "C",
+          "text": "VPC Service Controls"
+        },
+        {
+          "id": "D",
+          "text": "Sensitive Data Protection"
+        },
+        {
+          "id": "E",
+          "text": "Cloud Key Management Service"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** Security Command Center aggregates security threats and misconfigurations. It is not the service containing sensitive-data discovery, classification, and de-identification.\n\n- **{{option:B}}.** Secret Manager stores secrets such as API keys and passwords.\n\n- **{{option:C}}.** VPC Service Controls creates service perimeters around managed-service resources.\n\n- **{{option:D}}.** Correct. The documentation says Cloud DLP is now part of Sensitive Data Protection, which discovers, classifies, and de-identifies sensitive data.\n\n- **{{option:E}}.** Cloud Key Management Service manages encryption keys.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T3",
+        "Single choice",
+        "L3",
+        "Data protection",
+        "Sensitive information",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 113,
+      "sourceId": "ASX-I10",
+      "title": "Denying home-directory reads with a path exception",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "4 Data protection",
+      "prompt": "In the Claude Code sandbox, child processes must not read the entire home directory, but must be able to read ~/projects. Which settings apply this to sandboxed commands, rather than the Read tool?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "filesystem.allowRead [\"~/\"] and filesystem.denyRead [\"~/projects\"]"
+        },
+        {
+          "id": "B",
+          "text": "Only filesystem.denyRead [\"~/projects\"]"
+        },
+        {
+          "id": "C",
+          "text": "filesystem.denyRead [\"~/\"] and filesystem.allowRead [\"~/projects\"]"
+        },
+        {
+          "id": "D",
+          "text": "Only filesystem.denyRead [\"~/\"]"
+        },
+        {
+          "id": "E",
+          "text": "Only filesystem.allowRead [\"~/projects\"]"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** This is the reverse configuration: it opens the entire home directory and blocks only ~/projects.\n\n- **{{option:B}}.** This blocks only ~/projects, leaving the rest of the home directory readable under the default policy.\n\n- **{{option:C}}.** Correct. denyRead blocks the home directory, and allowRead reopens the narrower ~/projects path. The narrower path rule takes precedence, so only that subtree is readable.\n\n- **{{option:D}}.** denyRead alone also blocks ~/projects, so the exception remains unreadable.\n\n- **{{option:E}}.** allowRead reopens paths inside an area blocked by denyRead. Without a deny rule, it does not meet the requirement to block the rest of the home directory.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L3",
+        "Data protection",
+        "Sandboxing",
+        "Project organization",
+        "Coding assistance",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 114,
+      "sourceId": "ASX-I11",
+      "title": "Prelaunch testing and review before use",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 5,
+      "difficulty": "L3",
+      "sourceTopic": "5 Red teaming and safety evaluation",
+      "prompt": "A team is launching an app that drafts customer documents. Before launch, it wants to test both normal inputs and attempts to break the app, including instructions to go off topic. High-risk outputs such as legal wording must be reviewed by a person before use. Registration/login requirements and input-length limits are already in place. Which OpenAI safety best-practice combination meets the two new requirements?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Know your customer + Constrain user input and limit output tokens"
+        },
+        {
+          "id": "B",
+          "text": "Adversarial testing + Human in the loop"
+        },
+        {
+          "id": "C",
+          "text": "Adversarial testing + Allow users to report issues"
+        },
+        {
+          "id": "D",
+          "text": "Prompt engineering + Human in the loop"
+        },
+        {
+          "id": "E",
+          "text": "Use the Moderation API + Prompt engineering"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** Registration/login (KYC) and input-length limits are already implemented. Neither provides prelaunch adversarial testing or human review.\n\n- **{{option:B}}.** Correct. Adversarial testing, or red teaming, tests inputs intended to break the app, while Human in the loop provides human review before outputs are used.\n\n- **{{option:C}}.** A user reporting channel supports subsequent monitoring, not review before the output is used.\n\n- **{{option:D}}.** Prompt engineering constrains topic and tone through instructions and examples; it does not satisfy the prelaunch testing requirement.\n\n- **{{option:E}}.** The Moderation API filters based on harmfulness scores. Combining it with prompt engineering satisfies neither adversarial testing nor human review.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L3",
+        "Red teaming and safety evaluation",
+        "Logging and tracing",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 115,
+      "sourceId": "ASX-I12",
+      "title": "Separately limiting tracing scope and stored values",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "4 Data protection",
+      "prompt": "An Agents SDK app should retain tracing for most runs but avoid storing the input/output values of LLM generations and function calls in traces. One particular customer-support run must have tracing disabled entirely. Globally disabling tracing through an environment variable is not permitted. Which combination fits?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Set trace_include_sensitive_data to False, and set tracing_disabled to True in that run's RunConfig."
+        },
+        {
+          "id": "B",
+          "text": "Set trace_include_sensitive_data to False and set environment variable OPENAI_AGENTS_DISABLE_TRACING=1."
+        },
+        {
+          "id": "C",
+          "text": "Add an input/output-masking processor with add_trace_processor and set tracing_disabled to True for that run."
+        },
+        {
+          "id": "D",
+          "text": "Leave trace_include_sensitive_data at its default and set tracing_disabled to True for that run."
+        },
+        {
+          "id": "E",
+          "text": "Set tracing_disabled to True for every run and trace_include_sensitive_data to False."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. trace_include_sensitive_data=False disables storage of LLM-generation and function-call input/output values in spans. That run's RunConfig.tracing_disabled disables tracing only for the specified run.\n\n- **{{option:B}}.** OPENAI_AGENTS_DISABLE_TRACING=1 disables tracing globally, which the scenario excludes and which also removes traces from other runs.\n\n- **{{option:C}}.** add_trace_processor adds a processor while retaining the default OpenAI exporter. Even with masking in the added processor, original values also go through the default path, failing the storage-exclusion requirement.\n\n- **{{option:D}}.** trace_include_sensitive_data defaults to True, so input/output values are stored in spans.\n\n- **{{option:E}}.** Setting tracing_disabled to True for every run violates the requirement to retain tracing for most runs.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L3",
+        "Data protection",
+        "Agents",
+        "Tool calling",
+        "Measuring outcomes"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 116,
+      "sourceId": "ASX-I13",
+      "title": "Why execution occurred before the guardrail stopped it",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "2 Injection and jailbreak defense",
+      "prompt": "An Agents SDK input guardrail triggered a tripwire and stopped a run, but logs show that the agent had already consumed tokens and executed a tool before stopping. The team did not explicitly configure the guardrail's execution mode. Which setting explains this?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "run_in_parallel=False on the input guardrail"
+        },
+        {
+          "id": "B",
+          "text": "The input guardrail is attached to a handed-off agent rather than the first agent"
+        },
+        {
+          "id": "C",
+          "text": "The output guardrail's run_in_parallel value"
+        },
+        {
+          "id": "D",
+          "text": "No tool guardrail was attached to the function tool"
+        },
+        {
+          "id": "E",
+          "text": "The input guardrail's default run_in_parallel=True"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** With run_in_parallel=False, the agent starts only after the guardrail finishes, so the described pre-stop token consumption and tool execution would not occur.\n\n- **{{option:B}}.** Input guardrails run only on the first agent in the chain. On a handed-off agent the tripwire would not run, contradicting the scenario.\n\n- **{{option:C}}.** Output guardrails run after the agent finishes and do not support run_in_parallel, so this cannot cause the symptom.\n\n- **{{option:D}}.** Tool guardrails validate before and after function-tool calls. Their absence does not explain the input guardrail's tripwire stopping a concurrently running agent.\n\n- **{{option:E}}.** Correct. Input guardrails default to parallel execution with the agent (run_in_parallel=True), so the agent may already have consumed tokens and executed tools before the tripwire fires.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L3",
+        "Prompt injection and jailbreak defense",
+        "Token management",
+        "Agents"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 117,
+      "sourceId": "ASX-I14",
+      "title": "Why detection records are missing",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 6,
+      "difficulty": "L3",
+      "sourceTopic": "6 Detection and response",
+      "prompt": "A team runs a Model Armor template in an enforcement mode that analyzes requests without blocking them. Deliberately violating inputs are identified as violations in the response, but no detection records are available to inform threshold tuning. Which setting causes this?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "The confidence threshold is High"
+        },
+        {
+          "id": "B",
+          "text": "No floor settings are applied"
+        },
+        {
+          "id": "C",
+          "text": "Cloud Logging is not enabled"
+        },
+        {
+          "id": "D",
+          "text": "Input and response templates are not separated"
+        },
+        {
+          "id": "E",
+          "text": "Sensitive Data Protection is not configured in advanced mode"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** A higher threshold reduces detections, but cannot explain missing records for a violation that was detected.\n\n- **{{option:B}}.** Floor settings establish minimum requirements for all project templates. They do not determine whether detections are logged.\n\n- **{{option:C}}.** Correct. The analysis-only enforcement mode requires Cloud Logging to retain detection information. Without it, useful records are unavailable.\n\n- **{{option:D}}.** Separating input and response templates configures what is inspected, not whether results are recorded.\n\n- **{{option:E}}.** SDP advanced mode controls de-identification capability, not the presence of detection logs.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L3",
+        "Detection and response",
+        "Source verification"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 118,
+      "sourceId": "ASX-I15",
+      "title": "Combining a perimeter, tool scope, and identity",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "4 Data protection",
+      "prompt": "An ADK agent queries and summarizes internal data in Google Cloud managed services. Requirements are: (1) API calls to these services must not copy data to resources outside the organization's perimeter; (2) the agent must have no write or delete operations even inside that perimeter; (3) it may perform only actions the user can perform directly. Which combination meets all three?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "A VPC Service Controls perimeter, read-only tools, and Agent-Auth"
+        },
+        {
+          "id": "B",
+          "text": "A VPC Service Controls perimeter and User-Auth"
+        },
+        {
+          "id": "C",
+          "text": "A VPC Service Controls perimeter and read-only tools"
+        },
+        {
+          "id": "D",
+          "text": "A VPC Service Controls perimeter, read-only tools, and User-Auth"
+        },
+        {
+          "id": "E",
+          "text": "Read-only tools, User-Auth, and Gemini safety filters"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** The perimeter and read-only tools meet (1) and (2), but Agent-Auth uses the agent's own service-account permissions, so it does not meet user-scoped requirement (3).\n\n- **{{option:B}}.** The perimeter and User-Auth meet (1) and (3). However, as ADK documentation explains, identity and perimeter provide coarse control over actions: writes/deletes permitted to the user would also remain available to the agent, violating (2).\n\n- **{{option:C}}.** The perimeter and read-only tools meet (1) and (2), but identity is unspecified, leaving requirement (3) unmet.\n\n- **{{option:D}}.** Correct. The perimeter prevents copying to outside resources (1), read-only tools constrain exposed operations (2), and User-Auth limits actions to the user's authority (3).\n\n- **{{option:E}}.** Read-only tools and User-Auth meet (2) and (3), but without a perimeter (1) is unmet. Gemini safety filters block harmful content output, not API calls across resource boundaries.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L4",
+        "Data protection",
+        "Document summarization",
+        "API usage",
+        "Agents",
+        "Google"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 119,
+      "sourceId": "ASX-I16",
+      "title": "A host is denied despite being allowlisted",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 3,
+      "difficulty": "L4",
+      "sourceTopic": "3 Agent and tool security",
+      "prompt": "build.corp.example is allowlisted and reachable in a browser, but curl inside the sandbox is denied. The developer PC's hosts configuration resolves this name only to 127.0.0.1. The team must retain the sandbox, avoid broadening domains with wildcards, and minimize allowlist changes. Which cause and remedy fit?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "The proxy rejects the name because it resolves only to a local address. Add that IP address to the allowlist."
+        },
+        {
+          "id": "B",
+          "text": "The allowlist entry has no port, so only the default port is open. Add a port-qualified entry."
+        },
+        {
+          "id": "C",
+          "text": "The proxy rejects the name because it resolves to a private-range address. Add a wildcard domain."
+        },
+        {
+          "id": "D",
+          "text": "The proxy rejects the connection because it does not inspect TLS contents. Disable sandbox network isolation."
+        },
+        {
+          "id": "E",
+          "text": "curl ignores proxy environment variables and connects directly. Add curl to the excluded-command list."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. Even after an allowlist match, the proxy resolves the name and rejects it if it resolves only to loopback, link-local, or the machine's own addresses. Explicitly allowlisting the IP lifts this denial while retaining the sandbox and minimizing changes.\n\n- **{{option:B}}.** An allowlist entry without a port permits every port on that host, so this is not the cause.\n\n- **{{option:C}}.** Allowlisted hosts resolving to private ranges such as 10.0.0.0/8 are permitted. Wildcard expansion is also explicitly excluded.\n\n- **{{option:D}}.** The default proxy checks host names without inspecting TLS contents. That is normal behavior, not the cause, and disabling isolation is excluded.\n\n- **{{option:E}}.** curl honors proxy environment variables. Excluding it would run it outside the sandbox, conflicting with the scenario.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L4",
+        "Agent and tool security",
+        "Sandboxing",
+        "Coding assistance"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 120,
+      "sourceId": "ASX-I17",
+      "title": "What the control mapped to model replication requires",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T6",
+      "domain": 1,
+      "difficulty": "L4",
+      "sourceTopic": "1 LLM threat modeling",
+      "prompt": "Your application is only a model consumer calling an externally trained model and cannot access weights or training data. Legitimate users must retain service. The risk is analysis of inputs, outputs, and behavior to build a functionally equivalent replica. By definition, what does the SAIF mitigation control mapped to this risk require?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Make agent actions, tool use, and reasoning transparently auditable through logs."
+        },
+        {
+          "id": "B",
+          "text": "Permit only authorized users and endpoints to access particular resources through authorized actions."
+        },
+        {
+          "id": "C",
+          "text": "Block or sanitize unsafe model output before passing it to an application or user."
+        },
+        {
+          "id": "D",
+          "text": "Store, process, and use user data, including prompts and logs, in accordance with user consent."
+        },
+        {
+          "id": "E",
+          "text": "Cap agent-system privileges according to least privilege."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** This defines Agent Observability, mapped to risks such as Rogue Actions, not this replication risk.\n\n- **{{option:B}}.** Correct. The risk is Model Reverse Engineering. Its risk page identifies the model consumer as the mitigation actor and maps it to Application Access Management, whose definition is access through authorized actions by authorized users and endpoints.\n\n- **{{option:C}}.** This defines Output Validation and Sanitization, mapped to risks such as Insecure Model Output, not this replication risk.\n\n- **{{option:D}}.** This defines User Data Management, mapped to Excessive Data Handling with the model provider as mitigation actor. It does not fit this consumer perspective or risk.\n\n- **{{option:E}}.** This defines Agent Permissions, mapped to Insecure Integrated Component and Rogue Actions, among others, not this replication risk.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T6",
+        "Single choice",
+        "L4",
+        "LLM threat modeling",
+        "Training data"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 121,
+      "sourceId": "ASX-S1-1",
+      "title": "When repository settings are ignored",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 3,
+      "difficulty": "L4",
+      "sourceTopic": "3 Agent and tool security",
+      "caseSet": "ASX-S1",
+      "prompt": "Which item in the supplied configuration causes Claude Code to ignore sandbox-relaxing settings in the repository's .claude/settings.json, including excluded commands, while that value is active?",
+      "context": "**Environment:** An internal security team deploying the Claude Code local sandbox through managed settings\n\n**Scenario:** The security team deploys the Claude Code Bash sandbox to developers' macOS and Linux PCs through managed settings. There are three goals: repository settings must not weaken the sandbox, developers should work without approval prompts, and docker compose must be the only exception for execution outside the sandbox. Developers use kubectl to update ~/.kube, psql and ssh to connect to internal servers, and npm to install packages. The current managed settings are shown below.\n\n```json\n{\n  \"sandbox\": {\n    \"enabled\": true,\n    \"failIfUnavailable\": true,\n    \"allowUnsandboxedCommands\": false,\n    \"excludedCommands\": [\"docker compose *\"],\n    \"network\": { \"allowedDomains\": [\"registry.npmjs.org\"] }\n  }\n}\n```",
+      "options": [
+        {
+          "id": "A",
+          "text": "enabled: true"
+        },
+        {
+          "id": "B",
+          "text": "failIfUnavailable: true"
+        },
+        {
+          "id": "C",
+          "text": "excludedCommands: [\"docker compose *\"]"
+        },
+        {
+          "id": "D",
+          "text": "network.allowedDomains: [\"registry.npmjs.org\"]"
+        },
+        {
+          "id": "E",
+          "text": "allowUnsandboxedCommands: false"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** enabled only turns the sandbox on. It does not make repository settings ignored.\n\n- **{{option:B}}.** failIfUnavailable prevents Claude Code from starting when the sandbox cannot start. It is not among the settings that make repository relaxation settings ignored.\n\n- **{{option:C}}.** excludedCommands is itself the list of commands run outside the sandbox. It is a setting that gets ignored, not the setting causing others to be ignored.\n\n- **{{option:D}}.** allowedDomains merely lists allowed domains. Repository entries are ignored because allowUnsandboxedCommands=false makes the sandbox administrator-required, not because of this domain list.\n\n- **{{option:E}}.** Correct. Setting allowUnsandboxedCommands=false in managed settings or --settings makes the sandbox administrator-required, causing Claude Code to ignore repository relaxation settings such as excludedCommands.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L4",
+        "Agent and tool security",
+        "Container operations",
+        "Prompt writing",
+        "Human approval",
+        "Deployment",
+        "Sandboxing",
+        "Security controls"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 122,
+      "sourceId": "ASX-S1-2",
+      "title": "The cause of a write denial",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 3,
+      "difficulty": "L4",
+      "sourceTopic": "3 Agent and tool security",
+      "caseSet": "ASX-S1",
+      "prompt": "A developer's kubectl fails with a write denial while updating files under ~/.kube inside the sandbox. Reads and network access work normally. Which missing managed-settings entry explains this?",
+      "context": "**Environment:** An internal security team deploying the Claude Code local sandbox through managed settings\n\n**Scenario:** The security team deploys the Claude Code Bash sandbox to developers' macOS and Linux PCs through managed settings. There are three goals: repository settings must not weaken the sandbox, developers should work without approval prompts, and docker compose must be the only exception for execution outside the sandbox. Developers use kubectl to update ~/.kube, psql and ssh to connect to internal servers, and npm to install packages. The current managed settings are shown below.\n\n```json\n{\n  \"sandbox\": {\n    \"enabled\": true,\n    \"failIfUnavailable\": true,\n    \"allowUnsandboxedCommands\": false,\n    \"excludedCommands\": [\"docker compose *\"],\n    \"network\": { \"allowedDomains\": [\"registry.npmjs.org\"] }\n  }\n}\n```",
+      "options": [
+        {
+          "id": "A",
+          "text": "kubectl is missing from excludedCommands"
+        },
+        {
+          "id": "B",
+          "text": "~/.kube is missing from filesystem.allowRead"
+        },
+        {
+          "id": "C",
+          "text": "~/.kube is missing from filesystem.allowWrite"
+        },
+        {
+          "id": "D",
+          "text": "The Kubernetes API host is missing from network.allowedDomains"
+        },
+        {
+          "id": "E",
+          "text": "autoAllowBashIfSandboxed is not set"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** Excluding kubectl would run it outside the sandbox, removing both filesystem restrictions and the network proxy. The scenario restricts unsandboxed exceptions to docker compose.\n\n- **{{option:B}}.** Reads already work, so an allowed-read path is not the cause.\n\n- **{{option:C}}.** Correct. Default sandbox writes are limited to the working directory, per-user temporary directories, and added directories. Other paths require filesystem.allowWrite. With the sandbox administrator-required, repository settings cannot supply it, so it must be in managed settings.\n\n- **{{option:D}}.** Network access is explicitly working, so allowed domains are not the cause.\n\n- **{{option:E}}.** autoAllowBashIfSandboxed decides whether sandboxed commands need approval. It does not change writable paths.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L4",
+        "Agent and tool security",
+        "Container operations",
+        "Prompt writing",
+        "Human approval",
+        "Error handling",
+        "Deployment",
+        "Sandboxing"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 123,
+      "sourceId": "ASX-S1-3",
+      "title": "Opening a host for one command only",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 3,
+      "difficulty": "L4",
+      "sourceTopic": "3 Agent and tool security",
+      "caseSet": "ASX-S1",
+      "prompt": "An npm installation occasionally needs a package host outside the allowlist. The security team wants to open that host only for the one command, without expanding the configured or session host lists, and have a classifier review the command and hosts together. Which combination is required?",
+      "context": "**Environment:** An internal security team deploying the Claude Code local sandbox through managed settings\n\n**Scenario:** The security team deploys the Claude Code Bash sandbox to developers' macOS and Linux PCs through managed settings. There are three goals: repository settings must not weaken the sandbox, developers should work without approval prompts, and docker compose must be the only exception for execution outside the sandbox. Developers use kubectl to update ~/.kube, psql and ssh to connect to internal servers, and npm to install packages. The current managed settings are shown below.\n\n```json\n{\n  \"sandbox\": {\n    \"enabled\": true,\n    \"failIfUnavailable\": true,\n    \"allowUnsandboxedCommands\": false,\n    \"excludedCommands\": [\"docker compose *\"],\n    \"network\": { \"allowedDomains\": [\"registry.npmjs.org\"] }\n  }\n}\n```",
+      "options": [
+        {
+          "id": "A",
+          "text": "Request the unlisted host in dontAsk mode."
+        },
+        {
+          "id": "B",
+          "text": "Select \"Yes, and don't ask again\" in a manual-mode prompt."
+        },
+        {
+          "id": "C",
+          "text": "Add a wildcard such as *.pythonhosted.org to allowedDomains."
+        },
+        {
+          "id": "D",
+          "text": "In auto mode with the sandbox enabled, attach the required host list to the command for classifier review."
+        },
+        {
+          "id": "E",
+          "text": "Run in bypassPermissions mode."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** dontAsk mode simply denies unlisted hosts and provides no way to open them.\n\n- **{{option:B}}.** \"Yes, and don't ask again\" saves a WebFetch domain allow rule that also permits the host in later sessions, violating the no-expansion requirement. It also has no classifier review.\n\n- **{{option:C}}.** A wildcard in allowedDomains expands the configuration itself.\n\n- **{{option:D}}.** Correct. In auto mode, attaching required hosts to a sandboxed command lets the classifier review both together. The approved hosts open only while that command runs and are not added to session hosts or configuration.\n\n- **{{option:E}}.** bypassPermissions permits unlisted hosts without prompting, so there is no review.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L4",
+        "Agent and tool security",
+        "Container operations",
+        "Prompt writing",
+        "Human approval",
+        "Deployment",
+        "Sandboxing",
+        "Security controls"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 124,
+      "sourceId": "ASX-S1-4",
+      "title": "Tools cannot reach an allowed host",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 3,
+      "difficulty": "L4",
+      "sourceTopic": "3 Agent and tool security",
+      "caseSet": "ASX-S1",
+      "prompt": "Even after internal server hosts are added to allowedDomains, the developer's psql and ssh cannot connect to them inside the sandbox, while curl reaches the same host. What causes this?",
+      "context": "**Environment:** An internal security team deploying the Claude Code local sandbox through managed settings\n\n**Scenario:** The security team deploys the Claude Code Bash sandbox to developers' macOS and Linux PCs through managed settings. There are three goals: repository settings must not weaken the sandbox, developers should work without approval prompts, and docker compose must be the only exception for execution outside the sandbox. Developers use kubectl to update ~/.kube, psql and ssh to connect to internal servers, and npm to install packages. The current managed settings are shown below.\n\n```json\n{\n  \"sandbox\": {\n    \"enabled\": true,\n    \"failIfUnavailable\": true,\n    \"allowUnsandboxedCommands\": false,\n    \"excludedCommands\": [\"docker compose *\"],\n    \"network\": { \"allowedDomains\": [\"registry.npmjs.org\"] }\n  }\n}\n```",
+      "options": [
+        {
+          "id": "A",
+          "text": "These tools ignore proxy environment variables and open connections themselves."
+        },
+        {
+          "id": "B",
+          "text": "The allowedDomains entry has no port, permitting only the default port."
+        },
+        {
+          "id": "C",
+          "text": "failIfUnavailable=true blocks non-HTTP connections."
+        },
+        {
+          "id": "D",
+          "text": "allowUnsandboxedCommands=false blocks networking inside the sandbox."
+        },
+        {
+          "id": "E",
+          "text": "The proxy rejects the host because its name resolves only to local addresses."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. Sandboxed commands have no direct outbound network route and must use the proxy environment variables. Tools such as database drivers and plain ssh ignore these variables and cannot reach even allowed hosts.\n\n- **{{option:B}}.** A host entry without a port allows every port on that host, so this is not the cause.\n\n- **{{option:C}}.** failIfUnavailable controls what happens when the sandbox cannot start. It does not explain connection failures in an otherwise running sandbox.\n\n- **{{option:D}}.** allowUnsandboxedCommands controls retries outside the sandbox, not the network route inside it.\n\n- **{{option:E}}.** curl reaches the same host, so the proxy is not rejecting it because of name resolution.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L4",
+        "Agent and tool security",
+        "Container operations",
+        "Prompt writing",
+        "Human approval",
+        "Deployment",
+        "Sandboxing",
+        "Security controls"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 125,
+      "sourceId": "ASX-S1-5",
+      "title": "Execution conditions for an excluded command",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 3,
+      "difficulty": "L4",
+      "sourceTopic": "3 Agent and tool security",
+      "caseSet": "ASX-S1",
+      "prompt": "When docker compose runs as an explicitly excluded command in the supplied configuration, what approval behavior and access scope apply?",
+      "context": "**Environment:** An internal security team deploying the Claude Code local sandbox through managed settings\n\n**Scenario:** The security team deploys the Claude Code Bash sandbox to developers' macOS and Linux PCs through managed settings. There are three goals: repository settings must not weaken the sandbox, developers should work without approval prompts, and docker compose must be the only exception for execution outside the sandbox. Developers use kubectl to update ~/.kube, psql and ssh to connect to internal servers, and npm to install packages. The current managed settings are shown below.\n\n```json\n{\n  \"sandbox\": {\n    \"enabled\": true,\n    \"failIfUnavailable\": true,\n    \"allowUnsandboxedCommands\": false,\n    \"excludedCommands\": [\"docker compose *\"],\n    \"network\": { \"allowedDomains\": [\"registry.npmjs.org\"] }\n  }\n}\n```",
+      "options": [
+        {
+          "id": "A",
+          "text": "It runs inside the sandbox, reaches only allowed domains, and is approved without a prompt."
+        },
+        {
+          "id": "B",
+          "text": "It runs outside the sandbox without filesystem restrictions or the network proxy and follows the regular permission flow."
+        },
+        {
+          "id": "C",
+          "text": "It runs outside the sandbox but its network traffic is checked against the proxy's allowed domains."
+        },
+        {
+          "id": "D",
+          "text": "It runs inside the sandbox with only filesystem restrictions removed."
+        },
+        {
+          "id": "E",
+          "text": "It runs outside the sandbox and is approved without a prompt."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** Excluded commands do not run inside the sandbox, so they receive neither the sandbox domain checks nor its automatic approval.\n\n- **{{option:B}}.** Correct. Excluded commands run outside the sandbox without its filesystem restrictions or network proxy. They follow the regular permission flow, so approval may still be required despite the general no-prompt objective.\n\n- **{{option:C}}.** The network proxy does not apply to unsandboxed execution, so its allowed-domain checks are absent.\n\n- **{{option:D}}.** Excluded commands run outside, not inside, the sandbox. This is not a mode that removes filesystem restrictions alone.\n\n- **{{option:E}}.** Only sandboxed commands receive no-prompt approval in this mode. Excluded commands outside the sandbox follow the regular permission flow.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "SES",
+        "Security Engineering",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L4",
+        "Agent and tool security",
+        "Container operations",
+        "Prompt writing",
+        "Human approval",
+        "Deployment",
+        "Sandboxing",
+        "Security controls"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
     }
   ],
   "nameKo": "보안 엔지니어링"

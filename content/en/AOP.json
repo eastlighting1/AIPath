@@ -36,7 +36,7 @@
       "weight": 20
     }
   ],
-  "guide": "### 1. Introduction\n\n**Purpose**: This exam assesses whether candidates can design AI service operations and control releases and incident response under combined scale, cost, reliability, and governance constraints.\n\n**Objectives**\n\n- Choose an operational architecture suited to platform constraints and support lifecycles.\n- Balance GPU resources, autoscaling, serving performance, and compute cost.\n- Operate data access policies and model lifecycle controls.\n- Analyze traces, SLOs, and cost anomalies and establish incident procedures.\n- Manage change risk with evaluation gates, release automation, rollback, and spending controls.\n\n### 2. Target candidates\n\n- Platform engineers, site reliability engineers, LLMOps engineers, DevOps engineers\n\n**Recommended background and exam scope**\n\n- At least three years of platform engineering or SRE experience and AOA-level knowledge are recommended. Passing AOA is recommended but is not an enrollment requirement.\n- Scope covers packaging, deployment, observability, and releases for existing AI services. General Kubernetes cluster/node administration and managed AI operations services from AWS, Azure, and Google are excluded.\n- Application and agent logic belongs to ADA/AEP; model tuning and evaluation methodology to MOS; security attacks and defenses to SES; and policy/regulatory interpretation to AGS.\n- Questions test interpretation of supplied configurations, code, commands, and metrics rather than memorization of console menus, prices, or version numbers. Required dates and thresholds are provided.\n\n**Exam structure**\n\n- The full exam contains 75 questions in 180 minutes, with a scaled passing score of 750 out of 1,000. All 95 questions in the current bank have five options and one correct answer. Code completion is displayed as a separate question type.\n- The full exam randomly samples individual questions from the entire bank. The demo contains 10 randomly selected questions. Each case question includes the shared scenario needed to answer it.\n- Questions share a case scenario but can be answered independently; no answer is required to solve the next question.\n\n### 3. Content domains\n\n| Domain | Reference questions | Target weight |\n| --- | --- | --- |\n| 1. Platform selection and architecture | 14 | 18.67% |\n| 2. Serving, scaling, and performance | 15 | 20.00% |\n| 3. Data and model lifecycle governance | 15 | 20.00% |\n| 4. Observability, SLOs, and incident response | 16 | 21.33% |\n| 5. Release automation, evaluation gates, and cost controls | 15 | 20.00% |\n\nTarget weights are shown to two decimal places based on the full exam question counts. Actual domain and question-category mixes vary because questions are sampled individually.\n\n**Domain 1: Platform selection and architecture**\n\n- Knowledge: Inference gateways, Gateway API Inference Extension, Kubernetes support lifecycles, AI Conformance, cross-region inference, and data residency\n- Skills: Choose architectures and change plans that meet the support schedules, platform constraints, and regional requirements provided in the scenario.\n\n**Domain 2: Serving, scaling, and performance**\n\n- Knowledge: Dynamic Resource Allocation, GPU scheduling, HPA behavior, KEDA scaling, serving route optimization, scale-to-zero, and Snowpark Container Services compute pools\n- Skills: Choose serving and scaling strategies that meet throughput, latency, startup time, and cost requirements together.\n\n**Domain 3: Data and model lifecycle governance**\n\n- Knowledge: Unity Catalog privileges, row filters and column masks, lineage, model alias promotion, Snowflake model access controls, and Model Registry\n- Skills: Design model promotions and access changes that respect data protection requirements and platform limitations.\n\n**Domain 4: Observability, SLOs, and incident response**\n\n- Knowledge: Datadog metrics and cost tags, OpenTelemetry ingestion requirements, sensitive data evaluation, Cluster Agent and Autodiscovery, Snowflake AI Observability, Databricks trace storage, and product-neutral SLO concepts\n- Skills: Diagnose missing traces and abnormal metrics and prioritize incident response based on service objectives and impact.\n\n**Domain 5: Release automation, evaluation gates, and cost controls**\n\n- Knowledge: Evaluation gates, environment-specific prompt deployment and rollback, Databricks bundle validate/deploy/run, budgets, quotas, resource monitors, and billing usage aggregation\n- Skills: Block promotion after failed evaluations, design recoverable releases, and identify the scope and limitations of cost controls.\n\n### 4. Official documentation\n\nDocker: [Model Runner](https://docs.docker.com/ai/model-runner/), [Compose models](https://docs.docker.com/ai/compose/models-and-compose/), [GPU support](https://docs.docker.com/compose/how-tos/gpu-support/), [Build secrets](https://docs.docker.com/build/building/secrets/), [Best practices](https://docs.docker.com/build/building/best-practices/)\n\nKubernetes · CNCF: [Releases](https://kubernetes.io/releases/), [Dynamic Resource Allocation](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/), [Gateway API Inference Extension](https://gateway-api-inference-extension.sigs.k8s.io/), [KEDA ScaledObject](https://keda.sh/docs/latest/reference/scaledobject-spec/), [AI Conformance](https://github.com/cncf/k8s-ai-conformance), [OpenTelemetry GenAI conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/)\n\nDatabricks: [Model lifecycle](https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/), [Model Serving](https://docs.databricks.com/aws/en/machine-learning/model-serving/), [Row and column filters](https://docs.databricks.com/aws/en/tables/row-and-column-filters), [Budgets](https://docs.databricks.com/aws/en/admin/account-settings/budgets), [Billing system tables](https://docs.databricks.com/aws/en/admin/system-tables/billing)\n\nSnowflake: [AI functions](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql), [Privileges and access](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql-privileges-and-access), [Create Cortex Search](https://docs.snowflake.com/en/sql-reference/sql/create-cortex-search), [Model Registry container serving](https://docs.snowflake.com/en/developer-guide/snowflake-ml/model-registry/container), [Cross-region inference](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cross-region-inference), [Resource monitors](https://docs.snowflake.com/en/user-guide/resource-monitors)\n\nDatadog: [Python SDK setup](https://docs.datadoghq.com/llm_observability/instrumentation/sdk/?tab=python), [OpenTelemetry instrumentation](https://docs.datadoghq.com/llm_observability/instrumentation/otel_instrumentation/), [Cost](https://docs.datadoghq.com/llm_observability/monitoring/cost/), [Metrics](https://docs.datadoghq.com/llm_observability/monitoring/metrics/)\n",
+  "guide": "### 1. Introduction\n\n**Purpose**: This exam assesses whether candidates can design AI service operations and control releases and incident response under combined scale, cost, reliability, and governance constraints.\n\n**Objectives**\n\n- Choose an operational architecture suited to platform constraints and support lifecycles.\n- Balance GPU resources, autoscaling, serving performance, and compute cost.\n- Operate data access policies and model lifecycle controls.\n- Analyze traces, SLOs, and cost anomalies and establish incident procedures.\n- Manage change risk with evaluation gates, release automation, rollback, and spending controls.\n\n### 2. Target candidates\n\n- Platform engineers, site reliability engineers, LLMOps engineers, DevOps engineers\n\n**Recommended background and exam scope**\n\n- At least three years of platform engineering or SRE experience and AOA-level knowledge are recommended. Passing AOA is recommended but is not an enrollment requirement.\n- Scope covers packaging, deployment, observability, and releases for existing AI services. General Kubernetes cluster/node administration and managed AI operations services from AWS, Azure, and Google are excluded.\n- Application and agent logic belongs to ADA/AEP; model tuning and evaluation methodology to MOS; security attacks and defenses to SES; and policy/regulatory interpretation to AGS.\n- Questions test interpretation of supplied configurations, code, commands, and metrics rather than memorization of console menus, prices, or version numbers. Required dates and thresholds are provided.\n\n**Exam structure**\n\n- The full exam contains 75 questions in 180 minutes, with a scaled passing score of 750 out of 1,000. All 109 questions in the current bank have five options and one correct answer. Code completion is displayed as a separate question type.\n- The full exam randomly samples individual questions from the entire bank. The demo contains 10 randomly selected questions. Each case question includes the shared scenario needed to answer it.\n- Questions share a case scenario but can be answered independently; no answer is required to solve the next question.\n\n### 3. Content domains\n\n| Domain | Reference questions | Target weight |\n| --- | --- | --- |\n| 1. Platform selection and architecture | 14 | 18.67% |\n| 2. Serving, scaling, and performance | 15 | 20.00% |\n| 3. Data and model lifecycle governance | 15 | 20.00% |\n| 4. Observability, SLOs, and incident response | 16 | 21.33% |\n| 5. Release automation, evaluation gates, and cost controls | 15 | 20.00% |\n\nTarget weights are shown to two decimal places based on the full exam question counts. Actual domain and question-category mixes vary because questions are sampled individually.\n\n**Domain 1: Platform selection and architecture**\n\n- Knowledge: Inference gateways, Gateway API Inference Extension, Kubernetes support lifecycles, AI Conformance, cross-region inference, and data residency\n- Skills: Choose architectures and change plans that meet the support schedules, platform constraints, and regional requirements provided in the scenario.\n\n**Domain 2: Serving, scaling, and performance**\n\n- Knowledge: Dynamic Resource Allocation, GPU scheduling, HPA behavior, KEDA scaling, serving route optimization, scale-to-zero, and Snowpark Container Services compute pools\n- Skills: Choose serving and scaling strategies that meet throughput, latency, startup time, and cost requirements together.\n\n**Domain 3: Data and model lifecycle governance**\n\n- Knowledge: Unity Catalog privileges, row filters and column masks, lineage, model alias promotion, Snowflake model access controls, and Model Registry\n- Skills: Design model promotions and access changes that respect data protection requirements and platform limitations.\n\n**Domain 4: Observability, SLOs, and incident response**\n\n- Knowledge: Datadog metrics and cost tags, OpenTelemetry ingestion requirements, sensitive data evaluation, Cluster Agent and Autodiscovery, Snowflake AI Observability, Databricks trace storage, and product-neutral SLO concepts\n- Skills: Diagnose missing traces and abnormal metrics and prioritize incident response based on service objectives and impact.\n\n**Domain 5: Release automation, evaluation gates, and cost controls**\n\n- Knowledge: Evaluation gates, environment-specific prompt deployment and rollback, Databricks bundle validate/deploy/run, budgets, quotas, resource monitors, and billing usage aggregation\n- Skills: Block promotion after failed evaluations, design recoverable releases, and identify the scope and limitations of cost controls.\n\n### 4. Official documentation\n\nDocker: [Model Runner](https://docs.docker.com/ai/model-runner/), [Compose models](https://docs.docker.com/ai/compose/models-and-compose/), [GPU support](https://docs.docker.com/compose/how-tos/gpu-support/), [Build secrets](https://docs.docker.com/build/building/secrets/), [Best practices](https://docs.docker.com/build/building/best-practices/)\n\nKubernetes · CNCF: [Releases](https://kubernetes.io/releases/), [Dynamic Resource Allocation](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/), [Gateway API Inference Extension](https://gateway-api-inference-extension.sigs.k8s.io/), [KEDA ScaledObject](https://keda.sh/docs/latest/reference/scaledobject-spec/), [AI Conformance](https://github.com/cncf/k8s-ai-conformance), [OpenTelemetry GenAI conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/)\n\nDatabricks: [Model lifecycle](https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/), [Model Serving](https://docs.databricks.com/aws/en/machine-learning/model-serving/), [Row and column filters](https://docs.databricks.com/aws/en/tables/row-and-column-filters), [Budgets](https://docs.databricks.com/aws/en/admin/account-settings/budgets), [Billing system tables](https://docs.databricks.com/aws/en/admin/system-tables/billing)\n\nSnowflake: [AI functions](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql), [Privileges and access](https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql-privileges-and-access), [Create Cortex Search](https://docs.snowflake.com/en/sql-reference/sql/create-cortex-search), [Model Registry container serving](https://docs.snowflake.com/en/developer-guide/snowflake-ml/model-registry/container), [Cross-region inference](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cross-region-inference), [Resource monitors](https://docs.snowflake.com/en/user-guide/resource-monitors)\n\nDatadog: [Python SDK setup](https://docs.datadoghq.com/llm_observability/instrumentation/sdk/?tab=python), [OpenTelemetry instrumentation](https://docs.datadoghq.com/llm_observability/instrumentation/otel_instrumentation/), [Cost](https://docs.datadoghq.com/llm_observability/monitoring/cost/), [Metrics](https://docs.datadoghq.com/llm_observability/monitoring/metrics/)\n",
   "questions": [
     {
       "id": 1,
@@ -5483,6 +5483,808 @@
         "L1",
         "Release automation, evaluation gates, and cost controls",
         "Cost management"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 96,
+      "sourceId": "AOP-I01",
+      "title": "The probe that holds other probes until it succeeds",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Kubernetes",
+      "prompt": "When one of the three kinds of container checks is configured, Kubernetes does not run the other two until this check succeeds, giving the application time to finish initialization. Unlike the other two, which run periodically, this check runs only when the container first starts. Which check does this describe?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`livenessProbe`"
+        },
+        {
+          "id": "B",
+          "text": "`readinessProbe`"
+        },
+        {
+          "id": "C",
+          "text": "`startupProbe`"
+        },
+        {
+          "id": "D",
+          "text": "`readinessGates`"
+        },
+        {
+          "id": "E",
+          "text": "`lifecycle.postStart`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** livenessProbe periodically determines when a container should be restarted. It does not hold back other probes, so it is incorrect.\n\n- **{{option:B}}.** readinessProbe determines whether the container is ready to receive traffic and runs throughout its lifetime. It is not limited to initial startup, so it is incorrect.\n\n- **{{option:C}}.** When configured, startupProbe prevents liveness and readiness probes from running until it succeeds and runs only at startup. This is correct.\n\n- **{{option:D}}.** readinessGates adds a list of additional conditions for kubelet to evaluate when determining Pod readiness. It is not a probe type, and the documentation does not say it suspends other probes, so it is incorrect.\n\n- **{{option:E}}.** lifecycle.postStart is a hook executed immediately after container creation, with no guarantee that it runs before ENTRYPOINT. The documentation does not say it holds back probes, so it is incorrect.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Serving, scaling, and performance",
+        "Container operations",
+        "Kubernetes"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 97,
+      "sourceId": "AOP-I02",
+      "title": "A method for modifying spans started by an integration",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "Datadog",
+      "prompt": "You use the Python SDK for Datadog Agent Observability (LLM Observability). An integration library, rather than your own code, starts spans. Which method returns an object usable in a with statement and can modify all such spans started while that block executes?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`LLMObs.annotate()`"
+        },
+        {
+          "id": "B",
+          "text": "`LLMObs.export_span()`"
+        },
+        {
+          "id": "C",
+          "text": "`LLMObs.submit_evaluation()`"
+        },
+        {
+          "id": "D",
+          "text": "`LLMObs.inject_distributed_headers()`"
+        },
+        {
+          "id": "E",
+          "text": "`LLMObs.annotation_context()`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** LLMObs.annotate() enriches a span with inputs, outputs, and metadata; its target-span argument defaults to the currently active span. It neither returns a with-statement object nor covers every span started during a block, so it is incorrect.\n\n- **{{option:B}}.** LLMObs.export_span() extracts span context for associating evaluations. It does not modify spans, so it is incorrect.\n\n- **{{option:C}}.** LLMObs.submit_evaluation() submits a custom evaluation associated with a particular span. This is not span modification, so it is incorrect.\n\n- **{{option:D}}.** LLMObs.inject_distributed_headers() injects span context into request HTTP headers for distributed tracing. This is not span modification, so it is incorrect.\n\n- **{{option:E}}.** LLMObs.annotation_context() returns a context manager and modifies automatically instrumented spans started while it is active. This is correct.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Observability, SLOs, and incident response",
+        "Datadog",
+        "Agents",
+        "Monitoring",
+        "Coding assistance"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 98,
+      "sourceId": "AOP-I03",
+      "title": "Time until a completed Job becomes eligible for cleanup",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 5,
+      "difficulty": "L3",
+      "sourceTopic": "Kubernetes",
+      "prompt": "Which field in a Job's spec makes it eligible for cleanup a specified number of seconds after it finishes, whether successfully or unsuccessfully?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`ttlSecondsAfterFinished`"
+        },
+        {
+          "id": "B",
+          "text": "`activeDeadlineSeconds`"
+        },
+        {
+          "id": "C",
+          "text": "`successfulJobsHistoryLimit`"
+        },
+        {
+          "id": "D",
+          "text": "`backoffLimit`"
+        },
+        {
+          "id": "E",
+          "text": "`failedJobsHistoryLimit`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** ttlSecondsAfterFinished makes a Job eligible for cleanup once its TTL in seconds elapses after reaching Complete or Failed. This is correct.\n\n- **{{option:B}}.** activeDeadlineSeconds limits the Job's running duration. On reaching it, running pods terminate and the Job becomes Failed with DeadlineExceeded. It concerns execution, not time after completion, so it is incorrect.\n\n- **{{option:C}}.** successfulJobsHistoryLimit is a CronJob-spec field controlling the number of successful Jobs retained, defaulting to three. It is neither a Job field nor a time-based setting, so it is incorrect.\n\n- **{{option:D}}.** backoffLimit limits retries following pod failures; reaching it marks the Job failed. It does not concern cleanup after completion, so it is incorrect.\n\n- **{{option:E}}.** failedJobsHistoryLimit is a CronJob-spec field controlling the number of failed Jobs retained, defaulting to one. It is neither a Job field nor a time-based setting, so it is incorrect.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Release automation, evaluation gates, and cost controls",
+        "Error handling"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 99,
+      "sourceId": "AOP-I04",
+      "title": "The maximum number of spans in one export",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "OpenTelemetry",
+      "prompt": "You configure the OpenTelemetry SDK's batch span processor through environment variables. Which variable sets the maximum number of spans in one export, with the condition that it must not exceed the maximum queue size?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`OTEL_BSP_SCHEDULE_DELAY`"
+        },
+        {
+          "id": "B",
+          "text": "`OTEL_BSP_EXPORT_TIMEOUT`"
+        },
+        {
+          "id": "C",
+          "text": "`OTEL_BSP_MAX_QUEUE_SIZE`"
+        },
+        {
+          "id": "D",
+          "text": "`OTEL_BSP_MAX_EXPORT_BATCH_SIZE`"
+        },
+        {
+          "id": "E",
+          "text": "`OTEL_EXPORTER_OTLP_TIMEOUT`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** OTEL_BSP_SCHEDULE_DELAY is the delay in milliseconds between consecutive exports, not a count limit, so it is incorrect.\n\n- **{{option:B}}.** OTEL_BSP_EXPORT_TIMEOUT is the maximum time in milliseconds allowed for an export, not a count limit, so it is incorrect.\n\n- **{{option:C}}.** OTEL_BSP_MAX_QUEUE_SIZE sets the maximum queue size, which bounds the batch size. It is the upper bound in the condition, not the variable that sets batch size, so it is incorrect.\n\n- **{{option:D}}.** OTEL_BSP_MAX_EXPORT_BATCH_SIZE sets the maximum batch size and must not exceed OTEL_BSP_MAX_QUEUE_SIZE. This is correct.\n\n- **{{option:E}}.** OTEL_EXPORTER_OTLP_TIMEOUT is the maximum time the OTLP exporter waits for each batch export. It is not the batch span processor's count setting, so it is incorrect.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Observability, SLOs, and incident response",
+        "OpenTelemetry",
+        "Batch processing"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 100,
+      "sourceId": "AOP-I05",
+      "title": "The current replacement for CLASSIFY_TEXT",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T3",
+      "domain": 3,
+      "difficulty": "L3",
+      "sourceTopic": "Snowflake",
+      "prompt": "You are migrating a Snowflake Cortex query that classified text into specified categories with SNOWFLAKE.CORTEX.CLASSIFY_TEXT to the current function recommended by the documentation. With the current function, the result is read at :labels[0], the first array element, rather than :label. Which function is it?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`AI_FILTER`"
+        },
+        {
+          "id": "B",
+          "text": "`AI_CLASSIFY`"
+        },
+        {
+          "id": "C",
+          "text": "`AI_EXTRACT`"
+        },
+        {
+          "id": "D",
+          "text": "`AI_SENTIMENT`"
+        },
+        {
+          "id": "E",
+          "text": "`AI_SUMMARIZE`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** AI_FILTER is not listed as the replacement for CLASSIFY_TEXT in the migration mapping table. It is incorrect.\n\n- **{{option:B}}.** AI_CLASSIFY is the updated CLASSIFY_TEXT function and its listed replacement; results are read through :labels[0]. This is correct.\n\n- **{{option:C}}.** AI_EXTRACT replaces EXTRACT_ANSWER in the mapping table, not CLASSIFY_TEXT. It is incorrect.\n\n- **{{option:D}}.** AI_SENTIMENT replaces SENTIMENT in the mapping table, not CLASSIFY_TEXT. It is incorrect.\n\n- **{{option:E}}.** AI_SUMMARIZE directly replaces SUMMARIZE in the mapping table, not CLASSIFY_TEXT. It is incorrect.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "Indirect reasoning",
+        "T3",
+        "Single choice",
+        "L3",
+        "Data and model lifecycle governance",
+        "Snowflake"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 101,
+      "sourceId": "AOP-I06",
+      "title": "The current name of Vector Search",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T3",
+      "domain": 1,
+      "difficulty": "L3",
+      "sourceTopic": "Databricks",
+      "prompt": "An internal wiki refers to a feature as Databricks Vector Search. You want to replace that name with the one currently used in Databricks documentation. What is its current name?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Databricks AI Gateway"
+        },
+        {
+          "id": "B",
+          "text": "Databricks Model Serving"
+        },
+        {
+          "id": "C",
+          "text": "Databricks AI Search"
+        },
+        {
+          "id": "D",
+          "text": "Databricks Foundation Model APIs"
+        },
+        {
+          "id": "E",
+          "text": "Unity Catalog"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** Databricks AI Gateway is a separate feature from AI Search and is not identified by the documentation as the renamed Vector Search feature. It is incorrect.\n\n- **{{option:B}}.** Databricks Model Serving is a separate model-serving feature. The documentation only says AI Search uses a model-serving endpoint; it does not identify this as the renamed Vector Search feature. It is incorrect.\n\n- **{{option:C}}.** Databricks AI Search is the current name explicitly described as formerly Databricks Vector Search. This is correct.\n\n- **{{option:D}}.** Foundation Model APIs names a family of preconfigured endpoints that the documentation says can compute embeddings for AI Search. It is not the renamed Vector Search feature, so it is incorrect.\n\n- **{{option:E}}.** Unity Catalog is a governance feature, not the new name of Vector Search. It is incorrect.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "Indirect reasoning",
+        "T3",
+        "Single choice",
+        "L3",
+        "Platform selection and architecture",
+        "Retrieval quality",
+        "Vector search",
+        "Databricks"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 102,
+      "sourceId": "AOP-I07",
+      "title": "A build meeting secret, download-cache, and tool-removal requirements",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 5,
+      "difficulty": "L4",
+      "sourceTopic": "Docker",
+      "prompt": "You are building a Python service image with three requirements. First, a private package-repository token exists only in the build host's PKG_TOKEN environment variable. Security policy forbids passing it as a build argument or environment variable and forbids placing a token file in the build context. The token must not remain in the image. Second, even if changed dependencies invalidate the installation-command layer, previously downloaded packages must be reused and only changed packages downloaded. Third, build tools such as compilers must not enter the final image. Which configuration satisfies all three?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Pass the token through ARG + RUN --mount=type=cache + a multi-stage build"
+        },
+        {
+          "id": "B",
+          "text": "docker build --secret id=PKG_TOKEN with an environment-variable source + RUN --mount=type=secret + RUN --mount=type=cache + a multi-stage build"
+        },
+        {
+          "id": "C",
+          "text": "docker build --secret id=PKG_TOKEN with an environment-variable source + RUN --mount=type=secret + RUN --mount=type=cache + a single-stage build"
+        },
+        {
+          "id": "D",
+          "text": "docker build --secret id=PKG_TOKEN with an environment-variable source + RUN --mount=type=secret + a multi-stage build + layer caching only, copying the dependency list first"
+        },
+        {
+          "id": "E",
+          "text": "Place a token file in the context and use RUN --mount=type=bind + RUN --mount=type=cache + a multi-stage build"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** ARG is a build argument, which the documentation describes as unsuitable for secrets; the scenario's security policy also prohibits it. This is incorrect.\n\n- **{{option:B}}.** An environment-sourced secret mount exposes the token only during command execution. A cache mount reuses downloaded packages even when rebuilding the layer, and a multi-stage build excludes build tools from the final image. All three requirements are met, so this is correct.\n\n- **{{option:C}}.** The single-stage configuration provides no selective-copy boundary for leaving build tools behind, so compilers remain in the final image. It violates the third requirement and is incorrect.\n\n- **{{option:D}}.** Layer caching is invalidated when the command or dependency files change. Rebuilding that layer downloads packages again from scratch. This violates the second requirement; a cache mount addresses this case.\n\n- **{{option:E}}.** The bind mount uses a file from the build context, requiring the token file to be there. The scenario explicitly forbids this, violating the first requirement. It is true that the mounted file itself does not remain in the image.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L4",
+        "Release automation, evaluation gates, and cost controls",
+        "Token management",
+        "Context management",
+        "Image understanding",
+        "Security controls"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 103,
+      "sourceId": "AOP-I08",
+      "title": "Combining voluntary-disruption and rolling-update limits",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 2,
+      "difficulty": "L4",
+      "sourceTopic": "Kubernetes",
+      "prompt": "You operate a GPU-inference Deployment with six current replicas. **Autoscaling changes the replica count, and the disruption-limit rule must not require manual adjustment whenever it changes.** There is no spare GPU capacity, so rolling updates cannot create pods above the desired count. First, administrator-initiated voluntary disruptions such as node drains must take down at most one pod at a time, without revising the rule as replicas change. Second, rolling image updates must also leave at most one pod unavailable at once. Third, the configuration must not prevent node drains from completing. Which configuration satisfies all three?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "PodDisruptionBudget maxUnavailable: 1 + Deployment rollingUpdate maxSurge: 0 and maxUnavailable: 1"
+        },
+        {
+          "id": "B",
+          "text": "PodDisruptionBudget minAvailable: 5 + Deployment rollingUpdate maxSurge: 0 and maxUnavailable: 1"
+        },
+        {
+          "id": "C",
+          "text": "PodDisruptionBudget maxUnavailable: 1 + default Deployment rollingUpdate values, 25% for both maxSurge and maxUnavailable"
+        },
+        {
+          "id": "D",
+          "text": "PodDisruptionBudget minAvailable: \"100%\" + Deployment rollingUpdate maxSurge: 0 and maxUnavailable: 1"
+        },
+        {
+          "id": "E",
+          "text": "PodDisruptionBudget maxUnavailable: 1 + Deployment strategy.type: Recreate"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** PDB maxUnavailable: 1 keeps the simultaneous disruption limit at one without adjustment when replica count changes. Deployment maxSurge: 0 and maxUnavailable: 1 permit rolling updates with at most one unavailable pod and no excess pods. This is valid because maxUnavailable is nonzero when maxSurge is zero. Drains can proceed one pod at a time rather than being blocked. This is correct.\n\n- **{{option:B}}.** minAvailable: 5 is fixed and must be adjusted as autoscaling changes replicas; at five or fewer it can prohibit every voluntary eviction. Documentation recommends maxUnavailable for automatic adaptation to replica-count changes. This violates the first requirement.\n\n- **{{option:C}}.** At the 25% default, maxSurge rounds 1.5 up to two for six replicas, creating excess pods and violating the no-spare-GPU condition. maxUnavailable rounds down to one.\n\n- **{{option:D}}.** minAvailable: \"100%\" permits zero voluntary evictions, preventing a node hosting these pods from being drained successfully. This violates the third requirement.\n\n- **{{option:E}}.** Recreate terminates all existing pods before creating new ones, leaving six unavailable during this update. It violates the second requirement.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L4",
+        "Serving, scaling, and performance",
+        "Reasoning models",
+        "Image understanding",
+        "Deployment"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 104,
+      "sourceId": "AOP-I09",
+      "title": "Five minutes without scale-in: a setting local to this HPA",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 2,
+      "difficulty": "L4",
+      "sourceTopic": "Kubernetes",
+      "prompt": "A Deployment-targeting HorizontalPodAutoscaler using autoscaling/v2 shows this behavior: after requests fall sharply and the metric is far below target, replicas do not decrease for about five minutes. The subsequent decrease is normal, as is scale-out. You must change only this HPA without affecting other HPAs, and cannot alter control-plane component startup options. Which setting can adjust the value causing this behavior under these constraints?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "The Percent policy value in behavior.scaleDown.policies"
+        },
+        {
+          "id": "B",
+          "text": "behavior.scaleUp.stabilizationWindowSeconds"
+        },
+        {
+          "id": "C",
+          "text": "The kube-controller-manager --horizontal-pod-autoscaler-downscale-stabilization option"
+        },
+        {
+          "id": "D",
+          "text": "behavior.scaleDown.stabilizationWindowSeconds"
+        },
+        {
+          "id": "E",
+          "text": "minReplicas"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** policies limits the rate of reduction, by percentage or count. The scenario says the reduction after five minutes is normal; this is not the cause of the delay.\n\n- **{{option:B}}.** scaleUp.stabilizationWindowSeconds controls the scale-out window and defaults to zero. Scale-out is unchanged in the scenario, so this is incorrect.\n\n- **{{option:C}}.** This option also sets the default downscale stabilization window, but applies cluster-wide and is a control-plane startup option. It violates both constraints.\n\n- **{{option:D}}.** behavior.scaleDown.stabilizationWindowSeconds controls this HPA's downscale stabilization window. The default 300 seconds retains the highest previous desired state, explaining the five-minute delay. It is configurable per HPA and meets both constraints.\n\n- **{{option:E}}.** minReplicas is the lower replica bound, not the cause of a five-minute delay.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L4",
+        "Serving, scaling, and performance",
+        "Kubernetes",
+        "Deployment"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 105,
+      "sourceId": "AOP-I10",
+      "title": "Residual messages prevent a ScaledObject from reaching zero",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 2,
+      "difficulty": "L4",
+      "sourceTopic": "KEDA",
+      "prompt": "A queue-length ScaledObject specifies only the queue name and scaling target in its trigger. minReplicaCount and idleReplicaCount are omitted; cooldownPeriod is its 300-second default; no annotation forces activation. Three residual messages that should not be processed remain in the queue, so the workload still has one replica an hour after all business messages were handled. Requirements: zero replicas for three or fewer messages, activation from zero to one at four or more, and no change to the one-to-N scaling target or cooldownPeriod. Which configuration item caused the failure to reach zero?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "cooldownPeriod"
+        },
+        {
+          "id": "B",
+          "text": "minReplicaCount"
+        },
+        {
+          "id": "C",
+          "text": "pollingInterval"
+        },
+        {
+          "id": "D",
+          "text": "idleReplicaCount"
+        },
+        {
+          "id": "E",
+          "text": "The trigger's activation-prefixed parameter, such as activationThreshold"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** cooldownPeriod is the wait after the last active trigger report. Residual messages continually report activity, so the wait never completes; this is not a matter of the duration being too short or long, even after an hour. The scenario also prohibits changing it.\n\n- **{{option:B}}.** minReplicaCount defaults to zero and was omitted. Values of one or more make the scaler always active, but that is not this configuration.\n\n- **{{option:C}}.** pollingInterval controls how often triggers are checked, not the threshold separating active from inactive.\n\n- **{{option:D}}.** idleReplicaCount is ignored when omitted and must be less than minReplicaCount. Because it was not specified, it is not the cause.\n\n- **{{option:E}}.** The default activation value is zero, so a metric of one or more counts as active. The three residual messages therefore prevent scaling to zero. Setting activation to three makes three or fewer inactive while preserving the scaling target and cooldownPeriod. This is correct.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L4",
+        "Serving, scaling, and performance",
+        "Residual messages prevent a ScaledObject from reaching zero"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 106,
+      "sourceId": "AOP-I11",
+      "title": "Pinning the image even when a version tag moves",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T6",
+      "domain": 5,
+      "difficulty": "L4",
+      "sourceTopic": "Kubernetes · Docker",
+      "prompt": "You are choosing a production Deployment's image reference. First, all replicas must use the originally selected image version even if the publisher moves the same version tag to a new image. Second, pods must start on newly autoscaled nodes without preloaded images. Third, on nodes that already have the image, kubelet must start the container without requesting an image pull. Which choice meets all three?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "image: app:1.4, with imagePullPolicy omitted"
+        },
+        {
+          "id": "B",
+          "text": "image: app:1.4 + imagePullPolicy: Always"
+        },
+        {
+          "id": "C",
+          "text": "image: app@sha256:…, with imagePullPolicy omitted"
+        },
+        {
+          "id": "D",
+          "text": "image: app@sha256:… + imagePullPolicy: Never"
+        },
+        {
+          "id": "E",
+          "text": "image: app, with no tag or digest and imagePullPolicy omitted"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** The publisher can move app:1.4 to a different image. With a non-latest tag and no explicit policy, IfNotPresent lets cached nodes run the old image while new nodes run the new one, violating the first requirement.\n\n- **{{option:B}}.** A mutable tag violates the first requirement. Always also makes kubelet request a pull on every container start, violating the third.\n\n- **{{option:C}}.** A digest pins the same image even if tags move, as described by Docker. Kubernetes defaults a digest reference with omitted policy to IfNotPresent, so new nodes fetch it and cached nodes skip pulling. This meets all three requirements.\n\n- **{{option:D}}.** The digest meets the first and third requirements, but Never prevents kubelet from fetching the image, so startup fails on new nodes without it. This violates the second.\n\n- **{{option:E}}.** Omitting the tag implies latest and defaults the policy to Always. Tag movement can mix image versions, and every start requests a pull, violating the first and third requirements.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "Indirect reasoning",
+        "T6",
+        "Single choice",
+        "L4",
+        "Release automation, evaluation gates, and cost controls",
+        "Image understanding",
+        "Coding assistance",
+        "Container operations",
+        "Deployment"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 107,
+      "sourceId": "AOP-I12",
+      "title": "Selecting the sampling branch for an unrecorded caller request",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T6",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "OpenTelemetry · Open standard (W3C Trace Context)",
+      "prompt": "Service B uses an OpenTelemetry SDK parent-based sampler with AlwaysOn for parentless spans. You want B also to record requests from service A whose propagated trace-context HTTP header has the rightmost flag bit cleared. Keep decisions for local-parent spans, parentless spans, and requests whose rightmost bit is set unchanged. Which parent-based sampler parameter should be changed to AlwaysOn?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`root`"
+        },
+        {
+          "id": "B",
+          "text": "`remoteParentNotSampled`"
+        },
+        {
+          "id": "C",
+          "text": "`remoteParentSampled`"
+        },
+        {
+          "id": "D",
+          "text": "`localParentNotSampled`"
+        },
+        {
+          "id": "E",
+          "text": "`localParentSampled`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** root is invoked for parentless spans. This request has a parent, and the scenario requires leaving root decisions unchanged, so it is incorrect.\n\n- **{{option:B}}.** remoteParentNotSampled is invoked for an unsampled remote parent, whose bit is cleared. Changing only this branch to AlwaysOn records those requests while preserving the others. This is correct.\n\n- **{{option:C}}.** remoteParentSampled is invoked when the remote parent's bit is set. The scenario requires preserving those decisions and targets cleared bits, so it is incorrect.\n\n- **{{option:D}}.** localParentNotSampled applies to an unsampled parent in the same process. A parent propagated through headers is remote, and local-parent decisions must remain unchanged.\n\n- **{{option:E}}.** localParentSampled applies to a sampled parent in the same process, not an unsampled remote request, so it is incorrect.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "Indirect reasoning",
+        "T6",
+        "Single choice",
+        "L4",
+        "Observability, SLOs, and incident response",
+        "OpenTelemetry"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 108,
+      "sourceId": "AOP-I13",
+      "title": "Setting replicas when metric retrieval fails",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "KEDA",
+      "prompt": "One ScaledObject setting adjusts the HPA calculation to produce a predefined replica count after consecutive metric-source retrieval failures exceed a configured limit, instead of the default error behavior of not passing a metric to the HPA. Which setting is described?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`minReplicaCount`"
+        },
+        {
+          "id": "B",
+          "text": "`cooldownPeriod`"
+        },
+        {
+          "id": "C",
+          "text": "`advanced.scalingModifiers`"
+        },
+        {
+          "id": "D",
+          "text": "`fallback`"
+        },
+        {
+          "id": "E",
+          "text": "`idleReplicaCount`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** minReplicaCount sets the replica floor and does not depend on the number of metric-retrieval failures, so it is incorrect.\n\n- **{{option:B}}.** cooldownPeriod is the wait after the last active trigger report before scaling back to zero. It is not based on consecutive failures, so it is incorrect.\n\n- **{{option:C}}.** advanced.scalingModifiers combines metrics from multiple triggers through a formula to compute the scaling metric. It does not select a predefined replica count after a failure threshold is exceeded.\n\n- **{{option:D}}.** fallback adjusts the HPA calculation to the specified replicas after consecutive retrieval failures exceed failureThreshold, rather than withholding a metric as in the default error behavior. This is correct.\n\n- **{{option:E}}.** idleReplicaCount is the count used when there is no activity and is ignored when omitted. It does not concern metric-retrieval failures.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Serving, scaling, and performance",
+        "Kubernetes",
+        "Error handling"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 109,
+      "sourceId": "AOP-I14",
+      "title": "How long a new pod must remain ready before counting as available",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Kubernetes",
+      "prompt": "Which optional Deployment spec field sets the minimum seconds a newly created pod must remain ready without any container crashing before it is considered available?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`progressDeadlineSeconds`"
+        },
+        {
+          "id": "B",
+          "text": "`revisionHistoryLimit`"
+        },
+        {
+          "id": "C",
+          "text": "`paused`"
+        },
+        {
+          "id": "D",
+          "text": "`strategy.rollingUpdate.maxSurge`"
+        },
+        {
+          "id": "E",
+          "text": "`minReadySeconds`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** progressDeadlineSeconds is the time before reporting stalled Deployment progress, defaulting to 600, and must exceed minReadySeconds. It is not the availability criterion for a pod.\n\n- **{{option:B}}.** revisionHistoryLimit is the number of old ReplicaSets retained for rollback, defaulting to ten. It is a count, not a duration.\n\n- **{{option:C}}.** paused is the boolean field for pausing and resuming a Deployment, unrelated to the pod-availability timing criterion.\n\n- **{{option:D}}.** strategy.rollingUpdate.maxSurge sets the maximum pods above the desired count. It is a count limit, not the time before availability.\n\n- **{{option:E}}.** minReadySeconds is the minimum time a new pod must remain ready without a container crash before it counts as available. It defaults to zero. This is correct.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AOP",
+        "AI Operations",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Serving, scaling, and performance",
+        "Container operations",
+        "Deployment"
       ],
       "tagging": {
         "version": 1,

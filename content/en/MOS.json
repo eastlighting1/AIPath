@@ -4706,6 +4706,1184 @@
         "version": 1,
         "method": "rule-based-draft"
       }
+    },
+    {
+      "id": 91,
+      "sourceId": "MCS-I01",
+      "title": "Retrieving evidence for a declarative claim",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Embedding task types",
+      "prompt": "You want to embed a sentence with gemini-embedding-001 for retrieval. It is a declarative claim rather than a question, and retrieval should be optimized for documents containing evidence that supports or refutes it. Which task type should you specify?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "SEMANTIC_SIMILARITY"
+        },
+        {
+          "id": "B",
+          "text": "FACT_VERIFICATION"
+        },
+        {
+          "id": "C",
+          "text": "QUESTION_ANSWERING"
+        },
+        {
+          "id": "D",
+          "text": "RETRIEVAL_QUERY"
+        },
+        {
+          "id": "E",
+          "text": "CLASSIFICATION"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** This type is optimized to assess similarity between two texts, not retrieve evidence for a claim.\n\n- **{{option:B}}.** This type is optimized to find documents containing evidence supporting or refuting a statement that needs verification.\n\n- **{{option:C}}.** This type retrieves documents answering a question in a question-answering system. The input here is a declarative claim, not a question.\n\n- **{{option:D}}.** This type handles general search queries rather than specializing in evidence supporting or refuting a declarative claim.\n\n- **{{option:E}}.** This type classifies text into predefined labels rather than retrieving documents.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Embeddings and retrieval models",
+        "Source verification",
+        "Retrieval quality",
+        "Vector search",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 92,
+      "sourceId": "MCS-I02",
+      "title": "Input remaining after the cache breakpoint",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 5,
+      "difficulty": "L3",
+      "sourceTopic": "Claude API prompt cache usage",
+      "prompt": "Which field in Claude API response usage reports input tokens after the last cache breakpoint that were neither written to a new cache entry nor read from the cache?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "cache_creation_input_tokens"
+        },
+        {
+          "id": "B",
+          "text": "cache_read_input_tokens"
+        },
+        {
+          "id": "C",
+          "text": "output_tokens"
+        },
+        {
+          "id": "D",
+          "text": "input_tokens"
+        },
+        {
+          "id": "E",
+          "text": "ephemeral_5m_input_tokens within cache_creation"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** This counts tokens written while creating cache entries, the opposite of tokens not written to the cache.\n\n- **{{option:B}}.** This counts tokens retrieved from the cache, contradicting the requirement that they were not read from it.\n\n- **{{option:C}}.** This counts model-generated output, whereas the question asks about input.\n\n- **{{option:D}}.** This counts input tokens neither read from the cache nor used for cache creation: tokens after the final cache breakpoint.\n\n- **{{option:E}}.** This details tokens written with a five-minute lifetime, contradicting the condition that they were not cached.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Serving and lifecycle",
+        "Caching",
+        "Token management",
+        "API usage",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 93,
+      "sourceId": "MCS-I03",
+      "title": "Truncating an embedding without re-embedding",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Voyage embedding dimensions",
+      "prompt": "You want to retain only the first 256 components of a 2,048-dimensional Voyage embedding without embedding it again. Which training method makes the truncated vector a valid 256-dimensional embedding?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Matryoshka learning"
+        },
+        {
+          "id": "B",
+          "text": "Binary quantization"
+        },
+        {
+          "id": "C",
+          "text": "Contextualized chunk embeddings"
+        },
+        {
+          "id": "D",
+          "text": "A reranking model"
+        },
+        {
+          "id": "E",
+          "text": "Multimodal embeddings"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** This training nests embeddings of different lengths within one vector, so retaining its first k components produces a valid k-dimensional embedding.\n\n- **{{option:B}}.** This reduces bits per component, not the number of components; it differs from retaining a vector prefix.\n\n- **{{option:C}}.** This jointly encodes chunks from the same document to include document context in each chunk embedding, not to shorten vectors.\n\n- **{{option:D}}.** A reranker returns query-document relevance rankings; it does not concern truncating embedding vectors.\n\n- **{{option:E}}.** Multimodal embeddings accept text, images, and video; this is not a vector-length reduction method.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Embeddings and retrieval models",
+        "Vector search"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 94,
+      "sourceId": "MCS-I04",
+      "title": "Markers separating types of prompt content",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 1,
+      "difficulty": "L3",
+      "sourceTopic": "Structuring Claude prompts",
+      "prompt": "A Claude prompt mixes instructions, background material, examples, and variable input. The background is hierarchical, with individual documents inside a document collection. You want named markers around each content type, nested to represent hierarchy and prevent confusion. Which method is this?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Assign a role in the system prompt."
+        },
+        {
+          "id": "B",
+          "text": "Provide three to five examples."
+        },
+        {
+          "id": "C",
+          "text": "Place long material at the beginning of the prompt."
+        },
+        {
+          "id": "D",
+          "text": "Explain the reason behind instructions."
+        },
+        {
+          "id": "E",
+          "text": "Use XML tags."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** A role statement narrows behavior and tone but does not separate content types or represent hierarchy.\n\n- **{{option:B}}.** Examples guide output format and tone; they do not mark boundaries between material and instructions.\n\n- **{{option:C}}.** Front-loading long material is an ordering recommendation, not a way to name content regions or encode hierarchy.\n\n- **{{option:D}}.** Explaining an instruction’s purpose clarifies the objective but does not divide the input into sections.\n\n- **{{option:E}}.** Named tags separate instructions, context, examples, and input to reduce interpretation ambiguity. Nested tags represent hierarchical content.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Diagnosing and selecting optimization paths",
+        "Prompt writing",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 95,
+      "sourceId": "MCS-I05",
+      "title": "Receiving one-byte unsigned components",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Voyage embedding output data types",
+      "prompt": "Choose a Voyage embedding API output format in which each component is a one-byte unsigned integer (0–255). Components must not be bit-packed: the returned integer list must have the same length as the embedding dimension. Which output_dtype value fits?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "float"
+        },
+        {
+          "id": "B",
+          "text": "int8"
+        },
+        {
+          "id": "C",
+          "text": "uint8"
+        },
+        {
+          "id": "D",
+          "text": "binary"
+        },
+        {
+          "id": "E",
+          "text": "ubinary"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** float returns 32-bit floating-point components rather than one-byte integers.\n\n- **{{option:B}}.** int8 uses one byte, but it is signed with a range of -128 to 127 rather than unsigned 0 to 255.\n\n- **{{option:C}}.** uint8 returns each component as an eight-bit integer from 0 to 255, with one list element per component.\n\n- **{{option:D}}.** binary packs one-bit values into signed integers, making the list length one eighth of the dimension rather than equal to it.\n\n- **{{option:E}}.** ubinary uses unsigned integers but still packs one-bit components, so the list length is one eighth of the dimension.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Embeddings and retrieval models",
+        "API usage",
+        "Vector search"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 96,
+      "sourceId": "MCS-I06",
+      "title": "Using supplied material and conversation history",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "Defining Claude success criteria",
+      "prompt": "You are defining success criteria for a Claude application. Which criterion measures how well the model uses supplied material and information from earlier conversation turns, and builds on that information?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Task fidelity"
+        },
+        {
+          "id": "B",
+          "text": "Context utilization"
+        },
+        {
+          "id": "C",
+          "text": "Relevance and coherence"
+        },
+        {
+          "id": "D",
+          "text": "Consistency"
+        },
+        {
+          "id": "E",
+          "text": "Tone and style"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** Task fidelity measures task performance and handling of rare or challenging inputs, rather than use of supplied context and conversation history.\n\n- **{{option:B}}.** Context utilization measures effective use of provided context, including referencing and building on information from conversation history.\n\n- **{{option:C}}.** Relevance and coherence concerns directly addressing the user’s question or instructions and logical organization, rather than contextual information use.\n\n- **{{option:D}}.** Consistency concerns similar responses to similar inputs, not use of material and earlier turns.\n\n- **{{option:E}}.** Tone and style concerns output style and audience-appropriate language, not information utilization.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Evaluation and comparison",
+        "Model selection",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 97,
+      "sourceId": "MCS-I07",
+      "title": "A long-context text embedding model with one output dimension",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Voyage text embedding models",
+      "prompt": "Which Voyage text embedding model has a 32,000-token context length and only one output dimension option, 1,024?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "voyage-law-2"
+        },
+        {
+          "id": "B",
+          "text": "voyage-code-4"
+        },
+        {
+          "id": "C",
+          "text": "voyage-4-large"
+        },
+        {
+          "id": "D",
+          "text": "voyage-4-lite"
+        },
+        {
+          "id": "E",
+          "text": "voyage-finance-2"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** voyage-law-2 offers only 1,024 dimensions but has a 16,000-token context, failing the 32,000-token requirement.\n\n- **{{option:B}}.** voyage-code-4 has a 32,000-token context but offers 256, 512, and 2,048 dimensions as well as 1,024, violating the single-option requirement.\n\n- **{{option:C}}.** voyage-4-large has a 32,000-token context but offers 256, 512, 1,024, and 2,048 dimensions.\n\n- **{{option:D}}.** voyage-4-lite has a 32,000-token context but supports multiple dimensions rather than just one.\n\n- **{{option:E}}.** voyage-finance-2 has a 32,000-token context and only a 1,024-dimensional output.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Embeddings and retrieval models",
+        "Vector search",
+        "Context management",
+        "Token management"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 98,
+      "sourceId": "MCS-I08",
+      "title": "Replacing a retired embedding model",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T3",
+      "domain": 5,
+      "difficulty": "L3",
+      "sourceTopic": "Gemini embedding model retirement and replacement",
+      "prompt": "As of 2026-10-20, you are migrating code that calls text-embedding-004, which the Gemini API documentation says retired on 2026-01-14. Which documented replacement has no announced retirement date?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "gemini-embedding-2"
+        },
+        {
+          "id": "B",
+          "text": "gemini-embedding-001"
+        },
+        {
+          "id": "C",
+          "text": "embedding-2-preview"
+        },
+        {
+          "id": "D",
+          "text": "gemini-embedding-exp"
+        },
+        {
+          "id": "E",
+          "text": "embedding-gecko-001"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** The documentation lists gemini-embedding-2 as the replacement for text-embedding-004 and has announced no retirement date.\n\n- **{{option:B}}.** gemini-embedding-001 remains available, but its announced retirement date of 2028-05-14 violates the no-announced-date condition.\n\n- **{{option:C}}.** embedding-2-preview retired on 2026-08-10, before the scenario date of 2026-10-20, so it is not a migration target.\n\n- **{{option:D}}.** gemini-embedding-exp retired on 2025-10-30, so this experimental model is no longer a migration target.\n\n- **{{option:E}}.** embedding-gecko-001 also retired on 2025-10-30 and is not a migration target.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T3",
+        "Single choice",
+        "L3",
+        "Serving and lifecycle",
+        "Vector search",
+        "API usage",
+        "Coding assistance",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 99,
+      "sourceId": "MCS-I09",
+      "title": "Replacing the retired smallest third-generation model",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T3",
+      "domain": 5,
+      "difficulty": "L3",
+      "sourceTopic": "Claude model retirement and replacement",
+      "prompt": "A service calls claude-3-haiku-20240307, which retired on 2026-04-20. Migrate to its documented replacement without moving to a higher model tier for cost reasons, while retaining operation in 2027. Which model should be chosen?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "claude-sonnet-5-5"
+        },
+        {
+          "id": "B",
+          "text": "claude-opus-4-8"
+        },
+        {
+          "id": "C",
+          "text": "claude-sonnet-4-5-20250929"
+        },
+        {
+          "id": "D",
+          "text": "claude-haiku-4-5-20251001"
+        },
+        {
+          "id": "E",
+          "text": "claude-opus-4-1-20250805"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** claude-sonnet-5-5 is a documented replacement for Sonnet-family models and is a higher tier than Haiku, violating the tier constraint.\n\n- **{{option:B}}.** claude-opus-4-8 belongs to the higher Opus tier and violates the cost/tier condition.\n\n- **{{option:C}}.** claude-sonnet-4-5-20250929 is scheduled to retire on 2026-11-30, failing the 2027 operation requirement.\n\n- **{{option:D}}.** claude-haiku-4-5-20251001 is the documented replacement, remains in the Haiku tier, and has no confirmed retirement date in the documentation.\n\n- **{{option:E}}.** claude-opus-4-1-20250805 retired on 2026-08-05, failing the 2027 requirement.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T3",
+        "Single choice",
+        "L3",
+        "Serving and lifecycle",
+        "Cost management",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 100,
+      "sourceId": "MCS-I10",
+      "title": "Scoring tone at scale",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "Designing Claude evaluation scoring",
+      "prompt": "Thousands of support responses must receive tone-appropriateness scores daily. Tone is difficult to express as rules; humans cannot score every response. The grading approach must be validated before broad rollout. Which design fits?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Apply a code-based checker for tone-related keywords to every response."
+        },
+        {
+          "id": "B",
+          "text": "Hire enough human graders to read and score every response."
+        },
+        {
+          "id": "C",
+          "text": "Give a grader model a detailed rubric and a 1–5 scale, have it reason before scoring, validate its reliability, then apply it to all responses."
+        },
+        {
+          "id": "D",
+          "text": "Have a grader model freely describe tone qualitatively, validate reliability, then apply it to all responses."
+        },
+        {
+          "id": "E",
+          "text": "Give a grader model a detailed rubric and a 1–5 scale, request scores without reasoning, and deploy it to all responses without testing."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** Code-based grading is fast and scalable but lacks nuance for complex judgments that resist rules, such as tone.\n\n- **{{option:B}}.** Human grading is flexible and high-quality but slow and costly, conflicting with the inability to grade thousands of daily responses manually.\n\n- **{{option:C}}.** A detailed rubric, concrete scale, reasoning before scoring, and reliability testing before expansion fit large-scale grading of complex judgments.\n\n- **{{option:D}}.** Purely qualitative assessment is difficult to process rapidly at scale, conflicting with thousands of responses per day.\n\n- **{{option:E}}.** Deploying without reliability testing violates the requirement to validate the grading approach before broad rollout.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L3",
+        "Evaluation and comparison",
+        "Scoring tone at scale"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 101,
+      "sourceId": "MCS-I11",
+      "title": "Role-specific retrieval embeddings with reduced dimensions",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Gemini embedding retrieval configuration",
+      "prompt": "Build FAQ retrieval with gemini-embedding-001. Optimize general keyword-style queries and candidate documents separately for their respective roles, and reduce output dimensions to 1,536 to save storage. Which configuration is correct?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use RETRIEVAL_QUERY for queries and RETRIEVAL_DOCUMENT for documents, then normalize the 1,536-dimensional results yourself before storing them."
+        },
+        {
+          "id": "B",
+          "text": "Use RETRIEVAL_QUERY for queries and RETRIEVAL_DOCUMENT for documents, then store 1,536-dimensional results unchanged."
+        },
+        {
+          "id": "C",
+          "text": "Use RETRIEVAL_DOCUMENT for queries and RETRIEVAL_QUERY for documents, then normalize 1,536-dimensional results yourself."
+        },
+        {
+          "id": "D",
+          "text": "Use SEMANTIC_SIMILARITY for both and normalize 1,536-dimensional results yourself."
+        },
+        {
+          "id": "E",
+          "text": "Use RETRIEVAL_QUERY for queries and RETRIEVAL_DOCUMENT for documents, then store the default 3,072-dimensional results unchanged."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** This uses the correct role-specific task types. Dimensions other than 3,072 require manual normalization for this model, satisfying all conditions.\n\n- **{{option:B}}.** The task types are correct, but the model does not normalize non-3,072-dimensional outputs automatically; manual normalization is needed.\n\n- **{{option:C}}.** The query and document task types are reversed, violating role-specific optimization.\n\n- **{{option:D}}.** Using the same type for both does not optimize them for their distinct roles.\n\n- **{{option:E}}.** The task types are correct, but storing 3,072 dimensions violates the 1,536-dimension requirement.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L3",
+        "Embeddings and retrieval models",
+        "Retrieval quality",
+        "Vector search",
+        "Gemini"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 102,
+      "sourceId": "MCS-I12",
+      "title": "An image omitted from an embedding without an error",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Voyage multimodal embedding input handling",
+      "prompt": "A Voyage multimodal embedding call uses input_type=document, valid input formatting, images within the size limit, and a list within the item-count limit. One input exceeds 32,000 total tokens, yet the call succeeds. Information from an image near that input’s end is absent from the embedding. Which setting explains this?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "input_type"
+        },
+        {
+          "id": "B",
+          "text": "Input format (list or dictionary)"
+        },
+        {
+          "id": "C",
+          "text": "Maximum image size"
+        },
+        {
+          "id": "D",
+          "text": "Maximum number of input-list items"
+        },
+        {
+          "id": "E",
+          "text": "Default truncation setting"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** input_type is correctly set to document, so it does not explain the missing image.\n\n- **{{option:B}}.** The input format is explicitly valid, ruling it out.\n\n- **{{option:C}}.** The images are explicitly within the size limit, ruling that out.\n\n- **{{option:D}}.** The list explicitly meets the item-count limit, ruling that out.\n\n- **{{option:E}}.** With truncation enabled, input beyond the context limit is cut off. If the cutoff falls inside an image, that entire image is dropped. Disabling truncation instead raises an error for an oversized input.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L3",
+        "Embeddings and retrieval models",
+        "Image understanding",
+        "Vector search",
+        "Error handling",
+        "Token management",
+        "Multimodal"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 103,
+      "sourceId": "MCS-I13",
+      "title": "Embedding queries and documents identically",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Voyage text embedding invocation settings",
+      "prompt": "Voyage text embeddings are used for search, but embedding queries and documents identically produces lower quality than expected. Every input fits the context length, output_dtype is float, and output dimensions are at the maximum. Which setting is responsible?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "truncation"
+        },
+        {
+          "id": "B",
+          "text": "output_dtype"
+        },
+        {
+          "id": "C",
+          "text": "output_dimension"
+        },
+        {
+          "id": "D",
+          "text": "input_type"
+        },
+        {
+          "id": "E",
+          "text": "Length of the input texts list"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** All inputs fit the context length, so truncation is not responsible.\n\n- **{{option:B}}.** float is already used, so quantization precision loss is not responsible.\n\n- **{{option:C}}.** Maximum dimensions are already used, so dimensionality reduction is not responsible.\n\n- **{{option:D}}.** If input_type is unspecified (None), no role-specific retrieval instruction is prepended. The recommendation is to identify queries and documents separately.\n\n- **{{option:E}}.** List length does not explain failure to distinguish query/document roles, and the scenario gives no evidence linking it to quality.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L3",
+        "Embeddings and retrieval models",
+        "Vector search",
+        "Context management",
+        "Retrieval quality"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 104,
+      "sourceId": "MCS-I14",
+      "title": "Reusing a policy collection for hundreds of questions",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 5,
+      "difficulty": "L4",
+      "sourceTopic": "Claude long-document placement and cache breakpoints",
+      "prompt": "A Claude service supplies twelve internal policies totaling about 30,000 tokens and answers hundreds of employee questions against them. Each request has a different question. Follow the recommendation to put long material first and the question last, reuse the policy material from cache to reduce cost, and allow answers to identify the relevant policy. Which configuration meets all three?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Put questions and instructions first, append all twelve policies, and place a breakpoint after the last policy block."
+        },
+        {
+          "id": "B",
+          "text": "Put twelve numbered policies first and the question last, with only top-level cache_control."
+        },
+        {
+          "id": "C",
+          "text": "Put numbered policies first, place a breakpoint after the last policy section, and put the question in a separate later block."
+        },
+        {
+          "id": "D",
+          "text": "Put numbered policies first and the question last, with a breakpoint only after the first policy."
+        },
+        {
+          "id": "E",
+          "text": "Concatenate all policies into one unsegmented text, place it first with a breakpoint at the end, then put the question in a separate block."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** The changing question becomes part of the prefix, preventing policy cache reuse when it changes. It also violates the question-last recommendation.\n\n- **{{option:B}}.** Top-level cache_control places the breakpoint at the last cacheable block: the changing question. Cache writes occur only at breakpoints, so no standalone policy-prefix entry is created for reuse.\n\n- **{{option:C}}.** Material precedes the question, the stable policy prefix ends at the breakpoint for reuse, and numbered sections allow source identification.\n\n- **{{option:D}}.** Only the first policy is inside the breakpoint; the remaining eleven are processed as regular input each time, failing the policy-reuse requirement.\n\n- **{{option:E}}.** Unsegmented policies do not satisfy the requirement to identify which policy supports an answer.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L4",
+        "Serving and lifecycle",
+        "Regulation and compliance",
+        "Token management",
+        "Cost management",
+        "Caching",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 105,
+      "sourceId": "MCS-I15",
+      "title": "Migrating a retiring model and its prompt format",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T6",
+      "domain": 5,
+      "difficulty": "L4",
+      "sourceTopic": "Claude model replacement and prompt format",
+      "prompt": "A document-to-JSON service uses claude-sonnet-4-5-20250929, which retires on 2026-11-30. Its JSON parser expects the first character to be `{`, so the code prefills the final assistant message with `{` for continuation. Before retirement, migrate to the documented replacement without lowering the model tier, while retaining JSON output beginning with `{`. What should change?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Change only the model ID to the recommended replacement and retain the final assistant prefill."
+        },
+        {
+          "id": "B",
+          "text": "Switch to the recommended replacement, remove the final assistant message, and explicitly instruct it to output only a JSON object."
+        },
+        {
+          "id": "C",
+          "text": "Keep the current model until retirement, then remove the final assistant message and migrate."
+        },
+        {
+          "id": "D",
+          "text": "Switch to claude-haiku-4-5-20251001 and retain the final assistant prefill."
+        },
+        {
+          "id": "E",
+          "text": "Switch to the recommended replacement and move the assistant message containing `{` to the middle of the conversation."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** The recommended replacement belongs to a generation that does not support final-assistant-turn prefill, so such requests return a 400 error.\n\n- **{{option:B}}.** The recommended replacement does not support final-turn prefill. Remove it and request only a JSON object through instructions, migrating before retirement while retaining the model tier.\n\n- **{{option:C}}.** Requests to the retired model fail after retirement; waiting violates the requirement to migrate beforehand.\n\n- **{{option:D}}.** This generation supports prefill, but Haiku is a lower tier than Sonnet, violating the tier requirement.\n\n- **{{option:E}}.** An assistant message in the middle is allowed but no longer provides final-turn continuation, so it cannot ensure the required opening format.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T6",
+        "Single choice",
+        "L4",
+        "Serving and lifecycle",
+        "Coding assistance",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 106,
+      "sourceId": "MCS-S1-1",
+      "title": "A small bot that silently skips caching",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 5,
+      "difficulty": "L4",
+      "sourceTopic": "Claude minimum cacheable prompt length",
+      "caseSet": "MCS-S1",
+      "prompt": "An FAQ bot using the same model has no tool definitions and a total prompt of 3,900 tokens including system instructions. It has one breakpoint on the system block. Requests arrive every 40 seconds and do not use tool_choice. Responses succeed, but usage always shows cache_creation_input_tokens=0, cache_read_input_tokens=0, and input_tokens=3,900. Which constraint explains this?",
+      "context": "**Environment:** A customer-support agent uses the Claude API with prompt caching.\n\n**Scenario:** Every request includes tool definitions, support instructions (system prompt), and the conversation so far. A conversation may exceed 40 turns and accumulate more than 80 message blocks. Users respond every 6–10 minutes; model response generation can take up to four minutes. Tool definitions change in deployments once or twice a week. The team wants caching to reduce cost without code that moves breakpoints for every request or separate keepalive calls.\n\n| Component | Size | Notes |\n| --- | --- | --- |\n| tools | About 3,000 tokens | Changes once or twice weekly |\n| system | About 6,000 tokens | Rarely changes |\n| messages | Grows each turn | More than 80 per conversation |\n| Minimum cacheable length for this service’s model | 4,096 tokens | |",
+      "options": [
+        {
+          "id": "A",
+          "text": "Default cache lifetime"
+        },
+        {
+          "id": "B",
+          "text": "Maximum breakpoints per request"
+        },
+        {
+          "id": "C",
+          "text": "Minimum cacheable prompt length"
+        },
+        {
+          "id": "D",
+          "text": "Number of blocks searched backward from a breakpoint"
+        },
+        {
+          "id": "E",
+          "text": "Invalidation caused by changed tool definitions"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** Forty seconds is within the default lifetime, so expiry is not the cause.\n\n- **{{option:B}}.** Only one breakpoint is used, so the count limit is not reached.\n\n- **{{option:C}}.** At 3,900 tokens, the prompt is shorter than the 4,096-token minimum. It is processed without caching or an error even with a breakpoint.\n\n- **{{option:D}}.** The prompt contains few blocks, so the lookup range is not exceeded.\n\n- **{{option:E}}.** The bot has no tool definitions to change and invalidate the cache.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L4",
+        "Serving and lifecycle",
+        "Error handling",
+        "Caching",
+        "Prompt writing",
+        "Token management",
+        "API usage",
+        "Agents"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 107,
+      "sourceId": "MCS-S1-2",
+      "title": "When a longer conversation loses cache reads",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 5,
+      "difficulty": "L4",
+      "sourceTopic": "Claude prompt cache lookup range",
+      "caseSet": "MCS-S1",
+      "prompt": "A team experiments with one explicit breakpoint on each request’s last message block. The previous request ended at block 15; the current request has 35 blocks and a breakpoint at block 35. Requests are one minute apart, with unchanged tools and system instructions. Only this request reports zero cache reads. Which constraint explains it?",
+      "context": "**Environment:** A customer-support agent uses the Claude API with prompt caching.\n\n**Scenario:** Every request includes tool definitions, support instructions (system prompt), and the conversation so far. A conversation may exceed 40 turns and accumulate more than 80 message blocks. Users respond every 6–10 minutes; model response generation can take up to four minutes. Tool definitions change in deployments once or twice a week. The team wants caching to reduce cost without code that moves breakpoints for every request or separate keepalive calls.\n\n| Component | Size | Notes |\n| --- | --- | --- |\n| tools | About 3,000 tokens | Changes once or twice weekly |\n| system | About 6,000 tokens | Rarely changes |\n| messages | Grows each turn | More than 80 per conversation |\n| Minimum cacheable length for this service’s model | 4,096 tokens | |",
+      "options": [
+        {
+          "id": "A",
+          "text": "Default cache lifetime"
+        },
+        {
+          "id": "B",
+          "text": "Maximum breakpoints per request"
+        },
+        {
+          "id": "C",
+          "text": "Minimum cacheable prompt length"
+        },
+        {
+          "id": "D",
+          "text": "The tools → system → messages invalidation hierarchy"
+        },
+        {
+          "id": "E",
+          "text": "Number of blocks searched backward from a breakpoint"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** One minute is within the default lifetime, so expiry is not the cause.\n\n- **{{option:B}}.** Only one breakpoint is used, so the count limit is not reached.\n\n- **{{option:C}}.** Tools and system alone total about 9,000 tokens, exceeding the 4,096-token minimum.\n\n- **{{option:D}}.** Tools and system are unchanged, so hierarchical invalidation did not occur.\n\n- **{{option:E}}.** A breakpoint searches at most 20 positions including itself. From block 35, the range ends at block 16; the previous entry at block 15 lies outside it.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L4",
+        "Serving and lifecycle",
+        "Prompt writing",
+        "Token management",
+        "API usage",
+        "Agents",
+        "Deployment",
+        "Cost management"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 108,
+      "sourceId": "MCS-S1-3",
+      "title": "The earliest cache availability for parallel requests",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 5,
+      "difficulty": "L4",
+      "sourceTopic": "Claude concurrent prompt caching",
+      "caseSet": "MCS-S1",
+      "prompt": "An agent sends two requests with the same prefix almost simultaneously. The first request’s prefix has never been cached. What is the earliest point when the second request can read that prefix from the cache?",
+      "context": "**Environment:** A customer-support agent uses the Claude API with prompt caching.\n\n**Scenario:** Every request includes tool definitions, support instructions (system prompt), and the conversation so far. A conversation may exceed 40 turns and accumulate more than 80 message blocks. Users respond every 6–10 minutes; model response generation can take up to four minutes. Tool definitions change in deployments once or twice a week. The team wants caching to reduce cost without code that moves breakpoints for every request or separate keepalive calls.\n\n| Component | Size | Notes |\n| --- | --- | --- |\n| tools | About 3,000 tokens | Changes once or twice weekly |\n| system | About 6,000 tokens | Rarely changes |\n| messages | Grows each turn | More than 80 per conversation |\n| Minimum cacheable length for this service’s model | 4,096 tokens | |",
+      "options": [
+        {
+          "id": "A",
+          "text": "Immediately when the first request reaches the server"
+        },
+        {
+          "id": "B",
+          "text": "When the first response starts"
+        },
+        {
+          "id": "C",
+          "text": "When the first response finishes"
+        },
+        {
+          "id": "D",
+          "text": "Five minutes after sending the first request"
+        },
+        {
+          "id": "E",
+          "text": "When another request with a cache breakpoint arrives"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** At request arrival, the cache entry has not yet been created for reading.\n\n- **{{option:B}}.** The entry becomes readable only after the first response starts. For a cache hit on a parallel request, wait until that response begins.\n\n- **{{option:C}}.** It can be read after completion too, but that is not the earliest point.\n\n- **{{option:D}}.** Five minutes is the default cache lifetime, not the time until availability.\n\n- **{{option:E}}.** Arrival of another request is not the condition that makes the entry readable.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L4",
+        "Serving and lifecycle",
+        "Caching",
+        "Prompt writing",
+        "Token management",
+        "API usage",
+        "Agents",
+        "Deployment"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 109,
+      "sourceId": "MCS-S1-4",
+      "title": "Caching across 6–10-minute gaps without moving breakpoints",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 5,
+      "difficulty": "L4",
+      "sourceTopic": "Claude prompt caching configuration",
+      "caseSet": "MCS-S1",
+      "prompt": "As this service’s conversation grows, reuse earlier turns from cache without moving breakpoints in code or sending keepalive requests. The cache must survive 6–10-minute response gaps. Which configuration fits?",
+      "context": "**Environment:** A customer-support agent uses the Claude API with prompt caching.\n\n**Scenario:** Every request includes tool definitions, support instructions (system prompt), and the conversation so far. A conversation may exceed 40 turns and accumulate more than 80 message blocks. Users respond every 6–10 minutes; model response generation can take up to four minutes. Tool definitions change in deployments once or twice a week. The team wants caching to reduce cost without code that moves breakpoints for every request or separate keepalive calls.\n\n| Component | Size | Notes |\n| --- | --- | --- |\n| tools | About 3,000 tokens | Changes once or twice weekly |\n| system | About 6,000 tokens | Rarely changes |\n| messages | Grows each turn | More than 80 per conversation |\n| Minimum cacheable length for this service’s model | 4,096 tokens | |",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use only top-level cache_control with the default lifetime."
+        },
+        {
+          "id": "B",
+          "text": "Manually place a breakpoint on the final message of each request with a one-hour lifetime."
+        },
+        {
+          "id": "C",
+          "text": "Cache only the system block with a one-hour lifetime."
+        },
+        {
+          "id": "D",
+          "text": "Use top-level cache_control with a one-hour lifetime."
+        },
+        {
+          "id": "E",
+          "text": "Use top-level cache_control with the default lifetime and send a keepalive call every four minutes."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** The breakpoint follows the last cacheable block, but the five-minute default lifetime is shorter than the 6–10-minute gap.\n\n- **{{option:B}}.** One hour is suitable, but manually moving the breakpoint violates the no-code-movement requirement.\n\n- **{{option:C}}.** Only the system section is cached; the growing conversation is regular input each time, failing earlier-turn reuse.\n\n- **{{option:D}}.** Top-level cache_control makes the breakpoint follow the last cacheable block, while a one-hour lifetime survives the required gaps.\n\n- **{{option:E}}.** Separate keepalive calls are explicitly forbidden.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L4",
+        "Serving and lifecycle",
+        "Prompt writing",
+        "Token management",
+        "API usage",
+        "Agents",
+        "Deployment",
+        "Cost management"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 110,
+      "sourceId": "MCS-S1-5",
+      "title": "Cache reuse when only tool selection changes",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 5,
+      "difficulty": "L4",
+      "sourceTopic": "Claude prompt cache invalidation scope",
+      "caseSet": "MCS-S1",
+      "prompt": "Between consecutive requests in one support conversation, only the request parameter selecting how the model chooses tools changes. Tool definitions, system instructions, and earlier messages remain identical. Which cache result is correct?",
+      "context": "**Environment:** A customer-support agent uses the Claude API with prompt caching.\n\n**Scenario:** Every request includes tool definitions, support instructions (system prompt), and the conversation so far. A conversation may exceed 40 turns and accumulate more than 80 message blocks. Users respond every 6–10 minutes; model response generation can take up to four minutes. Tool definitions change in deployments once or twice a week. The team wants caching to reduce cost without code that moves breakpoints for every request or separate keepalive calls.\n\n| Component | Size | Notes |\n| --- | --- | --- |\n| tools | About 3,000 tokens | Changes once or twice weekly |\n| system | About 6,000 tokens | Rarely changes |\n| messages | Grows each turn | More than 80 per conversation |\n| Minimum cacheable length for this service’s model | 4,096 tokens | |",
+      "options": [
+        {
+          "id": "A",
+          "text": "Tools and system are read from cache; messages are written again."
+        },
+        {
+          "id": "B",
+          "text": "Tools, system, and messages are all written again."
+        },
+        {
+          "id": "C",
+          "text": "Only tools are read; system and messages are written again."
+        },
+        {
+          "id": "D",
+          "text": "Tools, system, and messages are all read from cache."
+        },
+        {
+          "id": "E",
+          "text": "Only messages are read; tools and system are written again."
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Changing this parameter invalidates only the message-section cache; tools and system remain reusable.\n\n- **{{option:B}}.** Tool definitions are unchanged, so full invalidation does not apply.\n\n- **{{option:C}}.** System instructions are unchanged, so system-level invalidation does not occur.\n\n- **{{option:D}}.** The parameter change invalidates messages, so not every section is reused.\n\n- **{{option:E}}.** Invalidation follows the tools → system → messages hierarchy and affects a section and those after it. Rewriting only preceding sections is not the resulting behavior.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "MOS",
+        "Model Optimization",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L4",
+        "Serving and lifecycle",
+        "Prompt writing",
+        "Token management",
+        "API usage",
+        "Agents",
+        "Deployment",
+        "Cost management"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
     }
   ],
   "nameKo": "모델 최적화"

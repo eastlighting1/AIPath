@@ -6601,6 +6601,1303 @@
         "version": 1,
         "method": "rule-based-draft"
       }
+    },
+    {
+      "id": 127,
+      "sourceId": "AEP-I01",
+      "title": "A side task that inherits the conversation",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 1,
+      "difficulty": "L3",
+      "sourceTopic": "Agent architecture · Agent SDK subagents",
+      "prompt": "In a Claude Agent SDK app, you want to delegate a side task while inheriting the conversation so far. Its tool calls must stay out of the main conversation, and only its final result should return there. Which approach should you use?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Invoke a general-purpose subagent"
+        },
+        {
+          "id": "B",
+          "text": "Resume a finished subagent with resume"
+        },
+        {
+          "id": "C",
+          "text": "Launch a subagent with subagent_type set to \"fork\""
+        },
+        {
+          "id": "D",
+          "text": "Split the session with fork_session=True and run in the new session"
+        },
+        {
+          "id": "E",
+          "text": "Continue the most recent session with the continue option"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** A general-purpose subagent starts with fresh context without the parent's conversation history, violating the inheritance requirement.\n\n- **{{option:B}}.** A resumed subagent inherits its own earlier conversation, not the main conversation.\n\n- **{{option:C}}.** Correct. A fork inherits the full conversation so far, keeps its own tool calls outside the main conversation, and returns only the final result.\n\n- **{{option:D}}.** A session fork creates a separate session from a history copy; it is not a subagent that returns results to the main conversation.\n\n- **{{option:E}}.** continue appends to the same session, so the task's tool calls accumulate directly in the main conversation.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Agent Architecture Design",
+        "Agents",
+        "Tool calling",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 128,
+      "sourceId": "AEP-I02",
+      "title": "One listener for the entire run",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 5,
+      "difficulty": "L3",
+      "sourceTopic": "Agent architecture · OpenAI Agents SDK lifecycle",
+      "prompt": "In the OpenAI Agents SDK, you want one listener to observe an entire run and record agent starts and ends, handoffs between agents, and tool starts and ends. The same listener must receive events from agents reached through handoffs. What should you use?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "AgentHooks attached to a particular agent instance's hooks"
+        },
+        {
+          "id": "B",
+          "text": "RunHooks configured for the run"
+        },
+        {
+          "id": "C",
+          "text": "An input guardrail on the first agent"
+        },
+        {
+          "id": "D",
+          "text": "Tool guardrails on function tools"
+        },
+        {
+          "id": "E",
+          "text": "call_model_input_filter"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** AgentHooks belongs to a specific agent instance and receives only its events, so it cannot meet the requirement for one listener across handoff agents.\n\n- **{{option:B}}.** Correct. RunHooks is one listener observing the entire Runner.run(...) call, including handoffs.\n\n- **{{option:C}}.** Input guardrails inspect input and signal violations; they are not intended for recording lifecycle events.\n\n- **{{option:D}}.** Tool guardrails inspect before and after function-tool calls, but do not receive agent-start, agent-end, or handoff events.\n\n- **{{option:E}}.** call_model_input_filter is an input-editing point immediately before model calls, not an event listener.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Evaluation and Observability",
+        "Agents",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 129,
+      "sourceId": "AEP-I03",
+      "title": "Ending with the first tool output",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 1,
+      "difficulty": "L3",
+      "sourceTopic": "Agent architecture · OpenAI Agents SDK tool-use behavior",
+      "prompt": "An OpenAI Agents SDK agent should use its first tool-call output directly as its final response, without further LLM processing. You will neither specify tool names nor write a function deciding when to finish. Which setting applies?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "tool_use_behavior=\"run_llm_again\""
+        },
+        {
+          "id": "B",
+          "text": "StopAtTools with stop_at_tool_names"
+        },
+        {
+          "id": "C",
+          "text": "A ToolsToFinalOutputFunction that evaluates tool results to decide whether to finish"
+        },
+        {
+          "id": "D",
+          "text": "tool_use_behavior=\"stop_on_first_tool\""
+        },
+        {
+          "id": "E",
+          "text": "reset_tool_choice=False"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** run_llm_again is the default behavior of running tools and having the LLM process their results, contrary to the requirement.\n\n- **{{option:B}}.** StopAtTools stops when named tools are called, violating the condition that no tool names be specified.\n\n- **{{option:C}}.** This uses a custom function to inspect results and decide completion, violating the no-decision-function condition.\n\n- **{{option:D}}.** Correct. The first tool-call output becomes the final result without additional LLM processing.\n\n- **{{option:E}}.** reset_tool_choice controls whether tool_choice resets after a tool call; it does not determine the final response.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Agent Architecture Design",
+        "Agents",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 130,
+      "sourceId": "AEP-I04",
+      "title": "Editing inputs just before the model call",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T1",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Agent architecture · OpenAI Agents SDK run configuration",
+      "prompt": "In an OpenAI Agents SDK run, you want an editing point that can trim, replace, or reorder already prepared input items immediately before a model call. Which run setting provides it?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "call_model_input_filter"
+        },
+        {
+          "id": "B",
+          "text": "reasoning_item_id_policy"
+        },
+        {
+          "id": "C",
+          "text": "RunHooks.on_llm_start"
+        },
+        {
+          "id": "D",
+          "text": "A dynamic instructions function that returns a prompt from context"
+        },
+        {
+          "id": "E",
+          "text": "The invalid_final_output key in error_handlers"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. It receives prepared inputs immediately before a model call and can trim, replace, or reorder their items.\n\n- **{{option:B}}.** This controls only whether IDs are preserved or removed when reasoning items become next-turn inputs; it is not a general input-editing point.\n\n- **{{option:C}}.** This lifecycle callback observes the start of an LLM call and is not presented as an input-item editing point.\n\n- **{{option:D}}.** Dynamic instructions receives the agent and context to produce a prompt string, rather than editing prepared input items.\n\n- **{{option:E}}.** This error-handler key returns a controlled final output when the final output is invalid and is unrelated to pre-call inputs.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T1",
+        "Single choice",
+        "L3",
+        "Context and Memory Management",
+        "Agents",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 131,
+      "sourceId": "AEP-I05",
+      "title": "A delegate allowed only to ask clarifying questions",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 1,
+      "difficulty": "L3",
+      "sourceTopic": "Agent architecture · ADK collaborative workflows",
+      "prompt": "In ADK, one kind of subagent delegated by a coordinator may only ask the user clarifying questions, retains control until its task ends, and then returns to its parent. Which statement about this type is correct?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "It can run in parallel with peer agents"
+        },
+        {
+          "id": "B",
+          "text": "It must explicitly call transfer_to_agent to return to its parent"
+        },
+        {
+          "id": "C",
+          "text": "The root agent may use the same type"
+        },
+        {
+          "id": "D",
+          "text": "It can see events from other agents running in parallel"
+        },
+        {
+          "id": "E",
+          "text": "It cannot have subagents of its own"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** Parallel execution is supported only for the type without user interaction, not this type that asks clarifying questions.\n\n- **{{option:B}}.** The default type that converses freely with the user returns through an explicit transfer_to_agent call; this type returns with finish_task.\n\n- **{{option:C}}.** This setting is for subagents invoked by a coordinator, not the root agent.\n\n- **{{option:D}}.** It sees only its own events within its session branch; agents running in parallel cannot see one another's work.\n\n- **{{option:E}}.** Correct. This is a leaf-agent type and cannot have subagents.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Agent Architecture Design",
+        "Agents"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 132,
+      "sourceId": "AEP-I06",
+      "title": "A turn ending without complying with the request",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 5,
+      "difficulty": "L3",
+      "sourceTopic": "Agent architecture · Agent SDK result messages",
+      "prompt": "In a Claude Agent SDK result message, you want to determine whether the model ended generation on its final turn by declining the request. Which field and value should you inspect?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "subtype equals \"error_during_execution\""
+        },
+        {
+          "id": "B",
+          "text": "stop_reason equals \"refusal\""
+        },
+        {
+          "id": "C",
+          "text": "stop_reason equals \"max_tokens\""
+        },
+        {
+          "id": "D",
+          "text": "subtype equals \"error_max_turns\""
+        },
+        {
+          "id": "E",
+          "text": "stop_reason equals \"end_turn\""
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** This subtype indicates an error interrupted the loop, such as a canceled request, not generation ending in a refusal.\n\n- **{{option:B}}.** Correct. A model refusal has stop_reason \"refusal\", which is the value used to detect refusal.\n\n- **{{option:C}}.** This value indicates generation stopped at the output-token limit.\n\n- **{{option:D}}.** This subtype indicates termination at the turn limit.\n\n- **{{option:E}}.** This indicates the model finished its response normally, the opposite of declining the request.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Evaluation and Observability",
+        "Agents",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 133,
+      "sourceId": "AEP-I07",
+      "title": "An attachment available across a user's sessions",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Agent architecture · ADK artifacts",
+      "prompt": "An attachment saved by an ADK agent should be readable and updatable in every session the same user opens in the same app. How should this be done?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Prefix the filename with user:"
+        },
+        {
+          "id": "B",
+          "text": "Switch the artifact service to GcsArtifactService"
+        },
+        {
+          "id": "C",
+          "text": "Store file bytes in session state under a user:-prefixed key"
+        },
+        {
+          "id": "D",
+          "text": "Save again under the same filename to create a new version"
+        },
+        {
+          "id": "E",
+          "text": "Specify a version number when loading"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. A user:-prefixed filename is scoped to app and user, allowing access and updates from any of that user's sessions.\n\n- **{{option:B}}.** Changing storage does not change scope: an unprefixed filename remains scoped to app, user, and session and is not shared across sessions.\n\n- **{{option:C}}.** Artifacts are stored separately by the artifact service, not in agent or session state, so a state key does not share the file as an artifact.\n\n- **{{option:D}}.** Saving the same name adds a version within the existing scope rather than broadening that scope.\n\n- **{{option:E}}.** The version number selects which version to load and does not change the accessible session scope.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L3",
+        "Context and Memory Management",
+        "Working with files",
+        "Agents"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 134,
+      "sourceId": "AEP-I08",
+      "title": "The current tool name for launching subagents",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T3",
+      "domain": 1,
+      "difficulty": "L3",
+      "sourceTopic": "Agent architecture · Detecting Agent SDK subagent calls",
+      "prompt": "You want to detect tool calls that launch subagents in the Claude Agent SDK. Older versions named this tool Task in tool_use blocks. What name does the current version use?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "`Task`"
+        },
+        {
+          "id": "B",
+          "text": "`TaskCreate`"
+        },
+        {
+          "id": "C",
+          "text": "`Agent`"
+        },
+        {
+          "id": "D",
+          "text": "`Skill`"
+        },
+        {
+          "id": "E",
+          "text": "`AskUserQuestion`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** Task is the name used in older tool_use blocks, not the current name requested.\n\n- **{{option:B}}.** TaskCreate is for task tracking and does not launch subagents.\n\n- **{{option:C}}.** Correct. Current versions identify subagent calls as Agent in tool_use blocks.\n\n- **{{option:D}}.** Skill invokes skills rather than launching subagents.\n\n- **{{option:E}}.** AskUserQuestion asks the user questions rather than launching subagents.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T3",
+        "Single choice",
+        "L3",
+        "Agent Architecture Design",
+        "Agents",
+        "Tool calling",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 135,
+      "sourceId": "AEP-I09",
+      "title": "Checking before and after each tool call",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 4,
+      "difficulty": "L3",
+      "sourceTopic": "Agent architecture · OpenAI Agents SDK guardrails",
+      "prompt": "An OpenAI Agents SDK manager uses several custom function tools and performs handoffs. Every function-tool call needs argument checks before execution that can skip the call, and result checks afterward that can replace output with another message. Which configuration is required?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Attach input and output guardrails to the manager agent"
+        },
+        {
+          "id": "B",
+          "text": "Attach tool guardrails to handoff calls"
+        },
+        {
+          "id": "C",
+          "text": "Replace function tools with hosted tools and attach guardrails"
+        },
+        {
+          "id": "D",
+          "text": "Attach tool-input and tool-output guardrails to the function tools"
+        },
+        {
+          "id": "E",
+          "text": "Wrap specialist agents with Agent.as_tool() and specify tool-guardrail options"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** Agent input guardrails run only on the first agent in the chain, and output guardrails only on the agent producing final output. They cannot inspect every function-tool call.\n\n- **{{option:B}}.** Handoffs use a handoff pipeline rather than the function-tool pipeline, so tool guardrails do not apply.\n\n- **{{option:C}}.** Hosted tools do not use this guardrail pipeline; the requirement concerns custom function tools.\n\n- **{{option:D}}.** Correct. Tool-input guardrails can skip execution or substitute a message before execution; tool-output guardrails replace output afterward.\n\n- **{{option:E}}.** Agent.as_tool() currently does not expose tool-guardrail options directly.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L3",
+        "Safe Execution and Human Intervention",
+        "Tool calling",
+        "Agents",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 136,
+      "sourceId": "AEP-I10",
+      "title": "Preloading knowledge into a tool-restricted subagent",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 1,
+      "difficulty": "L3",
+      "sourceTopic": "Agent architecture · Agent SDK subagent definitions",
+      "prompt": "A Claude Agent SDK subagent must have no tools in its session except Read, Grep, and Glob, and specified skill content must already be in context at startup. Which AgentDefinition fields are needed?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "disallowedTools containing Edit, Write, and Bash, plus skills"
+        },
+        {
+          "id": "B",
+          "text": "tools and initialPrompt"
+        },
+        {
+          "id": "C",
+          "text": "mcpServers and skills"
+        },
+        {
+          "id": "D",
+          "text": "tools and memory"
+        },
+        {
+          "id": "E",
+          "text": "tools and skills"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** disallowedTools removes only listed tools, leaving other tools beyond the three allowed ones. It does not satisfy the requirement that all other tools be absent.\n\n- **{{option:B}}.** initialPrompt is ignored when invoked as a subagent and is not the field for loading skill content.\n\n- **{{option:C}}.** mcpServers adds available tools, contrary to restricting tools to three.\n\n- **{{option:D}}.** memory chooses the agent's memory source and does not preload skill content.\n\n- **{{option:E}}.** Correct. Tools absent from the tools list do not exist in the subagent session, and skills listed in skills are loaded into context at startup.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L3",
+        "Agent Architecture Design",
+        "Agents",
+        "Context management",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 137,
+      "sourceId": "AEP-I11",
+      "title": "Custom lookup tools run one after another",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 3,
+      "difficulty": "L3",
+      "sourceTopic": "Agent architecture · Agent SDK tool execution",
+      "prompt": "Claude requests three custom read-only lookup tools in the same turn in a Claude Agent SDK app, but each waits for the previous one to finish. Built-in file lookup tools requested in the same turn overlap. What is missing from the custom tools?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "Registration in allowed_tools"
+        },
+        {
+          "id": "B",
+          "text": "A permission_mode setting"
+        },
+        {
+          "id": "C",
+          "text": "The readOnlyHint tool annotation"
+        },
+        {
+          "id": "D",
+          "text": "Enabling include_partial_messages"
+        },
+        {
+          "id": "E",
+          "text": "A max_turns limit"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** allowed_tools permits calls without approval and does not control whether execution overlaps.\n\n- **{{option:B}}.** Permission mode controls approval handling, not tool-execution concurrency.\n\n- **{{option:C}}.** Correct. Custom tools run sequentially by default; readOnlyHint is needed to allow parallel execution like read-only tools.\n\n- **{{option:D}}.** This enables partial-message streaming and does not affect tool execution.\n\n- **{{option:E}}.** max_turns limits the number of tool-use turns, not how tools execute within one turn.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L3",
+        "Tool Design and Interoperability Protocols",
+        "Agents",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 138,
+      "sourceId": "AEP-I12",
+      "title": "Attachments disappear after a restart",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 2,
+      "difficulty": "L3",
+      "sourceTopic": "Agent architecture · ADK artifacts",
+      "prompt": "An ADK app connects an attachment-storage service to Runner without paying attention to its implementation. After restarting the server process and resuming the same session ID, loading a previously saved file by the same name returns an empty value without error. Session data remains in the database. Which setting explains this?",
+      "context": "",
+      "options": [
+        {
+          "id": "A",
+          "text": "The filename lacks a user: prefix"
+        },
+        {
+          "id": "B",
+          "text": "The storage service is InMemoryArtifactService"
+        },
+        {
+          "id": "C",
+          "text": "No version number is specified when loading"
+        },
+        {
+          "id": "D",
+          "text": "The MIME type was not specified precisely when saving"
+        },
+        {
+          "id": "E",
+          "text": "No artifact service is connected to Runner"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** Unprefixed filenames are accessible within the same session. Because the same session ID is resumed, scope is not the cause.\n\n- **{{option:B}}.** Correct. In-memory service contents disappear when the process ends, so loading after restart returns an empty value without error.\n\n- **{{option:C}}.** Omitting the version loads the latest version and does not explain an empty result.\n\n- **{{option:D}}.** MIME type affects interpretation of loaded bytes, not whether the file exists.\n\n- **{{option:E}}.** Calling save or load without an attached service raises an error rather than returning an empty value. This app already has a service attached.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L3",
+        "Context and Memory Management",
+        "Working with files",
+        "Error handling"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 139,
+      "sourceId": "AEP-S1-1",
+      "title": "Restricting an audit subagent to read-only tools",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T6",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "Agent architecture · Agent SDK permissions and subagents",
+      "caseSet": "AEP-S1",
+      "prompt": "In this environment, how can the audit subagent be restricted to read-only behavior at the tool level while preserving the parent agent's editing ability?",
+      "context": "**Environment:** Claude Agent SDK, nightly CI container\n\n**Scenario:** A repository-audit agent built with the Claude Agent SDK runs unattended in a nightly CI container. The container is isolated, so the parent session runs all tool calls without approval requests. The parent edits files and tracks changes so they can be reverted. Some audit subagents must be read-only, and lookup-only subagents should cost less without changing models. Original records must survive conversation compaction during long audits. Turn and spending limits are already configured.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Set permissionMode to \"plan\" in the subagent definition"
+        },
+        {
+          "id": "B",
+          "text": "Set permissionMode to \"dontAsk\" in the subagent definition"
+        },
+        {
+          "id": "C",
+          "text": "Reduce the parent query's allowed_tools to Read, Grep, and Glob"
+        },
+        {
+          "id": "D",
+          "text": "Set the subagent definition's tools to Read, Grep, and Glob"
+        },
+        {
+          "id": "E",
+          "text": "Add Edit to the parent query's disallowed_tools"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** When the parent uses bypassPermissions, the subagent runs under the parent's mode. Its permissionMode applies only when the parent is default, dontAsk, or plan, so this does not make it read-only.\n\n- **{{option:B}}.** For the same reason as {{option:A}}, dontAsk does not apply when the parent uses bypassPermissions.\n\n- **{{option:C}}.** allowed_tools only preapproves listed tools. It does not restrict bypassPermissions, which also approves unlisted tools.\n\n- **{{option:D}}.** Correct. Tools absent from the subagent's tools list do not exist in that session, ensuring read-only operation even when the parent uses bypassPermissions.\n\n- **{{option:E}}.** The parent-level disallowed_tools would also block the parent's Edit, violating the requirement to preserve editing. Write and Bash would also remain available.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T6",
+        "Single choice",
+        "L4",
+        "Safe Execution and Human Intervention",
+        "Agents",
+        "Container operations",
+        "Tool calling",
+        "Human approval",
+        "Cost management",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 140,
+      "sourceId": "AEP-S1-2",
+      "title": "Preserving records and summary guidance across compaction",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 2,
+      "difficulty": "L4",
+      "sourceTopic": "Agent architecture · Agent SDK context compaction",
+      "caseSet": "AEP-S1",
+      "prompt": "During a long audit, you want to archive the conversation immediately before context compaction and specify what the summary must preserve in a location reinjected on every request even after compaction. Which combination is needed?",
+      "context": "**Environment:** Claude Agent SDK, nightly CI container\n\n**Scenario:** A repository-audit agent built with the Claude Agent SDK runs unattended in a nightly CI container. The container is isolated, so the parent session runs all tool calls without approval requests. The parent edits files and tracks changes so they can be reverted. Some audit subagents must be read-only, and lookup-only subagents should cost less without changing models. Original records must survive conversation compaction during long audits. Turn and spending limits are already configured.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Archive through PreCompact immediately before compaction and list preserved items in a summary-guidance section of CLAUDE.md"
+        },
+        {
+          "id": "B",
+          "text": "Archive through Stop at agent completion and list preserved items in the initial prompt"
+        },
+        {
+          "id": "C",
+          "text": "Archive through PreCompact and list preserved items in the initial prompt"
+        },
+        {
+          "id": "D",
+          "text": "Archive through PostToolUse after every tool result and list preserved items in CLAUDE.md summary guidance"
+        },
+        {
+          "id": "E",
+          "text": "Archive through UserPromptSubmit and send /compact manually when needed"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. PreCompact runs just before compaction and can archive the full record. The compactor reads CLAUDE.md, whose summary-guidance section can specify what to preserve.\n\n- **{{option:B}}.** Stop runs when the agent finishes, not immediately before compaction. Instructions from the initial prompt also may not survive compaction.\n\n- **{{option:C}}.** Archival is correct, but initial-prompt instructions may not be preserved in the compacted summary, so required items are not guaranteed.\n\n- **{{option:D}}.** PostToolUse runs when a tool result returns, which is unrelated to the instant before compaction.\n\n- **{{option:E}}.** Choosing compaction time manually with /compact does not meet the requirement to retain records whenever compaction occurs, and UserPromptSubmit is unrelated to compaction timing.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L4",
+        "Context and Memory Management",
+        "Document summarization",
+        "Container operations",
+        "Context management",
+        "Agents",
+        "Tool calling",
+        "Human approval"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 141,
+      "sourceId": "AEP-S1-3",
+      "title": "Why the rewind checkpoint identifier is missing",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "Agent architecture · Agent SDK file-change tracking",
+      "caseSet": "AEP-S1",
+      "prompt": "You run the audit agent in Python with file-change tracking enabled, but cannot read a rewind-point identifier from user messages in the response stream. Which setting was omitted?",
+      "context": "**Environment:** Claude Agent SDK, nightly CI container\n\n**Scenario:** A repository-audit agent built with the Claude Agent SDK runs unattended in a nightly CI container. The container is isolated, so the parent session runs all tool calls without approval requests. The parent edits files and tracks changes so they can be reverted. Some audit subagents must be read-only, and lookup-only subagents should cost less without changing models. Original records must survive conversation compaction during long audits. Turn and spending limits are already configured.",
+      "options": [
+        {
+          "id": "A",
+          "text": "permission_mode=\"acceptEdits\""
+        },
+        {
+          "id": "B",
+          "text": "include_partial_messages=True"
+        },
+        {
+          "id": "C",
+          "text": "resume=session_id"
+        },
+        {
+          "id": "D",
+          "text": "enable_file_checkpointing=True"
+        },
+        {
+          "id": "E",
+          "text": "extra_args={\"replay-user-messages\": None}"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** This controls approval of file edits, not user-message identifiers.\n\n- **{{option:B}}.** This enables raw streaming events and does not populate user-message identifiers.\n\n- **{{option:C}}.** This resumes an earlier session and does not resolve reading identifiers from the response stream.\n\n- **{{option:D}}.** File tracking is already enabled in the scenario, so omission of this setting is not the cause.\n\n- **{{option:E}}.** Correct. Without this additional argument, user messages do not carry UUIDs usable as rewind checkpoints.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L4",
+        "Safe Execution and Human Intervention",
+        "Container operations",
+        "Agents",
+        "Tool calling",
+        "Human approval",
+        "Cost management",
+        "Claude"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 142,
+      "sourceId": "AEP-S1-4",
+      "title": "A run interrupted before reaching its limits",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 6,
+      "difficulty": "L4",
+      "sourceTopic": "Agent architecture · Agent SDK result subtypes",
+      "caseSet": "AEP-S1",
+      "prompt": "The nightly run is interrupted by an error such as request cancellation before reaching its turn or spending limits. Which result-message subtype applies?",
+      "context": "**Environment:** Claude Agent SDK, nightly CI container\n\n**Scenario:** A repository-audit agent built with the Claude Agent SDK runs unattended in a nightly CI container. The container is isolated, so the parent session runs all tool calls without approval requests. The parent edits files and tracks changes so they can be reverted. Some audit subagents must be read-only, and lookup-only subagents should cost less without changing models. Original records must survive conversation compaction during long audits. Turn and spending limits are already configured.",
+      "options": [
+        {
+          "id": "A",
+          "text": "`success`"
+        },
+        {
+          "id": "B",
+          "text": "`error_max_turns`"
+        },
+        {
+          "id": "C",
+          "text": "`error_during_execution`"
+        },
+        {
+          "id": "D",
+          "text": "`error_max_budget_usd`"
+        },
+        {
+          "id": "E",
+          "text": "`error_max_structured_output_retries`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** success indicates normal completion, not the interrupted execution described.\n\n- **{{option:B}}.** error_max_turns indicates termination at the turn limit, but this run stopped before reaching it.\n\n- **{{option:C}}.** Correct. error_during_execution describes an error interrupting the loop, such as a canceled request.\n\n- **{{option:D}}.** error_max_budget_usd indicates termination at the spending limit, but this run stopped before reaching it.\n\n- **{{option:E}}.** error_max_structured_output_retries indicates structured output failing validation within the retry limit, not the situation described here.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L4",
+        "Deployment and Operations",
+        "Container operations",
+        "Agents",
+        "Tool calling",
+        "Human approval",
+        "Error handling",
+        "Cost management"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 143,
+      "sourceId": "AEP-S1-5",
+      "title": "Reducing reasoning depth without changing the model",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 6,
+      "difficulty": "L4",
+      "sourceTopic": "Agent architecture · Agent SDK reasoning effort",
+      "caseSet": "AEP-S1",
+      "prompt": "Keep deep reasoning in the parent session, but reduce per-response reasoning depth only for lookup subagents to save cost without changing their model. Which combination is required?",
+      "context": "**Environment:** Claude Agent SDK, nightly CI container\n\n**Scenario:** A repository-audit agent built with the Claude Agent SDK runs unattended in a nightly CI container. The container is isolated, so the parent session runs all tool calls without approval requests. The parent edits files and tracks changes so they can be reverted. Some audit subagents must be read-only, and lookup-only subagents should cost less without changing models. Original records must survive conversation compaction during long audits. Turn and spending limits are already configured.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Session effort low; subagent effort high"
+        },
+        {
+          "id": "B",
+          "text": "Session effort high; effort low in the subagent definition"
+        },
+        {
+          "id": "C",
+          "text": "Session effort high; subagent model haiku"
+        },
+        {
+          "id": "D",
+          "text": "Session effort high; disable extended thinking"
+        },
+        {
+          "id": "E",
+          "text": "Session effort high; lower the subagent's maxTurns"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** These values are reversed: the parent would reason less deeply while the lookup subagent reasons more deeply.\n\n- **{{option:B}}.** Correct. Keep session effort high and override effort only in the subagent definition to lower reasoning depth without changing the model.\n\n- **{{option:C}}.** This changes the subagent's model, violating the condition.\n\n- **{{option:D}}.** Extended thinking is independent of effort and applies across the session, so disabling it does not selectively lower the lookup subagent's depth.\n\n- **{{option:E}}.** maxTurns limits the number of subagent turns, not reasoning depth within each response.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L4",
+        "Deployment and Operations",
+        "Reasoning models",
+        "Container operations",
+        "Agents",
+        "Tool calling",
+        "Human approval",
+        "Cost management"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 144,
+      "sourceId": "AEP-S2-1",
+      "title": "Completing the input check before the agent starts",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T2",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "Agent architecture · OpenAI Agents SDK guardrail execution",
+      "caseSet": "AEP-S2",
+      "prompt": "The manager's input check must finish before the agent starts. Which execution mode should be specified for the guardrail?",
+      "context": "**Environment:** OpenAI Agents SDK, manager and specialist agents\n\n**Scenario:** A customer-support service uses the OpenAI Agents SDK. A manager receives inquiries, hands off to a refund specialist, and uses a function tool to query the payment database. Malicious inputs must be rejected before the model consumes tokens. The refund tool requires human approval, and the server may restart while approval is pending. Tools must be able to use the payment-database connection object without exposing it to the model.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Blocking execution, with run_in_parallel disabled"
+        },
+        {
+          "id": "B",
+          "text": "Parallel execution, the default"
+        },
+        {
+          "id": "C",
+          "text": "Switch to an output guardrail and disable run_in_parallel"
+        },
+        {
+          "id": "D",
+          "text": "Switch to a tool-input guardrail"
+        },
+        {
+          "id": "E",
+          "text": "Reduce max_turns to one"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "A"
+      ],
+      "answer": "A",
+      "explanation": "- **{{option:A}}.** Correct. Blocking execution finishes the guardrail before agent startup. A violation prevents agent execution, token consumption, and tool execution.\n\n- **{{option:B}}.** Parallel execution runs alongside the agent, which may already consume tokens or run tools before cancellation.\n\n- **{{option:C}}.** Output guardrails run after agent completion and do not support run_in_parallel. They also fail the input-check requirement.\n\n- **{{option:D}}.** Tool-input guardrails run before function-tool calls, not on the user's initial input.\n\n- **{{option:E}}.** max_turns limits LLM calls in a run, not when the input check completes.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T2",
+        "Single choice",
+        "L4",
+        "Safe Execution and Human Intervention",
+        "Token management",
+        "Agents",
+        "Human approval",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 145,
+      "sourceId": "AEP-S2-2",
+      "title": "The input check never fires on the second agent",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T5",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "Agent architecture · OpenAI Agents SDK guardrail scope",
+      "caseSet": "AEP-S2",
+      "prompt": "An input guardrail attached to the refund specialist, which runs after the manager, does not fire on violating inputs. The same guardrail function fires correctly when attached to the manager. What is the cause?",
+      "context": "**Environment:** OpenAI Agents SDK, manager and specialist agents\n\n**Scenario:** A customer-support service uses the OpenAI Agents SDK. A manager receives inquiries, hands off to a refund specialist, and uses a function tool to query the payment database. Malicious inputs must be rejected before the model consumes tokens. The refund tool requires human approval, and the server may restart while approval is pending. Tools must be able to use the payment-database connection object without exposing it to the model.",
+      "options": [
+        {
+          "id": "A",
+          "text": "The guardrail uses parallel execution"
+        },
+        {
+          "id": "B",
+          "text": "The violation function does not raise the tripwire"
+        },
+        {
+          "id": "C",
+          "text": "Handoffs do not pass through the function-tool pipeline"
+        },
+        {
+          "id": "D",
+          "text": "max_turns ends execution before guardrail evaluation"
+        },
+        {
+          "id": "E",
+          "text": "Input guardrails run only on the first agent in the chain, but this one is attached to the second"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "E"
+      ],
+      "answer": "E",
+      "explanation": "- **{{option:A}}.** Parallel guardrails still execute alongside the agent; parallelism does not mean they never fire.\n\n- **{{option:B}}.** The same function works on the manager, so its judgment logic is not the problem.\n\n- **{{option:C}}.** That explains why function-tool guardrails do not apply to handoff calls, not why an agent-level input guardrail fails to run.\n\n- **{{option:D}}.** The same function works on the manager independently of the turn-limit explanation, so this is not the cause.\n\n- **{{option:E}}.** Correct. Input guardrails run only on the first agent in the chain, so one attached to the second agent does not execute.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T5",
+        "Single choice",
+        "L4",
+        "Safe Execution and Human Intervention",
+        "Agents",
+        "Token management",
+        "Human approval",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 146,
+      "sourceId": "AEP-S2-3",
+      "title": "Surviving a restart while awaiting approval",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T6",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "Agent architecture · OpenAI Agents SDK human approval and state restoration",
+      "caseSet": "AEP-S2",
+      "prompt": "The refund tool must execute only after human approval, and the same run must resume even if the server restarts while approval is pending. No call may bypass approval. Which configuration fits?",
+      "context": "**Environment:** OpenAI Agents SDK, manager and specialist agents\n\n**Scenario:** A customer-support service uses the OpenAI Agents SDK. A manager receives inquiries, hands off to a refund specialist, and uses a function tool to query the payment database. Malicious inputs must be rejected before the model consumes tokens. The refund tool requires human approval, and the server may restart while approval is pending. Tools must be able to use the payment-database connection object without exposing it to the model.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Set needs_approval and automatically call state.approve in code on every interruption without human review"
+        },
+        {
+          "id": "B",
+          "text": "Interrupt through an output-guardrail tripwire, then call Runner.run with the same input after restart"
+        },
+        {
+          "id": "C",
+          "text": "Set needs_approval, save and restore the interrupted result as RunState, approve it, and continue with Runner.run(agent, state)"
+        },
+        {
+          "id": "D",
+          "text": "Set needs_approval and max_turns=None to wait indefinitely"
+        },
+        {
+          "id": "E",
+          "text": "Set needs_approval, save only result.interruptions, and pass that list to Runner.run after restart"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "C"
+      ],
+      "answer": "C",
+      "explanation": "- **{{option:A}}.** Programmatic approval without human review allows calls to proceed without human authorization, violating the requirement.\n\n- **{{option:B}}.** A tripwire raises an exception that interrupts the run. Restarting from the same input starts afresh rather than resuming the interrupted point, so it is not the same execution.\n\n- **{{option:C}}.** Correct. needs_approval pauses the run for approval. Convert the result to RunState, serialize it with to_string() or equivalent, restore it, approve or reject, and resume that run with Runner.run(agent, state).\n\n- **{{option:D}}.** max_turns limits LLM calls and does not preserve pending state across a process restart.\n\n- **{{option:E}}.** interruptions is only the list of pending approval requests, not the RunState containing execution state. It cannot by itself restore the same run.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T6",
+        "Single choice",
+        "L4",
+        "Safe Execution and Human Intervention",
+        "Human approval",
+        "Token management",
+        "Agents",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 147,
+      "sourceId": "AEP-S2-4",
+      "title": "Catching an input-guardrail interruption",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T6",
+      "domain": 4,
+      "difficulty": "L4",
+      "sourceTopic": "Agent architecture · OpenAI Agents SDK guardrail exceptions",
+      "caseSet": "AEP-S2",
+      "prompt": "The manager agent's input-check function identifies a violation and signals that execution should stop. Which exception should the caller catch?",
+      "context": "**Environment:** OpenAI Agents SDK, manager and specialist agents\n\n**Scenario:** A customer-support service uses the OpenAI Agents SDK. A manager receives inquiries, hands off to a refund specialist, and uses a function tool to query the payment database. Malicious inputs must be rejected before the model consumes tokens. The refund tool requires human approval, and the server may restart while approval is pending. Tools must be able to use the payment-database connection object without exposing it to the model.",
+      "options": [
+        {
+          "id": "A",
+          "text": "`OutputGuardrailTripwireTriggered`"
+        },
+        {
+          "id": "B",
+          "text": "`ToolInputGuardrailTripwireTriggered`"
+        },
+        {
+          "id": "C",
+          "text": "`ModelBehaviorError`"
+        },
+        {
+          "id": "D",
+          "text": "`InputGuardrailTripwireTriggered`"
+        },
+        {
+          "id": "E",
+          "text": "`UserError`"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "D"
+      ],
+      "answer": "D",
+      "explanation": "- **{{option:A}}.** OutputGuardrailTripwireTriggered concerns an output guardrail, whereas this is an input check.\n\n- **{{option:B}}.** ToolInputGuardrailTripwireTriggered concerns a function-tool input guardrail before a tool call, whereas this check is attached to the agent.\n\n- **{{option:C}}.** ModelBehaviorError concerns unexpected model behavior such as calling a nonexistent tool, not a guardrail signal.\n\n- **{{option:D}}.** Correct. An input guardrail signaling a violation through its tripwire raises InputGuardrailTripwireTriggered.\n\n- **{{option:E}}.** UserError indicates incorrect SDK use by its caller, not a guardrail signal.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T6",
+        "Single choice",
+        "L4",
+        "Safe Execution and Human Intervention",
+        "Token management",
+        "Agents",
+        "Human approval",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
+    },
+    {
+      "id": 148,
+      "sourceId": "AEP-S2-5",
+      "title": "A tool dependency hidden from the model",
+      "type": "단일 선택",
+      "category": "간접",
+      "indirectType": "T4",
+      "domain": 2,
+      "difficulty": "L4",
+      "sourceTopic": "Agent architecture · OpenAI Agents SDK context",
+      "caseSet": "AEP-S2",
+      "prompt": "A function tool must use the payment-database connection object without exposing it to the model in the conversation. How should this be configured?",
+      "context": "**Environment:** OpenAI Agents SDK, manager and specialist agents\n\n**Scenario:** A customer-support service uses the OpenAI Agents SDK. A manager receives inquiries, hands off to a refund specialist, and uses a function tool to query the payment database. Malicious inputs must be rejected before the model consumes tokens. The refund tool requires human approval, and the server may restart while approval is pending. Tools must be able to use the payment-database connection object without exposing it to the model.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Include connection-object information in the agent's instructions"
+        },
+        {
+          "id": "B",
+          "text": "Pass the connection object as Runner.run context and access it in the function tool through RunContextWrapper"
+        },
+        {
+          "id": "C",
+          "text": "Put connection-object information in the first run-input item"
+        },
+        {
+          "id": "D",
+          "text": "Return connection-object information from the function tool for the model to use on its next call"
+        },
+        {
+          "id": "E",
+          "text": "Return connection-object information in search-tool results"
+        }
+      ],
+      "items": [],
+      "keys": [
+        "B"
+      ],
+      "answer": "B",
+      "explanation": "- **{{option:A}}.** instructions is part of what the model sees when generating its response, so this exposes the information.\n\n- **{{option:B}}.** Correct. The context object passed to the run is not sent to the model. Tools and hooks access it through RunContextWrapper.\n\n- **{{option:C}}.** Run inputs become conversation history and are visible to the model.\n\n- **{{option:D}}.** Function-tool return values are passed to the model, exposing the information.\n\n- **{{option:E}}.** Search-tool results are also conversation data visible to the model.",
+      "sourceImport": "indirect-20261020",
+      "tags": [
+        "AEP",
+        "Agent Engineering",
+        "Indirect reasoning",
+        "T4",
+        "Single choice",
+        "L4",
+        "Context and Memory Management",
+        "Token management",
+        "Agents",
+        "Human approval",
+        "OpenAI"
+      ],
+      "tagging": {
+        "version": 1,
+        "method": "rule-based-draft"
+      }
     }
   ],
   "nameKo": "에이전트 엔지니어링"

@@ -97,7 +97,7 @@ const courseRequests=new Map();
 function ensureCourse(i){
  if(originalQuestions[i].length)return Promise.resolve();
  if(!courseRequests.has(i)){
-  const task=fetch('courses/'+window.APP_LANG+'/'+exams[i].code+'.json?v=bank-scaling-20261020').then(r=>{if(!r.ok)throw Error('Course unavailable');return r.json();}).then(data=>{if(!Array.isArray(data.questions)||data.questions.length!==exams[i].bankCount||typeof data.guide!=='string')throw Error('Invalid course');originalQuestions[i]=data.questions;exams[i].questions=data.questions.slice();exams[i].guide=data.guide;}).catch(error=>{courseRequests.delete(i);throw error;});
+  const task=fetch('courses/'+window.APP_LANG+'/'+exams[i].code+'.json?v=bank-indirect-20261020').then(r=>{if(!r.ok)throw Error('Course unavailable');return r.json();}).then(data=>{if(!Array.isArray(data.questions)||data.questions.length!==exams[i].bankCount||typeof data.guide!=='string')throw Error('Invalid course');originalQuestions[i]=data.questions;exams[i].questions=data.questions.slice();exams[i].guide=data.guide;}).catch(error=>{courseRequests.delete(i);throw error;});
   courseRequests.set(i,task);
  }
  return courseRequests.get(i);
