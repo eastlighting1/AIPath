@@ -1,6 +1,17 @@
 const fs=require('fs'),path=require('path');
 const root=path.resolve(__dirname,'..'),codes=['ALF','WFA','ADA','SDA','AEP','SDP','SES','AGS','MOS','ASF','AOA','AOP'];
 const Scaling=require('../public/scaling.js'),crypto=require('crypto');
+const sourceLinkMap=require('./source-link-map.json');
+function normalizeEvidence(text){return text.split('\n').map(line=>{
+ if(!/(근거|문서|Sources?|Evidence|References?|Documentation)/i.test(line))return line;
+ return line.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|`[^`]*`|https?:\/\/[^\s)<>]+/g,(match,label,url)=>{
+  if(match.startsWith('`'))return match;
+  const original=url||match,target=sourceLinkMap[original]||original;
+  if(label)return '['+label+']('+target+')';
+  const host=new URL(target).hostname.replace(/^www\./,'');
+  const part=new URL(target).pathname.split('/').filter(Boolean).pop()||host;const title=part.replace(/\.(mdx?|html)$/,'').replace(/[-_]+/g,' ').replace(/\b\w/g,c=>c.toUpperCase());return '['+title+' · '+host+(host==='github.com'?' source':'')+']('+target+')';
+ });
+ }).join('\n')}
 const scalingModels={};
 for(const code of codes){
  const bank=JSON.parse(fs.readFileSync(path.join(root,'content/ko',code+'.json'),'utf8'));
@@ -10,7 +21,7 @@ for(const code of codes){
 }
 for(const lang of ['ko','en']){
  const exams=codes.map(code=>JSON.parse(fs.readFileSync(path.join(root,'content',lang,code+'.json'),'utf8')));
- for(const e of exams){e.scaling=scalingModels[e.code];e.scoring='evidence';}
+ for(const e of exams){e.scaling=scalingModels[e.code];e.scoring='evidence';for(const q of e.questions){q.title=q.title.replace(/\\([\[\]~_*])/g,'$1');q.explanation=normalizeEvidence(q.explanation)}}
  // These option bodies explicitly refer to another option; preserve the stable
  // ID in a token so the UI can label it using the current attempt's order.
  if(lang==='ko')for(const e of exams)for(const q of e.questions)for(const o of q.options){
@@ -47,8 +58,8 @@ for(const lang of ['ko','en']){
  }
  fs.writeFileSync(path.join(root,'public',lang==='ko'?'data.js':'data-en.js'),'window.EXAMS = '+JSON.stringify(exams)+';\n');
  const dir=path.join(root,'public','courses',lang);fs.mkdirSync(dir,{recursive:true});
- for(const e of exams)fs.writeFileSync(path.join(dir,e.code+'.json'),JSON.stringify({questions:e.questions,guide:e.guide}));
- const catalog=exams.map(({questions,guide,...e})=>({...e,bankCount:questions.length,questions:[]}));
+ for(const e of exams)fs.writeFileSync(path.join(dir,e.code+'.json'),JSON.stringify({guide:e.guide}));
+ const catalog=exams.map(({questions,guide,...e})=>({...e,scaling:{version:e.scaling.version},bankCount:questions.length,questions:[]}));
  fs.writeFileSync(path.join(root,'public','catalog-'+lang+'.js'),'window.EXAMS = '+JSON.stringify(catalog)+';\n');
  console.log(lang+': '+exams.reduce((n,e)=>n+e.questions.length,0)+' questions');
 }

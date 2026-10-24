@@ -1,0 +1,14 @@
+.cert-next-actions{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 30px}.journey-status{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);padding:12px 20px;border-radius:6px;background:#142427;color:#fff;z-index:1000;font-size:13px}.journey-error{margin:24px auto;padding:20px;max-width:900px;border:1px solid #b78064;background:#fffaf3}.exam-grid>section{scroll-margin-top:24px}.question-body:focus,h1:focus,h2:focus{outline:none}.lp-lesson-row:focus-visible{outline:2px solid #8a694d;outline-offset:4px}.lp-start-panel>.lp-text-link{display:block;margin-top:14px}.result-hero{padding-top:35px!important;padding-bottom:24px!important}.result-hero h1{font-size:clamp(25px,3vw,36px);margin:12px 0}.result-hero .status-icon{width:45px;height:45px;font-size:22px;margin-bottom:12px}.result-hero .assessment-notice,.result-hero>.note{font-size:12px;margin:8px 0}.share-panel{margin-top:28px;margin-bottom:48px}.exam-sidebar{scroll-margin-top:24px}@media(max-width:700px){.cert-next-actions{flex-direction:column}.cert-next-actions .btn{text-align:center}.journey-status{max-width:calc(100% - 32px);width:max-content}.result-hero{padding-top:24px!important}.result-hero h1{font-size:25px}}
+
+.lp .lp-reader-top{position:sticky;top:0;z-index:45}.lp .lr-flow-bar{top:53px}.lp .lp-start-panel>a[data-restart]{display:block;margin-top:14px;font-size:12px}.lp .lr-flow-section{scroll-margin-top:125px}
+
+html:root{scroll-behavior:auto}body.lp-reading{overflow-anchor:none}
+
+/* Keep the secondary review link distinct from the retry action. */
+.result-grid .score > a.smallbtn.full{display:block;margin-top:20px;padding:4px 0;line-height:1.5}
+
+
+.result-hero + .share-panel{margin-top:0;margin-bottom:28px}
+
+.detail-enroll + .cert-next-actions{margin-top:24px}.cert-next-actions a.btn{text-decoration:none}@media(max-width:700px){.detail-enroll + .cert-next-actions{margin-top:20px}}
+

@@ -1,5 +1,6 @@
 const fs=require('fs'),path=require('path');const root=path.resolve(__dirname,'..'),dist=path.join(root,'public');let source=fs.readFileSync(path.join(dist,'app.js'),'utf8');
-source=fs.readFileSync(path.join(dist,'scaling.js'),'utf8')+'\n'+source;
+source=fs.readFileSync(path.join(dist,'scaling.js'),'utf8')+'\n'+fs.readFileSync(path.join(dist,'exam-state.js'),'utf8')+'\n'+source;
+source+='\n'+fs.readFileSync(path.join(dist,'secure-exam.js'),'utf8')+'\nif(!window.REVIEW_PREVIEW)bootSite();';
 const types=['코드 빈칸','단일 선택','복수 선택','매칭','순서 배열','진술 판정'];
 let en=source.replace(String.raw`e.purpose.replace(/^이 시험에서는 응시자가 /,'').replace(/ 확인합니다\.$/,' 확인합니다.')`,'e.purpose');types.forEach((t,i)=>{en=en.replaceAll("'"+t+"'","'__TYPE_"+i+"__'");});
 const translations=JSON.parse(fs.readFileSync(path.join(__dirname,'ui-translations.json'),'utf8'));
@@ -13,8 +14,8 @@ en=en.replace('OpenAI · Anthropic · Google across generative AI  skills.','Bui
 en=en.replace('AFPStart with →','Start with ALF →');
 en=en.replace('${i+1} step','Step ${i+1}').replace('${typeLabel(q.type)} ${i+1} answer','${typeLabel(q.type)} answer ${i+1}');
 en=en.replace('${i+1} question','Question ${i+1}');
-en=en.replace('Correct ${q.keys.length} answers to select.','Select ${q.keys.length} correct answers.');
-en=en.replace('${q.keys.length} selections maximum. Deselect an answer before choosing another.','You can select up to ${q.keys.length} answers. Deselect an answer before choosing another.');
+en=en.replace('Correct ${(q.answerCount??q.keys.length)} answers to select.','Select ${(q.answerCount??q.keys.length)} correct answers.');
+en=en.replace('${(q.answerCount??q.keys.length)} selections maximum. Deselect an answer before choosing another.','You can select up to ${(q.answerCount??q.keys.length)} answers. Deselect an answer before choosing another.');
 en=en.replace('Share your learning progress on SNS and LinkedIn.','Share your learning progress on social media and LinkedIn.');
 en=en.replace('in &nbsp; LinkedInShare on','in &nbsp; Share on LinkedIn').replace('↗ SNS Share','↗ Share').replaceAll('PASSED · Pass','PASSED').replaceAll('NOT PASSED · Not passed','NOT PASSED');
 en=en.replace('100 points possible','out of 100');

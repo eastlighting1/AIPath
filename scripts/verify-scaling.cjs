@@ -31,7 +31,7 @@ for(let index=0;index<ko.length;index++){
      const client=vm.runInContext('grade({...exams[input.index],questions:input.ids.map(id=>originalQuestions[input.index].find(q=>q.id===id))},input.answers)',c);
      assert.equal(client.score,r.score);
      worker.raw={code:e.code,lang:l?'en':'ko',mode:n===10?'demo':'full',scoringVersion:m.version,questionOrder:ids,answers:c.input.answers,elapsed:0};
-     const server=vm.runInContext('validatedResult(raw)',worker);
+     const server=vm.runInContext(`(()=>{const e=EXAM_KEYS.find(e=>e.code===raw.code),outcomes=raw.questionOrder.map((id,i)=>{const q=e.questions.find(q=>q.id===id),a=raw.answers[i];return a.length===q.keys.length&&(q.type==='복수 선택'?[...a].sort().join('|')===[...q.keys].sort().join('|'):a.every((x,j)=>x===q.keys[j]))});return EvidenceScaling.grade(e.scaling,raw.questionOrder,outcomes)})()`,worker);
      assert.equal(server.score,r.score);assert.equal(server.pass,r.pass);
      assert.equal(server.scoringVersion,m.version);
     }

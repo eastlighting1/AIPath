@@ -1,0 +1,8 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const ctx={window:{}};for(const f of ['learn-data.js','lesson-ui.js'])vm.runInNewContext(fs.readFileSync('public/'+f,'utf8'),ctx);
+const paths=ctx.window.LEARNING_PATHS,U=ctx.window.LessonUI;assert.equal(paths.length,27);let n=0,c=0,s=0;const types=new Set();
+for(const p of paths)for(const meta of p.lessons){n++;const raw=fs.readFileSync('public'+meta.file.split('?')[0],'utf8'),d=JSON.parse(raw);assert(!/"docs"\s*:|"spec"\s*:/.test(raw));assert.equal(d.minutes,meta.minutes);for(const screen of d.screens){types.add(screen.ui);assert(U.render(screen,'test').length>0);s++}for(const check of d.checks){assert(check.after>=0&&check.after<d.screens.length);assert(U.check(check,'test').length>0);if(check.type==='mcq')assert(check.answer>=0&&check.answer<check.options.length);if(check.type==='match')assert(check.pairs.length===check.left.length);c++}}
+assert.equal(n,358);assert.equal(types.size,13);assert(fs.readFileSync('public/learn.html','utf8').includes('/lesson-ui.js'));
+(async()=>{const source=fs.readFileSync('dist/server/index.js','utf8'),worker=(await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'))).default;
+for(const url of ['/learn','/learn.js','/lesson-ui.js',...paths.flatMap(p=>p.lessons.map(l=>l.file))]){const r=await worker.fetch(new Request('https://example.test'+url),{});assert.equal(r.status,200,url)}
+console.log(JSON.stringify({paths:paths.length,lessons:n,screens:s,checks:c,uiTypes:types.size,publicReferences:'excluded',routes:'passed'}))})().catch(e=>{console.error(e);process.exitCode=1});

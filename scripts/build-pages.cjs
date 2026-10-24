@@ -1,13 +1,5 @@
 const fs=require('fs'),path=require('path');
-const base=(process.env.PAGES_BASE_PATH||'/AIPath/').replace(/\/?$/,'/'),out=path.resolve('_site');
-fs.mkdirSync(out,{recursive:true});fs.cpSync('public',out,{recursive:true});
-function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,entry.name);if(entry.isDirectory()){walk(p);continue;}if(!/\.(html|js|css)$/.test(p))continue;let s=fs.readFileSync(p,'utf8');
-s=s.replace(/(["'`(=])\/(?!\/)(?=(?:about|djemdls|courses|badges|fonts|review|exam-preview|preview-mocks|admin-|catalog-|app-|language|brand-|favicon|index|\?))/g,(_,lead)=>lead+base);
-s=s.replaceAll('https://aipath.dongle.chatgpt.site', 'https://eastlighting1.github.io'+base.slice(0,-1));
-if(p.endsWith('.html'))s=s.replace('<head>','<head><base href="'+base+'">');
-fs.writeFileSync(p,s);
-}}
-walk(out);
-for(const [route,file] of [['about','about.html'],['djemdls','review.html']]){fs.mkdirSync(path.join(out,route),{recursive:true});fs.copyFileSync(path.join(out,file),path.join(out,route,'index.html'));}
-fs.writeFileSync(path.join(out,'.nojekyll'),'');
-console.log('GitHub Pages build: '+base);
+const out=path.resolve('_site');fs.mkdirSync(out,{recursive:true});
+const origin='https://aipath.dongle.chatgpt.site';
+const html=`<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SPECORY — Learn the source. Prove the skill.</title><meta name="robots" content="noindex"><style>body{font:18px/1.7 system-ui,sans-serif;background:#f7f9f8;color:#142427;max-width:650px;margin:15vh auto;padding:24px}a{color:#187d76}</style></head><body><h1>SPECORY</h1><p>현재 운영 사이트로 이동합니다.<br>Taking you to the current SPECORY site.</p><a id="continue" href="${origin}">사이트 열기 · Open SPECORY →</a><p><small>이전 GitHub Pages 브라우저 기록은 자동 이전되지 않습니다.<br>Saved progress from the old GitHub Pages site does not transfer automatically.</small></p><script>const base='/AIPath';let path=location.pathname;if(path===base||path.startsWith(base+'/'))path=path.slice(base.length)||'/';path=path.replace(/\\/index\\.html$/,'/').replace(/^\\/learn\\.html$/,'/learn').replace(/^\\/about\\.html$/,'/about');if(path.startsWith('/djemdls'))path='/';const target=new URL(path,${JSON.stringify(origin)});target.search=location.search;target.hash=location.hash;document.getElementById('continue').href=target.href;location.replace(target.href);</script></body></html>`;
+for(const route of ['','learn','about']){const dir=path.join(out,route);fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,'index.html'),html)}for(const name of ['404.html','learn.html','about.html'])fs.writeFileSync(path.join(out,name),html);fs.writeFileSync(path.join(out,'.nojekyll'),'');console.log('GitHub Pages gateway built; Worker application remains on '+origin);

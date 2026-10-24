@@ -19,7 +19,7 @@ async function loadEda(){const ticket=++edaTicket;$('eda-status').textContent='�
 const edaPreviousShow=showSection;showSection=name=>{edaPreviousShow(name);if(name==='eda')loadEda();};
 for(const id of ['eda-course','eda-type','eda-level','eda-topic'])$(id).onchange=()=>{if(edaRows)renderEda();};
 $('eda-reset').onclick=()=>{for(const id of ['eda-course','eda-type','eda-level','eda-topic'])$(id).value='';if(edaRows)renderEda();};
-$('eda-export').onclick=()=>{if(!edaRows)return;const cell=s=>'"'+String(s??'').replace(/"/g,'""')+'"',rows=[['자격증','문항 번호','유형','난이도','제목','주제 태그'],...edaFiltered().map(r=>[r.code,r.q.id,r.q.type,r.q.difficulty,r.q.title,r.topics.join(' | ')])];const url=URL.createObjectURL(new Blob(['\uFEFF'+rows.map(row=>row.map(cell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download='AIPath-question-analysis.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+$('eda-export').onclick=()=>{if(!edaRows)return;const cell=s=>'"'+String(s??'').replace(/"/g,'""')+'"',rows=[['자격증','문항 번호','유형','난이도','제목','주제 태그'],...edaFiltered().map(r=>[r.code,r.q.id,r.q.type,r.q.difficulty,r.q.title,r.topics.join(' | ')])];const url=URL.createObjectURL(new Blob(['\uFEFF'+rows.map(row=>row.map(cell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download='SPECORY-question-analysis.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 
 function biMetrics(rows){
  const count=rows.length,topics=edaCounts(rows,r=>r.topics),assignments=topics.reduce((a,x)=>a+x[1],0),status=s=>rows.filter(r=>(records[r.code+':'+r.q.id]?.status||'pending')===s).length;

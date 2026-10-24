@@ -1,5 +1,15 @@
 # Korean and English content
 
+## Learning content
+
+- Korean authored curricula remain the source of truth. `content/learning/english/memory.jsonl` stores English drafts keyed by exact Korean text; `overrides.json` holds editorial corrections, terminology, and adapted teaching examples.
+- `build-learning.cjs` generates Korean lessons first, then `build-learning-english.cjs` generates matching English files in `public/learning/en`. A missing translation fails the build; visitors never call a translation service.
+- Lesson IDs, completion records, quiz answer indices and navigation sections are shared across languages. Both language files use content hashes for selective cache invalidation.
+- Code syntax and line structure stay intact. Translate comments and display strings, not identifiers. English teaching examples must preserve the distinction tested by their quiz; literal word-for-word translation is insufficient for case-sensitive labels and character-count exercises.
+- Inline glossary terms are protected while translating their paragraphs, then restored with matching English labels so term interactions keep working.
+- Validate with `verify-learning-english.cjs`, `verify-english-code.py`, `verify-learning.cjs`, and `verify-learning-cache.cjs`. These check content structure, language coverage, answer keys, code structure, glossary binding and localized asset delivery. They do not replace editorial review of meaning.
+- Initial drafts use Google Translate and locally run Qwen3-4B-Instruct-2507, followed by automated checks and targeted editorial corrections. No audit documents or private reference lists are sent to translation services or added to public lesson files.
+
 - `public/app.js` is the shared application source (Korean UI text and bilingual `tr` calls).
 - `scripts/ui-translations.json` defines English equivalents for legacy UI strings.
 - Run `node scripts/build-i18n.cjs` after editing the application source. This generates `public/app-ko.js` and `public/app-en.js`.

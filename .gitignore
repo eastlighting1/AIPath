@@ -1,2 +1,8 @@
 _site/
 node_modules/
+dist/
+.openai/
+content/learning/references-audit.md
+content/learning/review-20261023-*.md
+content/learning/review-20261023-actionable.json
+content/learning/corrections-20261023.json
